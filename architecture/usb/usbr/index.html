@@ -1,0 +1,8407 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.6">
+    
+    
+      
+        <title>Emerald USB Architecture - Blackbox Embedded Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.35e1ed30.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.356b1318.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="white">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#emerald-usb-architecture" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Blackbox Embedded Documentation" class="md-header__button md-logo" aria-label="Blackbox Embedded Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89 89">
+  <path d="M3.136,17.387l0,42.932l42.932,21.467l-42.932,-64.399Z" />
+  <path d="M21.91,8l42.933,64.398l-18.775,9.388l-42.932,-64.399l18.774,-9.387Z" style="fill-opacity: 0.5" />
+  <path d="M67.535,17.387l-27.262,18.156l21.878,32.818l5.384,2.691l0,-53.665Z" />
+  <path d="M67.535,17.387l0,53.666l18.774,-9.388l0,-53.665l-18.774,9.387Z" style="fill-opacity: 0.25" />
+</svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Blackbox Embedded Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Emerald USB Architecture
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="white"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="white"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../developer_quick_start/connecting_to_vm/" class="md-tabs__link">
+          
+  
+  Developer Quick Start
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../buildroot_guides/creating_buildroot_enviroment/" class="md-tabs__link">
+          
+  
+  Development
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Summary/summary/" class="md-tabs__link">
+          
+  
+  Architecture and Design Documents
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Infrastructure/branching_strategy/" class="md-tabs__link">
+          
+  
+  Infrastructure
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../automation/summary/" class="md-tabs__link">
+          
+  
+  Automation
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../features/summary/" class="md-tabs__link">
+          
+  
+  Features
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../process/process/" class="md-tabs__link">
+          
+  
+  Process
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../release_notes/summary/" class="md-tabs__link">
+          
+  
+  Release Notes
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Blackbox Embedded Documentation" class="md-nav__button md-logo" aria-label="Blackbox Embedded Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89 89">
+  <path d="M3.136,17.387l0,42.932l42.932,21.467l-42.932,-64.399Z" />
+  <path d="M21.91,8l42.933,64.398l-18.775,9.388l-42.932,-64.399l18.774,-9.387Z" style="fill-opacity: 0.5" />
+  <path d="M67.535,17.387l-27.262,18.156l21.878,32.818l5.384,2.691l0,-53.665Z" />
+  <path d="M67.535,17.387l0,53.666l18.774,-9.388l0,-53.665l-18.774,9.387Z" style="fill-opacity: 0.25" />
+</svg>
+
+    </a>
+    Blackbox Embedded Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Developer Quick Start
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Developer Quick Start
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../developer_quick_start/connecting_to_vm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Connecting to VM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../developer_quick_start/blackbox_cli/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Blackbox CLI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../developer_quick_start/building_code/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compiling Code
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../developer_quick_start/phabricator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Code Reviews
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../developer_quick_start/reference_books/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reference Books
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Development
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Development
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Buildroot
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Buildroot
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../buildroot_guides/creating_buildroot_enviroment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Creating Buildroot Environment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../buildroot_guides/buildroot_defconfig/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Buildroot defconfig
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../buildroot_guides/emeraldrc_files/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Emerald RC Files
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../buildroot_guides/rootfs_overlays/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rootfile System Overlays
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../buildroot_guides/creating_package/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adding New Packages
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../buildroot_guides/packages/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Packages
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../buildroot_guides/local_mk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Local Development
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../buildroot_guides/command_runner/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Command Runner
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../buildroot_guides/upgrade_images/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Upgrade Images
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Application Development
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Application Development
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../coding_guides/conditional_compilation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Conditional Compilation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Deploying Code
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Deploying Code
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../buildroot_guides/transferring_images/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transferring Images
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Architecture and Design Documents
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Architecture and Design Documents
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Summary
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            Summary
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Summary/summary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Summary Page
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Document Templates
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Document Templates
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software_architecture_template/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Software Architecture Template
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software_design_document/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Software Design Template
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Emerald Appliances
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Emerald Appliances
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_1" id="__nav_4_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Architecture Documents
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Architecture Documents
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../emerald_software_system_reference/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Appliance Software System Reference
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Summary/Contents/software_architecture_push_and_get/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Push and Get
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_2" id="__nav_4_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Design Documents
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Design Documents
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Summary/Contents/bonded_connections/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bonded Connections
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_2_2" id="__nav_4_3_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Boot Configuration
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_3_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Boot Configuration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../boot_configuration/emerald4k_fitimages/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Emerald 4K
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ConnectionLabel/label/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Connection Label
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_2_4" id="__nav_4_3_2_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Connection Management
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_3_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            Connection Management
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_2_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_2_4_1" id="__nav_4_3_2_4_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CM
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_4_3_2_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_2_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            CM
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Connection_Management/history/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Master Document Revision History
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Connection_Management/references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Connection_Management/termsAndDefinitions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Terms and Definitions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Connection_Management/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Connection_Management/mqtt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mqtt Usage
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Connection_Management/connection_process_summary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Applications Summary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Connection_Management/connection_process_design/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Applications Detailed Design
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Connection_Management/connection_process_specifics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Applications Specific Design Aspects
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Summary/Contents/tbc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Connection Sequence
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Summary/Contents/display_layer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Display Layer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Summary/Contents/data_flow_controller/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Flow Controller
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Summary/Contents/diagnostics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Diagnostics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Summary/Contents/discovery/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Discovery
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Summary/Contents/dual_stream/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dual Stream
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Summary/Contents/error_handling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Error Handling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Summary/Contents/interoperability/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interoperability
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_2_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_2_12" id="__nav_4_3_2_12_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Individual Inactivity Timers
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_3_2_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_2_12">
+            <span class="md-nav__icon md-icon"></span>
+            Individual Inactivity Timers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Summary/Contents/individual_inactivity_timers/individual_inactivity_timers_hld/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Individual Inactivity Timers HLD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Summary/Contents/individual_inactivity_timers/individual_inactivity_timers_hld_appendix/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Appendix
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Summary/Contents/kvm_client/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    KVM Client
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Summary/Contents/kvm_server/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    KVM Server
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Summary/Contents/kvm_bonded_connection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    KVM Bonded Connections
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Summary/Contents/lacp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LACP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Summary/Contents/mouse_events/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mouse Event Handling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Summary/Contents/tbc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multiunicast Peer Joining
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Summary/Contents/tbc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multicast Peer Joining
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_2_20" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_2_20" id="__nav_4_3_2_20_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Memory Maps
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_3_2_20_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_2_20">
+            <span class="md-nav__icon md-icon"></span>
+            Memory Maps
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Summary/Contents/memory_map/nand_memory_map/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NAND Memory Map
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Summary/Contents/networking/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Networking
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Summary/Contents/performance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Performance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware_acceleration_for_4KRDP_connections/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RDP VM Hardware Acceleration on 4K
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Summary/Contents/tbc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Resolution Change Sequence
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Summary/Contents/system_upgrade/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Upgrade
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Summary/Contents/system_login/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Login
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_2_27" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_2_27" id="__nav_4_3_2_27_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Splashscreen
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_3_2_27_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_2_27">
+            <span class="md-nav__icon md-icon"></span>
+            Splashscreen
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Splashscreen_Design/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Splashscreen Design
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Summary/Contents/stats_monitor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Statistics Monitor
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Summary/Contents/toe/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TOE
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Summary/Contents/transmitter_settings/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transmitter Settings
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_2_31" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_2_31" id="__nav_4_3_2_31_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Upgrades
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_3_2_31_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_2_31">
+            <span class="md-nav__icon md-icon"></span>
+            Upgrades
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Summary/Contents/upgrades/upgrades_2k/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2K Upgrades
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Summary/Contents/unplanned_leave/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unplanned Leave
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_2_33" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_2_33" id="__nav_4_3_2_33_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    USB
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_3_2_33_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_2_33">
+            <span class="md-nav__icon md-icon"></span>
+            USB
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Summary/Contents/usb/usbr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    USB/R
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Summary/Contents/usb/usbr_udc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    USB/R Device Controllers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Summary/Contents/usb/usbr_utilities/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    USB/R Utilities
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Summary/Contents/usb/usbr_msc_transport/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    USB/R MSC Transport
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Summary/Contents/video_latency/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Video Latency
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_2_35" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_2_35" id="__nav_4_3_2_35_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Video
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_3_2_35_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_2_35">
+            <span class="md-nav__icon md-icon"></span>
+            Video
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Summary/Contents/video/emerald4k_tx_scaling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    EMD4K TX Scaling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Summary/Contents/video/cut-through/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Video Cut-Through
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Summary/Contents/webservice_restapi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Webservice RestAPI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Software Defined KVM
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            Software Defined KVM
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4_1" id="__nav_4_4_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    SKVM
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            SKVM
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4_1_1" id="__nav_4_4_1_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Architecture Documents
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_4_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            Architecture Documents
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sdkvm/sdkvm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sdkvm/sdkvm_architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SDKVM Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sdkvm/data_models/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SDKVM Data Models
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sdkvm/sdkvm_1.0.0_osd_specification/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OSD 1.0.0 Specification
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sdkvm/sdkvm_1.1.0_osd_specification/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OSD 1.1.0 Specification
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sdkvm/sdkvm_1.2.0_osd_specification/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OSD 1.2.0 Specification
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sdkvm/sdkvm_clients/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Client Specification
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sdkvm/workspaceserver/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Workspace Server Specification
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sdkvm/sdkvm_upgrade/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SDKVM Upgrade
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4_1_2" id="__nav_4_4_1_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Technical Notes
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_4_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            Technical Notes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sdkvm/sdkvm_configuration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SDKVM Configuration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sdkvm/dualboot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dual Boot Ubuntu 22.04
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sdkvm/sourcecontrol/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SDKVM Source control
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sdkvm/sdkvm_1.2.0_tasklist/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SDKVM 1.2.0 Scope of Work
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sdkvm/sdkvm_prorail_proposal/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Prorail Proposal
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sdkvm/technical_notes/2x2_config_ibc_demo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2x2 Monitor Config for IBC
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sdkvm/technical_notes/multimonitor-weighting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multi-monitor Weighting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sdkvm/sdkvm_rest_work/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SDKVM REST API TASK
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Common
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            Common
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5_1" id="__nav_4_5_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Design Documents
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            Design Documents
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5_1_1" id="__nav_4_5_1_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    MQTT
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_5_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            MQTT
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mqtt/mqtt_deployment_strategy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MQTT Deployment Strategy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mqtt/mqtt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    General Guidelines for MQTT Messages
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mqtt/mqtt_logging/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MQTT Logging
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5_2" id="__nav_4_5_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    APIs and Specifications
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            APIs and Specifications
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5_2_1" id="__nav_4_5_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    REST API
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_5_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            REST API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../device_rest_api/rest_api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Device Rest APi
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appliance_rest_api/appliance_rest_api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Appliance Rest APi
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../REST_API/rest_api_zone_support/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    REST API Zone Support
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../REST_API/receiver_to_boxilla_connection_status_over_rest/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Receiver to Boxilla Connection Status over REST
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5_3" id="__nav_4_5_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Technologies
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            Technologies
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../technologies/technologies_for_osd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OSD Technology Evaluation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Remote App
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            Remote App
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6_1" id="__nav_4_6_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Design Documents
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            Design Documents
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../remoteapp/remoteapp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Remote App Build and Install
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../remoteapp/remoteapp_nightly_build/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Remote App Nightly Build Proposal
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6_1_3" id="__nav_4_6_1_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Modifying Remote App To Accelerated Handle Video
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_6_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            Modifying Remote App To Accelerated Handle Video
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modifying_remote_app_to_accelerated_handle_video/introduction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6_1_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6_1_3_2" id="__nav_4_6_1_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Contents
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_4_6_1_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6_1_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Contents
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modifying_remote_app_to_accelerated_handle_video/contents/connection_scheme_architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Connection Scheme Architecture Overview and Content
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modifying_remote_app_to_accelerated_handle_video/contents/encoder_design/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Encoder Design
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modifying_remote_app_to_accelerated_handle_video/contents/decoder_design/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Decoder Design
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modifying_remote_app_to_accelerated_handle_video/contents/message_exchange/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Message Exchange
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modifying_remote_app_to_accelerated_handle_video/contents/remote_app_connection_type/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Remote App Connection Type
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modifying_remote_app_to_accelerated_handle_video/contents/guide_to_decoder_code/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Guide to Decoder Code
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modifying_remote_app_to_accelerated_handle_video/contents/user_case_scenarios/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    User Case Scenarios
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6_1_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6_1_4" id="__nav_4_6_1_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Original Remote App Proposal
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_6_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            Original Remote App Proposal
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modifying_remote_app_to_accelerated_handle_video/contents/connection_scheme_architecture" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    contents
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Opal
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            Opal
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7_1" id="__nav_4_7_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Architecture Documents
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_7_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7_1">
+            <span class="md-nav__icon md-icon"></span>
+            Architecture Documents
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opal/opal/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Infrastructure
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Infrastructure
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    SVN
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            SVN
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Infrastructure/branching_strategy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Branching Strategy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Infrastructure/create_new_svn_repo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Create New SVN Repo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    ESXi
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            ESXi
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Infrastructure/ESXI/creating_developer_vm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Creating VMs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Infrastructure/ESXI/new_user/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Creating a New ESXi User
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    IP Portal
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            IP Portal
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Infrastructure/IP_Management_Portal/create_new_user/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Create New User
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Infrastructure/manual_nightly_build/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Manual Nightly Build
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Infrastructure/configuring_nfs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configuring NFS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Infrastructure/ssh_tunnel_upgrades/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SSH Tunnelling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Infrastructure/Upgrade_USBIP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Upgrading Awsudcip/USBIP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_8" id="__nav_5_8_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    mkdocs
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_8">
+            <span class="md-nav__icon md-icon"></span>
+            mkdocs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Infrastructure/mkdocs/setup_local/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Setup Local Site
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Infrastructure/mkdocs/editing_mkdocs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Editing mkdocs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Infrastructure/mkdocs/flow_diagram/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Diagrams
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_9" id="__nav_5_9_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Manufacture Test
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_9">
+            <span class="md-nav__icon md-icon"></span>
+            Manufacture Test
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Infrastructure/Manufacture_Test/Introduction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Infrastructure/Manufacture_Test/Brief_Description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Brief Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Infrastructure/Manufacture_Test/Hardware_components/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hardware
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Infrastructure/Manufacture_Test/Test_PC_Setup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Flash & Test PC Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Infrastructure/Manufacture_Test/Operator_PC_Setup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Operator PC Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Infrastructure/Manufacture_Test/access/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Accessing the Flash
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Infrastructure/Manufacture_Test/adding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adding New Device Images
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Infrastructure/Manufacture_Test/app_logging/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Application Logging
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Infrastructure/Manufacture_Test/dut_artifacts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    View DUT Artifacts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Infrastructure/Manufacture_Test/processes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Flash and Test processes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Infrastructure/Manufacture_Test/test_procedures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Test procedures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Infrastructure/Manufacture_Test/Adding_new_images/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adding a New Image
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Infrastructure/Manufacture_Test/control_flow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Control Flow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Infrastructure/Manufacture_Test/bomgar-installation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bomgar remote access
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Automation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Automation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../automation/summary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Summary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../automation/elements_of_automated_test/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Elements of the Automated Test Framework
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../automation/enhanced_osd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enhanced OSD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../automation/error_code/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Error Codes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../automation/OSD_messages/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OSD Messages
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../automation/system_latency/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Latency Testing Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../automation/mouse_latency_testing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Latency Technical Details
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../automation/autokeys/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Autokeys
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_9" id="__nav_6_9_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Planning and Status
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_9">
+            <span class="md-nav__icon md-icon"></span>
+            Planning and Status
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../automation/status/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Status
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../automation/plan/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Planning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_10" id="__nav_6_10_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    TechZilla
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_10">
+            <span class="md-nav__icon md-icon"></span>
+            TechZilla
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../automation/techzilla/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Techzilla User Manual
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../automation/techzilla_installer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Creating a techzilla installer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_11" id="__nav_6_11_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Results and Reporting
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_11">
+            <span class="md-nav__icon md-icon"></span>
+            Results and Reporting
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../automation/results/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Results Server
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../automation/mongodb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mongo Database
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_12" id="__nav_6_12_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Test Cases
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_12">
+            <span class="md-nav__icon md-icon"></span>
+            Test Cases
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../automation/testcases/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Test Cases Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../automation/testcase_code_walkthrough/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Test Code Walkthrough
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_12_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_12_3" id="__nav_6_12_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Test Case Lists
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_12_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_12_3">
+            <span class="md-nav__icon md-icon"></span>
+            Test Case Lists
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_12_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_12_3_1" id="__nav_6_12_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Managed Cases
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_12_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_12_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Managed Cases
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../automation/Seperated_test_case_lists/Connection_Cases/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Connection Cases
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../automation/Seperated_test_case_lists/Dual_Mode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dual Mode
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../automation/Seperated_test_case_lists/First_Video_Frame/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    First Video Frames
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../automation/Seperated_test_case_lists/Retry_case/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Retry cases
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../automation/Seperated_test_case_lists/PC_Resolution/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PC Resolution
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../automation/Seperated_test_case_lists/DP_Devices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DP Devices
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../automation/Seperated_test_case_lists/Video_quality/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Video Quality
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../automation/Seperated_test_case_lists/Unplanned_Leave/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unplanned Leave
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../automation/Seperated_test_case_lists/Audio_tests/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Audio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../automation/Seperated_test_case_lists/VM_Connections/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VM Connection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../automation/Seperated_test_case_lists/Video_performance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Video Performance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../automation/Seperated_test_case_lists/Keyboard/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Keyboard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../automation/Seperated_test_case_lists/Managed_Connection_Performance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Managed Connection Performance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_12_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_12_3_2" id="__nav_6_12_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    General Unmanaged Cases
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_12_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_12_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            General Unmanaged Cases
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../automation/Seperated_test_case_lists/General_unmanaged-SETXSH/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SE SH TX
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../automation/Seperated_test_case_lists/General_unmanaged-4KTXOLD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4K TX Old Board
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../automation/Seperated_test_case_lists/General_unmanaged-PETXDH/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PE DH TX
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../automation/Seperated_test_case_lists/General_unmanaged-SETXDH/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SE DH TX
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../automation/Seperated_test_case_lists/General_unmanaged-ZeroUTXSH/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ZeroU TX
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../automation/Seperated_test_case_lists/General_unmanaged-SEDPSHTX/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SE DP SH TX
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../automation/Seperated_test_case_lists/General_unmanaged-PEDPSHTX/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PE DP SH TX
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../automation/Seperated_test_case_lists/General_unmanaged-PEDPTXDH/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PE DP DH TX
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../automation/Seperated_test_case_lists/General_unmanaged-4KTX/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4K TX
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../automation/Seperated_test_case_lists/General_unmanaged-SEDVITXSH/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SE DVI SH TX
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../automation/Seperated_test_case_lists/General_unmanaged-PETXSHDVI/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PE DVI SH TX
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../automation/Seperated_test_case_lists/General_unmanaged-PEDVIDHTX/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PE DVI DH TX
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../automation/Seperated_test_case_lists/General_unmanaged-4KTXNEW/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4K TX NEW Board
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../automation/Seperated_test_case_lists/Unmanaged_OSD_Interop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unmanaged OSD Interop
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../automation/Seperated_test_case_lists/Unmanaged_Connection_Performance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unmanaged Connection Performance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../automation/Seperated_test_case_lists/Interop_Connection_UnManaged/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interop Connection UnManaged
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../automation/Seperated_test_case_lists/references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../automation/source_pc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Source PC Automation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../automation/appliance_automation_hooks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Appliance Hooks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../automation/audio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Audio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../automation/test_equipment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Test Equipment Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../automation/usb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    USB
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_18" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_18" id="__nav_6_18_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Guides
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_18_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_18">
+            <span class="md-nav__icon md-icon"></span>
+            Guides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../automation/guides/troubleshooting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Troubleshooting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../automation/guides/config_files/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configuration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Features
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Features
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../features/summary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Summary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../features/status/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Status
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../features/feature_proposal_document_template/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feature Proposal Template
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../features/toolchain_upgrade/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Toolchain Upgrade
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../features/opal/opal/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Opal
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../features/push_and_get/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Push and Get
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../features/interoperability/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interoperability
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../features/ssh_disable/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SSH Disable
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../features/sdkvm/sdkvm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Software Defined KVM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../features/slide_and_glide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Slide and Glide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../features/realtime_status/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Real Time Status
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../features/downgrade_backwards_compatibility/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Backwards Compatibility
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../features/all_settings_configurable_via_boxilla/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Boxilla Configuration for all settings
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../features/4K30/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4K 30
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../features/4KOver1Gig/4Kover1Gig/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4K Over 1 Gig
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../features/cloudflare/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CloudFlare
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../features/planning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Planning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../features/Splashscreen_proposal/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Splashscreen
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Process
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Process
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../process/process/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    process
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Release Notes
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Release Notes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../release_notes/summary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Summary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../release_notes/V6_6_71_RELEASE_NOTES/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    V6.6.71
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../release_notes/V6_6_1_RELEASE_NOTES/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    V6.6.1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../release_notes/V6_7_0_RELEASE_NOTES/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    V6.7.0
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../release_notes/V6_6_70_RELEASE_NOTES/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    V6.6.70
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../release_notes/V6_6_0_RELEASE_NOTES/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    V6.6.0
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../release_notes/V6_5_0_RELEASE_NOTES/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    V6.5.0
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../release_notes/V6_4_0_RELEASE_NOTES/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    V6.4.0
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../release_notes/V6_3_10_RELEASE_NOTES/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    V6.3.10
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#emerald4kse-software-design-for-vusb-devices" class="md-nav__link">
+    Emerald4K/SE Software Design for vUSB Devices
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#purpose" class="md-nav__link">
+    Purpose
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scope" class="md-nav__link">
+    Scope
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#overview-of-document-organization" class="md-nav__link">
+    Overview of Document Organization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#design-and-implementation-constraints" class="md-nav__link">
+    Design and Implementation Constraints
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assumptions-and-dependencies" class="md-nav__link">
+    Assumptions and Dependencies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#definitions-acronyms-and-abbreviations" class="md-nav__link">
+    Definitions, Acronyms and Abbreviations
+  </a>
+  
+    <nav class="md-nav" aria-label="Definitions, Acronyms and Abbreviations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#definitions" class="md-nav__link">
+    Definitions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    References
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overall-description" class="md-nav__link">
+    Overall Description
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-overview" class="md-nav__link">
+    Architecture Overview
+  </a>
+  
+    <nav class="md-nav" aria-label="Architecture Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usb-redirection-scenario" class="md-nav__link">
+    USB Redirection Scenario
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usb-redirection-software-components" class="md-nav__link">
+    USB Redirection Software Components
+  </a>
+  
+    <nav class="md-nav" aria-label="USB Redirection Software Components">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#net2272-ic" class="md-nav__link">
+    Net2272 IC
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linux-usb-gadget-api" class="md-nav__link">
+    Linux USB Gadget API
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#composite-device-framework" class="md-nav__link">
+    Composite Device Framework
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kvm-clientserver-application" class="md-nav__link">
+    KVM Client/Server Application
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usb-virtual-device-driver" class="md-nav__link">
+    USB Virtual Device Driver
+  </a>
+  
+    <nav class="md-nav" aria-label="USB Virtual Device Driver">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#simplified-logical-usb-scheme" class="md-nav__link">
+    Simplified Logical USB Scheme
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#user-space-interface" class="md-nav__link">
+    User Space Interface
+  </a>
+  
+    <nav class="md-nav" aria-label="User Space Interface">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#message-format" class="md-nav__link">
+    Message Format
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commands" class="md-nav__link">
+    Commands
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linux-usb-gadget-api_1" class="md-nav__link">
+    Linux USB Gadget API
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#virtual-usb-configuration-and-usb-functions" class="md-nav__link">
+    Virtual USB Configuration and USB Functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usb-enumeration-and-descriptors-handling" class="md-nav__link">
+    USB Enumeration and Descriptors Handling
+  </a>
+  
+    <nav class="md-nav" aria-label="USB Enumeration and Descriptors Handling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usb-30-descriptors-considerations" class="md-nav__link">
+    USB 3.0 Descriptors Considerations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usb-non-control-transfers" class="md-nav__link">
+    USB Non-control Transfers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usb-bus-events" class="md-nav__link">
+    USB Bus Events
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#current-architecture-overview-end-to-end" class="md-nav__link">
+    Current Architecture Overview: End to End
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#current-architecture-transmission-and-reception" class="md-nav__link">
+    Current Architecture Transmission and Reception
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#application-level-current-implementation" class="md-nav__link">
+    Application Level Current Implementation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#current-usb-architecture-detailed" class="md-nav__link">
+    Current USB Architecture Detailed
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proposed-new-usb-ip-phasing" class="md-nav__link">
+    Proposed New USB IP Phasing
+  </a>
+  
+    <nav class="md-nav" aria-label="Proposed New USB IP Phasing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phase-1" class="md-nav__link">
+    Phase 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-2-and-3" class="md-nav__link">
+    Phase 2 and 3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-4" class="md-nav__link">
+    Phase 4
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analysis-of-usb-queues-in-kvm-connection-wip" class="md-nav__link">
+    Analysis of USB Queues in KVM Connection (WIP)
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+                  
+
+
+<h1 id="emerald-usb-architecture">Emerald USB Architecture</h1>
+<p><img alt="Black Box logo" src="/images/automation/software_design_for_usb_devices/image001.jpg" /></p>
+<h2 id="emerald4kse-software-design-for-vusb-devices">Emerald4K/SE Software Design for vUSB Devices</h2>
+<h2 id="introduction">Introduction</h2>
+<h3 id="purpose">Purpose</h3>
+<p>The document details a new model of USB virtual device which will be a key module of USB Redirection implementation. This model focuses on trying to support all kind of USB transfers and solve known issues of previous implementations.</p>
+<h3 id="scope">Scope</h3>
+<p>The document focuses on the desired Software Architecture; it does not outline the phasing of work or migration strategies for moving from the current architecture to the desired one.
+Only specific details of USB related functionality is discussed in this document.</p>
+<h3 id="overview-of-document-organization">Overview of Document Organization</h3>
+<h3 id="design-and-implementation-constraints">Design and Implementation Constraints</h3>
+<p>Many aspects of the current USB Redirection architecture are unsuitable for current market requirements. They constrain timely development of features and impose significant maintenance challenges. From a development perspective this constantly pushes us into development dead ends and no optimal implementation so it was decided to make a new approach backward compatible with previous ones already on field. Furthermore, this new design must be transversal to Black Box Emerald KVM family and keep portability between kernel versions in mind.</p>
+<h3 id="assumptions-and-dependencies">Assumptions and Dependencies</h3>
+<p>TBD</p>
+<h3 id="definitions-acronyms-and-abbreviations">Definitions, Acronyms and Abbreviations</h3>
+<h4 id="definitions">Definitions</h4>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3DES</td>
+<td>Triple DES (Data Encryption Standard)</td>
+</tr>
+<tr>
+<td>AC</td>
+<td>Alternating Current</td>
+</tr>
+<tr>
+<td>AD</td>
+<td>Active Directory</td>
+</tr>
+<tr>
+<td>AAE</td>
+<td>Audio Application Engine</td>
+</tr>
+<tr>
+<td>AE</td>
+<td>Application Engines</td>
+</tr>
+<tr>
+<td>AES</td>
+<td>Advanced Encryption Standard</td>
+</tr>
+<tr>
+<td>AGC</td>
+<td>Automatic Gain Control</td>
+</tr>
+<tr>
+<td>ASIC</td>
+<td>Application Specific Integrated Circuit</td>
+</tr>
+<tr>
+<td>Barrow</td>
+<td>Project code for an early version of DTX1000 that is now obsolete</td>
+</tr>
+<tr>
+<td>BIST</td>
+<td>BIST In Self-Test</td>
+</tr>
+<tr>
+<td>CAP</td>
+<td>CloudAccel Protocol</td>
+</tr>
+<tr>
+<td>CD</td>
+<td>Compact Disk</td>
+</tr>
+<tr>
+<td>CE</td>
+<td>Conformité Européenne</td>
+</tr>
+<tr>
+<td>Corrib</td>
+<td>Project code for current DTX1000/DTX1002 products</td>
+</tr>
+<tr>
+<td>CMN</td>
+<td>Certification Model Number</td>
+</tr>
+<tr>
+<td>CMU</td>
+<td>Central Management Unit</td>
+</tr>
+<tr>
+<td>CPU</td>
+<td>Central Processing Unit</td>
+</tr>
+<tr>
+<td>CTS</td>
+<td>Clear to Send</td>
+</tr>
+<tr>
+<td>Deel</td>
+<td>Project code for DTX1000SA product – which is a Corrib unit with audio/serial added with a metal enclosure (versus plastic body for Corrib).</td>
+</tr>
+<tr>
+<td>HDCP</td>
+<td>High-bandwidth Digital Content Protection</td>
+</tr>
+<tr>
+<td>DC</td>
+<td>Direct Current</td>
+</tr>
+<tr>
+<td>DES</td>
+<td>Data Encryption Standard</td>
+</tr>
+<tr>
+<td>DHCP</td>
+<td>Dynamic Host Configuration Protocol</td>
+</tr>
+<tr>
+<td>DNS</td>
+<td>Domain Name System</td>
+</tr>
+<tr>
+<td>DPS</td>
+<td>Detailed Product Specifications</td>
+</tr>
+<tr>
+<td>DRAM</td>
+<td>Dynamic Random Access Memory</td>
+</tr>
+<tr>
+<td>DSP</td>
+<td>Digital Signal Processing</td>
+</tr>
+<tr>
+<td>DVI</td>
+<td>Digital Video Interface</td>
+</tr>
+<tr>
+<td>EDID</td>
+<td>Extended Display Identification Data</td>
+</tr>
+<tr>
+<td>ELMD</td>
+<td>Entry Level Management Device</td>
+</tr>
+<tr>
+<td>ESD</td>
+<td>Electrostatic Discharge</td>
+</tr>
+<tr>
+<td>EuP</td>
+<td>Energy using Products</td>
+</tr>
+<tr>
+<td>FCC</td>
+<td>Federal Communications Commission</td>
+</tr>
+<tr>
+<td>FPGA</td>
+<td>Field Programmable Gate Array</td>
+</tr>
+<tr>
+<td>FQDN</td>
+<td>Fully Qualified Domain Name</td>
+</tr>
+<tr>
+<td>GUI</td>
+<td>Graphical User Interface</td>
+</tr>
+<tr>
+<td>HDCP</td>
+<td>High-bandwidth Digital Content Protection</td>
+</tr>
+<tr>
+<td>HID</td>
+<td>Human Interface Devices</td>
+</tr>
+<tr>
+<td>HTTP</td>
+<td>Hypertext Transfer Protocol</td>
+</tr>
+<tr>
+<td>IC</td>
+<td>Integrated Circuit</td>
+</tr>
+<tr>
+<td>IEC</td>
+<td>International Electrotechnical Commission</td>
+</tr>
+<tr>
+<td>IGMP</td>
+<td>Internet Group Management Protocol</td>
+</tr>
+<tr>
+<td>IP</td>
+<td>Internet Protocol</td>
+</tr>
+<tr>
+<td>ISTA</td>
+<td>International Safe Transit Authority</td>
+</tr>
+<tr>
+<td>JSON</td>
+<td>JavaScript Object Notation</td>
+</tr>
+<tr>
+<td>KVM</td>
+<td>Keyboard, Video, Mouse</td>
+</tr>
+<tr>
+<td>LAN</td>
+<td>Local Area Network</td>
+</tr>
+<tr>
+<td>LED</td>
+<td>Light Emitting Diode</td>
+</tr>
+<tr>
+<td>MAC</td>
+<td>Media Access Control</td>
+</tr>
+<tr>
+<td>MPS</td>
+<td>Multipoint Server</td>
+</tr>
+<tr>
+<td>MRD</td>
+<td>Marketing Requirements Document</td>
+</tr>
+<tr>
+<td>MST</td>
+<td>Multi-Stream Transport</td>
+</tr>
+<tr>
+<td>NLA</td>
+<td>Network Level Authentication</td>
+</tr>
+<tr>
+<td>NOC</td>
+<td>Network Operating Centre</td>
+</tr>
+<tr>
+<td>OEM</td>
+<td>Original Equipment Manufacturer</td>
+</tr>
+<tr>
+<td>OS</td>
+<td>Operating System</td>
+</tr>
+<tr>
+<td>OSD</td>
+<td>On Screen Display</td>
+</tr>
+<tr>
+<td>PC</td>
+<td>Personal Computer</td>
+</tr>
+<tr>
+<td>PCI</td>
+<td>Peripheral Component Interconnect</td>
+</tr>
+<tr>
+<td>PCB</td>
+<td>Printed Circuit Board</td>
+</tr>
+<tr>
+<td>PID</td>
+<td>Peripheral ID</td>
+</tr>
+<tr>
+<td>PSU</td>
+<td>Power Supply Unit</td>
+</tr>
+<tr>
+<td>QIG</td>
+<td>Quick Install Guide</td>
+</tr>
+<tr>
+<td>RDP</td>
+<td>Remote Desktop Protocol</td>
+</tr>
+<tr>
+<td>RDSH</td>
+<td>Remote Desktop Session Host (formally Terminal Services)</td>
+</tr>
+<tr>
+<td>REST</td>
+<td>Representational state transfer</td>
+</tr>
+<tr>
+<td>ROHS</td>
+<td>Restriction Of Hazardous Substances</td>
+</tr>
+<tr>
+<td>RF</td>
+<td>Radio Frequency</td>
+</tr>
+<tr>
+<td>SDI</td>
+<td>Serial Data Interface</td>
+</tr>
+<tr>
+<td>SFP</td>
+<td>Small Form factor Pluggable</td>
+</tr>
+<tr>
+<td>SSH</td>
+<td>Secure Shell</td>
+</tr>
+<tr>
+<td>SST</td>
+<td>Single Stream Transport</td>
+</tr>
+<tr>
+<td>TCP</td>
+<td>Transmission Control Protocol</td>
+</tr>
+<tr>
+<td>UDP</td>
+<td>User Datagram Protocol</td>
+</tr>
+<tr>
+<td>UI</td>
+<td>User Interface</td>
+</tr>
+<tr>
+<td>UL</td>
+<td>Underwriters Laboratories</td>
+</tr>
+<tr>
+<td>URL</td>
+<td>Uniform Resource Locator</td>
+</tr>
+<tr>
+<td>USB</td>
+<td>Universal Serial Bus</td>
+</tr>
+<tr>
+<td>VDI</td>
+<td>Virtual Desktop Infrastructure</td>
+</tr>
+<tr>
+<td>VESA</td>
+<td>Video Electronics Standards Association</td>
+</tr>
+<tr>
+<td>VGA</td>
+<td>Video Graphics Adaptor</td>
+</tr>
+<tr>
+<td>VID</td>
+<td>Vendor ID</td>
+</tr>
+<tr>
+<td>VM</td>
+<td>Virtual Machine</td>
+</tr>
+<tr>
+<td>VNC</td>
+<td>Virtual Network Computing</td>
+</tr>
+<tr>
+<td>WAN</td>
+<td>Wide Area Network</td>
+</tr>
+<tr>
+<td>WEEE</td>
+<td>Waste Electrical and Electronic Equipment</td>
+</tr>
+<tr>
+<td>XML</td>
+<td>eXensible Markup Language</td>
+</tr>
+<tr>
+<td>UDC</td>
+<td>USB Device Controller</td>
+</tr>
+</tbody>
+</table>
+<h3 id="references">References</h3>
+<ol>
+<li>Microsoft RDP Base Standard: MS_RDPBCGR Version 48.0</li>
+<li>InvisaPC DPS – EDD-0003-001</li>
+<li>Emerald MRD</li>
+<li>VESA DisplayPort Standard; Version 1, Revision 2a</li>
+<li>DVI 1.0 Standard</li>
+<li>VESA</li>
+<li>PC99 <a href="http://www.microsoft.com/whdc/archive/pcguides.mspx">http://www.microsoft.com/whdc/archive/pcguides.mspx</a></li>
+<li>RemoteFX RDP Specification: MS_RDPRFX</li>
+<li>USB Redirection Specification :MS_RDPEUSB</li>
+<li>Domain Names - Implementation and Specification <a href="https://tools.ietf.org/html/rfc1035">https://tools.ietf.org/html/rfc1035</a></li>
+<li>Boxilla DPS – EDD-0007-030.</li>
+</ol>
+<h2 id="overall-description">Overall Description</h2>
+<p>The ultimate purpose of USB Redirection is to create a transparent path between a hardware USB device and host that are not physically connected each other. This feature is widely used in consumer software as Virtual Box, VMware Player, etc. but in those cases a second software USB host is used by creating a virtual USB port so there is no need of an entity in charge of capturing or inject USB packets, everything is done by software. The actual challenge comes when an unknown remote hardware USB host is desired to be supported.</p>
+<p>If a remote hardware USB host has to be supported, a way of capturing and replying USB packets will be required. There are specific hardware on board Emerald family appliances for this task, specifically on Tx side. It is equipped with a Peripheral Controller IC which will be connected to remote hardware USB host. Peripheral Controller IC will be able to handle USB traffic but it cannot do anything by itself, it will need a way to communicate with remote device, take its response to a given USB host request and inject that response to the bus where it is connected. On the other hand, it will have to expose correct USB device status and endpoints to the bus so it will be necessary to not only to capture and write USB packets but to locally model a complete USB device.</p>
+<p>This document will focus on the design of the piece of software required to successfully read and write USB traffic by using a Peripheral Controller IC from a Linux user space application. This software will be referred as USB virtual device.</p>
+<h2 id="architecture-overview">Architecture Overview</h2>
+<h3 id="usb-redirection-scenario">USB Redirection Scenario</h3>
+<p>The scenario where a Virtual USB device is required is shown below.</p>
+<p><img alt="USB Redirection scheme for hardware USB host" src="/images/automation/software_design_for_usb_devices/image002.png" />
+<em>Figure 1 USB Redirection scheme for hardware USB Host</em></p>
+<p>USB hardware configuration of Tx is designed to support up to four Peripheral Controllers. In case of Emerald 4K, there are three net2272 ICs and one USB3320C IC. All of them are accesed by USB host through a USB hub.</p>
+<p><img alt="USB Redirection Hardware" src="/images/automation/software_design_for_usb_devices/image003.png" />
+<em>Figure 2 USB Redirection hardware</em></p>
+<p>Peripheral Controllers used for USB Redirection will be net2272 due to its flexibility and number of endpoints supported.</p>
+<h2 id="usb-redirection-software-components">USB Redirection Software Components</h2>
+<h3 id="net2272-ic">Net2272 IC</h3>
+<p>Net2272 is a dedicated integrated circuit that will be used as USB Device Physical Layer implementation, it will be required for interacting with USB target host. This IC is interfaced against Linux Kernel by modelling it as a UDC (USB Device Controller) through a dynamically loadable kernel module “net2272.ko”.</p>
+<h3 id="linux-usb-gadget-api">Linux USB Gadget API</h3>
+<p>This API is used by Linux Kernel to interact with a UDC as net2272, dwc3 or chipidea. It will be intensively used during the whole development as long as endpoints, transfers and bus signalling are accessed through this API.</p>
+<h3 id="composite-device-framework">Composite Device Framework</h3>
+<p>Composite Device Framework is used to facilitate USB device representation to USB host. It is designed to easily create USB composite devices that support several USB functions under Linux (for example: keyboard, mouse and audio USB functions on the same USB gadget device). It will use Linux USB Gadget API to interact with hardware. Default use of this framework is NOT suitable for USB Redirection solution because it assumes that all information about USB device will be available “a priori” but this is not possible because at the beginning of USB Redirection process nothing is known about remote USB device and a dynamic construction of virtual USB device is required. All the information needed will be provided by control transfers triggered by USB target host. However, several functions from this framework will be used to create a virtual USB Device.</p>
+<h3 id="kvm-clientserver-application">KVM Client/Server Application</h3>
+<p>KVM Client/Server Applications are responsible for the following:</p>
+<ul>
+<li>Implementing the RDP protocol</li>
+<li>Creating an RDP connection and calling the relevant connection scripts</li>
+<li>Create a channel against USB redirected device</li>
+<li>Complete all USB transfers initiated by USB Host</li>
+<li>Close session correctly</li>
+</ul>
+<p>The functionality of the application layer will not be discussed in this document.</p>
+<h2 id="usb-virtual-device-driver">USB Virtual Device Driver</h2>
+<p>Virtual USB Device will be implemented as a Linux Kernel module and it will be a local soft representation of a remote hard USB device. It will handle USB transfers initiated by USB host that comes from USB bus through a UDC, typically net2272 and change its state representing the remote USB on local USB bus. The functionality of this module is similar to the one provided by Composite Device Framework. This module must not use the default composite driver, its use would be a misconception. A new composite driver is required and only some auxiliary functions from Composite Device Framework will be used.</p>
+<h3 id="simplified-logical-usb-scheme">Simplified Logical USB Scheme</h3>
+<p><img alt="Vitual USB Device Scheme" src="/images/automation/software_design_for_usb_devices/image004.png" />
+<em>Figure 3 Virtual USB Device scheme</em></p>
+<p>Virtual USB device needs to be smart enough to satisfy and maintain, Gadget API and Composite Framework inside Linux Kernel with the information provided by control transfers. For this reason, it will need to parse descriptors and control requests that comes through Gadget API.</p>
+<h3 id="user-space-interface">User Space Interface</h3>
+<p>Communication with user space will be based on a very simple interface with eight commands. A half of them are specific to trigger some actions on Linux Kernel and the rest are designed for USB packets bypassing.</p>
+<h4 id="message-format">Message Format</h4>
+<p>This module provides an interface for user space to access USB host transfers. The format messages is shown belown.</p>
+<table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Field</th>
+<th>Size</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Type</td>
+<td>1</td>
+<td>Type of message</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Result</td>
+<td>1</td>
+<td>Result of Message</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Request</td>
+<td>2</td>
+<td>USB 2.0 Spec. chapter 9 (CONTROL XFER ONLY)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Value</td>
+<td>2</td>
+<td>USB 2.0 Spec. chapter 9 (CONTROL XFER ONLY)</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Index</td>
+<td>2</td>
+<td>USB 2.0 Spec. chapter 9 (CONTROL XFER ONLY)</td>
+</tr>
+<tr>
+<td>8</td>
+<td>address</td>
+<td>1</td>
+<td>Endpoint address</td>
+</tr>
+<tr>
+<td>9</td>
+<td>attributes</td>
+<td>1</td>
+<td>Endpoint attributes</td>
+</tr>
+<tr>
+<td>10</td>
+<td>maxPacketSize</td>
+<td>4</td>
+<td>Depending on transfer direction, it could be expected transfer length or maximum length allowed.</td>
+</tr>
+<tr>
+<td>14</td>
+<td>data</td>
+<td>N</td>
+<td>Message payload</td>
+</tr>
+</tbody>
+</table>
+<p><em>Figure 4 Virtual USB device interface, generic message format</em></p>
+<p>Message format will be different in case of ISOCHRONOUS IN transfers. Several USB packets needs to be passed together from userspace to kernel in same message.</p>
+<table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Field</th>
+<th>Size</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>type</td>
+<td>1</td>
+<td>Type of message</td>
+</tr>
+<tr>
+<td>1</td>
+<td>result</td>
+<td>1</td>
+<td>Result of Message</td>
+</tr>
+<tr>
+<td>2</td>
+<td>request</td>
+<td>2</td>
+<td>USB 2.0 Spec. chapter 9 (CONTROL XFER)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>value</td>
+<td>2</td>
+<td>USB 2.0 Spec. chapter 9 (CONTROL XFER)</td>
+</tr>
+<tr>
+<td>6</td>
+<td>index</td>
+<td>2</td>
+<td>USB 2.0 Spec. chapter 9 (CONTROL XFER)</td>
+</tr>
+<tr>
+<td>8</td>
+<td>address</td>
+<td>1</td>
+<td>Endpoint address</td>
+</tr>
+<tr>
+<td>9</td>
+<td>attributes</td>
+<td>1</td>
+<td>Endpoint attributes</td>
+</tr>
+<tr>
+<td>10</td>
+<td>maxPacketSize</td>
+<td>4</td>
+<td>Depending on transfer direction, it could be expected transfer length or maximum length allowed.</td>
+</tr>
+<tr>
+<td>14</td>
+<td>isoch_packet_desc_num</td>
+<td>4</td>
+<td>Number of isoch descriptors</td>
+</tr>
+<tr>
+<td>18</td>
+<td>isoch_descs</td>
+<td>12*K</td>
+<td>Isochronous packet descriptors is a complex extructure defined later. K is equal isoch_packet_desc_num</td>
+</tr>
+<tr>
+<td>18+12*K</td>
+<td>Isoch packets</td>
+<td>N</td>
+<td>Lengths and limits of pckets must be deducted from isochronous packet descriptors</td>
+</tr>
+</tbody>
+</table>
+<p><em>Figure 5 Virtual USB device interface, ISOCHRONOUS IN message format</em></p>
+<table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Field</th>
+<th>Size</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>length</td>
+<td>4</td>
+<td>Max length expected for a packet</td>
+</tr>
+<tr>
+<td>1</td>
+<td>actual_length</td>
+<td>4</td>
+<td>Actual length of packet returned. This field is expected to be used for “Isoch packets” processing.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>status</td>
+<td>4</td>
+<td>Status of packet</td>
+</tr>
+</tbody>
+</table>
+<p><em>Figure 6 Isochronous packet descriptor</em></p>
+<h4 id="commands">Commands</h4>
+<h5 id="usbqt_request_resource">USBQT_REQUEST_RESOURCE</h5>
+<p>This type of command is the initial user space to kernel communication. It will claim and check communication through interface against Kernel since it has to acknowledge it.</p>
+<h5 id="usbqt_release_resource">USBQT_RELEASE_RESOURCE</h5>
+<p>This will be the last command sent from user space in a USBR session. It will release the interface and its resources. All used usb gadget driver resources must be cleared.</p>
+<h5 id="usbqt_configure_resource">USBQT_CONFIGURE_RESOURCE</h5>
+<p>A Linux UDC will be requested when this command gets executed inside Kernel. It means that usb_gadget_probe_driver() will get executed and if it returns success, virtual USB device will be presented to the USB host and control transfers will start to come.</p>
+<h5 id="usbqt_transfer_in_request">USBQT_TRANSFER_IN_REQUEST</h5>
+<p>It will be used to mark transfers from remote USB device to USB host. It may contain any type of transfer.</p>
+<h5 id="usbqt_transfer_out_request">USBQT_TRANSFER_OUT_REQUEST</h5>
+<p>It will be used to mark transfers from USB host to remote USB device. It may contain any type of transfer.</p>
+<h5 id="usbqt_urb_completion_data-and-usbqt_usb_completion_no_data">USBQT_URB_COMPLETION_DATA and USBQT_USB_COMPLETION_NO_DATA</h5>
+<p>These commands will be used in conjunction with USBQT_TRANSFER_XXX_REQUEST. They will finish a transfer or urb.</p>
+<h3 id="linux-usb-gadget-api_1">Linux USB Gadget API</h3>
+<p>This is the API used to access the USB hardware which is in charge of enumerating the device and signalling connections and disconnections of the virtual USB device, any event that is not handled at this level will be probably handled by UDC level and will not be visible at all from user space. Several callbacks must be correctly implemented to keep virtual USB device working even when USB cable or port is faulty, user has disconnected it or any other process that requires a reenumeration i.e: USB host reboot has been triggered.</p>
+<p>The most important structure used in this API is showed below.</p>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">usb_gadget_driver</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">function</span><span class="p">;</span>
+<span class="w">    </span><span class="k">enum</span><span class="w"> </span><span class="n">usb_device_speed</span><span class="w">  </span><span class="n">max_speed</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="p">(</span><span class="o">*</span><span class="n">bind</span><span class="p">)(</span><span class="k">struct</span><span class="w"> </span><span class="nc">usb_gadget</span><span class="w"> </span><span class="o">*</span><span class="n">gadget</span><span class="p">,</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">usb_gadget_driver</span><span class="w"> </span><span class="o">*</span><span class="n">driver</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">void</span><span class="p">(</span><span class="o">*</span><span class="n">unbind</span><span class="p">)(</span><span class="k">struct</span><span class="w"> </span><span class="nc">usb_gadget</span><span class="w"> </span><span class="o">*</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">int</span><span class="p">(</span><span class="o">*</span><span class="n">setup</span><span class="p">)(</span><span class="k">struct</span><span class="w"> </span><span class="nc">usb_gadget</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">usb_ctrlrequest</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">void</span><span class="p">(</span><span class="o">*</span><span class="n">disconnect</span><span class="p">)(</span><span class="k">struct</span><span class="w"> </span><span class="nc">usb_gadget</span><span class="w"> </span><span class="o">*</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">void</span><span class="p">(</span><span class="o">*</span><span class="n">suspend</span><span class="p">)(</span><span class="k">struct</span><span class="w"> </span><span class="nc">usb_gadget</span><span class="w"> </span><span class="o">*</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">void</span><span class="p">(</span><span class="o">*</span><span class="n">resume</span><span class="p">)(</span><span class="k">struct</span><span class="w"> </span><span class="nc">usb_gadget</span><span class="w"> </span><span class="o">*</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">void</span><span class="p">(</span><span class="o">*</span><span class="n">reset</span><span class="p">)(</span><span class="k">struct</span><span class="w"> </span><span class="nc">usb_gadget</span><span class="w"> </span><span class="o">*</span><span class="p">);</span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">device_driver</span><span class="w">  </span><span class="n">driver</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">udc_name</span><span class="p">;</span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">list_head</span><span class="w">        </span><span class="n">pending</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="n">match_existing_only</span><span class="o">:</span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><em>Figure 7 usb_gadget_driver structure</em></p>
+<p>Bind/unbind() functions are instrumentation to perform memory allocation and some USB gadget configurations before probing this driver to kernel. Setup() callback will be called during enumeration in order to satisfy control requests from host if it is connected. Disconnect(), suspend(), resume(), reset() are used for handling of those bus events.</p>
+<p>Setup callback is key for enumeration process of USB virtual device, it will deploy a complex configuration process which will set up Composite Framework. From USB Redirection perspective, every setup request must be propagated over the network towards the actual redirected USB device. This callback will be continuously selecting correct device configuration in terms of USB configuration, function, interfaces and non control endpoints.</p>
+<p>Disconnect, suspend, resume and reset callbacks must be implemented.</p>
+<h3 id="virtual-usb-configuration-and-usb-functions">Virtual USB Configuration and USB Functions</h3>
+<p>Composite Framewok is fundamental for implementation of USB devices based on Linux, it allows to build complex devices with more than 1 configuration or 1 function.</p>
+<p>The conventional use of USB Composite Framework layer adds a lot of complexity to USB Redirection development. It was designed to implement USB devices with a known structure but in USBR context no data about remote USB device is given until transfers between host and device are going on through the bus.</p>
+<p>Only some structures and auxiliary functions from this layer will be used. The use of usb_composite_probe() will be completely avoided, it is used to load the standard composite driver which is not needed in our context. This will make our USB approach portable to other platforms.</p>
+<p>Virtual USB device will be modelled with this framework by using only 1 USB configuration and 1 USB function that will be capable of representing all possible configurations and functions that remote device offers.</p>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">usb_composite_dev</span><span class="w"> </span><span class="p">{</span>
+<span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">usb_gadget</span><span class="w">  </span><span class="o">*</span><span class="n">gadget</span><span class="p">;</span>
+<span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">usb_request</span><span class="w">  </span><span class="o">*</span><span class="n">req</span><span class="p">;</span>
+<span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">usb_request</span><span class="w">  </span><span class="o">*</span><span class="n">os_desc_req</span><span class="p">;</span>
+
+<span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">usb_configuration</span><span class="w"> </span><span class="o">*</span><span class="n">config</span><span class="p">;</span>
+
+<span class="w"> </span><span class="cm">/* OS String is a custom (yet popular) extension to the USB standard. */</span>
+<span class="w"> </span><span class="n">u8</span><span class="w">    </span><span class="n">qw_sign</span><span class="p">[</span><span class="n">OS_STRING_QW_SIGN_LEN</span><span class="p">];</span>
+<span class="w"> </span><span class="n">u8</span><span class="w">    </span><span class="n">b_vendor_code</span><span class="p">;</span>
+<span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">usb_configuration</span><span class="w"> </span><span class="o">*</span><span class="n">os_desc_config</span><span class="p">;</span>
+<span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w">   </span><span class="n">use_os_string</span><span class="o">:</span><span class="mi">1</span><span class="p">;</span>
+
+<span class="w"> </span><span class="cm">/* private: */</span>
+<span class="w"> </span><span class="cm">/* internals */</span>
+<span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w">   </span><span class="n">suspended</span><span class="o">:</span><span class="mi">1</span><span class="p">;</span>
+<span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">usb_device_descriptor</span><span class="w"> </span><span class="n">desc</span><span class="p">;</span>
+<span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">list_head</span><span class="w">  </span><span class="n">configs</span><span class="p">;</span>
+<span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">list_head</span><span class="w">  </span><span class="n">gstrings</span><span class="p">;</span>
+<span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">usb_composite_driver</span><span class="w"> </span><span class="o">*</span><span class="n">driver</span><span class="p">;</span>
+<span class="w"> </span><span class="n">u8</span><span class="w">    </span><span class="n">next_string_id</span><span class="p">;</span>
+<span class="w"> </span><span class="kt">char</span><span class="w">    </span><span class="o">*</span><span class="n">def_manufacturer</span><span class="p">;</span>
+
+<span class="w"> </span><span class="cm">/* the gadget driver won&#39;t enable the data pullup</span>
+<span class="cm">  * while the deactivation count is nonzero.</span>
+<span class="cm">  */</span>
+<span class="w"> </span><span class="kt">unsigned</span><span class="w">   </span><span class="n">deactivations</span><span class="p">;</span>
+
+<span class="w"> </span><span class="cm">/* the composite driver won&#39;t complete the control transfer&#39;s</span>
+<span class="cm">  * data/status stages till delayed_status is zero.</span>
+<span class="cm">  */</span>
+<span class="w"> </span><span class="kt">int</span><span class="w">    </span><span class="n">delayed_status</span><span class="p">;</span>
+
+<span class="w"> </span><span class="cm">/* protects deactivations and delayed_status counts*/</span>
+<span class="w"> </span><span class="n">spinlock_t</span><span class="w">   </span><span class="n">lock</span><span class="p">;</span>
+
+<span class="w"> </span><span class="cm">/* public: */</span>
+<span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w">   </span><span class="n">setup_pending</span><span class="o">:</span><span class="mi">1</span><span class="p">;</span>
+<span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w">   </span><span class="n">os_desc_pending</span><span class="o">:</span><span class="mi">1</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<p><em>Figure 8 usb_composite_dev structure</em></p>
+<p>This structure will be maintained in USB virtual device module, It is the basis representation of the USB device represented to USB bus. It will link to structures representing USB configurations and functions.</p>
+<p>USB Virtual device needs to maintain a list with all endpoint descriptors and interfaces of remote device. USB Host will switch through them.</p>
+<h3 id="usb-enumeration-and-descriptors-handling">USB Enumeration and Descriptors Handling</h3>
+<p>Ideally, virtual kernel module will be required to bypass communication between USB host and USB device in order to be transparent from USB Host perspective but during enumeration of remote USB device it needs to store useful descriptors that will be required by Linux Kernel to maintain all USB Gadget Framework correctly. It means that the module will keep track of every descriptor.</p>
+<h4 id="usb-30-descriptors-considerations">USB 3.0 Descriptors Considerations</h4>
+<p>Part of USB 3.0 devices enumeration is done by using USB 2.0 physical layer due to backward compatibility. If USB 3.0 related descriptors are bypassed to a USB 3.0 host, it will try to enable all USB 3.0 features but this is not possible because only USB 2.0 is supported by hardware.</p>
+<p>Only in this case a modification in descriptors will be proposed. During enumeration, host will always request a Device Descriptor, it specifies in WbcdUSB” field the USB specification number that the device complies, if it is different than 2.0 it will be modified.</p>
+<h3 id="usb-non-control-transfers">USB Non-control Transfers</h3>
+<p>During setting alternate interface function which is part of Composite Framework, it will be required to correctly handle non control endpoints. Addresses of locally enabled enpoint must be the same as remote endpoints.</p>
+<h3 id="usb-bus-events">USB Bus Events</h3>
+<p>It is required to signal all USB events to upper layers. In current implementation of USB virtual device some of the events are processed locally. For example, in static void net2272_handle_stat0_irqs(struct net2272 *dev, u8 stat) some USB events are masked: USB_REQ_GET_STATUS, USB_REQ_CLEAR_FEATURE, USB_REQ_SET_FEATURE, USB_REQ_SET_ADDRESS.</p>
+<p>All those events will be delegated to setup() callback in gadget driver structure.</p>
+<p>This events need to be correctly handled by user space layer as well.</p>
+<h2 id="current-architecture-overview-end-to-end">Current Architecture Overview: End to End</h2>
+<p><img alt="USB Current Architecture" src="/images/architecture/USB/USB_EndToEnd.png" title="USB Current Architecture End to End" /></p>
+<h2 id="current-architecture-transmission-and-reception">Current Architecture Transmission and Reception</h2>
+<p><img alt="USB Current Architecture" src="/images/architecture/USB/xmitandreception.png" title="Transmission and Reception" /></p>
+<h2 id="application-level-current-implementation">Application Level Current Implementation</h2>
+<p>The Threads and Queues used in the Server Application are shown below.</p>
+<p><img alt="Application Level Current Implementation" src="/images/architecture/USB/DataFlow.svg" title="Application Level Current Implementation" /></p>
+<h2 id="current-usb-architecture-detailed">Current USB Architecture Detailed</h2>
+<p><img alt="USB Current Architecture" src="/images/architecture/USB/USBRArchitectureUSBIP.svg" title="USB Current Architecture" /></p>
+<h2 id="proposed-new-usb-ip-phasing">Proposed New USB IP Phasing</h2>
+<h3 id="phase-1">Phase 1</h3>
+<p><img alt="USB Architecture Phrasing" src="/images/architecture/USB/USBRArchitectureNEWUSBIP_phase1.svg" title="USB Architecture Phasing" /></p>
+<h3 id="phase-2-and-3">Phase 2 and 3</h3>
+<p><img alt="USB Architecture Phrasing" src="/images/architecture/USB/USBRArchitectureNEWUSBIP_phase2_and_3.svg" title="USB Architecture Phasing" /></p>
+<h3 id="phase-4">Phase 4</h3>
+<p><img alt="USB Architecture Phrasing" src="/images/architecture/USB/USBRArchitectureNEWUSBIP_phase4.svg" title="USB Architecture Phasing" /></p>
+<h2 id="analysis-of-usb-queues-in-kvm-connection-wip">Analysis of USB Queues in KVM Connection (WIP)</h2>
+<p>event_usb_command_available commands (EQ_EVENT_USB_COMMAND_AVAILABLE) are created in ep_process_virtual_command. These are sent to the hm_cm_queue.</p>
+<h6 id="usb-user-interface-thread">USB User Interface Thread</h6>
+<p><img alt="Application Client Process View and Threading" src="/images/architecture/emerald_software_system_reference/image017.png" />
+<em>Figure 14: Application Client Process View and Threading</em></p>
+<h1 id="notes-on-futher-automation">Notes on Futher Automation</h1>
+<p>With reference to the Phase 2 diagram above, we could create an automation by using the USB Software Defined Logical Device (Kernel Version) to define an endpoint configuration.</p>
+<p>An application of a PC (Linux or Windows) could then be used to confirm the correct end points (shown as Linux User Space Driver in the same diagram)</p>
+<p>Once Phase 3 is developed we would then test from USB Software Defined Logical Device (Application Space Version).</p>
+<h2 id="dependencies">Dependencies</h2>
+<p><a href="https://github.com/libusb/libusb/wiki/Windows#How_to_use_libusb_on_Windows">How_to_use_libusb_on_Windows</a></p>
+<p>SOFTWARE DEFINED USB DEVICE - Based on USB Gadget API, configurable to be a BASIC BULK/INT/ISOCH device
+SOURCE CODE: svn://10.211.128.12/Emerald/branches/develop_aws_ip/Applications/KernelModules/tx_usb_modules/oot-usblogicaldevice</p>
+<p>DEVICE DRIVER ON HOST SIDE
+SOURCE CODE: svn://10.211.128.12/Emerald/branches/develop_aws_ip/Applications/Debugging/Encoder/USB/usb_logical_device_driver
+GUIDE: <a href="http://10.211.129.241:8000/architecture/usb/usbr_utilities/">http://10.211.129.241:8000/architecture/usb/usbr_utilities/</a></p>
+<p>SCRIPT TO SELECT USB DEVICE CONTROLLER AND CONFIGURE XFER TYPE, XFER SIZE, EP ADDRESSES AND B_INTERVAL for ISOCH XFERS</p>
+<div class="highlight"><pre><span></span><code>______________________________________________________________________________________________
+<span class="c1"># cat ./usbdev.sh</span>
+<span class="nv">AWSUDCIP</span><span class="o">=</span><span class="s2">&quot;80120000.awsudcip&quot;</span>
+<span class="nv">CHIPIDEA</span><span class="o">=</span><span class="s2">&quot;ci_hdrc.0&quot;</span>
+
+<span class="nv">UDC</span><span class="o">=</span><span class="si">${</span><span class="nv">AWSUDCIP</span><span class="si">}</span>
+
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">UDC</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">AWSUDCIP</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;WAIT&quot;</span>
+<span class="w">        </span>rmmod<span class="w"> </span>awsudcip
+<span class="w">        </span>sleep<span class="w"> </span><span class="m">4</span>
+<span class="w">        </span>insmod<span class="w"> </span>awsudcip.ko<span class="w"> </span><span class="nv">long_word_operation</span><span class="o">=</span><span class="m">1</span>
+<span class="w">        </span>modprobe<span class="w"> </span>libcomposite
+<span class="k">elif</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">UDC</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">CHIPIDEA</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/sys/kernel/config/usb_gadget/bb_composite_hid/UDC
+<span class="k">fi</span>
+
+insmod<span class="w"> </span>usblogicaldevice.ko<span class="w"> </span><span class="nv">udc</span><span class="o">=</span><span class="si">${</span><span class="nv">UDC</span><span class="si">}</span><span class="w"> </span><span class="nv">xfer_type</span><span class="o">=</span><span class="m">2</span><span class="w"> </span><span class="nv">xfer_size</span><span class="o">=</span><span class="m">512</span><span class="w"> </span><span class="nv">in_ep_no</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">out_ep_no</span><span class="o">=</span><span class="m">1</span>
+______________________________________________________________________________________________
+</code></pre></div>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      Last update:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 14, 2022</span>
+      
+        <br>
+        Created:
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 5, 2021</span>
+      
+    
+  </small>
+</div>
+
+
+
+
+
+                
+
+  
+    <div class="md-source-date">
+      <small>
+          Authors: <span class='git-page-authors git-authors'><a href='mailto:john.osullivan@blackbox.com'>John O'Sullivan</a></span>
+      </small>
+    </div>
+  
+
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.sections", "navigation.tabs"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.aecac24b.min.js"></script>
+      
+    
+  </body>
+</html>

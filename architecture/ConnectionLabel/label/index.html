@@ -1,0 +1,3415 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="../../boot_configuration/emerald4k_fitimages/" rel="prev"/>
+<link href="../../Connection_Management/history/" rel="next"/>
+<link href="../../../assets/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.5.3, mkdocs-material-9.4.6" name="generator"/>
+<title>Connection Label - Blackbox Embedded Documentation</title>
+<link href="../../../assets/stylesheets/main.35e1ed30.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.356b1318.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../../../stylesheets/extra.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="white" data-md-color-primary="black" data-md-color-scheme="default" dir="ltr">
+<script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#connection-label-feature-design">1. 
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Blackbox Embedded Documentation" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="Blackbox Embedded Documentation">
+<svg viewbox="0 0 89 89" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.136,17.387l0,42.932l42.932,21.467l-42.932,-64.399Z"></path>
+<path d="M21.91,8l42.933,64.398l-18.775,9.388l-42.932,-64.399l18.774,-9.387Z" style="fill-opacity: 0.5"></path>
+<path d="M67.535,17.387l-27.262,18.156l21.878,32.818l5.384,2.691l0,-53.665Z"></path>
+<path d="M67.535,17.387l0,53.666l18.774,-9.388l0,-53.665l-18.774,9.387Z" style="fill-opacity: 0.25"></path>
+</svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Blackbox Embedded Documentation
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Connection Label
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="white" data-md-color-media="" data-md-color-primary="black" data-md-color-scheme="default" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_2" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="white" data-md-color-media="" data-md-color-primary="green" data-md-color-scheme="slate" id="__palette_2" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"></path></svg>
+</label>
+</form>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../..">
+        
+  
+    
+  
+  Home
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../developer_quick_start/connecting_to_vm/">
+          
+  
+  Developer Quick Start
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../buildroot_guides/creating_buildroot_enviroment/">
+          
+  
+  Development
+
+        </a>
+</li>
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="../../Summary/summary/">
+          
+  
+  Architecture and Design Documents
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../Infrastructure/branching_strategy/">
+          
+  
+  Infrastructure
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../automation/summary/">
+          
+  
+  Automation
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../features/summary/">
+          
+  
+  Features
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../process/process/">
+          
+  
+  Process
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../release_notes/summary/">
+          
+  
+  Release Notes
+
+        </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Blackbox Embedded Documentation" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="Blackbox Embedded Documentation">
+<svg viewbox="0 0 89 89" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.136,17.387l0,42.932l42.932,21.467l-42.932,-64.399Z"></path>
+<path d="M21.91,8l42.933,64.398l-18.775,9.388l-42.932,-64.399l18.774,-9.387Z" style="fill-opacity: 0.5"></path>
+<path d="M67.535,17.387l-27.262,18.156l21.878,32.818l5.384,2.691l0,-53.665Z"></path>
+<path d="M67.535,17.387l0,53.666l18.774,-9.388l0,-53.665l-18.774,9.387Z" style="fill-opacity: 0.25"></path>
+</svg>
+</a>
+    Blackbox Embedded Documentation
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../..">
+<span class="md-ellipsis">
+    Home
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+<span class="md-ellipsis">
+    Developer Quick Start
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            Developer Quick Start
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../developer_quick_start/connecting_to_vm/">
+<span class="md-ellipsis">
+    Connecting to VM
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../developer_quick_start/blackbox_cli/">
+<span class="md-ellipsis">
+    Blackbox CLI
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../developer_quick_start/building_code/">
+<span class="md-ellipsis">
+    Compiling Code
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../developer_quick_start/phabricator/">
+<span class="md-ellipsis">
+    Code Reviews
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../developer_quick_start/reference_books/">
+<span class="md-ellipsis">
+    Reference Books
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+<span class="md-ellipsis">
+    Development
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            Development
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="">
+<span class="md-ellipsis">
+    Buildroot
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_1_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_1">
+<span class="md-nav__icon md-icon"></span>
+            Buildroot
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../buildroot_guides/creating_buildroot_enviroment/">
+<span class="md-ellipsis">
+    Creating Buildroot Environment
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../buildroot_guides/buildroot_defconfig/">
+<span class="md-ellipsis">
+    Buildroot defconfig
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../buildroot_guides/emeraldrc_files/">
+<span class="md-ellipsis">
+    Emerald RC Files
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../buildroot_guides/rootfs_overlays/">
+<span class="md-ellipsis">
+    Rootfile System Overlays
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../buildroot_guides/creating_package/">
+<span class="md-ellipsis">
+    Adding New Packages
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../buildroot_guides/packages/">
+<span class="md-ellipsis">
+    Packages
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../buildroot_guides/local_mk/">
+<span class="md-ellipsis">
+    Local Development
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../buildroot_guides/command_runner/">
+<span class="md-ellipsis">
+    Command Runner
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../buildroot_guides/upgrade_images/">
+<span class="md-ellipsis">
+    Upgrade Images
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="">
+<span class="md-ellipsis">
+    Application Development
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_2">
+<span class="md-nav__icon md-icon"></span>
+            Application Development
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../coding_guides/conditional_compilation/">
+<span class="md-ellipsis">
+    Conditional Compilation
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="">
+<span class="md-ellipsis">
+    Deploying Code
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_3">
+<span class="md-nav__icon md-icon"></span>
+            Deploying Code
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../buildroot_guides/transferring_images/">
+<span class="md-ellipsis">
+    Transferring Images
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+<span class="md-ellipsis">
+    Architecture and Design Documents
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            Architecture and Design Documents
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="">
+<span class="md-ellipsis">
+    Summary
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_1_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_1">
+<span class="md-nav__icon md-icon"></span>
+            Summary
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/summary/">
+<span class="md-ellipsis">
+    Summary Page
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="">
+<span class="md-ellipsis">
+    Document Templates
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_2">
+<span class="md-nav__icon md-icon"></span>
+            Document Templates
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../software_architecture_template/">
+<span class="md-ellipsis">
+    Software Architecture Template
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../software_design_document/">
+<span class="md-ellipsis">
+    Software Design Template
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_4_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="">
+<span class="md-ellipsis">
+    Emerald Appliances
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_4_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_3">
+<span class="md-nav__icon md-icon"></span>
+            Emerald Appliances
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_3_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3_1" id="__nav_4_3_1_label" tabindex="0">
+<span class="md-ellipsis">
+    Architecture Documents
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_3_1_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_4_3_1">
+<span class="md-nav__icon md-icon"></span>
+            Architecture Documents
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../emerald_software_system_reference/">
+<span class="md-ellipsis">
+    Appliance Software System Reference
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/software_architecture_push_and_get/">
+<span class="md-ellipsis">
+    Push and Get
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_4_3_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3_2" id="__nav_4_3_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Design Documents
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_4_3_2_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_4_3_2">
+<span class="md-nav__icon md-icon"></span>
+            Design Documents
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/bonded_connections/">
+<span class="md-ellipsis">
+    Bonded Connections
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_3_2_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3_2_2" id="__nav_4_3_2_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Boot Configuration
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_3_2_2_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_3_2_2">
+<span class="md-nav__icon md-icon"></span>
+            Boot Configuration
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../boot_configuration/emerald4k_fitimages/">
+<span class="md-ellipsis">
+    Emerald 4K
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    Connection Label
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_3_2_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3_2_4" id="__nav_4_3_2_4_label" tabindex="0">
+<span class="md-ellipsis">
+    Connection Management
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_3_2_4_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_3_2_4">
+<span class="md-nav__icon md-icon"></span>
+            Connection Management
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_3_2_4_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3_2_4_1" id="__nav_4_3_2_4_1_label" tabindex="0">
+<span class="md-ellipsis">
+    CM
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_3_2_4_1_label" class="md-nav" data-md-level="5">
+<label class="md-nav__title" for="__nav_4_3_2_4_1">
+<span class="md-nav__icon md-icon"></span>
+            CM
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Connection_Management/history/">
+<span class="md-ellipsis">
+    Master Document Revision History
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Connection_Management/references/">
+<span class="md-ellipsis">
+    References
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Connection_Management/termsAndDefinitions/">
+<span class="md-ellipsis">
+    Terms and Definitions
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Connection_Management/overview/">
+<span class="md-ellipsis">
+    Overview
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Connection_Management/mqtt/">
+<span class="md-ellipsis">
+    Mqtt Usage
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Connection_Management/connection_process_summary/">
+<span class="md-ellipsis">
+    Applications Summary
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Connection_Management/connection_process_design/">
+<span class="md-ellipsis">
+    Applications Detailed Design
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Connection_Management/connection_process_specifics/">
+<span class="md-ellipsis">
+    Applications Specific Design Aspects
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/tbc/">
+<span class="md-ellipsis">
+    Connection Sequence
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/display_layer/">
+<span class="md-ellipsis">
+    Display Layer
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/data_flow_controller/">
+<span class="md-ellipsis">
+    Data Flow Controller
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/diagnostics/">
+<span class="md-ellipsis">
+    Diagnostics
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/discovery/">
+<span class="md-ellipsis">
+    Discovery
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/dual_stream/">
+<span class="md-ellipsis">
+    Dual Stream
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/error_handling/">
+<span class="md-ellipsis">
+    Error Handling
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/interoperability/">
+<span class="md-ellipsis">
+    Interoperability
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_3_2_12" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3_2_12" id="__nav_4_3_2_12_label" tabindex="0">
+<span class="md-ellipsis">
+    Individual Inactivity Timers
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_3_2_12_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_3_2_12">
+<span class="md-nav__icon md-icon"></span>
+            Individual Inactivity Timers
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/individual_inactivity_timers/individual_inactivity_timers_hld/">
+<span class="md-ellipsis">
+    Individual Inactivity Timers HLD
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/individual_inactivity_timers/individual_inactivity_timers_hld_appendix/">
+<span class="md-ellipsis">
+    Appendix
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/kvm_client/">
+<span class="md-ellipsis">
+    KVM Client
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/kvm_server/">
+<span class="md-ellipsis">
+    KVM Server
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/kvm_bonded_connection/">
+<span class="md-ellipsis">
+    KVM Bonded Connections
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/lacp/">
+<span class="md-ellipsis">
+    LACP
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/mouse_events/">
+<span class="md-ellipsis">
+    Mouse Event Handling
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/tbc/">
+<span class="md-ellipsis">
+    Multiunicast Peer Joining
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/tbc/">
+<span class="md-ellipsis">
+    Multicast Peer Joining
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_3_2_20" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3_2_20" id="__nav_4_3_2_20_label" tabindex="0">
+<span class="md-ellipsis">
+    Memory Maps
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_3_2_20_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_3_2_20">
+<span class="md-nav__icon md-icon"></span>
+            Memory Maps
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/memory_map/nand_memory_map/">
+<span class="md-ellipsis">
+    NAND Memory Map
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/networking/">
+<span class="md-ellipsis">
+    Networking
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/performance/">
+<span class="md-ellipsis">
+    Performance
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../hardware_acceleration_for_4KRDP_connections/">
+<span class="md-ellipsis">
+    RDP VM Hardware Acceleration on 4K
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/tbc/">
+<span class="md-ellipsis">
+    Resolution Change Sequence
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/system_upgrade/">
+<span class="md-ellipsis">
+    System Upgrade
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/system_login/">
+<span class="md-ellipsis">
+    System Login
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_3_2_27" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3_2_27" id="__nav_4_3_2_27_label" tabindex="0">
+<span class="md-ellipsis">
+    Splashscreen
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_3_2_27_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_3_2_27">
+<span class="md-nav__icon md-icon"></span>
+            Splashscreen
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Splashscreen_Design/">
+<span class="md-ellipsis">
+    Splashscreen Design
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/stats_monitor/">
+<span class="md-ellipsis">
+    Statistics Monitor
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/toe/">
+<span class="md-ellipsis">
+    TOE
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/transmitter_settings/">
+<span class="md-ellipsis">
+    Transmitter Settings
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_3_2_31" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3_2_31" id="__nav_4_3_2_31_label" tabindex="0">
+<span class="md-ellipsis">
+    Upgrades
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_3_2_31_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_3_2_31">
+<span class="md-nav__icon md-icon"></span>
+            Upgrades
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/upgrades/upgrades_2k/">
+<span class="md-ellipsis">
+    2K Upgrades
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/unplanned_leave/">
+<span class="md-ellipsis">
+    Unplanned Leave
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_3_2_33" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3_2_33" id="__nav_4_3_2_33_label" tabindex="0">
+<span class="md-ellipsis">
+    USB
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_3_2_33_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_3_2_33">
+<span class="md-nav__icon md-icon"></span>
+            USB
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/usb/usbr/">
+<span class="md-ellipsis">
+    USB/R
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/usb/usbr_udc/">
+<span class="md-ellipsis">
+    USB/R Device Controllers
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/usb/usbr_utilities/">
+<span class="md-ellipsis">
+    USB/R Utilities
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/usb/usbr_msc_transport/">
+<span class="md-ellipsis">
+    USB/R MSC Transport
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/video_latency/">
+<span class="md-ellipsis">
+    Video Latency
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_3_2_35" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3_2_35" id="__nav_4_3_2_35_label" tabindex="0">
+<span class="md-ellipsis">
+    Video
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_3_2_35_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_3_2_35">
+<span class="md-nav__icon md-icon"></span>
+            Video
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/video/emerald4k_tx_scaling/">
+<span class="md-ellipsis">
+    EMD4K TX Scaling
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/video/cut-through/">
+<span class="md-ellipsis">
+    Video Cut-Through
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/webservice_restapi/">
+<span class="md-ellipsis">
+    Webservice RestAPI
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="">
+<span class="md-ellipsis">
+    Software Defined KVM
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_4_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_4">
+<span class="md-nav__icon md-icon"></span>
+            Software Defined KVM
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_4_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_4_1" id="__nav_4_4_1_label" tabindex="0">
+<span class="md-ellipsis">
+    SKVM
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_4_1_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_4_4_1">
+<span class="md-nav__icon md-icon"></span>
+            SKVM
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_4_1_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_4_1_1" id="__nav_4_4_1_1_label" tabindex="0">
+<span class="md-ellipsis">
+    Architecture Documents
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_4_1_1_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_4_1_1">
+<span class="md-nav__icon md-icon"></span>
+            Architecture Documents
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../sdkvm/sdkvm/">
+<span class="md-ellipsis">
+    Overview
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../sdkvm/sdkvm_architecture/">
+<span class="md-ellipsis">
+    SDKVM Architecture
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../sdkvm/data_models/">
+<span class="md-ellipsis">
+    SDKVM Data Models
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../sdkvm/sdkvm_1.0.0_osd_specification/">
+<span class="md-ellipsis">
+    OSD 1.0.0 Specification
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../sdkvm/sdkvm_1.1.0_osd_specification/">
+<span class="md-ellipsis">
+    OSD 1.1.0 Specification
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../sdkvm/sdkvm_1.2.0_osd_specification/">
+<span class="md-ellipsis">
+    OSD 1.2.0 Specification
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../sdkvm/sdkvm_clients/">
+<span class="md-ellipsis">
+    Client Specification
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../sdkvm/workspaceserver/">
+<span class="md-ellipsis">
+    Workspace Server Specification
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../sdkvm/sdkvm_upgrade/">
+<span class="md-ellipsis">
+    SDKVM Upgrade
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_4_1_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_4_1_2" id="__nav_4_4_1_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Technical Notes
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_4_1_2_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_4_1_2">
+<span class="md-nav__icon md-icon"></span>
+            Technical Notes
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../sdkvm/sdkvm_configuration/">
+<span class="md-ellipsis">
+    SDKVM Configuration
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../sdkvm/dualboot/">
+<span class="md-ellipsis">
+    Dual Boot Ubuntu 22.04
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../sdkvm/sourcecontrol/">
+<span class="md-ellipsis">
+    SDKVM Source control
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../sdkvm/sdkvm_1.2.0_tasklist/">
+<span class="md-ellipsis">
+    SDKVM 1.2.0 Scope of Work
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../sdkvm/sdkvm_prorail_proposal/">
+<span class="md-ellipsis">
+    Prorail Proposal
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../sdkvm/technical_notes/2x2_config_ibc_demo/">
+<span class="md-ellipsis">
+    2x2 Monitor Config for IBC
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../sdkvm/technical_notes/multimonitor-weighting/">
+<span class="md-ellipsis">
+    Multi-monitor Weighting
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../sdkvm/sdkvm_rest_work/">
+<span class="md-ellipsis">
+    SDKVM REST API TASK
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="">
+<span class="md-ellipsis">
+    Common
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_5_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_5">
+<span class="md-nav__icon md-icon"></span>
+            Common
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_5_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_5_1" id="__nav_4_5_1_label" tabindex="0">
+<span class="md-ellipsis">
+    Design Documents
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_5_1_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_4_5_1">
+<span class="md-nav__icon md-icon"></span>
+            Design Documents
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_5_1_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_5_1_1" id="__nav_4_5_1_1_label" tabindex="0">
+<span class="md-ellipsis">
+    MQTT
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_5_1_1_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_5_1_1">
+<span class="md-nav__icon md-icon"></span>
+            MQTT
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../mqtt/mqtt_deployment_strategy/">
+<span class="md-ellipsis">
+    MQTT Deployment Strategy
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../mqtt/mqtt/">
+<span class="md-ellipsis">
+    General Guidelines for MQTT Messages
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../mqtt/mqtt_logging/">
+<span class="md-ellipsis">
+    MQTT Logging
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_5_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_5_2" id="__nav_4_5_2_label" tabindex="0">
+<span class="md-ellipsis">
+    APIs and Specifications
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_5_2_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_4_5_2">
+<span class="md-nav__icon md-icon"></span>
+            APIs and Specifications
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_5_2_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_5_2_1" id="__nav_4_5_2_1_label" tabindex="0">
+<span class="md-ellipsis">
+    REST API
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_5_2_1_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_5_2_1">
+<span class="md-nav__icon md-icon"></span>
+            REST API
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../device_rest_api/rest_api/">
+<span class="md-ellipsis">
+    Device Rest APi
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../appliance_rest_api/appliance_rest_api/">
+<span class="md-ellipsis">
+    Appliance Rest APi
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../REST_API/rest_api_zone_support/">
+<span class="md-ellipsis">
+    REST API Zone Support
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../REST_API/receiver_to_boxilla_connection_status_over_rest/">
+<span class="md-ellipsis">
+    Receiver to Boxilla Connection Status over REST
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_5_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_5_3" id="__nav_4_5_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Technologies
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_5_3_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_4_5_3">
+<span class="md-nav__icon md-icon"></span>
+            Technologies
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../technologies/technologies_for_osd/">
+<span class="md-ellipsis">
+    OSD Technology Evaluation
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="">
+<span class="md-ellipsis">
+    Remote App
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_6_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_6">
+<span class="md-nav__icon md-icon"></span>
+            Remote App
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_6_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_6_1" id="__nav_4_6_1_label" tabindex="0">
+<span class="md-ellipsis">
+    Design Documents
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_6_1_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_4_6_1">
+<span class="md-nav__icon md-icon"></span>
+            Design Documents
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../remoteapp/remoteapp/">
+<span class="md-ellipsis">
+    Remote App Build and Install
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../remoteapp/remoteapp_nightly_build/">
+<span class="md-ellipsis">
+    Remote App Nightly Build Proposal
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_6_1_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_6_1_3" id="__nav_4_6_1_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Modifying Remote App To Accelerated Handle Video
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_6_1_3_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_6_1_3">
+<span class="md-nav__icon md-icon"></span>
+            Modifying Remote App To Accelerated Handle Video
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modifying_remote_app_to_accelerated_handle_video/introduction/">
+<span class="md-ellipsis">
+    Introduction
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_6_1_3_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_6_1_3_2" id="__nav_4_6_1_3_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Contents
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_6_1_3_2_label" class="md-nav" data-md-level="5">
+<label class="md-nav__title" for="__nav_4_6_1_3_2">
+<span class="md-nav__icon md-icon"></span>
+            Contents
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modifying_remote_app_to_accelerated_handle_video/contents/connection_scheme_architecture/">
+<span class="md-ellipsis">
+    Connection Scheme Architecture Overview and Content
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modifying_remote_app_to_accelerated_handle_video/contents/encoder_design/">
+<span class="md-ellipsis">
+    Encoder Design
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modifying_remote_app_to_accelerated_handle_video/contents/decoder_design/">
+<span class="md-ellipsis">
+    Decoder Design
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modifying_remote_app_to_accelerated_handle_video/contents/message_exchange/">
+<span class="md-ellipsis">
+    Message Exchange
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modifying_remote_app_to_accelerated_handle_video/contents/remote_app_connection_type/">
+<span class="md-ellipsis">
+    Remote App Connection Type
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modifying_remote_app_to_accelerated_handle_video/contents/guide_to_decoder_code/">
+<span class="md-ellipsis">
+    Guide to Decoder Code
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modifying_remote_app_to_accelerated_handle_video/contents/user_case_scenarios/">
+<span class="md-ellipsis">
+    User Case Scenarios
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_6_1_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_6_1_4" id="__nav_4_6_1_4_label" tabindex="0">
+<span class="md-ellipsis">
+    Original Remote App Proposal
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_6_1_4_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_6_1_4">
+<span class="md-nav__icon md-icon"></span>
+            Original Remote App Proposal
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modifying_remote_app_to_accelerated_handle_video/contents/connection_scheme_architecture">
+<span class="md-ellipsis">
+    contents
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="">
+<span class="md-ellipsis">
+    Opal
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_7_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_7">
+<span class="md-nav__icon md-icon"></span>
+            Opal
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_7_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_7_1" id="__nav_4_7_1_label" tabindex="0">
+<span class="md-ellipsis">
+    Architecture Documents
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_7_1_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_4_7_1">
+<span class="md-nav__icon md-icon"></span>
+            Architecture Documents
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../opal/opal/">
+<span class="md-ellipsis">
+    Architecture
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+<span class="md-ellipsis">
+    Infrastructure
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+            Infrastructure
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="">
+<span class="md-ellipsis">
+    SVN
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_1_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_1">
+<span class="md-nav__icon md-icon"></span>
+            SVN
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/branching_strategy/">
+<span class="md-ellipsis">
+    Branching Strategy
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/create_new_svn_repo/">
+<span class="md-ellipsis">
+    Create New SVN Repo
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="">
+<span class="md-ellipsis">
+    ESXi
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_2">
+<span class="md-nav__icon md-icon"></span>
+            ESXi
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/ESXI/creating_developer_vm/">
+<span class="md-ellipsis">
+    Creating VMs
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/ESXI/new_user/">
+<span class="md-ellipsis">
+    Creating a New ESXi User
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="">
+<span class="md-ellipsis">
+    IP Portal
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_3">
+<span class="md-nav__icon md-icon"></span>
+            IP Portal
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/IP_Management_Portal/create_new_user/">
+<span class="md-ellipsis">
+    Create New User
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/manual_nightly_build/">
+<span class="md-ellipsis">
+    Manual Nightly Build
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/configuring_nfs/">
+<span class="md-ellipsis">
+    Configuring NFS
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/ssh_tunnel_upgrades/">
+<span class="md-ellipsis">
+    SSH Tunnelling
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/Upgrade_USBIP/">
+<span class="md-ellipsis">
+    Upgrading Awsudcip/USBIP
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_8" id="__nav_5_8_label" tabindex="">
+<span class="md-ellipsis">
+    mkdocs
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_8_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_8">
+<span class="md-nav__icon md-icon"></span>
+            mkdocs
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/mkdocs/setup_local/">
+<span class="md-ellipsis">
+    Setup Local Site
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/mkdocs/editing_mkdocs/">
+<span class="md-ellipsis">
+    Editing mkdocs
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/mkdocs/flow_diagram/">
+<span class="md-ellipsis">
+    Diagrams
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_9" id="__nav_5_9_label" tabindex="">
+<span class="md-ellipsis">
+    Manufacture Test
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_9_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_9">
+<span class="md-nav__icon md-icon"></span>
+            Manufacture Test
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/Manufacture_Test/Introduction/">
+<span class="md-ellipsis">
+    Introduction
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/Manufacture_Test/Brief_Description/">
+<span class="md-ellipsis">
+    Brief Description
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/Manufacture_Test/Hardware_components/">
+<span class="md-ellipsis">
+    Hardware
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/Manufacture_Test/Test_PC_Setup/">
+<span class="md-ellipsis">
+    Flash &amp; Test PC Setup
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/Manufacture_Test/Operator_PC_Setup/">
+<span class="md-ellipsis">
+    Operator PC Setup
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/Manufacture_Test/access/">
+<span class="md-ellipsis">
+    Accessing the Flash
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/Manufacture_Test/adding/">
+<span class="md-ellipsis">
+    Adding New Device Images
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/Manufacture_Test/app_logging/">
+<span class="md-ellipsis">
+    Application Logging
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/Manufacture_Test/dut_artifacts/">
+<span class="md-ellipsis">
+    View DUT Artifacts
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/Manufacture_Test/processes/">
+<span class="md-ellipsis">
+    Flash and Test processes
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/Manufacture_Test/test_procedures/">
+<span class="md-ellipsis">
+    Test procedures
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/Manufacture_Test/Adding_new_images/">
+<span class="md-ellipsis">
+    Adding a New Image
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/Manufacture_Test/control_flow/">
+<span class="md-ellipsis">
+    Control Flow
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/Manufacture_Test/bomgar-installation/">
+<span class="md-ellipsis">
+    Bomgar remote access
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+<span class="md-ellipsis">
+    Automation
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+            Automation
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/summary/">
+<span class="md-ellipsis">
+    Summary
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/elements_of_automated_test/">
+<span class="md-ellipsis">
+    Elements of the Automated Test Framework
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/enhanced_osd/">
+<span class="md-ellipsis">
+    Enhanced OSD
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/error_code/">
+<span class="md-ellipsis">
+    Error Codes
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/OSD_messages/">
+<span class="md-ellipsis">
+    OSD Messages
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/system_latency/">
+<span class="md-ellipsis">
+    System Latency Testing Overview
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/mouse_latency_testing/">
+<span class="md-ellipsis">
+    System Latency Technical Details
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/autokeys/">
+<span class="md-ellipsis">
+    Autokeys
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_9" id="__nav_6_9_label" tabindex="">
+<span class="md-ellipsis">
+    Planning and Status
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_9_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_9">
+<span class="md-nav__icon md-icon"></span>
+            Planning and Status
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/status/">
+<span class="md-ellipsis">
+    Status
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/plan/">
+<span class="md-ellipsis">
+    Planning
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_10" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_10" id="__nav_6_10_label" tabindex="">
+<span class="md-ellipsis">
+    TechZilla
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_10_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_10">
+<span class="md-nav__icon md-icon"></span>
+            TechZilla
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/techzilla/">
+<span class="md-ellipsis">
+    Techzilla User Manual
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/techzilla_installer/">
+<span class="md-ellipsis">
+    Creating a techzilla installer
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_11" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_11" id="__nav_6_11_label" tabindex="">
+<span class="md-ellipsis">
+    Results and Reporting
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_11_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_11">
+<span class="md-nav__icon md-icon"></span>
+            Results and Reporting
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/results/">
+<span class="md-ellipsis">
+    Results Server
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/mongodb/">
+<span class="md-ellipsis">
+    Mongo Database
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_12" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_12" id="__nav_6_12_label" tabindex="">
+<span class="md-ellipsis">
+    Test Cases
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_12_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_12">
+<span class="md-nav__icon md-icon"></span>
+            Test Cases
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/testcases/">
+<span class="md-ellipsis">
+    Test Cases Overview
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/testcase_code_walkthrough/">
+<span class="md-ellipsis">
+    Test Code Walkthrough
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_12_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_12_3" id="__nav_6_12_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Test Case Lists
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_12_3_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_12_3">
+<span class="md-nav__icon md-icon"></span>
+            Test Case Lists
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_12_3_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_12_3_1" id="__nav_6_12_3_1_label" tabindex="0">
+<span class="md-ellipsis">
+    Managed Cases
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_12_3_1_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_6_12_3_1">
+<span class="md-nav__icon md-icon"></span>
+            Managed Cases
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/Connection_Cases/">
+<span class="md-ellipsis">
+    Connection Cases
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/Dual_Mode/">
+<span class="md-ellipsis">
+    Dual Mode
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/First_Video_Frame/">
+<span class="md-ellipsis">
+    First Video Frames
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/Retry_case/">
+<span class="md-ellipsis">
+    Retry cases
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/PC_Resolution/">
+<span class="md-ellipsis">
+    PC Resolution
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/DP_Devices/">
+<span class="md-ellipsis">
+    DP Devices
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/Video_quality/">
+<span class="md-ellipsis">
+    Video Quality
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/Unplanned_Leave/">
+<span class="md-ellipsis">
+    Unplanned Leave
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/Audio_tests/">
+<span class="md-ellipsis">
+    Audio
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/VM_Connections/">
+<span class="md-ellipsis">
+    VM Connection
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/Video_performance/">
+<span class="md-ellipsis">
+    Video Performance
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/Keyboard/">
+<span class="md-ellipsis">
+    Keyboard
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/Managed_Connection_Performance/">
+<span class="md-ellipsis">
+    Managed Connection Performance
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_12_3_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_12_3_2" id="__nav_6_12_3_2_label" tabindex="0">
+<span class="md-ellipsis">
+    General Unmanaged Cases
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_12_3_2_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_6_12_3_2">
+<span class="md-nav__icon md-icon"></span>
+            General Unmanaged Cases
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/General_unmanaged-SETXSH/">
+<span class="md-ellipsis">
+    SE SH TX
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/General_unmanaged-4KTXOLD/">
+<span class="md-ellipsis">
+    4K TX Old Board
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/General_unmanaged-PETXDH/">
+<span class="md-ellipsis">
+    PE DH TX
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/General_unmanaged-SETXDH/">
+<span class="md-ellipsis">
+    SE DH TX
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/General_unmanaged-ZeroUTXSH/">
+<span class="md-ellipsis">
+    ZeroU TX
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/General_unmanaged-SEDPSHTX/">
+<span class="md-ellipsis">
+    SE DP SH TX
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/General_unmanaged-PEDPSHTX/">
+<span class="md-ellipsis">
+    PE DP SH TX
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/General_unmanaged-PEDPTXDH/">
+<span class="md-ellipsis">
+    PE DP DH TX
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/General_unmanaged-4KTX/">
+<span class="md-ellipsis">
+    4K TX
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/General_unmanaged-SEDVITXSH/">
+<span class="md-ellipsis">
+    SE DVI SH TX
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/General_unmanaged-PETXSHDVI/">
+<span class="md-ellipsis">
+    PE DVI SH TX
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/General_unmanaged-PEDVIDHTX/">
+<span class="md-ellipsis">
+    PE DVI DH TX
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/General_unmanaged-4KTXNEW/">
+<span class="md-ellipsis">
+    4K TX NEW Board
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/Unmanaged_OSD_Interop/">
+<span class="md-ellipsis">
+    Unmanaged OSD Interop
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/Unmanaged_Connection_Performance/">
+<span class="md-ellipsis">
+    Unmanaged Connection Performance
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/Interop_Connection_UnManaged/">
+<span class="md-ellipsis">
+    Interop Connection UnManaged
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/references/">
+<span class="md-ellipsis">
+    References
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/source_pc/">
+<span class="md-ellipsis">
+    Source PC Automation
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/appliance_automation_hooks/">
+<span class="md-ellipsis">
+    Appliance Hooks
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/audio/">
+<span class="md-ellipsis">
+    Audio
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/test_equipment/">
+<span class="md-ellipsis">
+    Test Equipment Setup
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/usb/">
+<span class="md-ellipsis">
+    USB
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_18" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_18" id="__nav_6_18_label" tabindex="">
+<span class="md-ellipsis">
+    Guides
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_18_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_18">
+<span class="md-nav__icon md-icon"></span>
+            Guides
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/guides/troubleshooting/">
+<span class="md-ellipsis">
+    Troubleshooting
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/guides/config_files/">
+<span class="md-ellipsis">
+    Configuration
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+<span class="md-ellipsis">
+    Features
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_7_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_7">
+<span class="md-nav__icon md-icon"></span>
+            Features
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../features/summary/">
+<span class="md-ellipsis">
+    Summary
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../features/status/">
+<span class="md-ellipsis">
+    Status
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../features/feature_proposal_document_template/">
+<span class="md-ellipsis">
+    Feature Proposal Template
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../features/toolchain_upgrade/">
+<span class="md-ellipsis">
+    Toolchain Upgrade
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../features/opal/opal/">
+<span class="md-ellipsis">
+    Opal
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../features/push_and_get/">
+<span class="md-ellipsis">
+    Push and Get
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../features/interoperability/">
+<span class="md-ellipsis">
+    Interoperability
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../features/ssh_disable/">
+<span class="md-ellipsis">
+    SSH Disable
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../features/sdkvm/sdkvm/">
+<span class="md-ellipsis">
+    Software Defined KVM
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../features/slide_and_glide/">
+<span class="md-ellipsis">
+    Slide and Glide
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../features/realtime_status/">
+<span class="md-ellipsis">
+    Real Time Status
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../features/downgrade_backwards_compatibility/">
+<span class="md-ellipsis">
+    Backwards Compatibility
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../features/all_settings_configurable_via_boxilla/">
+<span class="md-ellipsis">
+    Boxilla Configuration for all settings
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../features/4K30/">
+<span class="md-ellipsis">
+    4K 30
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../features/4KOver1Gig/4Kover1Gig/">
+<span class="md-ellipsis">
+    4K Over 1 Gig
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../features/cloudflare/">
+<span class="md-ellipsis">
+    CloudFlare
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../features/planning/">
+<span class="md-ellipsis">
+    Planning
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../features/Splashscreen_proposal/">
+<span class="md-ellipsis">
+    Splashscreen
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+<span class="md-ellipsis">
+    Process
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_8_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_8">
+<span class="md-nav__icon md-icon"></span>
+            Process
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../process/process/">
+<span class="md-ellipsis">
+    process
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+<span class="md-ellipsis">
+    Release Notes
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_9_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_9">
+<span class="md-nav__icon md-icon"></span>
+            Release Notes
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../release_notes/summary/">
+<span class="md-ellipsis">
+    Summary
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../release_notes/V6_6_71_RELEASE_NOTES/">
+<span class="md-ellipsis">
+    V6.6.71
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../release_notes/V6_6_1_RELEASE_NOTES/">
+<span class="md-ellipsis">
+    V6.6.1
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../release_notes/V6_7_0_RELEASE_NOTES/">
+<span class="md-ellipsis">
+    V6.7.0
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../release_notes/V6_6_70_RELEASE_NOTES/">
+<span class="md-ellipsis">
+    V6.6.70
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../release_notes/V6_6_0_RELEASE_NOTES/">
+<span class="md-ellipsis">
+    V6.6.0
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../release_notes/V6_5_0_RELEASE_NOTES/">
+<span class="md-ellipsis">
+    V6.5.0
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../release_notes/V6_4_0_RELEASE_NOTES/">
+<span class="md-ellipsis">
+    V6.4.0
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../release_notes/V6_3_10_RELEASE_NOTES/">
+<span class="md-ellipsis">
+    V6.3.10
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="connection-label-feature-design"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.</span> Connection Label Feature Design</h1>
+<table>
+<thead>
+<tr>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>This document is a Software Design Document for the Connection Label Feature on the Emerald Appliances</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Master Document Revision History</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Date</strong></th>
+<th><strong>Version</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Author / Editor</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8/12/2021</td>
+<td>0.1</td>
+<td>First Draft</td>
+<td>Eamon Hayden</td>
+</tr>
+<tr>
+<td>7/7/2023</td>
+<td>0.2</td>
+<td>Imported into mkdocs</td>
+<td>Eamon Hayden</td>
+</tr>
+<tr>
+<td>7/7/2023</td>
+<td>0.3</td>
+<td>Label Colours added</td>
+<td>Eamon Hayden</td>
+</tr>
+<tr>
+<td>17/7/2023</td>
+<td>0.4</td>
+<td>Updates to label colours</td>
+<td>Eamon Hayden</td>
+</tr>
+<tr>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 id="list-of-figures"><span class="enumerate-headings-plugin enumerate-heading-plugin">2.</span> List of Figures</h1>
+<h1 id="list-of-tables"><span class="enumerate-headings-plugin enumerate-heading-plugin">3.</span> List of Tables</h1>
+<h1 id="references"><span class="enumerate-headings-plugin enumerate-heading-plugin">4.</span> References</h1>
+<ul>
+<li>Marketing Requirements : <a href="https://bboxjira.atlassian.net/browse/PRM-104">[PRM-104] OSD Label - - Jira (atlassian.net)</a></li>
+<li>2K AFS - <a href="https://limerick.blackbox.com/Engineering/_layouts/15/WopiFrame.aspx?sourcedoc=%7BEBCBC065-A88B-40E2-81CB-15102D51EAF1%7D&amp;file=ENG-0005-025_Legacy2k_Register_Specs.docx&amp;action=default">ENG-0005-025_Legacy2k_Register_Specs.docx (blackbox.com)</a></li>
+<li>4K AFS - <a href="https://limerick.blackbox.com/Engineering/_layouts/15/WopiFrame.aspx?sourcedoc=%7B47CBDCE2-7445-40CE-9F57-8B6E6588B51E%7D&amp;file=ENG-0006-0011_Emerald_Receiver_AFS.docx&amp;action=default">ENG-0006-0011_Emerald_Receiver_AFS.docx (blackbox.com)</a></li>
+</ul>
+<h1 id="terms-and-definitions-used-in-blackbox"><span class="enumerate-headings-plugin enumerate-heading-plugin">5.</span> Terms and Definitions used in Blackbox</h1>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Startapp</td>
+<td>The startapp.sh is the file that is created with all details of the connection being launched – To actually launch the connection, this file is executed</td>
+</tr>
+<tr>
+<td>Decoder</td>
+<td>See Receiver</td>
+</tr>
+<tr>
+<td>Encoder</td>
+<td>See Transmitter</td>
+</tr>
+<tr>
+<td>Startgui.sh</td>
+<td>This is the shell script that alternates between the OSD running and the connection running.</td>
+</tr>
+<tr>
+<td>Connection_label</td>
+<td>This is the new binary created to take in a connection name as a parameter and write the resultant Label to a pre-configured Framebuffer</td>
+</tr>
+<tr>
+<td>Receiver</td>
+<td>A Blackbox appliance that receives and displays a video stream. A receiver is also referred to as a client or decoder.</td>
+</tr>
+<tr>
+<td>Transmitter</td>
+<td>A Blackbox appliance that captures and transmits a video from a source. A transmitter is also referred to as a server or encoder.</td>
+</tr>
+<tr>
+<td>Video Source</td>
+<td>A source of input for a Transmitter, normally the DVI or Display Port output of a PC.</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Table 1 Terms and Definitions</p>
+<h1 id="overview"><span class="enumerate-headings-plugin enumerate-heading-plugin">6.</span> Overview</h1>
+<p>The Connection Label feature gives users the ability to see their connection name overlaid on top of their connection. The feature uses a hardware based overlay mechanism to display the connection name in an 840x40 pixel sized box at different locations on the screen. In Release 6.3.1, the feature can only be configured via the OSD, but for future releases, this configuration will also be available via Boxilla. The feature can be enabled on all receivers bar the Emerald SE Dual-Head (No space in the FPGA for the logic). The following elements of the Connection Label can be configured on an RX:</p>
+<ul>
+<li>Enable / disable the feature</li>
+<li>Set the time for the Label to be displayed – 2 Options</li>
+<li>5 seconds</li>
+<li>Always On</li>
+<li>Set the position of the Label</li>
+<li>Top Centre</li>
+<li>Top right</li>
+<li>Bottom Centre</li>
+<li>Bottom Right</li>
+</ul>
+<p>Once the Feature is enabled on the RX, then a hotkey sequence (Hotkey + 'l' or 'L') can also be used to display the Label / dismiss the label.</p>
+<p>The basic steps for overlaying a Label on top of a connection are as follows:</p>
+<ol>
+<li>Enable the Connection Label feature via the OSD</li>
+<li>When a connection is being launched, add the command to write the label to the framebuffer to the 'startapp' file</li>
+<li>When the 'startapp' file is executed, the label gets written to the framebuffer</li>
+<li>When the connection is established, point the overlay logic to the framebuffer that contains the label and turn on the overlay</li>
+<li>If the Label is set to Timeout after 5s, then start a timer and turn off the Label after 5s</li>
+<li>Once the connection is terminated, turn off the overlay.</li>
+</ol>
+<p><strong>NOTES:</strong></p>
+<p>In the detail design below, all the main functions will first check that Connection Label is Enabled (read from the Sql DB) before any Label functionality is called.</p>
+<h1 id="design-detail"><span class="enumerate-headings-plugin enumerate-heading-plugin">7.</span> Design Detail</h1>
+<h2 id="connection-label-configuration"><span class="enumerate-headings-plugin enumerate-heading-plugin">7.1</span> Connection Label Configuration</h2>
+<p>The Connection Label Configuration differs depending on whether the system is Managed or Unmanaged.</p>
+<ul>
+<li>Managed Mode Configuration<ul>
+<li>The Enable / Position / Timeout for the Connection Label can only be configured via the OSD on the RX and as such is specific to that Receiver</li>
+<li>The Label Colours can Only be configured via Boxilla - This value is configured on a per connection basis.</li>
+</ul>
+</li>
+</ul>
+<div class="mermaid">
+
+sequenceDiagram
+    participant User
+    participant Boxilla
+    participant OSD
+    participant SQL DB
+    participant XML DB
+
+    User-&gt;&gt;OSD: Enable Connection Label
+    User-&gt;&gt;OSD: Select Label Timeout / Position
+    User-&gt;&gt;SQL DB: Write Connection Label settings (Enable/Timeout/Position)
+    User-&gt;&gt;Boxilla: Create Connection
+    Boxilla-&gt;&gt;Boxilla: Select either 'default' or 'custom' Label Colours
+    User-&gt;&gt;XML DB: Save Connection
+
+</div>
+<ul>
+<li>Unmanaged Mode Configuration<ul>
+<li>The Enable / Position / Timeout / Colours for the connection label are configured via the OSDon the reveiver</li>
+</ul>
+</li>
+</ul>
+<div class="mermaid">
+
+sequenceDiagram
+    participant User
+    participant OSD
+    participant SQL DB
+
+    User-&gt;&gt;OSD: Enable Connection Label
+    User-&gt;&gt;OSD: Select Label Timeout / Position
+    User-&gt;&gt;OSD: Select Label Colours
+    User-&gt;&gt;SQL DB: Write Connection Label settings (Enable/Timeout/Position/Colours)
+
+</div>
+<h2 id="connection-label-usage"><span class="enumerate-headings-plugin enumerate-heading-plugin">7.2</span> Connection Label usage</h2>
+<p>The following sequence diagram details how the Connection Manager gets all the required  information for running the connection_label application to display the Connection Label.</p>
+<div class="mermaid">
+
+sequenceDiagram
+    participant Connection Manager
+    participant SQL DB
+    participant XML DB
+    participant Overlay
+    participant Timer
+    participant connection_label Application
+
+    Connection Manager-&gt;&gt;SQL DB: Is Connection Label Enabled?
+    SQL DB-&gt;&gt;Connection Manager: Yes / No
+    Connection Manager-&gt;&gt;Connection Manager: (If No) do nothing
+    Connection Manager-&gt;&gt;SQL DB: (if yes) Read ConnectionLabel Position and Timeout
+    SQL DB-&gt;&gt;Connection Manager: Position
+    SQL DB-&gt;&gt;Connection Manager: Timeout
+    Connection Manager-&gt;&gt;XML DB: Has Connection associated Label Colours attribute?
+    XML DB-&gt;&gt;Connection Manager: Yes / No
+    Connection Manager-&gt;&gt;XML DB: (If Yes) Read Connection Label colours from XML DB
+    XML DB-&gt;&gt;Connection Manager: Background + Text RGB values
+    Connection Manager-&gt;&gt;SQL DB: (if No) Read Connection Label colours from SQL DB
+    SQL DB-&gt;&gt;Connection Manager: Background + Text RGB values
+    Connection Manager-&gt;&gt;Overlay: Setup overlay configuration based on required Position
+    Connection Manager-&gt;&gt;Timer: If (Timeout set to 5 secs) - Set timer to 5
+    Connection Manager-&gt;&gt; connection_label Application: Configure the Connection Label using:  Background + Text RGB values
+
+
+
+</div>
+<h2 id="creating-a-framebuffer-for-the-label"><span class="enumerate-headings-plugin enumerate-heading-plugin">7.3</span> Creating a Framebuffer for the Label</h2>
+<p>The framebuffer is created in the device tree of all receivers. The base address depends on whether it is a 2K or 4K receiver.</p>
+<p>The details of the framebuffers are as follows:</p>
+<ul>
+<li>
+<p>2K</p>
+<ul>
+<li>framebuffer@31401000{</li>
+<li>compatible = "simple-framebuffer";</li>
+<li>reg = \&lt;0x31401000 0x12C00&gt;;</li>
+<li>width = \&lt;0x000001E0&gt;;</li>
+<li>height = \&lt;0x00000028&gt;;</li>
+<li>stride = \&lt;0x00000780&gt;;</li>
+<li>format = "a8r8g8b8";</li>
+</ul>
+</li>
+<li>
+<p>4K</p>
+<ul>
+<li>fbuf@7A050000{</li>
+<li>compatible = "simple-framebuffer";</li>
+<li>reg = \&lt;0x00000000 0x7A050000 0x00000000 0x25800&gt;;</li>
+<li>width = \&lt;0x000001E0&gt;;</li>
+<li>height = \&lt;0x00000028&gt;;</li>
+<li>stride = \&lt;0x00000780&gt;;</li>
+<li>format = "a8r8g8b8";</li>
+</ul>
+</li>
+</ul>
+<p>The Framebuffer (fb1) is taken as an input to the application that is creating the Label – The application then writes the Label into this framebuffer. The Overlay will then display the contents of this frame buffer as required.</p>
+<h2 id="generating-the-label"><span class="enumerate-headings-plugin enumerate-heading-plugin">7.4</span> Generating the Label</h2>
+<p>The label is generated by a QT based application which writes the 'connection name' into a box of fixed size (Width 480 px by Height 40 px).</p>
+<h3 id="arguments"><span class="enumerate-headings-plugin enumerate-heading-plugin">7.4.1</span> Arguments:</h3>
+<p>This application requires few mandatory arguments:</p>
+<ul>
+<li>-nomouse: provide no mouse cursor displayed when the application is running;</li>
+<li>-qws -display linuxfb:/dev/fb1: this arguments provide application will be placed in correct frame buffer;</li>
+<li>-n: the argument which allow as to capture "connection name" which should follow immediately after this argument.</li>
+</ul>
+<p>The binary to create the label is called 'connection_label' and is located in /usr/bin on the Receivers.</p>
+<p>The code for this application is located in 'Applications/Decoder/ConnectionLabel</p>
+<h3 id="a-usage-example"><span class="enumerate-headings-plugin enumerate-heading-plugin">7.4.2</span> A usage example:</h3>
+<p>/usr/local/connection_label -nomouse -qws -display linuxfb:/dev/fb1 -n Default_TX</p>
+<h3 id="application-flow"><span class="enumerate-headings-plugin enumerate-heading-plugin">7.4.3</span> Application flow:</h3>
+<p>During initialization connection_label will parse the arguments searching for connection name. If connection name is not found then it will remain an empty string. Next, the mainwindow class initialization is called. The next step is to pass connection name to mainwindow class - this is accomplished by calling setConnectionName(connectionName) function from mainwindow class. The setConnectionName(connectionName) function will pass connectionName variable to label. When this is completed the mainwindow is shown to user.</p>
+<p>The mainwindow class ui form has predefined size of 480 px by 40 px and has only one label placed which is occupying all available space of ui form.</p>
+<p>Within mainwindow initialization the title bar, the close, minimize and help buttons as well as window border are removed to prevent user from moving around display or closing the connection label application.</p>
+<p>The colour of mainwindow background is set to RGBA (151, 253, 255,255).</p>
+<p>The mainwindow coordinates are then set to H0, W0 in required framebuffer.</p>
+<h2 id="writing-the-label-to-the-framebuffer"><span class="enumerate-headings-plugin enumerate-heading-plugin">7.5</span> Writing the Label to the Framebuffer</h2>
+<p>The application to create the label (/usr/bin/connection_label) is called at the start of the startapp.sh script. The startapp.sh script is created and executed every time a connection is being launched.</p>
+<p>The full sequence is as follows:</p>
+<ul>
+<li>Connection is launched (via OSD/ Rest etc.)</li>
+<li>If the connection is a TX or VM Direct connection, then Connection Labels are applicable</li>
+<li>If ConnectionLabel is Enabled (check SQL DB)<ul>
+<li>/usr/bin/connection_label –nomouse –qws –display linuxfb:/dev/fb1 –n 'connection_name' &amp; is written to the start of the /tmp/startapp.sh file</li>
+</ul>
+</li>
+<li>The rest of the contents of /tmp/startapp.sh are filled in as normal</li>
+<li>The /tmp/startapp.sh file is executed, resulting in the connection being setup and the label being written to fb1.</li>
+</ul>
+<p>The result is that (if the connection label feature is enabled) the connection name will be written to /dev/fb1 – When the overlay is being setup, it will point to /dev/fb1 to pick up the Label.</p>
+<h2 id="configuring-the-overlay-to-display-the-label"><span class="enumerate-headings-plugin enumerate-heading-plugin">7.6</span> Configuring the Overlay to display the Label</h2>
+<p>The details of how to configure the 2K and 4K overlays is in this section. The overlay only gets configured/re-configured when a connection is setup or when a resolution changes. The Label hotkey does not reconfigure the Label – It assumes it is correctly configured and just enables/disables it as required.</p>
+<h3 id="4k-overlay-configuration"><span class="enumerate-headings-plugin enumerate-heading-plugin">7.6.1</span> 4K Overlay Configuration</h3>
+<p>The 4K overlay is done in the FPGA logic. It is configured in software using the following register set:</p>
+<ul>
+<li><strong>HW_OSD_SCALE_FACTOR_REG_OFFSET - 1300</strong><ul>
+<li>The bottom 2 bits of this register are used to scale the overlay (The rest are unused) this allows us to scale the overlay so that it is visible at high resolutions.<ul>
+<li>For widths of 1920 or less, we set the value to 0x00 for No scaling.</li>
+<li>For widths between 1920 and 3840, we set the value to 1, which scales the overlay by a factor of 2 (i.e. doubles the size)</li>
+<li>For widths over 3840, we set the value to 2, which scales the overlay by a factor of 3 (i.e. triples the size)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>HW_OSD_ENABLE_REG_OFFSET - 1304</strong><ul>
+<li>The bottom bit is the enable/disable bit (The rest are unused). To Enable the overlay, the bottom bit is set to 1</li>
+</ul>
+</li>
+<li><strong>HW_OSD_FLUSH_REG_OFFSET - 1308</strong><ul>
+<li>This is a placeholder register (I.e. functionality not currently supported), so the contents are set to 0</li>
+</ul>
+</li>
+<li><strong>HW_OSD_READ_BURST_SIZE_REG_OFFSET - 1314</strong><ul>
+<li>As per the AFS, this should be left at the default value of 0x10</li>
+</ul>
+</li>
+<li><strong>HW_OSD_READ_BURST_PER_FRAME_REG_OFFSET - 1318</strong><ul>
+<li>This value can be calculated using the following formula: - (width * height *4) /256. In our case (label fixed at 480x40), this equates to: 0x12C</li>
+</ul>
+</li>
+<li><strong>HW_OSD_BASE_ADDRESS_REG_OFFSET - 131C</strong><ul>
+<li>This register is configured with the address of the Label – In our case, this is the address of the framebuffer(fb1) that the label is written into – The value is: 0x7A050000</li>
+</ul>
+</li>
+<li><strong>HW_OSD_TEST_MODE_REG_OFFSET - 1320</strong><ul>
+<li>This is for hardware test, so we set it to 0</li>
+</ul>
+</li>
+<li><strong>HW_OSD_X_OFFSET_REG_OFFSET - 1324</strong></li>
+<li><strong>HW_OSD_Y_OFFSET_REG_OFFSET - 1328</strong><ul>
+<li>The X and Y offset registers are the starting coordinates where the label gets displayed. This is calculated using the following inputs:<ul>
+<li>The selected position of the label (top/bottom centre/right)</li>
+<li>The resolution of the display</li>
+<li>The size of the label (480x40 in this case)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>HW_OSD_WIDTH_REG_OFFSET - 132C</strong><ul>
+<li>This is set to the Label width – 0x1E0 (480 decimal)</li>
+</ul>
+</li>
+<li><strong>HW_OSD_HEIGHT_REG_OFFSET - 1330</strong><ul>
+<li>This is set to the label height – 0x28 (40 decimal)</li>
+</ul>
+</li>
+<li><strong>HW_OSD_BACKGROUND_FILL_REG_OFFSET - 1334</strong><ul>
+<li>This allows us to fill the rest of the screen (outside the label overlay) with black. We want to leave the background as it is, so we set this value to 0x0</li>
+</ul>
+</li>
+</ul>
+<h3 id="2k-overlay-configuration"><span class="enumerate-headings-plugin enumerate-heading-plugin">7.6.2</span> 2K Overlay Configuration</h3>
+<p>The 2K overlay is done in the Fpga logic. The configuration of the Label is done every time a connection is made and also every time the resolution changes (in the case of RX-TX connections). It is configured by software using the following register set. The overlay can be done for either head (on a 2K receiver), but we only do the overlay for the first head.</p>
+<p><strong>Overlay base address for H0 (0x800C8380)</strong></p>
+<p><strong>Overlay base address for H1 (0x800C8390)</strong></p>
+<p>Specific Registers:</p>
+<ul>
+<li><strong>H0_OVERLAY_CONTROL_REG - 0x800C8380 (8 bit)</strong></li>
+<li>The Control Register has the following details:<ul>
+<li>Bit 7 Enable bit</li>
+<li>Bit 6 Dimension update bit</li>
+<li>Bits 0 – 5 Test Character</li>
+</ul>
+</li>
+<li>Once the configuration of the Label is complete, Bit 6 of the Control Register will be set to update the config values.</li>
+<li>Once everything is in place and displaying the label is required, Bit 7 of the Control Register is set.</li>
+<li>To turn off the Label, Bit 7 of the Control Register will be set to 0</li>
+<li><strong>H0_OVERLAY_BASE_ADDR_REG - 0x800C8384 (32 bit)</strong></li>
+<li>This register is configured with the address of the Label – In our case, this is the address of the framebuffer(fb1) that the label is written into – The value is: 0x31401000</li>
+<li><strong>H0_OVERLAY_HORIZONTAL_OFFSET - 0x800c8388 (16 bit)</strong></li>
+<li><strong>H0_OVERLAY_VERTICAL_OFFSET - 0x800C838A (16 bit)</strong></li>
+<li>The Horizontal and Vertical offset registers are the starting coordinates where the label gets displayed. This is calculated using the following inputs:<ul>
+<li>The selected position of the label (top/bottom centre/right)</li>
+<li>The resolution of the display</li>
+<li>The size of the label (480x40 in this case)</li>
+</ul>
+</li>
+<li><strong>H0_OVERLAY_HORIZONTAL_SIZE - 0x800C838C (16 bit)</strong></li>
+<li>This is set to the Label width – 0x1E0 (480 decimal)</li>
+<li><strong>HO_OVERLAY_VERTICAL_SIZE - 0x800C838E (16 bit)</strong></li>
+<li>This is set to the label height – 0x28 (40 decimal)</li>
+</ul>
+<h2 id="labels-for-different-connection-types"><span class="enumerate-headings-plugin enumerate-heading-plugin">7.7</span> Labels for different Connection Types</h2>
+<p>In Release 6.3.1, Connection labels are supported on RX-TX connections and VM RDP Direct connections only.</p>
+<h2 id="turning-on-the-label-after-a-connection-is-launched"><span class="enumerate-headings-plugin enumerate-heading-plugin">7.8</span> Turning on the Label after a connection is launched</h2>
+<p>Once an RX-TX or VM RDP connection has been setup, the Connection Label will be configured and turned on (assuming it has been enabled). This is done immediately after the connection has been setup in order to ensure that the Label appears immediately after the connection appears on the monitor. Exactly where this is done will depend on the type of connection.</p>
+<ul>
+<li>RX-TX Connections</li>
+<li>In this case, the Label is turned on in the function "bb_connection_setup_hardware()"</li>
+<li>2K VM RDP Connections</li>
+<li>In this case, the Label is turned on in the function: "rfx_context_update"</li>
+<li>4K RDP Connections</li>
+<li>TBD</li>
+</ul>
+<h2 id="timing-out-the-label"><span class="enumerate-headings-plugin enumerate-heading-plugin">7.9</span> Timing out the Label</h2>
+<p>There are 2 timing options available in release 6.3.1 for Connection Labels – There are:</p>
+<ul>
+<li><strong>Constantly On</strong></li>
+<li><strong>Timeout after 5sec</strong></li>
+</ul>
+<p>These options are configured via the OSD and the resultant selection stored in the Sql DB.</p>
+<p>The 'Constantly On' option works as the name indicates – The Label is turned on when a connection is launched and only turned off when the connection is terminated. The only thing that can change this is when the hotkey to turn on/off the Label is used.</p>
+<p>The 'timeout after 5sec' option is handled as follows:-</p>
+<p>Once the connection is launched, a timer is started. The timer is checked in the 'interval tasks' function (which is called every second) – once the timer has expired (determined by comparing the difference between the original timer and the current time), then the connection label is turned off. Turning off is done by the system call: - 'display_layer_cli –label-disable' (see section: 7.12 below)</p>
+<h2 id="turning-off-the-label-when-connection-terminates"><span class="enumerate-headings-plugin enumerate-heading-plugin">7.10</span> Turning off the Label when connection terminates</h2>
+<p>Once a connection terminates, the Connection Label needs to be turned off (as we don't want to overlay it on top of the OSD screen) and also the application that writes the connection Label to the frame buffer needs to be stopped.</p>
+<p>The connection label itself is turned off by calling the display_layer_cli (see section: 7.12). This is done via the startgui.sh script.</p>
+<p>The application that writes the label to the frame buffer (/usr/bin/connection_label) is constantly running while the connection is up due to the fact that exiting the application also flushes the framebuffer. Once the connection terminates, this application also needs to be terminated. This is done in startgui.sh using: - 'killall connection_label'</p>
+<h2 id="enablingdisabling-the-label-using-hotkeys"><span class="enumerate-headings-plugin enumerate-heading-plugin">7.11</span> Enabling/disabling the Label using Hotkeys</h2>
+<p>The extra Hotley (Hotley + 'l'/'L') has been configured in the connection_control application. These are handled in the same manner as all existing hotleys. When the Label hotkey fires, connection _control enables/disables the Label using the following command (See section: 7.12):</p>
+<p><strong>display_layer_cli –label-on-off</strong></p>
+<h2 id="reconfiguring-the-label-after-a-resolution-change"><span class="enumerate-headings-plugin enumerate-heading-plugin">7.12</span> Reconfiguring the label after a resolution change</h2>
+<p>In an RX-TX connection, the resolution on the target device may change while the connection is in place. In this case, a new resolution will be received by the Rx and the display will be reconfigured with this new resolution.</p>
+<p>If the Connection Label feature is enabled, then the Overlay needs to be reconfigured with this new resolution in order that the Label gets displayed correctly. This reconfiguration of the label is done as per section: 7.4 above. The reconfiguration is done even if the label is currently turned off such that if the Label gets turned on via the hotkey, it is properly configured.</p>
+<h2 id="additional-functionality-added-to-the-display-layer"><span class="enumerate-headings-plugin enumerate-heading-plugin">7.13</span> Additional functionality added to the Display Layer</h2>
+<p>The following additional functionality has been added to the Display Layer to configure/enable/Disable the Connection Label:</p>
+<ul>
+<li><strong>Display_driver_common_configure_connection_label()</strong></li>
+<li>This function configures the Overlay for the connection label. It does this for either the 4K or 2K overlay. It configures all the required registers (see section: 7.4), but does not turn on/off the label.</li>
+<li><strong>Display_driver_common_turn_on_connection_label()</strong></li>
+<li>This function turns ON the Overlay for either 2K or 4K.</li>
+<li><strong>Display_driver_common_turn_off_connection_label()</strong></li>
+<li>This function turns OFF the overlay for either 2K or 4K</li>
+<li><strong>Display_driver_common_turn_on_off_connection_label()</strong></li>
+<li>This function turns On the Label if it is already Off and turns it Off if it is already On – It does this for 2K and 4K</li>
+<li><strong>Display_driver_common_connection_label_on()</strong></li>
+<li>This function returns TRUE if the Label is currently On – It does this for 2K and 4K</li>
+</ul>
+<h2 id="changes-to-display-layer-cli"><span class="enumerate-headings-plugin enumerate-heading-plugin">7.14</span> Changes to Display Layer CLI</h2>
+<p>2 new options added to the display layer CLI. These are as follows:</p>
+<ul>
+<li><strong>Label-disable (display_layer_cli –label-disable)</strong></li>
+<li>This is used to turn OFF the Overlay in order to no longer display the Connection Label. It is called in startgui.sh when a connection is exiting.</li>
+<li><strong>Label-on-off (display_layer_cli – label-on-off</strong></li>
+<li>This is used to turn ON the Overlay if it is currently OFF and turn OFF the Overlay if it is currently ON. This is used for the Label Hotkey implementation – When the Label hotkey (hotkey + 'l' or 'L') is triggered, it will turn on the label (if it is currently off) and turn off the label (if it is currently on).</li>
+</ul>
+<h2 id="api-changes-or-changes-to-external-interfaces"><span class="enumerate-headings-plugin enumerate-heading-plugin">7.15</span> API Changes or changes to external interfaces</h2>
+<p>There are no API changes associated with this feature for the initial version, as it is only possible to configure it on the OSD. There is a Future requirement however that requires that this feature be configurable on Boxilla – when this happens, there will need to be API changes to handle the new configuration.</p>
+<h2 id="security-considerations"><span class="enumerate-headings-plugin enumerate-heading-plugin">7.16</span> Security Considerations</h2>
+<p>This feature has no security impacts.</p>
+<h2 id="test-and-validation"><span class="enumerate-headings-plugin enumerate-heading-plugin">7.17</span> Test and Validation</h2>
+<p>The following test cases are required:</p>
+<ul>
+<li>Validate that the Connection Label works on 4 different connection types:</li>
+<li>2K RX-TX</li>
+<li>4K RX-TX</li>
+<li>2k RDP VM</li>
+<li>4K RDP VM</li>
+<li>Validate the different configurations for all 4 connection types</li>
+<li>Enable/Disable</li>
+<li>Timeout</li>
+<li>Label location</li>
+<li>Validate that the Label times out correctly</li>
+<li>Validate that a Res change (Rx-Tx only) resizes the Label and turns is on/off based on whether it was on/off before the Res change.</li>
+<li>Validate that the Label Hotkey functions correctly.</li>
+<li>Validate that the Label is scaled appropriately on 4K</li>
+<li>Validate that the Label disappears when a connection is terminated</li>
+<li>Validate that the label is visible at all resolutions</li>
+</ul>
+<h2 id="database-and-configuration"><span class="enumerate-headings-plugin enumerate-heading-plugin">7.18</span> Database and Configuration</h2>
+<p>The Label configuration is stored in the Sql DB on the Rx. A new table has been added to store the values as follows:</p>
+<p><strong>CREATE TABLE ConnectionLabel (LabelEnable INT, LabelTimeout INT, LabelPosition TEXT);</strong></p>
+<p><strong>INSERT INTO ConnectionLabel VALUES(1,0,'Bottom Centre');</strong></p>
+<p><strong>Notes:</strong></p>
+<p>LabelEnable has 2 possible values – 1/0 (On/Off)</p>
+<p>LabelTimeout currently has 2 possible values – 0/5 (ConstantlyOn / Timeout after 5secs</p>
+<p>LabelPosition currently has 4 possible values – 'Bottom Centre', 'Bottom Right' 'Top Centre', 'Top Right'</p>
+<p><strong>Default values:</strong></p>
+<p>LabelEnable – 0 (Off)</p>
+<p>LabelTimeout – 5 (Timeout after 5 secs)</p>
+<p>LabelPosition – 'Bottom Centre'</p>
+<p><strong>Database Version:</strong></p>
+<p>The addition of the connectionLabel to the SQL DB requires the DB to update to version 1.6</p>
+<h2 id="performance-and-user-experience"><span class="enumerate-headings-plugin enumerate-heading-plugin">7.19</span> Performance and user experience</h2>
+<p>The addition of the connection Label should have no noticeable impact on connection setup/switch/termination times.</p>
+<h1 id="connection-label-colours"><span class="enumerate-headings-plugin enumerate-heading-plugin">8.</span> Connection Label Colours</h1>
+<p>Adding the ability to Configure the Connection Label Colours is being added as an Appliance / Boxilla feature.
+The feature will be added in Appliance version 6.7.0 and Boxilla version 4.8
+The details on how this can be configured will differ based on whether the system is Managed or Unmanaged</p>
+<h2 id="configuring-the-connection-label-enable-timeout-location"><span class="enumerate-headings-plugin enumerate-heading-plugin">8.1</span> Configuring the Connection Label - Enable / Timeout / Location</h2>
+<p>There will be no changes required to how the existing aspects of the Connection Label feature are configured.
+Regardless of whether the Receiver is Managed or Unmanaged, the configuration will be done via the OSD.
+Being able to configure the Enable/Timeout/Location is an Optional requirement for Boxilla, so my assumptiuon is that it will not happen in the 4.8 releease.
+Adding the REST API to allow Boxilla to configure these attributes on the appliance is being considered for the 6.7.0 appliance release however (My recommendation was not to include it, as it requires input from the Boxilla team and they have limited bandwidth at the moment).
+From a usage point of view, the values will be written to the SQL DB on the Receiver regardless of who configures them - Based on this, there will be no changes
+to how these values are read/used when/if configuring via Boxilla happens.</p>
+<h2 id="generic-requirements-for-connection-label-colours"><span class="enumerate-headings-plugin enumerate-heading-plugin">8.2</span> Generic requirements for Connection Label Colours</h2>
+<p>The Connection Label Colour Requirements are as follows:</p>
+<ul>
+<li>The values will be RGB values (3 * 8 bit values)</li>
+<li>RGB values need to be specified for both the Background and Text colour.</li>
+<li>When configuring the Colours, the administrator needs to be given a preview of the resultant Connection Label to ensure it is what is required</li>
+<li>In an Unmanaged system, the Label Colours will be configured via the OSD - These colours will apply to all connections launched from this RX.</li>
+<li>On a managed system, the label colours will be configured via Boxilla on a per connection basis</li>
+</ul>
+<h2 id="database-and-configuration-updates-for-connection-label-colours"><span class="enumerate-headings-plugin enumerate-heading-plugin">8.3</span> Database and Configuration Updates for Connection Label Colours</h2>
+<p>Adding Colours to the Connection Label will require additions to the ConnectionLabel Table in the SQL DB. 
+The additions are the RGB values for the Background and text colours - These will default to the current Background and test colours (black test on a sky blue background).
+The changes will be appended to the existing table as follows:</p>
+<ul>
+<li>ALTER TABLE ConnectionLabel ADD COLUMN Background_R INT;</li>
+<li>update ConnectionLabel set Background_R="151";</li>
+<li>ALTER TABLE ConnectionLabel ADD COLUMN Background_G INT;</li>
+<li>update ConnectionLabel set Background_G="253";</li>
+<li>ALTER TABLE ConnectionLabel ADD COLUMN Background_B INT;</li>
+<li>update ConnectionLabel set Background_B="255";</li>
+<li>ALTER TABLE ConnectionLabel ADD COLUMN Text_R INT;</li>
+<li>update ConnectionLabel set Text_R="0";</li>
+<li>ALTER TABLE ConnectionLabel ADD COLUMN Text_G INT;</li>
+<li>update ConnectionLabel set Text_G="0";</li>
+<li>ALTER TABLE ConnectionLabel ADD COLUMN Text_B INT;</li>
+<li>update ConnectionLabel set Text_B="0";</li>
+</ul>
+<p><strong>Database Version:</strong></p>
+<p>The update of the connectionLabel to the SQL DB requires the DB to update to version 1.9</p>
+<h2 id="configuring-connection-label-colours-in-unmanaged-mode"><span class="enumerate-headings-plugin enumerate-heading-plugin">8.4</span> Configuring Connection Label Colours in Unmanaged mode</h2>
+<p>In unmanaged mode, the functionality will be configured as follows:-</p>
+<ul>
+<li>The Label colours will be configured via the OSD. </li>
+<li>To facilita this, a new 'Colors' tab will be added to the existing Connection Label tab on the OSD. </li>
+<li>This 'Colours' tab will become active when the Connection Label Enable is selected. </li>
+<li>This Colours tab will provide 'sliders' to allow the user (admin/power user) to configure the RGB values for both the Background and text colours</li>
+<li>A preview of the resultant colours will be made available to the user.</li>
+<li>Once the values are saved, they will be written to the Connection Label Table in the SQL DB<ul>
+<li>The existing values in this table will not change</li>
+<li>The colours will be attached to the end of the table</li>
+<li>The default for the colours are the existing colours (i.e black test on a sky blue gackground)</li>
+</ul>
+</li>
+<li>In the Unmanaged scenario, the Connection Label Colours will be on an RX basis - i.e any connection launched from this RX will use these colours.</li>
+</ul>
+<h2 id="configuring-connection-label-colours-in-managed-mode"><span class="enumerate-headings-plugin enumerate-heading-plugin">8.5</span> Configuring Connection Label Colours in Managed mode</h2>
+<p>In managed mode, the functionality will be configured as follows:-</p>
+<ul>
+<li>The Label colours will be configured via Boxilla. </li>
+<li>The Label Colours will be configured on a Per connection basis<ul>
+<li>The ability to configure global 'default-colours' will be provided to the Boxilla user</li>
+<li>When creating a connection, the user will have the ability to select either<ul>
+<li>The 'default-colours'  </li>
+<li>To create a customer colour combination for this connection</li>
+</ul>
+</li>
+<li>Creating a custom colours on Boxilla will be done in a similar way to how it is done on an Unmanaged RX (for consistency)</li>
+</ul>
+</li>
+<li>The RGB values for the colours will be stored in the XML file as an additional argument/qrguments to a connection</li>
+<li>Any existing connections will be migrated by Boxilla to this new scheme</li>
+</ul>
+<p>NOTE: In managed mode, the facility to configure Connection Label Colours will NOT be available via the OSD</p>
+<h2 id="required-changes-to-the-xml-file"><span class="enumerate-headings-plugin enumerate-heading-plugin">8.6</span> Required changes to the XML file</h2>
+<p>The change to the XML file needs to be as short as possible. Based on this requirement, the following addition to a connection in the XML filehas been agreed with the Boxilla  team.</p>
+<p>labelColours='255,0,100,20,0,255'</p>
+<p>The first 3 values will be the RGB values for the Background colour and the second 3 values will be the RGB values for the Text colour.</p>
+<h2 id="turning-on-the-connection-label-with-different-colours"><span class="enumerate-headings-plugin enumerate-heading-plugin">8.7</span> Turning On the Connection Label with different Colours</h2>
+<p>There are 2 aspects to this work:</p>
+<h3 id="updates-to-the-connection_label-binary-to-allow-the-caller-connection-manager-to-pass-the-colours-as-parameters"><span class="enumerate-headings-plugin enumerate-heading-plugin">8.7.1</span> Updates to the connection_label binary to allow the caller (Connection Manager) to pass the Colours as parameters</h3>
+<p>The connection_label binary currently has the following parameters:</p>
+<ul>
+<li>Framebuffere reference - This is the framebuffer that the connection Label needs to be written to</li>
+<li>Connection Name - This is the text to write into the connection label</li>
+</ul>
+<p>The addition of Connection Label Colours will require the following 6 extra arguments</p>
+<ul>
+<li>Background R value</li>
+<li>Bacgground G value</li>
+<li>Background B value</li>
+<li>Text R value</li>
+<li>Text G value</li>
+<li>Text B value</li>
+</ul>
+<p>The new format for this command is:</p>
+<ul>
+<li>/usr/bin/connection_label -nomouse -qws -display linuxfb:/dev/fb2:tty=/dev/fb2 -n "Connection Name" -bc "255" "0" "255" -tc "0" "255" "100" &amp;</li>
+</ul>
+<p>The changes to the connection label binary are to take in the Background and Text colours and to use these as the colours when generating the Connection Label.</p>
+<h3 id="the-logic-in-the-connection-manager-to-figure-out-what-colours-to-pass-to-the-connection_label-binary"><span class="enumerate-headings-plugin enumerate-heading-plugin">8.7.2</span> The Logic in the Connection Manager to figure out what Colours to pass to the connection_label binary</h3>
+<p>The changes in the Connection Manager for this feature are to do the folloiwng:-</p>
+<ul>
+<li>Figure out what colours to use for the Connection Label</li>
+<li>Pass the colour values to the connection_label binary. </li>
+<li>There are no changes required in terms of when / if to call this binary. </li>
+<li>The logic will need to take into consideration the following:<ul>
+<li>In Unmanaged mode, the Colour values will be stored int he SQL DB</li>
+<li>In Managed mode, the colours will be stored in the XML file on a per connection basis</li>
+<li>In managed mode, the SQL DB will contain the default colours (will never change)</li>
+<li>Currently the Connection Manager is NOT aware of whether the Reveiver is managed or not - The plan is to  keep it like this.</li>
+</ul>
+</li>
+</ul>
+<p>The required changes are as follows:</p>
+<ul>
+<li>
+<p>OSD / Rest-API (anywhere that reads the copnnection string from the XML file)</p>
+<ul>
+<li>When the connection details are being read from the XML file, we now read the 'labelColours' as well</li>
+<li>If no 'labelColours' exist in the XML file (as in the Unmanaged scenario), then we set the 'labelColours' string to 'No-specified-color'</li>
+<li>An extra parameter (labelColours) is added to any MQTT request that relates to Launching / switching a connection. The value of this attribure will be either:<ul>
+<li>A string containing the Background and test RGB values (assuming that the specified connection has Label Colours associated with it)</li>
+<li>A string containing: "No-specified-colour' - This indicates the the Subscriber of the message (Connection Manager) that there is NO associated LabelColour for this connection. </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Connection Manager changes:-</p>
+<ul>
+<li>Connection Manager reads the 'labelColours' string from the connection requests<ul>
+<li>If string contains 'No-Specified-colour', then it reads the Connection Label Colours (Value associated witht he specific RX) from the SQL DB</li>
+<li>Otherwise, it uses the RGB values specified in the 'labelColours' parameter associated with the connection</li>
+</ul>
+</li>
+<li>In both cases, it calls the 'connection_label' binary with the required RGB values.</li>
+</ul>
+</li>
+</ul>
+<p>This document contains Proprietary Trade Secrets of Black Box Corporation, and its receipt or possession does not convey any right to reproduce, disclose its contents, or to manufacture, use, or sell anything that it may describe. Reproduction, disclosure, or use without specific authorization from Black Box Corporation, is strictly forbidden. This document is uncontrolled in printed format.</p>
+<p>Rev 0.1 Black Box Corporation: Copyright  2019 1</p>
+<hr/>
+<div class="md-source-file">
+<small>
+    
+      Last update:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 19, 2023</span>
+<br/>
+        Created:
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 6, 2023</span>
+</small>
+</div>
+<div class="md-source-date">
+<small>
+          Authors: <span class="git-page-authors git-authors"><a href="mailto:eamon.hayden@blackbox.com">Eamon Hayden</a>, <a href="mailto:developer@developer-virtual-machine">developer</a></span>
+</small>
+</div>
+</article>
+</div>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.sections", "navigation.tabs"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+<script src="../../../assets/javascripts/bundle.aecac24b.min.js"></script>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
+mermaid.initialize({});</script></body>
+</html>

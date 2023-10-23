@@ -1,0 +1,6497 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="../V6_6_1_RELEASE_NOTES/" rel="prev"/>
+<link href="../V6_6_70_RELEASE_NOTES/" rel="next"/>
+<link href="../../assets/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.5.3, mkdocs-material-9.4.6" name="generator"/>
+<title>V6.7.0 - Blackbox Embedded Documentation</title>
+<link href="../../assets/stylesheets/main.35e1ed30.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.356b1318.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../../stylesheets/extra.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="white" data-md-color-primary="black" data-md-color-scheme="default" dir="ltr">
+<script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#release-name-text">1. 
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Blackbox Embedded Documentation" class="md-header__button md-logo" data-md-component="logo" href="../.." title="Blackbox Embedded Documentation">
+<svg viewbox="0 0 89 89" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.136,17.387l0,42.932l42.932,21.467l-42.932,-64.399Z"></path>
+<path d="M21.91,8l42.933,64.398l-18.775,9.388l-42.932,-64.399l18.774,-9.387Z" style="fill-opacity: 0.5"></path>
+<path d="M67.535,17.387l-27.262,18.156l21.878,32.818l5.384,2.691l0,-53.665Z"></path>
+<path d="M67.535,17.387l0,53.666l18.774,-9.388l0,-53.665l-18.774,9.387Z" style="fill-opacity: 0.25"></path>
+</svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Blackbox Embedded Documentation
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              V6.7.0
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="white" data-md-color-media="" data-md-color-primary="black" data-md-color-scheme="default" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_2" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="white" data-md-color-media="" data-md-color-primary="green" data-md-color-scheme="slate" id="__palette_2" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"></path></svg>
+</label>
+</form>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../..">
+        
+  
+    
+  
+  Home
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../developer_quick_start/connecting_to_vm/">
+          
+  
+  Developer Quick Start
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../buildroot_guides/creating_buildroot_enviroment/">
+          
+  
+  Development
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../architecture/Summary/summary/">
+          
+  
+  Architecture and Design Documents
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../Infrastructure/branching_strategy/">
+          
+  
+  Infrastructure
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../automation/summary/">
+          
+  
+  Automation
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../features/summary/">
+          
+  
+  Features
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../process/process/">
+          
+  
+  Process
+
+        </a>
+</li>
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="../summary/">
+          
+  
+  Release Notes
+
+        </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Blackbox Embedded Documentation" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="Blackbox Embedded Documentation">
+<svg viewbox="0 0 89 89" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.136,17.387l0,42.932l42.932,21.467l-42.932,-64.399Z"></path>
+<path d="M21.91,8l42.933,64.398l-18.775,9.388l-42.932,-64.399l18.774,-9.387Z" style="fill-opacity: 0.5"></path>
+<path d="M67.535,17.387l-27.262,18.156l21.878,32.818l5.384,2.691l0,-53.665Z"></path>
+<path d="M67.535,17.387l0,53.666l18.774,-9.388l0,-53.665l-18.774,9.387Z" style="fill-opacity: 0.25"></path>
+</svg>
+</a>
+    Blackbox Embedded Documentation
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+<span class="md-ellipsis">
+    Home
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+<span class="md-ellipsis">
+    Developer Quick Start
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            Developer Quick Start
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../developer_quick_start/connecting_to_vm/">
+<span class="md-ellipsis">
+    Connecting to VM
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../developer_quick_start/blackbox_cli/">
+<span class="md-ellipsis">
+    Blackbox CLI
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../developer_quick_start/building_code/">
+<span class="md-ellipsis">
+    Compiling Code
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../developer_quick_start/phabricator/">
+<span class="md-ellipsis">
+    Code Reviews
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../developer_quick_start/reference_books/">
+<span class="md-ellipsis">
+    Reference Books
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+<span class="md-ellipsis">
+    Development
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            Development
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="">
+<span class="md-ellipsis">
+    Buildroot
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_1_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_1">
+<span class="md-nav__icon md-icon"></span>
+            Buildroot
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../buildroot_guides/creating_buildroot_enviroment/">
+<span class="md-ellipsis">
+    Creating Buildroot Environment
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../buildroot_guides/buildroot_defconfig/">
+<span class="md-ellipsis">
+    Buildroot defconfig
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../buildroot_guides/emeraldrc_files/">
+<span class="md-ellipsis">
+    Emerald RC Files
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../buildroot_guides/rootfs_overlays/">
+<span class="md-ellipsis">
+    Rootfile System Overlays
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../buildroot_guides/creating_package/">
+<span class="md-ellipsis">
+    Adding New Packages
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../buildroot_guides/packages/">
+<span class="md-ellipsis">
+    Packages
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../buildroot_guides/local_mk/">
+<span class="md-ellipsis">
+    Local Development
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../buildroot_guides/command_runner/">
+<span class="md-ellipsis">
+    Command Runner
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../buildroot_guides/upgrade_images/">
+<span class="md-ellipsis">
+    Upgrade Images
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="">
+<span class="md-ellipsis">
+    Application Development
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_2">
+<span class="md-nav__icon md-icon"></span>
+            Application Development
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../coding_guides/conditional_compilation/">
+<span class="md-ellipsis">
+    Conditional Compilation
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="">
+<span class="md-ellipsis">
+    Deploying Code
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_3">
+<span class="md-nav__icon md-icon"></span>
+            Deploying Code
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../buildroot_guides/transferring_images/">
+<span class="md-ellipsis">
+    Transferring Images
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+<span class="md-ellipsis">
+    Architecture and Design Documents
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            Architecture and Design Documents
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="">
+<span class="md-ellipsis">
+    Summary
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_1_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_1">
+<span class="md-nav__icon md-icon"></span>
+            Summary
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/Summary/summary/">
+<span class="md-ellipsis">
+    Summary Page
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="">
+<span class="md-ellipsis">
+    Document Templates
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_2">
+<span class="md-nav__icon md-icon"></span>
+            Document Templates
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/software_architecture_template/">
+<span class="md-ellipsis">
+    Software Architecture Template
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/software_design_document/">
+<span class="md-ellipsis">
+    Software Design Template
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="">
+<span class="md-ellipsis">
+    Emerald Appliances
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_3">
+<span class="md-nav__icon md-icon"></span>
+            Emerald Appliances
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_3_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3_1" id="__nav_4_3_1_label" tabindex="0">
+<span class="md-ellipsis">
+    Architecture Documents
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_3_1_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_4_3_1">
+<span class="md-nav__icon md-icon"></span>
+            Architecture Documents
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/emerald_software_system_reference/">
+<span class="md-ellipsis">
+    Appliance Software System Reference
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/Summary/Contents/software_architecture_push_and_get/">
+<span class="md-ellipsis">
+    Push and Get
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_3_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3_2" id="__nav_4_3_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Design Documents
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_3_2_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_4_3_2">
+<span class="md-nav__icon md-icon"></span>
+            Design Documents
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/Summary/Contents/bonded_connections/">
+<span class="md-ellipsis">
+    Bonded Connections
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_3_2_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3_2_2" id="__nav_4_3_2_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Boot Configuration
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_3_2_2_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_3_2_2">
+<span class="md-nav__icon md-icon"></span>
+            Boot Configuration
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/boot_configuration/emerald4k_fitimages/">
+<span class="md-ellipsis">
+    Emerald 4K
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/ConnectionLabel/label/">
+<span class="md-ellipsis">
+    Connection Label
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_3_2_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3_2_4" id="__nav_4_3_2_4_label" tabindex="0">
+<span class="md-ellipsis">
+    Connection Management
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_3_2_4_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_3_2_4">
+<span class="md-nav__icon md-icon"></span>
+            Connection Management
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_3_2_4_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3_2_4_1" id="__nav_4_3_2_4_1_label" tabindex="0">
+<span class="md-ellipsis">
+    CM
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_3_2_4_1_label" class="md-nav" data-md-level="5">
+<label class="md-nav__title" for="__nav_4_3_2_4_1">
+<span class="md-nav__icon md-icon"></span>
+            CM
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/Connection_Management/history/">
+<span class="md-ellipsis">
+    Master Document Revision History
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/Connection_Management/references/">
+<span class="md-ellipsis">
+    References
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/Connection_Management/termsAndDefinitions/">
+<span class="md-ellipsis">
+    Terms and Definitions
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/Connection_Management/overview/">
+<span class="md-ellipsis">
+    Overview
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/Connection_Management/mqtt/">
+<span class="md-ellipsis">
+    Mqtt Usage
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/Connection_Management/connection_process_summary/">
+<span class="md-ellipsis">
+    Applications Summary
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/Connection_Management/connection_process_design/">
+<span class="md-ellipsis">
+    Applications Detailed Design
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/Connection_Management/connection_process_specifics/">
+<span class="md-ellipsis">
+    Applications Specific Design Aspects
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/Summary/Contents/tbc/">
+<span class="md-ellipsis">
+    Connection Sequence
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/Summary/Contents/display_layer/">
+<span class="md-ellipsis">
+    Display Layer
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/Summary/Contents/data_flow_controller/">
+<span class="md-ellipsis">
+    Data Flow Controller
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/Summary/Contents/diagnostics/">
+<span class="md-ellipsis">
+    Diagnostics
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/Summary/Contents/discovery/">
+<span class="md-ellipsis">
+    Discovery
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/Summary/Contents/dual_stream/">
+<span class="md-ellipsis">
+    Dual Stream
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/Summary/Contents/error_handling/">
+<span class="md-ellipsis">
+    Error Handling
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/Summary/Contents/interoperability/">
+<span class="md-ellipsis">
+    Interoperability
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_3_2_12" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3_2_12" id="__nav_4_3_2_12_label" tabindex="0">
+<span class="md-ellipsis">
+    Individual Inactivity Timers
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_3_2_12_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_3_2_12">
+<span class="md-nav__icon md-icon"></span>
+            Individual Inactivity Timers
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/Summary/Contents/individual_inactivity_timers/individual_inactivity_timers_hld/">
+<span class="md-ellipsis">
+    Individual Inactivity Timers HLD
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/Summary/Contents/individual_inactivity_timers/individual_inactivity_timers_hld_appendix/">
+<span class="md-ellipsis">
+    Appendix
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/Summary/Contents/kvm_client/">
+<span class="md-ellipsis">
+    KVM Client
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/Summary/Contents/kvm_server/">
+<span class="md-ellipsis">
+    KVM Server
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/Summary/Contents/kvm_bonded_connection/">
+<span class="md-ellipsis">
+    KVM Bonded Connections
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/Summary/Contents/lacp/">
+<span class="md-ellipsis">
+    LACP
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/Summary/Contents/mouse_events/">
+<span class="md-ellipsis">
+    Mouse Event Handling
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/Summary/Contents/tbc/">
+<span class="md-ellipsis">
+    Multiunicast Peer Joining
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/Summary/Contents/tbc/">
+<span class="md-ellipsis">
+    Multicast Peer Joining
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_3_2_20" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3_2_20" id="__nav_4_3_2_20_label" tabindex="0">
+<span class="md-ellipsis">
+    Memory Maps
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_3_2_20_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_3_2_20">
+<span class="md-nav__icon md-icon"></span>
+            Memory Maps
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/Summary/Contents/memory_map/nand_memory_map/">
+<span class="md-ellipsis">
+    NAND Memory Map
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/Summary/Contents/networking/">
+<span class="md-ellipsis">
+    Networking
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/Summary/Contents/performance/">
+<span class="md-ellipsis">
+    Performance
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/hardware_acceleration_for_4KRDP_connections/">
+<span class="md-ellipsis">
+    RDP VM Hardware Acceleration on 4K
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/Summary/Contents/tbc/">
+<span class="md-ellipsis">
+    Resolution Change Sequence
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/Summary/Contents/system_upgrade/">
+<span class="md-ellipsis">
+    System Upgrade
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/Summary/Contents/system_login/">
+<span class="md-ellipsis">
+    System Login
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_3_2_27" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3_2_27" id="__nav_4_3_2_27_label" tabindex="0">
+<span class="md-ellipsis">
+    Splashscreen
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_3_2_27_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_3_2_27">
+<span class="md-nav__icon md-icon"></span>
+            Splashscreen
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/Splashscreen_Design/">
+<span class="md-ellipsis">
+    Splashscreen Design
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/Summary/Contents/stats_monitor/">
+<span class="md-ellipsis">
+    Statistics Monitor
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/Summary/Contents/toe/">
+<span class="md-ellipsis">
+    TOE
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/Summary/Contents/transmitter_settings/">
+<span class="md-ellipsis">
+    Transmitter Settings
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_3_2_31" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3_2_31" id="__nav_4_3_2_31_label" tabindex="0">
+<span class="md-ellipsis">
+    Upgrades
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_3_2_31_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_3_2_31">
+<span class="md-nav__icon md-icon"></span>
+            Upgrades
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/Summary/Contents/upgrades/upgrades_2k/">
+<span class="md-ellipsis">
+    2K Upgrades
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/Summary/Contents/unplanned_leave/">
+<span class="md-ellipsis">
+    Unplanned Leave
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_3_2_33" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3_2_33" id="__nav_4_3_2_33_label" tabindex="0">
+<span class="md-ellipsis">
+    USB
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_3_2_33_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_3_2_33">
+<span class="md-nav__icon md-icon"></span>
+            USB
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/Summary/Contents/usb/usbr/">
+<span class="md-ellipsis">
+    USB/R
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/Summary/Contents/usb/usbr_udc/">
+<span class="md-ellipsis">
+    USB/R Device Controllers
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/Summary/Contents/usb/usbr_utilities/">
+<span class="md-ellipsis">
+    USB/R Utilities
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/Summary/Contents/usb/usbr_msc_transport/">
+<span class="md-ellipsis">
+    USB/R MSC Transport
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/Summary/Contents/video_latency/">
+<span class="md-ellipsis">
+    Video Latency
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_3_2_35" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3_2_35" id="__nav_4_3_2_35_label" tabindex="0">
+<span class="md-ellipsis">
+    Video
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_3_2_35_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_3_2_35">
+<span class="md-nav__icon md-icon"></span>
+            Video
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/Summary/Contents/video/emerald4k_tx_scaling/">
+<span class="md-ellipsis">
+    EMD4K TX Scaling
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/Summary/Contents/video/cut-through/">
+<span class="md-ellipsis">
+    Video Cut-Through
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/Summary/Contents/webservice_restapi/">
+<span class="md-ellipsis">
+    Webservice RestAPI
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="">
+<span class="md-ellipsis">
+    Software Defined KVM
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_4_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_4">
+<span class="md-nav__icon md-icon"></span>
+            Software Defined KVM
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_4_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_4_1" id="__nav_4_4_1_label" tabindex="0">
+<span class="md-ellipsis">
+    SKVM
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_4_1_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_4_4_1">
+<span class="md-nav__icon md-icon"></span>
+            SKVM
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_4_1_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_4_1_1" id="__nav_4_4_1_1_label" tabindex="0">
+<span class="md-ellipsis">
+    Architecture Documents
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_4_1_1_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_4_1_1">
+<span class="md-nav__icon md-icon"></span>
+            Architecture Documents
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/sdkvm/sdkvm/">
+<span class="md-ellipsis">
+    Overview
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/sdkvm/sdkvm_architecture/">
+<span class="md-ellipsis">
+    SDKVM Architecture
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/sdkvm/data_models/">
+<span class="md-ellipsis">
+    SDKVM Data Models
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/sdkvm/sdkvm_1.0.0_osd_specification/">
+<span class="md-ellipsis">
+    OSD 1.0.0 Specification
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/sdkvm/sdkvm_1.1.0_osd_specification/">
+<span class="md-ellipsis">
+    OSD 1.1.0 Specification
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/sdkvm/sdkvm_1.2.0_osd_specification/">
+<span class="md-ellipsis">
+    OSD 1.2.0 Specification
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/sdkvm/sdkvm_clients/">
+<span class="md-ellipsis">
+    Client Specification
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/sdkvm/workspaceserver/">
+<span class="md-ellipsis">
+    Workspace Server Specification
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/sdkvm/sdkvm_upgrade/">
+<span class="md-ellipsis">
+    SDKVM Upgrade
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_4_1_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_4_1_2" id="__nav_4_4_1_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Technical Notes
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_4_1_2_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_4_1_2">
+<span class="md-nav__icon md-icon"></span>
+            Technical Notes
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/sdkvm/sdkvm_configuration/">
+<span class="md-ellipsis">
+    SDKVM Configuration
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/sdkvm/dualboot/">
+<span class="md-ellipsis">
+    Dual Boot Ubuntu 22.04
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/sdkvm/sourcecontrol/">
+<span class="md-ellipsis">
+    SDKVM Source control
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/sdkvm/sdkvm_1.2.0_tasklist/">
+<span class="md-ellipsis">
+    SDKVM 1.2.0 Scope of Work
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/sdkvm/sdkvm_prorail_proposal/">
+<span class="md-ellipsis">
+    Prorail Proposal
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/sdkvm/technical_notes/2x2_config_ibc_demo/">
+<span class="md-ellipsis">
+    2x2 Monitor Config for IBC
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/sdkvm/technical_notes/multimonitor-weighting/">
+<span class="md-ellipsis">
+    Multi-monitor Weighting
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/sdkvm/sdkvm_rest_work/">
+<span class="md-ellipsis">
+    SDKVM REST API TASK
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="">
+<span class="md-ellipsis">
+    Common
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_5_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_5">
+<span class="md-nav__icon md-icon"></span>
+            Common
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_5_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_5_1" id="__nav_4_5_1_label" tabindex="0">
+<span class="md-ellipsis">
+    Design Documents
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_5_1_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_4_5_1">
+<span class="md-nav__icon md-icon"></span>
+            Design Documents
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_5_1_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_5_1_1" id="__nav_4_5_1_1_label" tabindex="0">
+<span class="md-ellipsis">
+    MQTT
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_5_1_1_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_5_1_1">
+<span class="md-nav__icon md-icon"></span>
+            MQTT
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/mqtt/mqtt_deployment_strategy/">
+<span class="md-ellipsis">
+    MQTT Deployment Strategy
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/mqtt/mqtt/">
+<span class="md-ellipsis">
+    General Guidelines for MQTT Messages
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/mqtt/mqtt_logging/">
+<span class="md-ellipsis">
+    MQTT Logging
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_5_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_5_2" id="__nav_4_5_2_label" tabindex="0">
+<span class="md-ellipsis">
+    APIs and Specifications
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_5_2_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_4_5_2">
+<span class="md-nav__icon md-icon"></span>
+            APIs and Specifications
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_5_2_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_5_2_1" id="__nav_4_5_2_1_label" tabindex="0">
+<span class="md-ellipsis">
+    REST API
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_5_2_1_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_5_2_1">
+<span class="md-nav__icon md-icon"></span>
+            REST API
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/device_rest_api/rest_api/">
+<span class="md-ellipsis">
+    Device Rest APi
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/appliance_rest_api/appliance_rest_api/">
+<span class="md-ellipsis">
+    Appliance Rest APi
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/REST_API/rest_api_zone_support/">
+<span class="md-ellipsis">
+    REST API Zone Support
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/REST_API/receiver_to_boxilla_connection_status_over_rest/">
+<span class="md-ellipsis">
+    Receiver to Boxilla Connection Status over REST
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_5_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_5_3" id="__nav_4_5_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Technologies
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_5_3_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_4_5_3">
+<span class="md-nav__icon md-icon"></span>
+            Technologies
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../technologies/technologies_for_osd/">
+<span class="md-ellipsis">
+    OSD Technology Evaluation
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="">
+<span class="md-ellipsis">
+    Remote App
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_6_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_6">
+<span class="md-nav__icon md-icon"></span>
+            Remote App
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_6_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_6_1" id="__nav_4_6_1_label" tabindex="0">
+<span class="md-ellipsis">
+    Design Documents
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_6_1_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_4_6_1">
+<span class="md-nav__icon md-icon"></span>
+            Design Documents
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/remoteapp/remoteapp/">
+<span class="md-ellipsis">
+    Remote App Build and Install
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/remoteapp/remoteapp_nightly_build/">
+<span class="md-ellipsis">
+    Remote App Nightly Build Proposal
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_6_1_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_6_1_3" id="__nav_4_6_1_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Modifying Remote App To Accelerated Handle Video
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_6_1_3_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_6_1_3">
+<span class="md-nav__icon md-icon"></span>
+            Modifying Remote App To Accelerated Handle Video
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/modifying_remote_app_to_accelerated_handle_video/introduction/">
+<span class="md-ellipsis">
+    Introduction
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_6_1_3_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_6_1_3_2" id="__nav_4_6_1_3_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Contents
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_6_1_3_2_label" class="md-nav" data-md-level="5">
+<label class="md-nav__title" for="__nav_4_6_1_3_2">
+<span class="md-nav__icon md-icon"></span>
+            Contents
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/modifying_remote_app_to_accelerated_handle_video/contents/connection_scheme_architecture/">
+<span class="md-ellipsis">
+    Connection Scheme Architecture Overview and Content
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/modifying_remote_app_to_accelerated_handle_video/contents/encoder_design/">
+<span class="md-ellipsis">
+    Encoder Design
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/modifying_remote_app_to_accelerated_handle_video/contents/decoder_design/">
+<span class="md-ellipsis">
+    Decoder Design
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/modifying_remote_app_to_accelerated_handle_video/contents/message_exchange/">
+<span class="md-ellipsis">
+    Message Exchange
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/modifying_remote_app_to_accelerated_handle_video/contents/remote_app_connection_type/">
+<span class="md-ellipsis">
+    Remote App Connection Type
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/modifying_remote_app_to_accelerated_handle_video/contents/guide_to_decoder_code/">
+<span class="md-ellipsis">
+    Guide to Decoder Code
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/modifying_remote_app_to_accelerated_handle_video/contents/user_case_scenarios/">
+<span class="md-ellipsis">
+    User Case Scenarios
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_6_1_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_6_1_4" id="__nav_4_6_1_4_label" tabindex="0">
+<span class="md-ellipsis">
+    Original Remote App Proposal
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_6_1_4_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_6_1_4">
+<span class="md-nav__icon md-icon"></span>
+            Original Remote App Proposal
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/modifying_remote_app_to_accelerated_handle_video/contents/connection_scheme_architecture">
+<span class="md-ellipsis">
+    contents
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="">
+<span class="md-ellipsis">
+    Opal
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_7_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_7">
+<span class="md-nav__icon md-icon"></span>
+            Opal
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_7_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_7_1" id="__nav_4_7_1_label" tabindex="0">
+<span class="md-ellipsis">
+    Architecture Documents
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_7_1_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_4_7_1">
+<span class="md-nav__icon md-icon"></span>
+            Architecture Documents
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/opal/opal/">
+<span class="md-ellipsis">
+    Architecture
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+<span class="md-ellipsis">
+    Infrastructure
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+            Infrastructure
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="">
+<span class="md-ellipsis">
+    SVN
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_1_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_1">
+<span class="md-nav__icon md-icon"></span>
+            SVN
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Infrastructure/branching_strategy/">
+<span class="md-ellipsis">
+    Branching Strategy
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Infrastructure/create_new_svn_repo/">
+<span class="md-ellipsis">
+    Create New SVN Repo
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="">
+<span class="md-ellipsis">
+    ESXi
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_2">
+<span class="md-nav__icon md-icon"></span>
+            ESXi
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Infrastructure/ESXI/creating_developer_vm/">
+<span class="md-ellipsis">
+    Creating VMs
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Infrastructure/ESXI/new_user/">
+<span class="md-ellipsis">
+    Creating a New ESXi User
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="">
+<span class="md-ellipsis">
+    IP Portal
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_3">
+<span class="md-nav__icon md-icon"></span>
+            IP Portal
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Infrastructure/IP_Management_Portal/create_new_user/">
+<span class="md-ellipsis">
+    Create New User
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Infrastructure/manual_nightly_build/">
+<span class="md-ellipsis">
+    Manual Nightly Build
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Infrastructure/configuring_nfs/">
+<span class="md-ellipsis">
+    Configuring NFS
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Infrastructure/ssh_tunnel_upgrades/">
+<span class="md-ellipsis">
+    SSH Tunnelling
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Infrastructure/Upgrade_USBIP/">
+<span class="md-ellipsis">
+    Upgrading Awsudcip/USBIP
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_8" id="__nav_5_8_label" tabindex="">
+<span class="md-ellipsis">
+    mkdocs
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_8_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_8">
+<span class="md-nav__icon md-icon"></span>
+            mkdocs
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Infrastructure/mkdocs/setup_local/">
+<span class="md-ellipsis">
+    Setup Local Site
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Infrastructure/mkdocs/editing_mkdocs/">
+<span class="md-ellipsis">
+    Editing mkdocs
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Infrastructure/mkdocs/flow_diagram/">
+<span class="md-ellipsis">
+    Diagrams
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_9" id="__nav_5_9_label" tabindex="">
+<span class="md-ellipsis">
+    Manufacture Test
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_9_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_9">
+<span class="md-nav__icon md-icon"></span>
+            Manufacture Test
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Infrastructure/Manufacture_Test/Introduction/">
+<span class="md-ellipsis">
+    Introduction
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Infrastructure/Manufacture_Test/Brief_Description/">
+<span class="md-ellipsis">
+    Brief Description
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Infrastructure/Manufacture_Test/Hardware_components/">
+<span class="md-ellipsis">
+    Hardware
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Infrastructure/Manufacture_Test/Test_PC_Setup/">
+<span class="md-ellipsis">
+    Flash &amp; Test PC Setup
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Infrastructure/Manufacture_Test/Operator_PC_Setup/">
+<span class="md-ellipsis">
+    Operator PC Setup
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Infrastructure/Manufacture_Test/access/">
+<span class="md-ellipsis">
+    Accessing the Flash
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Infrastructure/Manufacture_Test/adding/">
+<span class="md-ellipsis">
+    Adding New Device Images
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Infrastructure/Manufacture_Test/app_logging/">
+<span class="md-ellipsis">
+    Application Logging
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Infrastructure/Manufacture_Test/dut_artifacts/">
+<span class="md-ellipsis">
+    View DUT Artifacts
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Infrastructure/Manufacture_Test/processes/">
+<span class="md-ellipsis">
+    Flash and Test processes
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Infrastructure/Manufacture_Test/test_procedures/">
+<span class="md-ellipsis">
+    Test procedures
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Infrastructure/Manufacture_Test/Adding_new_images/">
+<span class="md-ellipsis">
+    Adding a New Image
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Infrastructure/Manufacture_Test/control_flow/">
+<span class="md-ellipsis">
+    Control Flow
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Infrastructure/Manufacture_Test/bomgar-installation/">
+<span class="md-ellipsis">
+    Bomgar remote access
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+<span class="md-ellipsis">
+    Automation
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+            Automation
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../automation/summary/">
+<span class="md-ellipsis">
+    Summary
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../automation/elements_of_automated_test/">
+<span class="md-ellipsis">
+    Elements of the Automated Test Framework
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../automation/enhanced_osd/">
+<span class="md-ellipsis">
+    Enhanced OSD
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../automation/error_code/">
+<span class="md-ellipsis">
+    Error Codes
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../automation/OSD_messages/">
+<span class="md-ellipsis">
+    OSD Messages
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../automation/system_latency/">
+<span class="md-ellipsis">
+    System Latency Testing Overview
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../automation/mouse_latency_testing/">
+<span class="md-ellipsis">
+    System Latency Technical Details
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../automation/autokeys/">
+<span class="md-ellipsis">
+    Autokeys
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_9" id="__nav_6_9_label" tabindex="">
+<span class="md-ellipsis">
+    Planning and Status
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_9_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_9">
+<span class="md-nav__icon md-icon"></span>
+            Planning and Status
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../automation/status/">
+<span class="md-ellipsis">
+    Status
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../automation/plan/">
+<span class="md-ellipsis">
+    Planning
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_10" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_10" id="__nav_6_10_label" tabindex="">
+<span class="md-ellipsis">
+    TechZilla
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_10_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_10">
+<span class="md-nav__icon md-icon"></span>
+            TechZilla
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../automation/techzilla/">
+<span class="md-ellipsis">
+    Techzilla User Manual
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../automation/techzilla_installer/">
+<span class="md-ellipsis">
+    Creating a techzilla installer
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_11" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_11" id="__nav_6_11_label" tabindex="">
+<span class="md-ellipsis">
+    Results and Reporting
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_11_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_11">
+<span class="md-nav__icon md-icon"></span>
+            Results and Reporting
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../automation/results/">
+<span class="md-ellipsis">
+    Results Server
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../automation/mongodb/">
+<span class="md-ellipsis">
+    Mongo Database
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_12" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_12" id="__nav_6_12_label" tabindex="">
+<span class="md-ellipsis">
+    Test Cases
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_12_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_12">
+<span class="md-nav__icon md-icon"></span>
+            Test Cases
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../automation/testcases/">
+<span class="md-ellipsis">
+    Test Cases Overview
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../automation/testcase_code_walkthrough/">
+<span class="md-ellipsis">
+    Test Code Walkthrough
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_12_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_12_3" id="__nav_6_12_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Test Case Lists
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_12_3_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_12_3">
+<span class="md-nav__icon md-icon"></span>
+            Test Case Lists
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_12_3_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_12_3_1" id="__nav_6_12_3_1_label" tabindex="0">
+<span class="md-ellipsis">
+    Managed Cases
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_12_3_1_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_6_12_3_1">
+<span class="md-nav__icon md-icon"></span>
+            Managed Cases
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../automation/Seperated_test_case_lists/Connection_Cases/">
+<span class="md-ellipsis">
+    Connection Cases
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../automation/Seperated_test_case_lists/Dual_Mode/">
+<span class="md-ellipsis">
+    Dual Mode
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../automation/Seperated_test_case_lists/First_Video_Frame/">
+<span class="md-ellipsis">
+    First Video Frames
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../automation/Seperated_test_case_lists/Retry_case/">
+<span class="md-ellipsis">
+    Retry cases
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../automation/Seperated_test_case_lists/PC_Resolution/">
+<span class="md-ellipsis">
+    PC Resolution
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../automation/Seperated_test_case_lists/DP_Devices/">
+<span class="md-ellipsis">
+    DP Devices
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../automation/Seperated_test_case_lists/Video_quality/">
+<span class="md-ellipsis">
+    Video Quality
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../automation/Seperated_test_case_lists/Unplanned_Leave/">
+<span class="md-ellipsis">
+    Unplanned Leave
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../automation/Seperated_test_case_lists/Audio_tests/">
+<span class="md-ellipsis">
+    Audio
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../automation/Seperated_test_case_lists/VM_Connections/">
+<span class="md-ellipsis">
+    VM Connection
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../automation/Seperated_test_case_lists/Video_performance/">
+<span class="md-ellipsis">
+    Video Performance
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../automation/Seperated_test_case_lists/Keyboard/">
+<span class="md-ellipsis">
+    Keyboard
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../automation/Seperated_test_case_lists/Managed_Connection_Performance/">
+<span class="md-ellipsis">
+    Managed Connection Performance
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_12_3_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_12_3_2" id="__nav_6_12_3_2_label" tabindex="0">
+<span class="md-ellipsis">
+    General Unmanaged Cases
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_12_3_2_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_6_12_3_2">
+<span class="md-nav__icon md-icon"></span>
+            General Unmanaged Cases
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../automation/Seperated_test_case_lists/General_unmanaged-SETXSH/">
+<span class="md-ellipsis">
+    SE SH TX
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../automation/Seperated_test_case_lists/General_unmanaged-4KTXOLD/">
+<span class="md-ellipsis">
+    4K TX Old Board
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../automation/Seperated_test_case_lists/General_unmanaged-PETXDH/">
+<span class="md-ellipsis">
+    PE DH TX
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../automation/Seperated_test_case_lists/General_unmanaged-SETXDH/">
+<span class="md-ellipsis">
+    SE DH TX
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../automation/Seperated_test_case_lists/General_unmanaged-ZeroUTXSH/">
+<span class="md-ellipsis">
+    ZeroU TX
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../automation/Seperated_test_case_lists/General_unmanaged-SEDPSHTX/">
+<span class="md-ellipsis">
+    SE DP SH TX
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../automation/Seperated_test_case_lists/General_unmanaged-PEDPSHTX/">
+<span class="md-ellipsis">
+    PE DP SH TX
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../automation/Seperated_test_case_lists/General_unmanaged-PEDPTXDH/">
+<span class="md-ellipsis">
+    PE DP DH TX
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../automation/Seperated_test_case_lists/General_unmanaged-4KTX/">
+<span class="md-ellipsis">
+    4K TX
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../automation/Seperated_test_case_lists/General_unmanaged-SEDVITXSH/">
+<span class="md-ellipsis">
+    SE DVI SH TX
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../automation/Seperated_test_case_lists/General_unmanaged-PETXSHDVI/">
+<span class="md-ellipsis">
+    PE DVI SH TX
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../automation/Seperated_test_case_lists/General_unmanaged-PEDVIDHTX/">
+<span class="md-ellipsis">
+    PE DVI DH TX
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../automation/Seperated_test_case_lists/General_unmanaged-4KTXNEW/">
+<span class="md-ellipsis">
+    4K TX NEW Board
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../automation/Seperated_test_case_lists/Unmanaged_OSD_Interop/">
+<span class="md-ellipsis">
+    Unmanaged OSD Interop
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../automation/Seperated_test_case_lists/Unmanaged_Connection_Performance/">
+<span class="md-ellipsis">
+    Unmanaged Connection Performance
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../automation/Seperated_test_case_lists/Interop_Connection_UnManaged/">
+<span class="md-ellipsis">
+    Interop Connection UnManaged
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../automation/Seperated_test_case_lists/references/">
+<span class="md-ellipsis">
+    References
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../automation/source_pc/">
+<span class="md-ellipsis">
+    Source PC Automation
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../automation/appliance_automation_hooks/">
+<span class="md-ellipsis">
+    Appliance Hooks
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../automation/audio/">
+<span class="md-ellipsis">
+    Audio
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../automation/test_equipment/">
+<span class="md-ellipsis">
+    Test Equipment Setup
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../automation/usb/">
+<span class="md-ellipsis">
+    USB
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_18" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_18" id="__nav_6_18_label" tabindex="">
+<span class="md-ellipsis">
+    Guides
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_18_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_18">
+<span class="md-nav__icon md-icon"></span>
+            Guides
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../automation/guides/troubleshooting/">
+<span class="md-ellipsis">
+    Troubleshooting
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../automation/guides/config_files/">
+<span class="md-ellipsis">
+    Configuration
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+<span class="md-ellipsis">
+    Features
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_7_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_7">
+<span class="md-nav__icon md-icon"></span>
+            Features
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../features/summary/">
+<span class="md-ellipsis">
+    Summary
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../features/status/">
+<span class="md-ellipsis">
+    Status
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../features/feature_proposal_document_template/">
+<span class="md-ellipsis">
+    Feature Proposal Template
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../features/toolchain_upgrade/">
+<span class="md-ellipsis">
+    Toolchain Upgrade
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../features/opal/opal/">
+<span class="md-ellipsis">
+    Opal
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../features/push_and_get/">
+<span class="md-ellipsis">
+    Push and Get
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../features/interoperability/">
+<span class="md-ellipsis">
+    Interoperability
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../features/ssh_disable/">
+<span class="md-ellipsis">
+    SSH Disable
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../features/sdkvm/sdkvm/">
+<span class="md-ellipsis">
+    Software Defined KVM
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../features/slide_and_glide/">
+<span class="md-ellipsis">
+    Slide and Glide
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../features/realtime_status/">
+<span class="md-ellipsis">
+    Real Time Status
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../features/downgrade_backwards_compatibility/">
+<span class="md-ellipsis">
+    Backwards Compatibility
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../features/all_settings_configurable_via_boxilla/">
+<span class="md-ellipsis">
+    Boxilla Configuration for all settings
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../features/4K30/">
+<span class="md-ellipsis">
+    4K 30
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../features/4KOver1Gig/4Kover1Gig/">
+<span class="md-ellipsis">
+    4K Over 1 Gig
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../features/cloudflare/">
+<span class="md-ellipsis">
+    CloudFlare
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../features/planning/">
+<span class="md-ellipsis">
+    Planning
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../features/Splashscreen_proposal/">
+<span class="md-ellipsis">
+    Splashscreen
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+<span class="md-ellipsis">
+    Process
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_8_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_8">
+<span class="md-nav__icon md-icon"></span>
+            Process
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../process/process/">
+<span class="md-ellipsis">
+    process
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+<span class="md-ellipsis">
+    Release Notes
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_9_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_9">
+<span class="md-nav__icon md-icon"></span>
+            Release Notes
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../summary/">
+<span class="md-ellipsis">
+    Summary
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../V6_6_71_RELEASE_NOTES/">
+<span class="md-ellipsis">
+    V6.6.71
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../V6_6_1_RELEASE_NOTES/">
+<span class="md-ellipsis">
+    V6.6.1
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    V6.7.0
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    V6.7.0
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#670_r11627-rc6-20231013">1.1 
+    6.7.0_r11627 RC6  2023/10/13
+  </a>
+<nav aria-label="6.7.0_r11627 RC6 2023/10/13" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#new-functionality-addedupdated">1.1.1 
+    New functionality added/updated
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#known-issues-in-this-release">1.1.2 
+    Known Issues in this Release
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#restrictions">1.1.3 
+    Restrictions
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#minimum-test">1.1.4 
+    Minimum test
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#issues-resolved-in-this-release">1.1.5 
+    Issues resolved in this Release
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fpga-versions-in-this-release">1.1.6 
+    FPGA Versions in this release
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#670_r11622-rc5-20231010">1.2 
+    6.7.0_r11622 RC5  2023/10/10
+  </a>
+<nav aria-label="6.7.0_r11622 RC5 2023/10/10" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#new-functionality-addedupdated_1">1.2.1 
+    New functionality added/updated
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#known-issues-in-this-release_1">1.2.2 
+    Known Issues in this Release
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#restrictions_1">1.2.3 
+    Restrictions
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#minimum-test_1">1.2.4 
+    Minimum test
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#issues-resolved-in-this-release_1">1.2.5 
+    Issues resolved in this Release
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fpga-versions-in-this-release_1">1.2.6 
+    FPGA Versions in this release
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#670_r11587-rc4-20230929">1.3 
+    6.7.0_r11587 RC4 2023/09/29
+  </a>
+<nav aria-label="6.7.0_r11587 RC4 2023/09/29" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#new-functionality-addedupdated_2">1.3.1 
+    New functionality added/updated
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#known-issues-in-this-release_2">1.3.2 
+    Known Issues in this Release
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#restrictions_2">1.3.3 
+    Restrictions
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#minimum-test_2">1.3.4 
+    Minimum test
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#issues-resolved-in-this-release_2">1.3.5 
+    Issues resolved in this Release
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fpga-versions-in-this-release_2">1.3.6 
+    FPGA Versions in this release
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#670_r11531-rc3-20230918">1.4 
+    6.7.0_r11531 RC3 2023/09/18
+  </a>
+<nav aria-label="6.7.0_r11531 RC3 2023/09/18" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#new-functionality-addedupdated_3">1.4.1 
+    New functionality added/updated
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#known-issues-in-this-release_3">1.4.2 
+    Known Issues in this Release
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#restrictions_3">1.4.3 
+    Restrictions
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#issues-resolved-in-this-release_3">1.4.4 
+    Issues resolved in this Release
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fpga-versions-in-this-release_3">1.4.5 
+    FPGA Versions in this release
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../V6_6_70_RELEASE_NOTES/">
+<span class="md-ellipsis">
+    V6.6.70
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../V6_6_0_RELEASE_NOTES/">
+<span class="md-ellipsis">
+    V6.6.0
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../V6_5_0_RELEASE_NOTES/">
+<span class="md-ellipsis">
+    V6.5.0
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../V6_4_0_RELEASE_NOTES/">
+<span class="md-ellipsis">
+    V6.4.0
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../V6_3_10_RELEASE_NOTES/">
+<span class="md-ellipsis">
+    V6.3.10
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#670_r11627-rc6-20231013">1.1 
+    6.7.0_r11627 RC6  2023/10/13
+  </a>
+<nav aria-label="6.7.0_r11627 RC6 2023/10/13" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#new-functionality-addedupdated">1.1.1 
+    New functionality added/updated
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#known-issues-in-this-release">1.1.2 
+    Known Issues in this Release
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#restrictions">1.1.3 
+    Restrictions
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#minimum-test">1.1.4 
+    Minimum test
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#issues-resolved-in-this-release">1.1.5 
+    Issues resolved in this Release
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fpga-versions-in-this-release">1.1.6 
+    FPGA Versions in this release
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#670_r11622-rc5-20231010">1.2 
+    6.7.0_r11622 RC5  2023/10/10
+  </a>
+<nav aria-label="6.7.0_r11622 RC5 2023/10/10" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#new-functionality-addedupdated_1">1.2.1 
+    New functionality added/updated
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#known-issues-in-this-release_1">1.2.2 
+    Known Issues in this Release
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#restrictions_1">1.2.3 
+    Restrictions
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#minimum-test_1">1.2.4 
+    Minimum test
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#issues-resolved-in-this-release_1">1.2.5 
+    Issues resolved in this Release
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fpga-versions-in-this-release_1">1.2.6 
+    FPGA Versions in this release
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#670_r11587-rc4-20230929">1.3 
+    6.7.0_r11587 RC4 2023/09/29
+  </a>
+<nav aria-label="6.7.0_r11587 RC4 2023/09/29" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#new-functionality-addedupdated_2">1.3.1 
+    New functionality added/updated
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#known-issues-in-this-release_2">1.3.2 
+    Known Issues in this Release
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#restrictions_2">1.3.3 
+    Restrictions
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#minimum-test_2">1.3.4 
+    Minimum test
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#issues-resolved-in-this-release_2">1.3.5 
+    Issues resolved in this Release
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fpga-versions-in-this-release_2">1.3.6 
+    FPGA Versions in this release
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#670_r11531-rc3-20230918">1.4 
+    6.7.0_r11531 RC3 2023/09/18
+  </a>
+<nav aria-label="6.7.0_r11531 RC3 2023/09/18" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#new-functionality-addedupdated_3">1.4.1 
+    New functionality added/updated
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#known-issues-in-this-release_3">1.4.2 
+    Known Issues in this Release
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#restrictions_3">1.4.3 
+    Restrictions
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#issues-resolved-in-this-release_3">1.4.4 
+    Issues resolved in this Release
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fpga-versions-in-this-release_3">1.4.5 
+    FPGA Versions in this release
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="release-name-text"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.</span> Release Name Text</h1>
+<h2 id="670_r11627-rc6-20231013"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.1</span> 6.7.0_r11627 RC6  2023/10/13</h2>
+<p>This release is available in \10.211.128.208\tftpboot\work\Emerald_Releases</p>
+<p>Source branch: development_se_p2</p>
+<h3 id="new-functionality-addedupdated"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.1.1</span> New functionality added/updated</h3>
+<ul>
+<li>N/A</li>
+</ul>
+<h3 id="known-issues-in-this-release"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.1.2</span> Known Issues in this Release</h3>
+<ul>
+<li>N/A</li>
+</ul>
+<h3 id="restrictions"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.1.3</span> Restrictions</h3>
+<ul>
+<li>N/A</li>
+</ul>
+<h3 id="minimum-test"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.1.4</span> Minimum test</h3>
+<ul>
+<li>BUG-6172/6157/6154/6153/6161 - Test that the system functions without a monitor connected to the RX (Set the OSD Resolution to a non-auto value) (Use REST commands etc)</li>
+<li>BUG-6171 - Test VM connections for all RX types</li>
+</ul>
+<h3 id="issues-resolved-in-this-release"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.1.5</span> Issues resolved in this Release</h3>
+<table>
+<thead>
+<tr>
+<th><strong><em>Key</em></strong></th>
+<th><strong><em>Summary</em></strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-6172">BUG-6172</a></td>
+<td>6.7.0 : Unable to make a shared connection.</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-6171">BUG-6171</a></td>
+<td>Corrupted screen displayed for VM connection on 6.7.0 (RC3&gt;RC5)</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-6157">BUG-6157</a></td>
+<td>Boxilla 4.8.0: Global Settings are not updated for 4K devices in the CloudDataA.xml.</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-6154">BUG-6154</a></td>
+<td>Boxilla-4.8.0:NBR-API Failure: Unable to get the device alert through the API</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-6153">BUG-6153</a></td>
+<td>Boxilla-4.8.0: "Failed to activate source" error message appears while launching the 4K connection.</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-6161">BUG-6161</a></td>
+<td>Boxilla-4.8.0:NBR API Failure: The user is unable to login through the API.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="fpga-versions-in-this-release"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.1.6</span> FPGA Versions in this release</h3>
+<table>
+<thead>
+<tr>
+<th>Datecode</th>
+<th>PCode</th>
+<th>SVN_REV</th>
+<th>TNK_ID</th>
+<th>AVAE_ID</th>
+<th>USB_IP</th>
+<th>svn_status</th>
+<th>md5sum</th>
+<th>HDF_Path</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>230620</td>
+<td>a1</td>
+<td>38</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>cc61189425848a5750df4244795866a8</td>
+<td>emeraldse/encoder/single/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>a1</td>
+<td>38</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>cc61189425848a5750df4244795866a8</td>
+<td>[/FPGA_bit_files/]Emerald_SE_Encoder_230620_r38_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>21</td>
+<td>40</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>348350115dc0eb3c03cf140e878e69d7</td>
+<td>emeraldse/decoder/single/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>21</td>
+<td>40</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>348350115dc0eb3c03cf140e878e69d7</td>
+<td>[/FPGA_bit_files/]Emerald_SE_Decoder_230620_r40_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>a9</td>
+<td>39</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>aac90d856f2bf5c2587f694b554f893a</td>
+<td>emeraldse/encoder/dual/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>a9</td>
+<td>39</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>aac90d856f2bf5c2587f694b554f893a</td>
+<td>[/FPGA_bit_files/]Emerald_SE_Encoder_DH_230620_r39_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>29</td>
+<td>41</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>acdff08db68c65dd507c7c8d3df4bcb5</td>
+<td>emeraldse/decoder/dual/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>29</td>
+<td>41</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>acdff08db68c65dd507c7c8d3df4bcb5</td>
+<td>[/FPGA_bit_files/]Emerald_SE_Decoder_DH_230620_r41_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>91</td>
+<td>52</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>cb4c007b9f6bb180fb09025863ae1ce5</td>
+<td>zerou/encoder/single/dvi/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>91</td>
+<td>52</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>cb4c007b9f6bb180fb09025863ae1ce5</td>
+<td>[/FPGA_bit_files/]Emerald_Zero_U_Encoder_230620_r52_tnk_r1214_avae_r312_dvi_r107.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>C9</td>
+<td>57</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>d1b1f8ddf86ef643b27c49168ec6e277</td>
+<td>zerou/encoder/single/dp/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>C9</td>
+<td>57</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>d1b1f8ddf86ef643b27c49168ec6e277</td>
+<td>[/FPGA_bit_files/]Emerald_Zero_U_DP_Encoder_230620_r57_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>b9</td>
+<td>54</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>84aa7d5d1a770bf671e443e09a114c05</td>
+<td>emeraldpe/encoder/dual/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>b9</td>
+<td>54</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>84aa7d5d1a770bf671e443e09a114c05</td>
+<td>[/FPGA_bit_files/]Emerald_2K_Encoder_230620_r54_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>39</td>
+<td>53</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>aae9bc461076b78fd360775bc87c0801</td>
+<td>emeraldpe/decoder/dual/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>39</td>
+<td>53</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>aae9bc461076b78fd360775bc87c0801</td>
+<td>[/FPGA_bit_files/]Emerald_2K_Decoder_230620_r53_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>c1</td>
+<td>55</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>595c950cbca29280a075dfa1296027c3</td>
+<td>emeraldpe/encoder/single/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>c1</td>
+<td>55</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>595c950cbca29280a075dfa1296027c3</td>
+<td>[/FPGA_bit_files/]Emerald_2K_SH_Encoder_230620_r55_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>41</td>
+<td>56</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>8ce05bdf03c9cbf90917e99b592c5e29</td>
+<td>emeraldpe/decoder/single/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>41</td>
+<td>56</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>8ce05bdf03c9cbf90917e99b592c5e29</td>
+<td>[/FPGA_bit_files/]Emerald_2K_SH_Decoder_230620_r56_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>19</td>
+<td>9999</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>19015afa48dbb008cc3b6c7db1e118d2</td>
+<td>boot/hdf/Emerald_Decoder_ph2_wrapper.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>19</td>
+<td>9999</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>19015afa48dbb008cc3b6c7db1e118d2</td>
+<td>[/FPGA_bit_files/]Emerald_2K_4K_Decoder_230620_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>99</td>
+<td>9999</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>d7e1e3dd46d166163245322a3a025d4c</td>
+<td>boot/hdf/Emerald_Encoder_Basic_wrapper.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>99</td>
+<td>9999</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>d7e1e3dd46d166163245322a3a025d4c</td>
+<td>[/FPGA_bit_files/]Emerald_2K_4K_Encoder_230620_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>F1</td>
+<td>9999</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>5b28a143bfad103190d18805c94ac7dd</td>
+<td>boot/hdf/Emerald_Encoder_Basic_Artix_wrapper.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>F1</td>
+<td>9999</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>5b28a143bfad103190d18805c94ac7dd</td>
+<td>[/FPGA_bit_files/]Emerald_2K_4K_Artix_Encoder_230620_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>e1</td>
+<td>60</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>a8ef24fd9c89ebb6285e1fd3dd7a4563</td>
+<td>emerald2k/encoder/EMDPEDP/single/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>e1</td>
+<td>60</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>a8ef24fd9c89ebb6285e1fd3dd7a4563</td>
+<td>[/FPGA_bit_files/]Emerald_2K_DP_SH_Encoder_230620_r60_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>d1</td>
+<td>58</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>c02994f99af2e34d2ae01f5cd667047e</td>
+<td>emerald2k/encoder/EMDPEDP/dual/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>d1</td>
+<td>58</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>c02994f99af2e34d2ae01f5cd667047e</td>
+<td>[/FPGA_bit_files/]Emerald_2K_DP_Encoder_230620_r58_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230725</td>
+<td>59</td>
+<td>65</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>45023394322af1e6c3db74b75dbe28b2</td>
+<td>emerald2k/decoder/EMDSEDP/single/system.hdf</td>
+</tr>
+<tr>
+<td>230725</td>
+<td>59</td>
+<td>65</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>45023394322af1e6c3db74b75dbe28b2</td>
+<td>[/FPGA_bit_files/]Emerald_SE_DP_Decoder_230725_r65_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230823</td>
+<td>d9</td>
+<td>59</td>
+<td>1214</td>
+<td>312</td>
+<td>0x7b</td>
+<td></td>
+<td>25f44cc4fdafbba2bb2a4d9f66655649</td>
+<td>emerald2k/encoder/EMDSEDP/single/system.hdf</td>
+</tr>
+<tr>
+<td>230823</td>
+<td>d9</td>
+<td>59</td>
+<td>1214</td>
+<td>312</td>
+<td>0x7b</td>
+<td></td>
+<td>25f44cc4fdafbba2bb2a4d9f66655649</td>
+<td>[/FPGA_bit_files/]Emerald_SE_DP_Encoder_230823_r59_tnk_r1214_avae_r312_usb_r7b.sdk</td>
+</tr>
+<tr>
+<td>230629</td>
+<td>e9</td>
+<td>61</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>e733093ef5f3a44bc9d1a22f27aead6d</td>
+<td>emerald2k/encoder/EMDSEDP/dual/system.hdf</td>
+</tr>
+<tr>
+<td>230629</td>
+<td>e9</td>
+<td>61</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>e733093ef5f3a44bc9d1a22f27aead6d</td>
+<td>[/FPGA_bit_files/]Emerald_SE_DP_Encoder_DH_230629_r61_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230823</td>
+<td>00</td>
+<td></td>
+<td></td>
+<td></td>
+<td>0x7b</td>
+<td></td>
+<td>573158f7e0adb637ff1c3c2b6438c52d</td>
+<td>emerald2k/encoder/artix_image/artix_fpga.bin</td>
+</tr>
+<tr>
+<td>230823</td>
+<td>00</td>
+<td></td>
+<td></td>
+<td></td>
+<td>0x7b</td>
+<td></td>
+<td>573158f7e0adb637ff1c3c2b6438c52d</td>
+<td>[/FPGA_bit_files/]Artix2K_Encoder_230823_USB_r7b.sdk</td>
+</tr>
+<tr>
+<td>230823</td>
+<td>00</td>
+<td></td>
+<td></td>
+<td></td>
+<td>0x7b</td>
+<td></td>
+<td>ef2c2ffd3d33060e2144874ce54e10b2</td>
+<td>boot/hdf/artix_fpga.bin</td>
+</tr>
+<tr>
+<td>230823</td>
+<td>00</td>
+<td></td>
+<td></td>
+<td></td>
+<td>0x7b</td>
+<td></td>
+<td>ef2c2ffd3d33060e2144874ce54e10b2</td>
+<td>[/FPGA_bit_files/]Artix4K_Encoder_230823_USB_r7b.sdk</td>
+</tr>
+<tr>
+<td>230823</td>
+<td>f9</td>
+<td>63</td>
+<td>1214</td>
+<td>312</td>
+<td>0x7b</td>
+<td></td>
+<td>e7c0fcdb100061519ec858b122aa14df</td>
+<td>emerald2k/encoder/EMDSER2/single/system.hdf</td>
+</tr>
+<tr>
+<td>230823</td>
+<td>f9</td>
+<td>63</td>
+<td>1214</td>
+<td>312</td>
+<td>0x7b</td>
+<td></td>
+<td>e7c0fcdb100061519ec858b122aa14df</td>
+<td>[/FPGA_bit_files/]Emerald_SE_INTUSB_Encoder_230823_r63_tnk_r1214_avae_r312_usb_r7b.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>181</td>
+<td>62</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>a3da8be37610ff186cd5867bdca4fdd8</td>
+<td>emerald2k/encoder/EMDPER2/single/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>181</td>
+<td>62</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>a3da8be37610ff186cd5867bdca4fdd8</td>
+<td>[/FPGA_bit_files/]Emerald_2K_ARTIX_SH_Encoder_230620_r62_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>189</td>
+<td>64</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>51aba9836aee87a34fa896caf4e29fd8</td>
+<td>emerald2k/encoder/EMDPER2/dual/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>189</td>
+<td>64</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>51aba9836aee87a34fa896caf4e29fd8</td>
+<td>[/FPGA_bit_files/]Emerald_2K_ARTIX_Encoder_230620_r64_tnk_r1214_avae_r312.sdk</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="670_r11622-rc5-20231010"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2</span> 6.7.0_r11622 RC5  2023/10/10</h2>
+<p>This release is available in \10.211.128.208\tftpboot\work\Emerald_Releases</p>
+<p>Source branch: development_se_p2</p>
+<h3 id="new-functionality-addedupdated_1"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2.1</span> New functionality added/updated</h3>
+<ul>
+<li>N/A</li>
+</ul>
+<h3 id="known-issues-in-this-release_1"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2.2</span> Known Issues in this Release</h3>
+<ul>
+<li>N/A</li>
+</ul>
+<h3 id="restrictions_1"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2.3</span> Restrictions</h3>
+<ul>
+<li>N/A</li>
+</ul>
+<h3 id="minimum-test_1"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2.4</span> Minimum test</h3>
+<ul>
+<li>BUG-6143/6141/6099 - Hold down windows key and drag with mouse to see if the OSD can be moved (at the OSD and in a connection)</li>
+<li>BUG-6149 - validate as per bug description</li>
+<li>BUG-6163 - Engineering issue - No specific testing required.</li>
+</ul>
+<h3 id="issues-resolved-in-this-release_1"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2.5</span> Issues resolved in this Release</h3>
+<table>
+<thead>
+<tr>
+<th><strong><em>Key</em></strong></th>
+<th><strong><em>Summary</em></strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-6163">BUG-6163</a></td>
+<td>Non Errors being logged as errors in Syslog</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-6149">BUG-6149</a></td>
+<td>6.7.0 Cannot switch from a private/shared connection to a bonded connection (with same private/shared connection) using favorites key on a receiver.</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-6143">BUG-6143</a></td>
+<td>Unresponsive OSD with mis-aligned mouse, on SE RX with 6.6.1</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-6141">BUG-6141</a></td>
+<td>Panoptimo- Unresponsive OSD menus with mis-aligned mouse after connection exit on 2k SEDH devices</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-6099">BUG-6099</a></td>
+<td>Panoptimo- corrupted OSD after upgrade 2k devices  from 6.5.0 to 6.6.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="fpga-versions-in-this-release_1"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2.6</span> FPGA Versions in this release</h3>
+<table>
+<thead>
+<tr>
+<th>Datecode</th>
+<th>PCode</th>
+<th>SVN_REV</th>
+<th>TNK_ID</th>
+<th>AVAE_ID</th>
+<th>USB_IP</th>
+<th>svn_status</th>
+<th>md5sum</th>
+<th>HDF_Path</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>230620</td>
+<td>a1</td>
+<td>38</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>cc61189425848a5750df4244795866a8</td>
+<td>emeraldse/encoder/single/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>a1</td>
+<td>38</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>cc61189425848a5750df4244795866a8</td>
+<td>[/FPGA_bit_files/]Emerald_SE_Encoder_230620_r38_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>21</td>
+<td>40</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>348350115dc0eb3c03cf140e878e69d7</td>
+<td>emeraldse/decoder/single/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>21</td>
+<td>40</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>348350115dc0eb3c03cf140e878e69d7</td>
+<td>[/FPGA_bit_files/]Emerald_SE_Decoder_230620_r40_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>a9</td>
+<td>39</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>aac90d856f2bf5c2587f694b554f893a</td>
+<td>emeraldse/encoder/dual/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>a9</td>
+<td>39</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>aac90d856f2bf5c2587f694b554f893a</td>
+<td>[/FPGA_bit_files/]Emerald_SE_Encoder_DH_230620_r39_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>29</td>
+<td>41</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>acdff08db68c65dd507c7c8d3df4bcb5</td>
+<td>emeraldse/decoder/dual/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>29</td>
+<td>41</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>acdff08db68c65dd507c7c8d3df4bcb5</td>
+<td>[/FPGA_bit_files/]Emerald_SE_Decoder_DH_230620_r41_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>91</td>
+<td>52</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>cb4c007b9f6bb180fb09025863ae1ce5</td>
+<td>zerou/encoder/single/dvi/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>91</td>
+<td>52</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>cb4c007b9f6bb180fb09025863ae1ce5</td>
+<td>[/FPGA_bit_files/]Emerald_Zero_U_Encoder_230620_r52_tnk_r1214_avae_r312_dvi_r107.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>C9</td>
+<td>57</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>d1b1f8ddf86ef643b27c49168ec6e277</td>
+<td>zerou/encoder/single/dp/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>C9</td>
+<td>57</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>d1b1f8ddf86ef643b27c49168ec6e277</td>
+<td>[/FPGA_bit_files/]Emerald_Zero_U_DP_Encoder_230620_r57_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>b9</td>
+<td>54</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>84aa7d5d1a770bf671e443e09a114c05</td>
+<td>emeraldpe/encoder/dual/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>b9</td>
+<td>54</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>84aa7d5d1a770bf671e443e09a114c05</td>
+<td>[/FPGA_bit_files/]Emerald_2K_Encoder_230620_r54_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>39</td>
+<td>53</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>aae9bc461076b78fd360775bc87c0801</td>
+<td>emeraldpe/decoder/dual/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>39</td>
+<td>53</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>aae9bc461076b78fd360775bc87c0801</td>
+<td>[/FPGA_bit_files/]Emerald_2K_Decoder_230620_r53_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>c1</td>
+<td>55</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>595c950cbca29280a075dfa1296027c3</td>
+<td>emeraldpe/encoder/single/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>c1</td>
+<td>55</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>595c950cbca29280a075dfa1296027c3</td>
+<td>[/FPGA_bit_files/]Emerald_2K_SH_Encoder_230620_r55_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>41</td>
+<td>56</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>8ce05bdf03c9cbf90917e99b592c5e29</td>
+<td>emeraldpe/decoder/single/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>41</td>
+<td>56</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>8ce05bdf03c9cbf90917e99b592c5e29</td>
+<td>[/FPGA_bit_files/]Emerald_2K_SH_Decoder_230620_r56_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>19</td>
+<td>9999</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>19015afa48dbb008cc3b6c7db1e118d2</td>
+<td>boot/hdf/Emerald_Decoder_ph2_wrapper.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>19</td>
+<td>9999</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>19015afa48dbb008cc3b6c7db1e118d2</td>
+<td>[/FPGA_bit_files/]Emerald_2K_4K_Decoder_230620_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>99</td>
+<td>9999</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>d7e1e3dd46d166163245322a3a025d4c</td>
+<td>boot/hdf/Emerald_Encoder_Basic_wrapper.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>99</td>
+<td>9999</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>d7e1e3dd46d166163245322a3a025d4c</td>
+<td>[/FPGA_bit_files/]Emerald_2K_4K_Encoder_230620_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>F1</td>
+<td>9999</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>5b28a143bfad103190d18805c94ac7dd</td>
+<td>boot/hdf/Emerald_Encoder_Basic_Artix_wrapper.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>F1</td>
+<td>9999</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>5b28a143bfad103190d18805c94ac7dd</td>
+<td>[/FPGA_bit_files/]Emerald_2K_4K_Artix_Encoder_230620_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>e1</td>
+<td>60</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>a8ef24fd9c89ebb6285e1fd3dd7a4563</td>
+<td>emerald2k/encoder/EMDPEDP/single/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>e1</td>
+<td>60</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>a8ef24fd9c89ebb6285e1fd3dd7a4563</td>
+<td>[/FPGA_bit_files/]Emerald_2K_DP_SH_Encoder_230620_r60_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>d1</td>
+<td>58</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>c02994f99af2e34d2ae01f5cd667047e</td>
+<td>emerald2k/encoder/EMDPEDP/dual/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>d1</td>
+<td>58</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>c02994f99af2e34d2ae01f5cd667047e</td>
+<td>[/FPGA_bit_files/]Emerald_2K_DP_Encoder_230620_r58_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230725</td>
+<td>59</td>
+<td>65</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>45023394322af1e6c3db74b75dbe28b2</td>
+<td>emerald2k/decoder/EMDSEDP/single/system.hdf</td>
+</tr>
+<tr>
+<td>230725</td>
+<td>59</td>
+<td>65</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>45023394322af1e6c3db74b75dbe28b2</td>
+<td>[/FPGA_bit_files/]Emerald_SE_DP_Decoder_230725_r65_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230823</td>
+<td>d9</td>
+<td>59</td>
+<td>1214</td>
+<td>312</td>
+<td>0x7b</td>
+<td></td>
+<td>25f44cc4fdafbba2bb2a4d9f66655649</td>
+<td>emerald2k/encoder/EMDSEDP/single/system.hdf</td>
+</tr>
+<tr>
+<td>230823</td>
+<td>d9</td>
+<td>59</td>
+<td>1214</td>
+<td>312</td>
+<td>0x7b</td>
+<td></td>
+<td>25f44cc4fdafbba2bb2a4d9f66655649</td>
+<td>[/FPGA_bit_files/]Emerald_SE_DP_Encoder_230823_r59_tnk_r1214_avae_r312_usb_r7b.sdk</td>
+</tr>
+<tr>
+<td>230629</td>
+<td>e9</td>
+<td>61</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>e733093ef5f3a44bc9d1a22f27aead6d</td>
+<td>emerald2k/encoder/EMDSEDP/dual/system.hdf</td>
+</tr>
+<tr>
+<td>230629</td>
+<td>e9</td>
+<td>61</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>e733093ef5f3a44bc9d1a22f27aead6d</td>
+<td>[/FPGA_bit_files/]Emerald_SE_DP_Encoder_DH_230629_r61_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230823</td>
+<td>00</td>
+<td></td>
+<td></td>
+<td></td>
+<td>0x7b</td>
+<td></td>
+<td>573158f7e0adb637ff1c3c2b6438c52d</td>
+<td>emerald2k/encoder/artix_image/artix_fpga.bin</td>
+</tr>
+<tr>
+<td>230823</td>
+<td>00</td>
+<td></td>
+<td></td>
+<td></td>
+<td>0x7b</td>
+<td></td>
+<td>573158f7e0adb637ff1c3c2b6438c52d</td>
+<td>[/FPGA_bit_files/]Artix2K_Encoder_230823_USB_r7b.sdk</td>
+</tr>
+<tr>
+<td>230823</td>
+<td>00</td>
+<td></td>
+<td></td>
+<td></td>
+<td>0x7b</td>
+<td></td>
+<td>ef2c2ffd3d33060e2144874ce54e10b2</td>
+<td>boot/hdf/artix_fpga.bin</td>
+</tr>
+<tr>
+<td>230823</td>
+<td>00</td>
+<td></td>
+<td></td>
+<td></td>
+<td>0x7b</td>
+<td></td>
+<td>ef2c2ffd3d33060e2144874ce54e10b2</td>
+<td>[/FPGA_bit_files/]Artix4K_Encoder_230823_USB_r7b.sdk</td>
+</tr>
+<tr>
+<td>230823</td>
+<td>f9</td>
+<td>63</td>
+<td>1214</td>
+<td>312</td>
+<td>0x7b</td>
+<td></td>
+<td>e7c0fcdb100061519ec858b122aa14df</td>
+<td>emerald2k/encoder/EMDSER2/single/system.hdf</td>
+</tr>
+<tr>
+<td>230823</td>
+<td>f9</td>
+<td>63</td>
+<td>1214</td>
+<td>312</td>
+<td>0x7b</td>
+<td></td>
+<td>e7c0fcdb100061519ec858b122aa14df</td>
+<td>[/FPGA_bit_files/]Emerald_SE_INTUSB_Encoder_230823_r63_tnk_r1214_avae_r312_usb_r7b.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>181</td>
+<td>62</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>a3da8be37610ff186cd5867bdca4fdd8</td>
+<td>emerald2k/encoder/EMDPER2/single/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>181</td>
+<td>62</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>a3da8be37610ff186cd5867bdca4fdd8</td>
+<td>[/FPGA_bit_files/]Emerald_2K_ARTIX_SH_Encoder_230620_r62_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>189</td>
+<td>64</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>51aba9836aee87a34fa896caf4e29fd8</td>
+<td>emerald2k/encoder/EMDPER2/dual/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>189</td>
+<td>64</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>51aba9836aee87a34fa896caf4e29fd8</td>
+<td>[/FPGA_bit_files/]Emerald_2K_ARTIX_Encoder_230620_r64_tnk_r1214_avae_r312.sdk</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="670_r11587-rc4-20230929"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.3</span> 6.7.0_r11587 RC4 2023/09/29</h2>
+<p>This release is available in \10.211.128.208\tftpboot\work\Emerald_Releases</p>
+<p>Source branch: development_se_p2</p>
+<h3 id="new-functionality-addedupdated_2"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.3.1</span> New functionality added/updated</h3>
+<ul>
+<li>N/A</li>
+</ul>
+<h3 id="known-issues-in-this-release_2"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.3.2</span> Known Issues in this Release</h3>
+<ul>
+<li>N/A</li>
+</ul>
+<h3 id="restrictions_2"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.3.3</span> Restrictions</h3>
+<ul>
+<li>N/A</li>
+</ul>
+<h3 id="minimum-test_2"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.3.4</span> Minimum test</h3>
+<ul>
+<li>BUG-6118: Make/Break/SwitchPrev/SwitchFavourite Connections - 4K/2K required.</li>
+<li>BUG-6108: Test mouse movement between OSDs on multiple RXs is fluid</li>
+<li>BUG-6085: Check bug for details on what/how to test</li>
+<li>BUG-6061: See bug for details</li>
+<li>BUG-5037: See bug for details</li>
+</ul>
+<h3 id="issues-resolved-in-this-release_2"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.3.5</span> Issues resolved in this Release</h3>
+<table>
+<thead>
+<tr>
+<th><strong><em>Key</em></strong></th>
+<th><strong><em>Summary</em></strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-6118">BUG-6118</a></td>
+<td>6.6.7 - Corrupted background displayed  when the user switching to the previous connection on  4k</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-6108">BUG-6108</a></td>
+<td>6.7.0: RX OSD does not support full movement of mouse with Freedom Glide and Switch in line</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-6085">BUG-6085</a></td>
+<td>Connection status reported active connections with 'Boxilla' other than logged in user</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-6061">BUG-6061</a></td>
+<td>6.7.0: Extended shared soak with ZeroU-DP experienced a black screen for ~2 1/2 hours</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-5037">BUG-5037</a></td>
+<td>Enhancement request - To review and modify Alerts syslog -very confusing to the end user</td>
+</tr>
+</tbody>
+</table>
+<h3 id="fpga-versions-in-this-release_2"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.3.6</span> FPGA Versions in this release</h3>
+<table>
+<thead>
+<tr>
+<th>Datecode</th>
+<th>PCode</th>
+<th>SVN_REV</th>
+<th>TNK_ID</th>
+<th>AVAE_ID</th>
+<th>USB_IP</th>
+<th>svn_status</th>
+<th>md5sum</th>
+<th>HDF_Path</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>230620</td>
+<td>a1</td>
+<td>38</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>cc61189425848a5750df4244795866a8</td>
+<td>emeraldse/encoder/single/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>a1</td>
+<td>38</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>cc61189425848a5750df4244795866a8</td>
+<td>[/FPGA_bit_files/]Emerald_SE_Encoder_230620_r38_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>21</td>
+<td>40</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>348350115dc0eb3c03cf140e878e69d7</td>
+<td>emeraldse/decoder/single/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>21</td>
+<td>40</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>348350115dc0eb3c03cf140e878e69d7</td>
+<td>[/FPGA_bit_files/]Emerald_SE_Decoder_230620_r40_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>a9</td>
+<td>39</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>aac90d856f2bf5c2587f694b554f893a</td>
+<td>emeraldse/encoder/dual/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>a9</td>
+<td>39</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>aac90d856f2bf5c2587f694b554f893a</td>
+<td>[/FPGA_bit_files/]Emerald_SE_Encoder_DH_230620_r39_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>29</td>
+<td>41</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>acdff08db68c65dd507c7c8d3df4bcb5</td>
+<td>emeraldse/decoder/dual/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>29</td>
+<td>41</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>acdff08db68c65dd507c7c8d3df4bcb5</td>
+<td>[/FPGA_bit_files/]Emerald_SE_Decoder_DH_230620_r41_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>91</td>
+<td>52</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>cb4c007b9f6bb180fb09025863ae1ce5</td>
+<td>zerou/encoder/single/dvi/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>91</td>
+<td>52</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>cb4c007b9f6bb180fb09025863ae1ce5</td>
+<td>[/FPGA_bit_files/]Emerald_Zero_U_Encoder_230620_r52_tnk_r1214_avae_r312_dvi_r107.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>C9</td>
+<td>57</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>d1b1f8ddf86ef643b27c49168ec6e277</td>
+<td>zerou/encoder/single/dp/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>C9</td>
+<td>57</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>d1b1f8ddf86ef643b27c49168ec6e277</td>
+<td>[/FPGA_bit_files/]Emerald_Zero_U_DP_Encoder_230620_r57_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>b9</td>
+<td>54</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>84aa7d5d1a770bf671e443e09a114c05</td>
+<td>emeraldpe/encoder/dual/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>b9</td>
+<td>54</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>84aa7d5d1a770bf671e443e09a114c05</td>
+<td>[/FPGA_bit_files/]Emerald_2K_Encoder_230620_r54_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>39</td>
+<td>53</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>aae9bc461076b78fd360775bc87c0801</td>
+<td>emeraldpe/decoder/dual/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>39</td>
+<td>53</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>aae9bc461076b78fd360775bc87c0801</td>
+<td>[/FPGA_bit_files/]Emerald_2K_Decoder_230620_r53_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>c1</td>
+<td>55</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>595c950cbca29280a075dfa1296027c3</td>
+<td>emeraldpe/encoder/single/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>c1</td>
+<td>55</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>595c950cbca29280a075dfa1296027c3</td>
+<td>[/FPGA_bit_files/]Emerald_2K_SH_Encoder_230620_r55_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>41</td>
+<td>56</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>8ce05bdf03c9cbf90917e99b592c5e29</td>
+<td>emeraldpe/decoder/single/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>41</td>
+<td>56</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>8ce05bdf03c9cbf90917e99b592c5e29</td>
+<td>[/FPGA_bit_files/]Emerald_2K_SH_Decoder_230620_r56_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>19</td>
+<td>9999</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>19015afa48dbb008cc3b6c7db1e118d2</td>
+<td>boot/hdf/Emerald_Decoder_ph2_wrapper.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>19</td>
+<td>9999</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>19015afa48dbb008cc3b6c7db1e118d2</td>
+<td>[/FPGA_bit_files/]Emerald_2K_4K_Decoder_230620_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>99</td>
+<td>9999</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>d7e1e3dd46d166163245322a3a025d4c</td>
+<td>boot/hdf/Emerald_Encoder_Basic_wrapper.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>99</td>
+<td>9999</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>d7e1e3dd46d166163245322a3a025d4c</td>
+<td>[/FPGA_bit_files/]Emerald_2K_4K_Encoder_230620_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>F1</td>
+<td>9999</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>5b28a143bfad103190d18805c94ac7dd</td>
+<td>boot/hdf/Emerald_Encoder_Basic_Artix_wrapper.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>F1</td>
+<td>9999</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>5b28a143bfad103190d18805c94ac7dd</td>
+<td>[/FPGA_bit_files/]Emerald_2K_4K_Artix_Encoder_230620_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>e1</td>
+<td>60</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>a8ef24fd9c89ebb6285e1fd3dd7a4563</td>
+<td>emerald2k/encoder/EMDPEDP/single/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>e1</td>
+<td>60</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>a8ef24fd9c89ebb6285e1fd3dd7a4563</td>
+<td>[/FPGA_bit_files/]Emerald_2K_DP_SH_Encoder_230620_r60_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>d1</td>
+<td>58</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>c02994f99af2e34d2ae01f5cd667047e</td>
+<td>emerald2k/encoder/EMDPEDP/dual/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>d1</td>
+<td>58</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>c02994f99af2e34d2ae01f5cd667047e</td>
+<td>[/FPGA_bit_files/]Emerald_2K_DP_Encoder_230620_r58_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230725</td>
+<td>59</td>
+<td>65</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>45023394322af1e6c3db74b75dbe28b2</td>
+<td>emerald2k/decoder/EMDSEDP/single/system.hdf</td>
+</tr>
+<tr>
+<td>230725</td>
+<td>59</td>
+<td>65</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>45023394322af1e6c3db74b75dbe28b2</td>
+<td>[/FPGA_bit_files/]Emerald_SE_DP_Decoder_230725_r65_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230823</td>
+<td>d9</td>
+<td>59</td>
+<td>1214</td>
+<td>312</td>
+<td>0x7b</td>
+<td></td>
+<td>25f44cc4fdafbba2bb2a4d9f66655649</td>
+<td>emerald2k/encoder/EMDSEDP/single/system.hdf</td>
+</tr>
+<tr>
+<td>230823</td>
+<td>d9</td>
+<td>59</td>
+<td>1214</td>
+<td>312</td>
+<td>0x7b</td>
+<td></td>
+<td>25f44cc4fdafbba2bb2a4d9f66655649</td>
+<td>[/FPGA_bit_files/]Emerald_SE_DP_Encoder_230823_r59_tnk_r1214_avae_r312_usb_r7b.sdk</td>
+</tr>
+<tr>
+<td>230629</td>
+<td>e9</td>
+<td>61</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>e733093ef5f3a44bc9d1a22f27aead6d</td>
+<td>emerald2k/encoder/EMDSEDP/dual/system.hdf</td>
+</tr>
+<tr>
+<td>230629</td>
+<td>e9</td>
+<td>61</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>e733093ef5f3a44bc9d1a22f27aead6d</td>
+<td>[/FPGA_bit_files/]Emerald_SE_DP_Encoder_DH_230629_r61_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230823</td>
+<td>00</td>
+<td></td>
+<td></td>
+<td></td>
+<td>0x7b</td>
+<td></td>
+<td>573158f7e0adb637ff1c3c2b6438c52d</td>
+<td>emerald2k/encoder/artix_image/artix_fpga.bin</td>
+</tr>
+<tr>
+<td>230823</td>
+<td>00</td>
+<td></td>
+<td></td>
+<td></td>
+<td>0x7b</td>
+<td></td>
+<td>573158f7e0adb637ff1c3c2b6438c52d</td>
+<td>[/FPGA_bit_files/]Artix2K_Encoder_230823_USB_r7b.sdk</td>
+</tr>
+<tr>
+<td>230823</td>
+<td>00</td>
+<td></td>
+<td></td>
+<td></td>
+<td>0x7b</td>
+<td></td>
+<td>ef2c2ffd3d33060e2144874ce54e10b2</td>
+<td>boot/hdf/artix_fpga.bin</td>
+</tr>
+<tr>
+<td>230823</td>
+<td>00</td>
+<td></td>
+<td></td>
+<td></td>
+<td>0x7b</td>
+<td></td>
+<td>ef2c2ffd3d33060e2144874ce54e10b2</td>
+<td>[/FPGA_bit_files/]Artix4K_Encoder_230823_USB_r7b.sdk</td>
+</tr>
+<tr>
+<td>230823</td>
+<td>f9</td>
+<td>63</td>
+<td>1214</td>
+<td>312</td>
+<td>0x7b</td>
+<td></td>
+<td>e7c0fcdb100061519ec858b122aa14df</td>
+<td>emerald2k/encoder/EMDSER2/single/system.hdf</td>
+</tr>
+<tr>
+<td>230823</td>
+<td>f9</td>
+<td>63</td>
+<td>1214</td>
+<td>312</td>
+<td>0x7b</td>
+<td></td>
+<td>e7c0fcdb100061519ec858b122aa14df</td>
+<td>[/FPGA_bit_files/]Emerald_SE_INTUSB_Encoder_230823_r63_tnk_r1214_avae_r312_usb_r7b.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>181</td>
+<td>62</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>a3da8be37610ff186cd5867bdca4fdd8</td>
+<td>emerald2k/encoder/EMDPER2/single/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>181</td>
+<td>62</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>a3da8be37610ff186cd5867bdca4fdd8</td>
+<td>[/FPGA_bit_files/]Emerald_2K_ARTIX_SH_Encoder_230620_r62_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>189</td>
+<td>64</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>51aba9836aee87a34fa896caf4e29fd8</td>
+<td>emerald2k/encoder/EMDPER2/dual/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>189</td>
+<td>64</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>51aba9836aee87a34fa896caf4e29fd8</td>
+<td>[/FPGA_bit_files/]Emerald_2K_ARTIX_Encoder_230620_r64_tnk_r1214_avae_r312.sdk</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="670_r11531-rc3-20230918"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.4</span> 6.7.0_r11531 RC3 2023/09/18</h2>
+<p>This release is available in \10.211.128.208\tftpboot\work\Emerald_Releases</p>
+<p>Source branch: development_se_p2</p>
+<h3 id="new-functionality-addedupdated_3"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.4.1</span> New functionality added/updated</h3>
+<ul>
+<li>N/A</li>
+</ul>
+<h3 id="known-issues-in-this-release_3"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.4.2</span> Known Issues in this Release</h3>
+<ul>
+<li>N/A</li>
+</ul>
+<h3 id="restrictions_3"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.4.3</span> Restrictions</h3>
+<ul>
+<li>N/A</li>
+</ul>
+<h3 id="issues-resolved-in-this-release_3"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.4.4</span> Issues resolved in this Release</h3>
+<table>
+<thead>
+<tr>
+<th><strong><em>Key</em></strong></th>
+<th><strong><em>Summary</em></strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-6115">BUG-6115</a></td>
+<td>6.7.0 OSD is still seen on connection when launching an VMware Horizon view with 4K Receiver</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-6113">BUG-6113</a></td>
+<td>6.7.0 OSD is still seen on connection when launching an SSH connection with 4K Receiver</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-6107">BUG-6107</a></td>
+<td>OSD: Connecting message should indicate dinamic processing</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-6098">BUG-6098</a></td>
+<td>Chyron keyboard requires to function via USBr channel</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-6095">BUG-6095</a></td>
+<td>6.7.0 4K RX exits connection after hotplugging USB Audio headset and adapter</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-6081">BUG-6081</a></td>
+<td>6.7.0 RX-TX connection freezes after hotplugging USB audio adapters.</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-6073">BUG-6073</a></td>
+<td>6.7.0. User does not get any feedback when launching a VM connection with incorrect IP Address.</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-6071">BUG-6071</a></td>
+<td>Dfreerdp client (2K RDP VM connection) fails to exit, leaving RX locked up</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-6062">BUG-6062</a></td>
+<td>6.7.0 Bonded connection does not exit back to OSD with inactivity timers</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-6043">BUG-6043</a></td>
+<td>Hotkey exit does NOT work while a connection is being setup</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-6002">BUG-6002</a></td>
+<td>6.7.0 USB audio adapter causes distortion in audio on old and new platform devices</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-5979">BUG-5979</a></td>
+<td>6.7.0 Dual mouse pointer seen when exiting a VM connection in New EMD2000SE-DP-R receiver.</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-5942">BUG-5942</a></td>
+<td>Add Lane count and Speed to stdp4020 driver</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-5803">BUG-5803</a></td>
+<td>USBr- Hot plugging Sweex  external USB sound card from 4KRX locks up 4KTX (EMD4000)</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-2990">BUG-2990</a></td>
+<td>RX: should we inform the user when a login on a managed RX fails to contact Boxilla to sync the database?</td>
+</tr>
+</tbody>
+</table>
+<h3 id="fpga-versions-in-this-release_3"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.4.5</span> FPGA Versions in this release</h3>
+<table>
+<thead>
+<tr>
+<th>Datecode</th>
+<th>PCode</th>
+<th>SVN_REV</th>
+<th>TNK_ID</th>
+<th>AVAE_ID</th>
+<th>USB_IP</th>
+<th>svn_status</th>
+<th>md5sum</th>
+<th>HDF_Path</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>230620</td>
+<td>a1</td>
+<td>38</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>cc61189425848a5750df4244795866a8</td>
+<td>emeraldse/encoder/single/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>a1</td>
+<td>38</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>cc61189425848a5750df4244795866a8</td>
+<td>[/FPGA_bit_files/]Emerald_SE_Encoder_230620_r38_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>21</td>
+<td>40</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>348350115dc0eb3c03cf140e878e69d7</td>
+<td>emeraldse/decoder/single/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>21</td>
+<td>40</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>348350115dc0eb3c03cf140e878e69d7</td>
+<td>[/FPGA_bit_files/]Emerald_SE_Decoder_230620_r40_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>a9</td>
+<td>39</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>aac90d856f2bf5c2587f694b554f893a</td>
+<td>emeraldse/encoder/dual/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>a9</td>
+<td>39</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>aac90d856f2bf5c2587f694b554f893a</td>
+<td>[/FPGA_bit_files/]Emerald_SE_Encoder_DH_230620_r39_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>29</td>
+<td>41</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>acdff08db68c65dd507c7c8d3df4bcb5</td>
+<td>emeraldse/decoder/dual/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>29</td>
+<td>41</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>acdff08db68c65dd507c7c8d3df4bcb5</td>
+<td>[/FPGA_bit_files/]Emerald_SE_Decoder_DH_230620_r41_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>91</td>
+<td>52</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>cb4c007b9f6bb180fb09025863ae1ce5</td>
+<td>zerou/encoder/single/dvi/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>91</td>
+<td>52</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>cb4c007b9f6bb180fb09025863ae1ce5</td>
+<td>[/FPGA_bit_files/]Emerald_Zero_U_Encoder_230620_r52_tnk_r1214_avae_r312_dvi_r107.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>C9</td>
+<td>57</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>d1b1f8ddf86ef643b27c49168ec6e277</td>
+<td>zerou/encoder/single/dp/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>C9</td>
+<td>57</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>d1b1f8ddf86ef643b27c49168ec6e277</td>
+<td>[/FPGA_bit_files/]Emerald_Zero_U_DP_Encoder_230620_r57_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>b9</td>
+<td>54</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>84aa7d5d1a770bf671e443e09a114c05</td>
+<td>emeraldpe/encoder/dual/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>b9</td>
+<td>54</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>84aa7d5d1a770bf671e443e09a114c05</td>
+<td>[/FPGA_bit_files/]Emerald_2K_Encoder_230620_r54_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>39</td>
+<td>53</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>aae9bc461076b78fd360775bc87c0801</td>
+<td>emeraldpe/decoder/dual/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>39</td>
+<td>53</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>aae9bc461076b78fd360775bc87c0801</td>
+<td>[/FPGA_bit_files/]Emerald_2K_Decoder_230620_r53_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>c1</td>
+<td>55</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>595c950cbca29280a075dfa1296027c3</td>
+<td>emeraldpe/encoder/single/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>c1</td>
+<td>55</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>595c950cbca29280a075dfa1296027c3</td>
+<td>[/FPGA_bit_files/]Emerald_2K_SH_Encoder_230620_r55_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>41</td>
+<td>56</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>8ce05bdf03c9cbf90917e99b592c5e29</td>
+<td>emeraldpe/decoder/single/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>41</td>
+<td>56</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>8ce05bdf03c9cbf90917e99b592c5e29</td>
+<td>[/FPGA_bit_files/]Emerald_2K_SH_Decoder_230620_r56_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>19</td>
+<td>9999</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>19015afa48dbb008cc3b6c7db1e118d2</td>
+<td>boot/hdf/Emerald_Decoder_ph2_wrapper.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>19</td>
+<td>9999</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>19015afa48dbb008cc3b6c7db1e118d2</td>
+<td>[/FPGA_bit_files/]Emerald_2K_4K_Decoder_230620_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>99</td>
+<td>9999</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>d7e1e3dd46d166163245322a3a025d4c</td>
+<td>boot/hdf/Emerald_Encoder_Basic_wrapper.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>99</td>
+<td>9999</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>d7e1e3dd46d166163245322a3a025d4c</td>
+<td>[/FPGA_bit_files/]Emerald_2K_4K_Encoder_230620_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>F1</td>
+<td>9999</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>5b28a143bfad103190d18805c94ac7dd</td>
+<td>boot/hdf/Emerald_Encoder_Basic_Artix_wrapper.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>F1</td>
+<td>9999</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>5b28a143bfad103190d18805c94ac7dd</td>
+<td>[/FPGA_bit_files/]Emerald_2K_4K_Artix_Encoder_230620_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>e1</td>
+<td>60</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>a8ef24fd9c89ebb6285e1fd3dd7a4563</td>
+<td>emerald2k/encoder/EMDPEDP/single/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>e1</td>
+<td>60</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>a8ef24fd9c89ebb6285e1fd3dd7a4563</td>
+<td>[/FPGA_bit_files/]Emerald_2K_DP_SH_Encoder_230620_r60_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>d1</td>
+<td>58</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>c02994f99af2e34d2ae01f5cd667047e</td>
+<td>emerald2k/encoder/EMDPEDP/dual/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>d1</td>
+<td>58</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>c02994f99af2e34d2ae01f5cd667047e</td>
+<td>[/FPGA_bit_files/]Emerald_2K_DP_Encoder_230620_r58_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230725</td>
+<td>59</td>
+<td>65</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>45023394322af1e6c3db74b75dbe28b2</td>
+<td>emerald2k/decoder/EMDSEDP/single/system.hdf</td>
+</tr>
+<tr>
+<td>230725</td>
+<td>59</td>
+<td>65</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>45023394322af1e6c3db74b75dbe28b2</td>
+<td>[/FPGA_bit_files/]Emerald_SE_DP_Decoder_230725_r65_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230823</td>
+<td>d9</td>
+<td>59</td>
+<td>1214</td>
+<td>312</td>
+<td>0x7b</td>
+<td></td>
+<td>25f44cc4fdafbba2bb2a4d9f66655649</td>
+<td>emerald2k/encoder/EMDSEDP/single/system.hdf</td>
+</tr>
+<tr>
+<td>230823</td>
+<td>d9</td>
+<td>59</td>
+<td>1214</td>
+<td>312</td>
+<td>0x7b</td>
+<td></td>
+<td>25f44cc4fdafbba2bb2a4d9f66655649</td>
+<td>[/FPGA_bit_files/]Emerald_SE_DP_Encoder_230823_r59_tnk_r1214_avae_r312_usb_r7b.sdk</td>
+</tr>
+<tr>
+<td>230629</td>
+<td>e9</td>
+<td>61</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>e733093ef5f3a44bc9d1a22f27aead6d</td>
+<td>emerald2k/encoder/EMDSEDP/dual/system.hdf</td>
+</tr>
+<tr>
+<td>230629</td>
+<td>e9</td>
+<td>61</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>e733093ef5f3a44bc9d1a22f27aead6d</td>
+<td>[/FPGA_bit_files/]Emerald_SE_DP_Encoder_DH_230629_r61_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230823</td>
+<td>00</td>
+<td></td>
+<td></td>
+<td></td>
+<td>0x7b</td>
+<td></td>
+<td>573158f7e0adb637ff1c3c2b6438c52d</td>
+<td>emerald2k/encoder/artix_image/artix_fpga.bin</td>
+</tr>
+<tr>
+<td>230823</td>
+<td>00</td>
+<td></td>
+<td></td>
+<td></td>
+<td>0x7b</td>
+<td></td>
+<td>573158f7e0adb637ff1c3c2b6438c52d</td>
+<td>[/FPGA_bit_files/]Artix2K_Encoder_230823_USB_r7b.sdk</td>
+</tr>
+<tr>
+<td>230823</td>
+<td>00</td>
+<td></td>
+<td></td>
+<td></td>
+<td>0x7b</td>
+<td></td>
+<td>ef2c2ffd3d33060e2144874ce54e10b2</td>
+<td>boot/hdf/artix_fpga.bin</td>
+</tr>
+<tr>
+<td>230823</td>
+<td>00</td>
+<td></td>
+<td></td>
+<td></td>
+<td>0x7b</td>
+<td></td>
+<td>ef2c2ffd3d33060e2144874ce54e10b2</td>
+<td>[/FPGA_bit_files/]Artix4K_Encoder_230823_USB_r7b.sdk</td>
+</tr>
+<tr>
+<td>230823</td>
+<td>f9</td>
+<td>63</td>
+<td>1214</td>
+<td>312</td>
+<td>0x7b</td>
+<td></td>
+<td>e7c0fcdb100061519ec858b122aa14df</td>
+<td>emerald2k/encoder/EMDSER2/single/system.hdf</td>
+</tr>
+<tr>
+<td>230823</td>
+<td>f9</td>
+<td>63</td>
+<td>1214</td>
+<td>312</td>
+<td>0x7b</td>
+<td></td>
+<td>e7c0fcdb100061519ec858b122aa14df</td>
+<td>[/FPGA_bit_files/]Emerald_SE_INTUSB_Encoder_230823_r63_tnk_r1214_avae_r312_usb_r7b.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>181</td>
+<td>62</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>a3da8be37610ff186cd5867bdca4fdd8</td>
+<td>emerald2k/encoder/EMDPER2/single/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>181</td>
+<td>62</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>a3da8be37610ff186cd5867bdca4fdd8</td>
+<td>[/FPGA_bit_files/]Emerald_2K_ARTIX_SH_Encoder_230620_r62_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>189</td>
+<td>64</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>51aba9836aee87a34fa896caf4e29fd8</td>
+<td>emerald2k/encoder/EMDPER2/dual/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>189</td>
+<td>64</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td></td>
+<td>51aba9836aee87a34fa896caf4e29fd8</td>
+<td>[/FPGA_bit_files/]Emerald_2K_ARTIX_Encoder_230620_r64_tnk_r1214_avae_r312.sdk</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h1 id="67-release"><span class="enumerate-headings-plugin enumerate-heading-plugin">2.</span> 6.7 Release</h1>
+<h2 id="670_r11488-rc2-20230906"><span class="enumerate-headings-plugin enumerate-heading-plugin">2.1</span> 6.7.0_r11488 RC2 2023/09/06</h2>
+<p>This release is available in \10.211.128.208\tftpboot\work\Emerald_Releases</p>
+<p>Source branch: develop</p>
+<h3 id="new-functionality-addedupdated_4"><span class="enumerate-headings-plugin enumerate-heading-plugin">2.1.1</span> New functionality added/updated</h3>
+<ul>
+<li>N/A</li>
+</ul>
+<h3 id="known-issues-in-this-release_4"><span class="enumerate-headings-plugin enumerate-heading-plugin">2.1.2</span> Known Issues in this Release</h3>
+<ul>
+<li>N/A</li>
+</ul>
+<h3 id="restrictions_4"><span class="enumerate-headings-plugin enumerate-heading-plugin">2.1.3</span> Restrictions</h3>
+<ul>
+<li>N/A</li>
+</ul>
+<h3 id="issues-resolved-in-this-release_4"><span class="enumerate-headings-plugin enumerate-heading-plugin">2.1.4</span> Issues resolved in this Release</h3>
+<table>
+<thead>
+<tr>
+<th><strong><em>Key</em></strong></th>
+<th><strong><em>Summary</em></strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-5897">BUG-5897</a></td>
+<td>AWSUDCIP: 6.7.0 USB devices do not enumerate on New Platform transmitter with MAC OS</td>
+</tr>
+</tbody>
+</table>
+<p>NOTE: This issue was incorrectly reported as fixed in 6.7.0_r11485 RC1</p>
+<h3 id="fpga-versions-in-this-release_4"><span class="enumerate-headings-plugin enumerate-heading-plugin">2.1.5</span> FPGA Versions in this release</h3>
+<table>
+<thead>
+<tr>
+<th>Datecode</th>
+<th>PCode</th>
+<th>SVN_REV</th>
+<th>TNK_ID</th>
+<th>AVAE_ID</th>
+<th>USB_IP</th>
+<th>md5sum</th>
+<th>HDF_Path</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>?230620</td>
+<td>a1</td>
+<td>?38</td>
+<td>?1214</td>
+<td>?312</td>
+<td></td>
+<td>cc61189425848a5750df4244795866a8</td>
+<td>emeraldse/encoder/single/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>a1</td>
+<td>38</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td>cc61189425848a5750df4244795866a8</td>
+<td>[/FPGA_bit_files/]Emerald_SE_Encoder_230620_r38_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>?230620</td>
+<td>21</td>
+<td>?40</td>
+<td>?1214</td>
+<td>?312</td>
+<td></td>
+<td>348350115dc0eb3c03cf140e878e69d7</td>
+<td>emeraldse/decoder/single/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>21</td>
+<td>40</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td>348350115dc0eb3c03cf140e878e69d7</td>
+<td>[/FPGA_bit_files/]Emerald_SE_Decoder_230620_r40_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>?230620</td>
+<td>a9</td>
+<td>?39</td>
+<td>?1214</td>
+<td>?312</td>
+<td></td>
+<td>aac90d856f2bf5c2587f694b554f893a</td>
+<td>emeraldse/encoder/dual/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>a9</td>
+<td>39</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td>aac90d856f2bf5c2587f694b554f893a</td>
+<td>[/FPGA_bit_files/]Emerald_SE_Encoder_DH_230620_r39_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>?230620</td>
+<td>29</td>
+<td>?41</td>
+<td>?1214</td>
+<td>?312</td>
+<td></td>
+<td>acdff08db68c65dd507c7c8d3df4bcb5</td>
+<td>emeraldse/decoder/dual/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>29</td>
+<td>41</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td>acdff08db68c65dd507c7c8d3df4bcb5</td>
+<td>[/FPGA_bit_files/]Emerald_SE_Decoder_DH_230620_r41_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>?230620</td>
+<td>91</td>
+<td>?52</td>
+<td>?1214</td>
+<td>?312</td>
+<td></td>
+<td>cb4c007b9f6bb180fb09025863ae1ce5</td>
+<td>zerou/encoder/single/dvi/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>91</td>
+<td>52</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td>cb4c007b9f6bb180fb09025863ae1ce5</td>
+<td>[/FPGA_bit_files/]Emerald_Zero_U_Encoder_230620_r52_tnk_r1214_avae_r312_dvi_r107.sdk</td>
+</tr>
+<tr>
+<td>?230620</td>
+<td>C9</td>
+<td>?57</td>
+<td>?1214</td>
+<td>?312</td>
+<td></td>
+<td>d1b1f8ddf86ef643b27c49168ec6e277</td>
+<td>zerou/encoder/single/dp/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>C9</td>
+<td>57</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td>d1b1f8ddf86ef643b27c49168ec6e277</td>
+<td>[/FPGA_bit_files/]Emerald_Zero_U_DP_Encoder_230620_r57_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>?230620</td>
+<td>b9</td>
+<td>?54</td>
+<td>?1214</td>
+<td>?312</td>
+<td></td>
+<td>84aa7d5d1a770bf671e443e09a114c05</td>
+<td>emeraldpe/encoder/dual/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>b9</td>
+<td>54</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td>84aa7d5d1a770bf671e443e09a114c05</td>
+<td>[/FPGA_bit_files/]Emerald_2K_Encoder_230620_r54_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>?230620</td>
+<td>39</td>
+<td>?53</td>
+<td>?1214</td>
+<td>?312</td>
+<td></td>
+<td>aae9bc461076b78fd360775bc87c0801</td>
+<td>emeraldpe/decoder/dual/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>39</td>
+<td>53</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td>aae9bc461076b78fd360775bc87c0801</td>
+<td>[/FPGA_bit_files/]Emerald_2K_Decoder_230620_r53_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>?230620</td>
+<td>c1</td>
+<td>?55</td>
+<td>?1214</td>
+<td>?312</td>
+<td></td>
+<td>595c950cbca29280a075dfa1296027c3</td>
+<td>emeraldpe/encoder/single/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>c1</td>
+<td>55</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td>595c950cbca29280a075dfa1296027c3</td>
+<td>[/FPGA_bit_files/]Emerald_2K_SH_Encoder_230620_r55_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>?230620</td>
+<td>41</td>
+<td>?56</td>
+<td>?1214</td>
+<td>?312</td>
+<td></td>
+<td>8ce05bdf03c9cbf90917e99b592c5e29</td>
+<td>emeraldpe/decoder/single/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>41</td>
+<td>56</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td>8ce05bdf03c9cbf90917e99b592c5e29</td>
+<td>[/FPGA_bit_files/]Emerald_2K_SH_Decoder_230620_r56_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>?230620</td>
+<td>19</td>
+<td>?9999</td>
+<td>?1214</td>
+<td>?312</td>
+<td></td>
+<td>19015afa48dbb008cc3b6c7db1e118d2</td>
+<td>boot/hdf/Emerald_Decoder_ph2_wrapper.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>19</td>
+<td>?9999</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td>19015afa48dbb008cc3b6c7db1e118d2</td>
+<td>[/FPGA_bit_files/]Emerald_2K_4K_Decoder_230620_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>?230620</td>
+<td>99</td>
+<td>?9999</td>
+<td>?1214</td>
+<td>?312</td>
+<td></td>
+<td>d7e1e3dd46d166163245322a3a025d4c</td>
+<td>boot/hdf/Emerald_Encoder_Basic_wrapper.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>99</td>
+<td>?9999</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td>d7e1e3dd46d166163245322a3a025d4c</td>
+<td>[/FPGA_bit_files/]Emerald_2K_4K_Encoder_230620_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>?230620</td>
+<td>F1</td>
+<td>?9999</td>
+<td>?1214</td>
+<td>?312</td>
+<td></td>
+<td>5b28a143bfad103190d18805c94ac7dd</td>
+<td>boot/hdf/Emerald_Encoder_Basic_Artix_wrapper.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>F1</td>
+<td>?9999</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td>5b28a143bfad103190d18805c94ac7dd</td>
+<td>[/FPGA_bit_files/]Emerald_2K_4K_Artix_Encoder_230620_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>?230620</td>
+<td>e1</td>
+<td>?60</td>
+<td>?1214</td>
+<td>?312</td>
+<td></td>
+<td>a8ef24fd9c89ebb6285e1fd3dd7a4563</td>
+<td>emerald2k/encoder/EMDPEDP/single/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>e1</td>
+<td>60</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td>a8ef24fd9c89ebb6285e1fd3dd7a4563</td>
+<td>[/FPGA_bit_files/]Emerald_2K_DP_SH_Encoder_230620_r60_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>?230620</td>
+<td>d1</td>
+<td>?58</td>
+<td>?1214</td>
+<td>?312</td>
+<td></td>
+<td>c02994f99af2e34d2ae01f5cd667047e</td>
+<td>emerald2k/encoder/EMDPEDP/dual/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>d1</td>
+<td>58</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td>c02994f99af2e34d2ae01f5cd667047e</td>
+<td>[/FPGA_bit_files/]Emerald_2K_DP_Encoder_230620_r58_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>?230725</td>
+<td>59</td>
+<td>?65</td>
+<td>?1214</td>
+<td>?312</td>
+<td></td>
+<td>45023394322af1e6c3db74b75dbe28b2</td>
+<td>emerald2k/decoder/EMDSEDP/single/system.hdf</td>
+</tr>
+<tr>
+<td>230725</td>
+<td>59</td>
+<td>65</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td>45023394322af1e6c3db74b75dbe28b2</td>
+<td>[/FPGA_bit_files/]Emerald_SE_DP_Decoder_230725_r65_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>?230823</td>
+<td>d9</td>
+<td>?59</td>
+<td>?1214</td>
+<td>?312</td>
+<td>?0x7b</td>
+<td>25f44cc4fdafbba2bb2a4d9f66655649</td>
+<td>emerald2k/encoder/EMDSEDP/single/system.hdf</td>
+</tr>
+<tr>
+<td>230823</td>
+<td>d9</td>
+<td>59</td>
+<td>1214</td>
+<td>312</td>
+<td>0x7b</td>
+<td>25f44cc4fdafbba2bb2a4d9f66655649</td>
+<td>[/FPGA_bit_files/]Emerald_SE_DP_Encoder_230823_r59_tnk_r1214_avae_r312_usb_r7b.sdk</td>
+</tr>
+<tr>
+<td>?230629</td>
+<td>e9</td>
+<td>?61</td>
+<td>?1214</td>
+<td>?312</td>
+<td></td>
+<td>e733093ef5f3a44bc9d1a22f27aead6d</td>
+<td>emerald2k/encoder/EMDSEDP/dual/system.hdf</td>
+</tr>
+<tr>
+<td>230629</td>
+<td>e9</td>
+<td>61</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td>e733093ef5f3a44bc9d1a22f27aead6d</td>
+<td>[/FPGA_bit_files/]Emerald_SE_DP_Encoder_DH_230629_r61_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td></td>
+<td>?00</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>?573158f7e0adb637ff1c3c2b6438c52d</td>
+<td>emerald2k/encoder/artix_image/artix_fpga.bin</td>
+</tr>
+<tr>
+<td>?230823</td>
+<td>?00</td>
+<td></td>
+<td></td>
+<td></td>
+<td>?0x7b</td>
+<td>+573158f7e0adb637ff1c3c2b6438c52d</td>
+<td>[/FPGA_bit_files/]Artix2K_Encoder_230823_USB_r7b.sdk</td>
+</tr>
+<tr>
+<td></td>
+<td>?00</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>?ef2c2ffd3d33060e2144874ce54e10b2</td>
+<td>boot/hdf/artix_fpga.bin</td>
+</tr>
+<tr>
+<td>?230823</td>
+<td>?00</td>
+<td></td>
+<td></td>
+<td></td>
+<td>?0x7b</td>
+<td>+ef2c2ffd3d33060e2144874ce54e10b2</td>
+<td>[/FPGA_bit_files/]Artix4K_Encoder_230823_USB_r7b.sdk</td>
+</tr>
+<tr>
+<td>?230823</td>
+<td>f9</td>
+<td>?63</td>
+<td>?1214</td>
+<td>?312</td>
+<td>?0x7b</td>
+<td>e7c0fcdb100061519ec858b122aa14df</td>
+<td>emerald2k/encoder/EMDSER2/single/system.hdf</td>
+</tr>
+<tr>
+<td>230823</td>
+<td>f9</td>
+<td>63</td>
+<td>1214</td>
+<td>312</td>
+<td>0x7b</td>
+<td>e7c0fcdb100061519ec858b122aa14df</td>
+<td>[/FPGA_bit_files/]Emerald_SE_INTUSB_Encoder_230823_r63_tnk_r1214_avae_r312_usb_r7b.sdk</td>
+</tr>
+<tr>
+<td>?230620</td>
+<td>181</td>
+<td>?62</td>
+<td>?1214</td>
+<td>?312</td>
+<td></td>
+<td>a3da8be37610ff186cd5867bdca4fdd8</td>
+<td>emerald2k/encoder/EMDPER2/single/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>181</td>
+<td>62</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td>a3da8be37610ff186cd5867bdca4fdd8</td>
+<td>[/FPGA_bit_files/]Emerald_2K_ARTIX_SH_Encoder_230620_r62_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>?230620</td>
+<td>189</td>
+<td>?64</td>
+<td>?1214</td>
+<td>?312</td>
+<td></td>
+<td>51aba9836aee87a34fa896caf4e29fd8</td>
+<td>emerald2k/encoder/EMDPER2/dual/system.hdf</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>189</td>
+<td>64</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td>51aba9836aee87a34fa896caf4e29fd8</td>
+<td>[/FPGA_bit_files/]Emerald_2K_ARTIX_Encoder_230620_r64_tnk_r1214_avae_r312.sdk</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="670_r11485-rc1-20230904"><span class="enumerate-headings-plugin enumerate-heading-plugin">2.2</span> 6.7.0_r11485 RC1 2023/09/04</h2>
+<p>This release is available in \10.211.128.208\tftpboot\work\Emerald_Releases</p>
+<p>Source branch: develop</p>
+<h3 id="new-functionality-addedupdated_5"><span class="enumerate-headings-plugin enumerate-heading-plugin">2.2.1</span> New functionality added/updated</h3>
+<ul>
+<li>RX-DP<ul>
+<li>Video Activity front-panel LED (in a connection) is now operational</li>
+</ul>
+</li>
+</ul>
+<h3 id="known-issues-in-this-release_5"><span class="enumerate-headings-plugin enumerate-heading-plugin">2.2.2</span> Known Issues in this Release</h3>
+<ul>
+<li>N/A</li>
+</ul>
+<h3 id="restrictions_5"><span class="enumerate-headings-plugin enumerate-heading-plugin">2.2.3</span> Restrictions</h3>
+<ul>
+<li>N/A</li>
+</ul>
+<h3 id="issues-resolved-in-this-release_5"><span class="enumerate-headings-plugin enumerate-heading-plugin">2.2.4</span> Issues resolved in this Release</h3>
+<table>
+<thead>
+<tr>
+<th><strong><em>Key</em></strong></th>
+<th><strong><em>Summary</em></strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-6053">BUG-6053</a></td>
+<td>Need to ensure that that the OSD includes the OSD resolution in the SQL DB in its list presented to user</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-6051">BUG-6051</a></td>
+<td>6.7.0: OSD -Clicking on the Information tab on the OSD incorrectly prints the manager IP on the serial</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-6030">BUG-6030</a></td>
+<td>6.7.0 Set Colors button does not update with the correct accent color after cycling through tabs in the OSD</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-6002">BUG-6002</a></td>
+<td>6.7.0 USB audio adapter causes distortion in audio on old and new platform devices</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-5954">BUG-5954</a></td>
+<td>6.7.0 User does not get any feedback when launching a RX-TX connection with incorrect IP Address.</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-5897">BUG-5897</a></td>
+<td>AWSUDCIP: 6.7.0 USB devices do not enumerate on New Platform transmitter with MAC OS</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-5803">BUG-5803</a></td>
+<td>USBr- Hot plugging Sweex  external USB sound card from 4KRX locks up 4KTX (EMD4000)</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-5344">BUG-5344</a></td>
+<td>EMD4K with Barco Radar screens, no splash / OSD screen</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-5144">BUG-5144</a></td>
+<td>6.5.0: Touchscreens do not enumerate with New platform Transmitters (applies to 2 touch screens)</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-4866">BUG-4866</a></td>
+<td>6.5.0: SmartCard readers (HID OMNIKEY 3121) does not read card information when connecting every time</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-4819">BUG-4819</a></td>
+<td>EMD 6.3.10: Inaccurate Upgrade failed popup displays when do same SW upgrade for Tx</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-4310">BUG-4310</a></td>
+<td>[Enhanced OSD]- USBr-[MAC] :Audio output is glitching when listening Audio via USB headset(logitech)</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-2990">BUG-2990</a></td>
+<td>RX: should we inform the user when a login on a managed RX fails to contact Boxilla to sync the database?</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-2732">BUG-2732</a></td>
+<td>EMD 4K RX: during overnight connection soak the serial had output of "Fan Not running: Current temp:91"</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="670_r11446-ec4-20230824"><span class="enumerate-headings-plugin enumerate-heading-plugin">2.3</span> 6.7.0_r11446 EC4 2023/08/24</h2>
+<p>This release is available in \10.211.128.208\tftpboot\work\Emerald_Releases</p>
+<p>Source branch: develop</p>
+<h3 id="new-functionality-addedupdated_6"><span class="enumerate-headings-plugin enumerate-heading-plugin">2.3.1</span> New functionality added/updated</h3>
+<ul>
+<li>RX-DP<ul>
+<li>Audio over HDMI is available on RX DP</li>
+<li>EDID management is supported</li>
+<li>Resolutions changes from the host PC are supported</li>
+<li>Analog/Dp/Auto Audio selection on the OSD is available</li>
+<li>Handling of the "Auto" feature is selectable from the OSD</li>
+</ul>
+</li>
+</ul>
+<h3 id="known-issues-in-this-release_6"><span class="enumerate-headings-plugin enumerate-heading-plugin">2.3.2</span> Known Issues in this Release</h3>
+<ul>
+<li>RX-DP<ul>
+<li>Video Activity front-panel LED (in a connection) is not operational</li>
+</ul>
+</li>
+</ul>
+<h3 id="restrictions_6"><span class="enumerate-headings-plugin enumerate-heading-plugin">2.3.3</span> Restrictions</h3>
+<ul>
+<li>Import/Export does not handle connection label colours </li>
+<li>mport/Export does not handle RX audio settings.</li>
+</ul>
+<h3 id="issues-resolved-in-this-release_6"><span class="enumerate-headings-plugin enumerate-heading-plugin">2.3.4</span> Issues resolved in this Release</h3>
+<table>
+<thead>
+<tr>
+<th><strong><em>Key</em></strong></th>
+<th><strong><em>Summary</em></strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-6035">BUG-6035</a></td>
+<td>Connection Manager exits (silently) when the connection test runs</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-6024">BUG-6024</a></td>
+<td>STDP4028 datasheet for register description for firmware version is incorrect and incomplete</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-6010">BUG-6010</a></td>
+<td>New Emerald SE DP model shows different sku (SPN) on the OSD</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-6004">BUG-6004</a></td>
+<td>6.7.0 OSD displays grained image for a second after splash screen when hotplugging power cable with 2K receivers.</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-5989">BUG-5989</a></td>
+<td>Appliance diagnostics does not dump manufacturing logs stored on the appliance</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-5978">BUG-5978</a></td>
+<td>database cli needs to be able to update the Connection Label Colours</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-5972">BUG-5972</a></td>
+<td>6.7.0 Some OSD &amp; RDP resolutions are missing with new EMD2000SE-DP-R receiver.</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-5970">BUG-5970</a></td>
+<td>6.7.0 New EMD2000SE-DP-R receiver crashes when switching through Resolution settings and other options in OSD</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-5918">BUG-5918</a></td>
+<td>6.7.0 - Using CTRL+ALT+F2-F12 keys locking OSD</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-5838">BUG-5838</a></td>
+<td>6.6.0: "Unknown Exit Code 65535" error message on OSD if failure to launch TX DNS connection</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-5439">BUG-5439</a></td>
+<td>To facilitate configuring TX settings by using the REST API and not relying on SSH the webservice on the appliance must run at startup</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-4965">BUG-4965</a></td>
+<td>6.3.10: Recommend removing analysis.sh from diagnostics</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-4772">BUG-4772</a></td>
+<td>6.3.10: Diagnostics -Recommend adding the video_stats json files to diagnostics</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-2731">BUG-2731</a></td>
+<td>PE RX: after clicking info tab got the following serial error: "Cloudgui: RX info error 37 su_get_spn = 300-068-001 returned spn = UNKNOWN."</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="670_r11406-ec3-20230815"><span class="enumerate-headings-plugin enumerate-heading-plugin">2.4</span> 6.7.0_r11406 EC3 2023/08/15</h2>
+<p>This release is available in \\10.211.128.208\tftpboot\work\Emerald_Releases</p>
+<p>Source branch: develop</p>
+<h3 id="new-functionality-addedupdated_7"><span class="enumerate-headings-plugin enumerate-heading-plugin">2.4.1</span> New functionality added/updated</h3>
+<ul>
+<li>Support for Single Head DisplayPort Receiver (RX-DP)</li>
+<li>Added support for USB profiling</li>
+</ul>
+<h3 id="known-issues-in-this-release_7"><span class="enumerate-headings-plugin enumerate-heading-plugin">2.4.2</span> Known Issues in this Release</h3>
+<ul>
+<li>RX-DP<ul>
+<li>Audio over HDMI is not available on RX DP</li>
+<li>Video Activity front-panel LED (in a connection) is not operational</li>
+<li>EDID management is not supported<ul>
+<li>OSD defaults to 800x600 on start-up</li>
+<li>Resolutions changes from the host PC are supported</li>
+</ul>
+</li>
+<li>Analog/Dp/Auto Audio selection on the OSD is available<ul>
+<li>Handling of the "Auto" feature is selectable from the OSD, however, pending EDID support
+  DisplayPort audio availability is always enabled.
+  i.e. If "Auto" is selected, the audio will always be sent to the DisplayPort, regardless
+  of monitor support.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="restrictions_7"><span class="enumerate-headings-plugin enumerate-heading-plugin">2.4.3</span> Restrictions</h3>
+<ul>
+<li>Import/Export does not handle connection label colours </li>
+<li>Import/Export does not handle RX audio settings.</li>
+</ul>
+<h3 id="issues-resolved-in-this-release_7"><span class="enumerate-headings-plugin enumerate-heading-plugin">2.4.4</span> Issues resolved in this Release</h3>
+<table>
+<thead>
+<tr>
+<th><strong><em>Key</em></strong></th>
+<th><strong><em>Summary</em></strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-5958">BUG-5958</a></td>
+<td>6.7.0 4K receiver is locked out after switching between an RDP VM connection and RX-TX connection through Favourites</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-5947">BUG-5947</a></td>
+<td>Database patch files are applied in incorrect order when the number of patch files &gt; 10</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-5920">BUG-5920</a></td>
+<td>Need to Add the Overlay  Registers to the 2K FPGA Register Dump</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-5918">BUG-5918</a></td>
+<td>6.7.0 - Using CTRL+ALT+F2-F12 keys locking OSD</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-5911">BUG-5911</a></td>
+<td>AWSUDCIP: Data Bit Toggle Error. IP fails to receive data from USB host over OUT INTERRUPT endpoints</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-5893">BUG-5893</a></td>
+<td>Connection Label Colour Preview is not always updated as I change the colours</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-5892">BUG-5892</a></td>
+<td>Cloudgui crashes (silently) when changing connection colours</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-5652">BUG-5652</a></td>
+<td>KVM Client: SYN/FIN error on 1/8 shared connections to the same PE TX</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-4131">BUG-4131</a></td>
+<td>6.3.3: diagnostics from Emerald 4K RX and TX have a 0 bytes file for analysis.sh.report</td>
+</tr>
+</tbody>
+</table>
+<h3 id="fpga-versions-in-this-release_5"><span class="enumerate-headings-plugin enumerate-heading-plugin">2.4.5</span> FPGA Versions in this release</h3>
+<table>
+<thead>
+<tr>
+<th>Datecode</th>
+<th>PCode</th>
+<th>SVN_REV</th>
+<th>TNK_ID</th>
+<th>AVAE_ID</th>
+<th>USB_IP</th>
+<th>md5sum</th>
+<th>HDF_Path</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>230620</td>
+<td>a1</td>
+<td>38</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td>cc61189425848a5750df4244795866a8</td>
+<td>[/FPGA_bit_files/]Emerald_SE_Encoder_230620_r38_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>21</td>
+<td>40</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td>348350115dc0eb3c03cf140e878e69d7</td>
+<td>[/FPGA_bit_files/]Emerald_SE_Decoder_230620_r40_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>a9</td>
+<td>39</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td>aac90d856f2bf5c2587f694b554f893a</td>
+<td>[/FPGA_bit_files/]Emerald_SE_Encoder_DH_230620_r39_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>29</td>
+<td>41</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td>acdff08db68c65dd507c7c8d3df4bcb5</td>
+<td>[/FPGA_bit_files/]Emerald_SE_Decoder_DH_230620_r41_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>91</td>
+<td>52</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td>cb4c007b9f6bb180fb09025863ae1ce5</td>
+<td>[/FPGA_bit_files/]Emerald_Zero_U_Encoder_230620_r52_tnk_r1214_avae_r312_dvi_r107.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>C9</td>
+<td>57</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td>d1b1f8ddf86ef643b27c49168ec6e277</td>
+<td>[/FPGA_bit_files/]Emerald_Zero_U_DP_Encoder_230620_r57_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>b9</td>
+<td>54</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td>84aa7d5d1a770bf671e443e09a114c05</td>
+<td>[/FPGA_bit_files/]Emerald_2K_Encoder_230620_r54_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>39</td>
+<td>53</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td>aae9bc461076b78fd360775bc87c0801</td>
+<td>[/FPGA_bit_files/]Emerald_2K_Decoder_230620_r53_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>c1</td>
+<td>55</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td>595c950cbca29280a075dfa1296027c3</td>
+<td>[/FPGA_bit_files/]Emerald_2K_SH_Encoder_230620_r55_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>41</td>
+<td>56</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td>8ce05bdf03c9cbf90917e99b592c5e29</td>
+<td>[/FPGA_bit_files/]Emerald_2K_SH_Decoder_230620_r56_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>19</td>
+<td>?9999</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td>19015afa48dbb008cc3b6c7db1e118d2</td>
+<td>[/FPGA_bit_files/]Emerald_2K_4K_Decoder_230620_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>99</td>
+<td>?9999</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td>d7e1e3dd46d166163245322a3a025d4c</td>
+<td>[/FPGA_bit_files/]Emerald_2K_4K_Encoder_230620_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>F1</td>
+<td>?9999</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td>5b28a143bfad103190d18805c94ac7dd</td>
+<td>[/FPGA_bit_files/]Emerald_2K_4K_Artix_Encoder_230620_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>e1</td>
+<td>60</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td>a8ef24fd9c89ebb6285e1fd3dd7a4563</td>
+<td>[/FPGA_bit_files/]Emerald_2K_DP_SH_Encoder_230620_r60_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>d1</td>
+<td>58</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td>c02994f99af2e34d2ae01f5cd667047e</td>
+<td>[/FPGA_bit_files/]Emerald_2K_DP_Encoder_230620_r58_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230725</td>
+<td>59</td>
+<td>65</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td>45023394322af1e6c3db74b75dbe28b2</td>
+<td>[/FPGA_bit_files/]Emerald_SE_DP_Decoder_230725_r65_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230726</td>
+<td>d9</td>
+<td>59</td>
+<td>1214</td>
+<td>312</td>
+<td>0x79</td>
+<td>d17acc86688fdd74b97c4760c6b9ebb4</td>
+<td>[/FPGA_bit_files/]Emerald_SE_DP_Encoder_230726_r59_tnk_r1214_avae_r312_usb_r79.sdk</td>
+</tr>
+<tr>
+<td>230629</td>
+<td>e9</td>
+<td>61</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td>e733093ef5f3a44bc9d1a22f27aead6d</td>
+<td>[/FPGA_bit_files/]Emerald_SE_DP_Encoder_DH_230629_r61_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>?230726</td>
+<td>?00</td>
+<td></td>
+<td></td>
+<td></td>
+<td>?0x79</td>
+<td>?9745be1806db5ccdfb03ce9f6c0ba0c9</td>
+<td>[/FPGA_bit_files/]Artix2K_Encoder_230726_USB_r79.sdk</td>
+</tr>
+<tr>
+<td>?230726</td>
+<td>?00</td>
+<td></td>
+<td></td>
+<td></td>
+<td>?0x79</td>
+<td>?297201a07aaf2332d0e46fda21a815c5</td>
+<td>[/FPGA_bit_files/]Artix4K_Encoder_230726_USB_r79.sdk</td>
+</tr>
+<tr>
+<td>230726</td>
+<td>f9</td>
+<td>63</td>
+<td>1214</td>
+<td>312</td>
+<td>0x79</td>
+<td>029c91ec6d7143addac766f087a0dcbc</td>
+<td>[/FPGA_bit_files/]Emerald_SE_INTUSB_Encoder_230726_r63_tnk_r1214_avae_r312_usb_r79.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>181</td>
+<td>62</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td>a3da8be37610ff186cd5867bdca4fdd8</td>
+<td>[/FPGA_bit_files/]Emerald_2K_ARTIX_SH_Encoder_230620_r62_tnk_r1214_avae_r312.sdk</td>
+</tr>
+<tr>
+<td>230620</td>
+<td>189</td>
+<td>64</td>
+<td>1214</td>
+<td>312</td>
+<td></td>
+<td>51aba9836aee87a34fa896caf4e29fd8</td>
+<td>[/FPGA_bit_files/]Emerald_2K_ARTIX_Encoder_230620_r64_tnk_r1214_avae_r312.sdk</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="670_r11336-ec2-2172023"><span class="enumerate-headings-plugin enumerate-heading-plugin">2.5</span> 6.7.0_r11336 EC2 - 21/7/2023</h2>
+<p>This release is available in \10.211.128.208\tftpboot\work\Emerald_Releases</p>
+<p>Source branch: develop</p>
+<h3 id="new-functionality-addedupdated_8"><span class="enumerate-headings-plugin enumerate-heading-plugin">2.5.1</span> New functionality added/updated</h3>
+<ul>
+<li>Connection Label Colour Feature added</li>
+<li>Support for encrypted drives in USBr.</li>
+</ul>
+<h3 id="known-issues-in-this-release_8"><span class="enumerate-headings-plugin enumerate-heading-plugin">2.5.2</span> Known Issues in this Release</h3>
+<ul>
+<li>BUG-5892 - Cloudgui crashes when changing connection label colours (intermittent)</li>
+<li>BUG-5893 - Connection Label Colour Preview not always updated as colours are changed</li>
+</ul>
+<h3 id="restrictions_8"><span class="enumerate-headings-plugin enumerate-heading-plugin">2.5.3</span> Restrictions</h3>
+<ul>
+<li>Import/Export does not handle connection label colours yet</li>
+</ul>
+<h3 id="issues-resolved-in-this-release_8"><span class="enumerate-headings-plugin enumerate-heading-plugin">2.5.4</span> Issues resolved in this Release</h3>
+<table>
+<thead>
+<tr>
+<th><strong><em>Key</em></strong></th>
+<th><strong><em>Summary</em></strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-5841">BUG-5841</a></td>
+<td>6.7.0 OSD displays incorrect frame after setting resolution to Auto and exiting back to the OSD.</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="670_r11265-ec1-03072023"><span class="enumerate-headings-plugin enumerate-heading-plugin">2.6</span> 6.7.0_r11265 EC1 - 03/07/2023</h2>
+<p>This release is available in \10.211.128.208\tftpboot\work\Emerald_Releases\develop\V6.7.0_r11265</p>
+<p>Source branch: develop</p>
+<h3 id="new-functionality-addedupdated_9"><span class="enumerate-headings-plugin enumerate-heading-plugin">2.6.1</span> New functionality added/updated</h3>
+<ul>
+<li>Matching of Local and remote USB speed. Full speed devices will be redirected as such</li>
+<li>ASICws IP driver: USB VBUS detection GPIO is used in interruptible mode to detect reconnections if cable is disconnected</li>
+<li>ASICws IP core has been upgraded to version 0x78</li>
+<li>Bug fixes</li>
+</ul>
+<h3 id="known-issues-in-this-release_9"><span class="enumerate-headings-plugin enumerate-heading-plugin">2.6.2</span> Known Issues in this Release</h3>
+<ul>
+<li>N/A</li>
+</ul>
+<h3 id="restrictions_9"><span class="enumerate-headings-plugin enumerate-heading-plugin">2.6.3</span> Restrictions</h3>
+<ul>
+<li>N/A</li>
+</ul>
+<h3 id="minimum-test_3"><span class="enumerate-headings-plugin enumerate-heading-plugin">2.6.4</span> Minimum test</h3>
+<ul>
+<li>BUG-5098: Check that ASICws IP based Txs do not hang during boot.</li>
+<li>Check that USB speed presented by the Tx matches the USB speed of the actual redirected device.</li>
+<li>BUG-5395: On <em>all</em> ASICws IP based Txs: While Tx USB cable is disconnected, redirect a USB FS device. Wait for 20 seconds then connect a USB cable from Tx to test PC. Check that device is redirected as expected. Repeat the test with 2 FS devices, with 1 FS and 1 HS device and with 2 HS devices.</li>
+<li>Check ASICws IP Suspend/Resume event detection: Use SCR3310 Smart Card Reader. Redirect it with no card inserted while watching serial terminal output. The device will enter in suspend state in the first minute. Insert a card to wake it up and check serial logs. A suspend, wakeup and resume message is expected. The device will enter in suspend state again short time after card is removed. Repeat the test for 5 more times.</li>
+</ul>
+<h3 id="issues-resolved-in-this-release_9"><span class="enumerate-headings-plugin enumerate-heading-plugin">2.6.5</span> Issues resolved in this Release</h3>
+<table>
+<thead>
+<tr>
+<th><strong><em>Key</em></strong></th>
+<th><strong><em>Summary</em></strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-5541">BUG-5541</a></td>
+<td>AWSUDCIP: Multiple SET_ADDRESS command and attachment iterations</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-5614">BUG-5514</a></td>
+<td>AWSUDCIP: USB remote wakeup doesn't have any effect on the host when IP is in USB suspend state</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-5408">BUG-5408</a></td>
+<td>AWSUDCIP: IP correctly detects only the first suspend event. Subsequent suspend events are missed.</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-5395">BUG-5395</a></td>
+<td>AWSUDCIP: IP continuosly notifies "Suspend event detected" when cable is disconnected and IP configured in USB Full Speed</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-5219">BUG-5219</a></td>
+<td>6.5.0 RC3 - Cannon scanner is not functional with any DP platform, using any DVI RX</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-5142">BUG-5142</a></td>
+<td>6.5.0: Sony IC card reader does not pickup card information only for NEW PLATFORM Transmitters</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-5098">BUG-5098</a></td>
+<td>Board hang during AXI-c2c access at bootup triggers watchdog reboot</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-5031">BUG-5031</a></td>
+<td>EMD-6.5.0 - USBr: Nostromo n52 gamepad is not configurable when connected through RX</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-4866">BUG-4866</a></td>
+<td>6.5.0: SmartCard readers do not read card information when connecting every time</td>
+</tr>
+<tr>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-3512">BUG-3512</a></td>
+<td>Radio Television Suisse RTS - MacPro19- USB headsets enumeration issue</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<div class="md-source-file">
+<small>
+    
+      Last update:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 13, 2023</span>
+<br/>
+        Created:
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 3, 2023</span>
+</small>
+</div>
+<div class="md-source-date">
+<small>
+          Authors: <span class="git-page-authors git-authors"><a href="mailto:eamon.hayden@blackbox.com">Eamon Hayden</a>, <a href="mailto:john.mullin@blackbox.com">John Mullin</a>, <a href="mailto:micheal.donohue@blackbox.com">Micheal Donohue</a>, <a href="mailto:olga.birkvalde@blackbox.com">Olga Birkvalde</a>, <a href="mailto:developer@ubuntu-16-0-4-template">developer</a></span>
+</small>
+</div>
+</article>
+</div>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.tabs"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+<script src="../../assets/javascripts/bundle.aecac24b.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,3733 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="../sourcecontrol/" rel="prev"/>
+<link href="../sdkvm_prorail_proposal/" rel="next"/>
+<link href="../../../assets/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.5.3, mkdocs-material-9.4.6" name="generator"/>
+<title>SDKVM 1.2.0 Scope of Work - Blackbox Embedded Documentation</title>
+<link href="../../../assets/stylesheets/main.35e1ed30.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.356b1318.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../../../stylesheets/extra.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="white" data-md-color-primary="black" data-md-color-scheme="default" dir="ltr">
+<script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#scoping-for-sdkvm-release-120-130-and-140">1. 
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Blackbox Embedded Documentation" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="Blackbox Embedded Documentation">
+<svg viewbox="0 0 89 89" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.136,17.387l0,42.932l42.932,21.467l-42.932,-64.399Z"></path>
+<path d="M21.91,8l42.933,64.398l-18.775,9.388l-42.932,-64.399l18.774,-9.387Z" style="fill-opacity: 0.5"></path>
+<path d="M67.535,17.387l-27.262,18.156l21.878,32.818l5.384,2.691l0,-53.665Z"></path>
+<path d="M67.535,17.387l0,53.666l18.774,-9.388l0,-53.665l-18.774,9.387Z" style="fill-opacity: 0.25"></path>
+</svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Blackbox Embedded Documentation
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              SDKVM 1.2.0 Scope of Work
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="white" data-md-color-media="" data-md-color-primary="black" data-md-color-scheme="default" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_2" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="white" data-md-color-media="" data-md-color-primary="green" data-md-color-scheme="slate" id="__palette_2" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"></path></svg>
+</label>
+</form>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../..">
+        
+  
+    
+  
+  Home
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../developer_quick_start/connecting_to_vm/">
+          
+  
+  Developer Quick Start
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../buildroot_guides/creating_buildroot_enviroment/">
+          
+  
+  Development
+
+        </a>
+</li>
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="../../Summary/summary/">
+          
+  
+  Architecture and Design Documents
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../Infrastructure/branching_strategy/">
+          
+  
+  Infrastructure
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../automation/summary/">
+          
+  
+  Automation
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../features/summary/">
+          
+  
+  Features
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../process/process/">
+          
+  
+  Process
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../release_notes/summary/">
+          
+  
+  Release Notes
+
+        </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Blackbox Embedded Documentation" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="Blackbox Embedded Documentation">
+<svg viewbox="0 0 89 89" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.136,17.387l0,42.932l42.932,21.467l-42.932,-64.399Z"></path>
+<path d="M21.91,8l42.933,64.398l-18.775,9.388l-42.932,-64.399l18.774,-9.387Z" style="fill-opacity: 0.5"></path>
+<path d="M67.535,17.387l-27.262,18.156l21.878,32.818l5.384,2.691l0,-53.665Z"></path>
+<path d="M67.535,17.387l0,53.666l18.774,-9.388l0,-53.665l-18.774,9.387Z" style="fill-opacity: 0.25"></path>
+</svg>
+</a>
+    Blackbox Embedded Documentation
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../..">
+<span class="md-ellipsis">
+    Home
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+<span class="md-ellipsis">
+    Developer Quick Start
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            Developer Quick Start
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../developer_quick_start/connecting_to_vm/">
+<span class="md-ellipsis">
+    Connecting to VM
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../developer_quick_start/blackbox_cli/">
+<span class="md-ellipsis">
+    Blackbox CLI
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../developer_quick_start/building_code/">
+<span class="md-ellipsis">
+    Compiling Code
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../developer_quick_start/phabricator/">
+<span class="md-ellipsis">
+    Code Reviews
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../developer_quick_start/reference_books/">
+<span class="md-ellipsis">
+    Reference Books
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+<span class="md-ellipsis">
+    Development
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            Development
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="">
+<span class="md-ellipsis">
+    Buildroot
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_1_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_1">
+<span class="md-nav__icon md-icon"></span>
+            Buildroot
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../buildroot_guides/creating_buildroot_enviroment/">
+<span class="md-ellipsis">
+    Creating Buildroot Environment
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../buildroot_guides/buildroot_defconfig/">
+<span class="md-ellipsis">
+    Buildroot defconfig
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../buildroot_guides/emeraldrc_files/">
+<span class="md-ellipsis">
+    Emerald RC Files
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../buildroot_guides/rootfs_overlays/">
+<span class="md-ellipsis">
+    Rootfile System Overlays
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../buildroot_guides/creating_package/">
+<span class="md-ellipsis">
+    Adding New Packages
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../buildroot_guides/packages/">
+<span class="md-ellipsis">
+    Packages
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../buildroot_guides/local_mk/">
+<span class="md-ellipsis">
+    Local Development
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../buildroot_guides/command_runner/">
+<span class="md-ellipsis">
+    Command Runner
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../buildroot_guides/upgrade_images/">
+<span class="md-ellipsis">
+    Upgrade Images
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="">
+<span class="md-ellipsis">
+    Application Development
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_2">
+<span class="md-nav__icon md-icon"></span>
+            Application Development
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../coding_guides/conditional_compilation/">
+<span class="md-ellipsis">
+    Conditional Compilation
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="">
+<span class="md-ellipsis">
+    Deploying Code
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_3">
+<span class="md-nav__icon md-icon"></span>
+            Deploying Code
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../buildroot_guides/transferring_images/">
+<span class="md-ellipsis">
+    Transferring Images
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+<span class="md-ellipsis">
+    Architecture and Design Documents
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            Architecture and Design Documents
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="">
+<span class="md-ellipsis">
+    Summary
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_1_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_1">
+<span class="md-nav__icon md-icon"></span>
+            Summary
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/summary/">
+<span class="md-ellipsis">
+    Summary Page
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="">
+<span class="md-ellipsis">
+    Document Templates
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_2">
+<span class="md-nav__icon md-icon"></span>
+            Document Templates
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../software_architecture_template/">
+<span class="md-ellipsis">
+    Software Architecture Template
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../software_design_document/">
+<span class="md-ellipsis">
+    Software Design Template
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="">
+<span class="md-ellipsis">
+    Emerald Appliances
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_3">
+<span class="md-nav__icon md-icon"></span>
+            Emerald Appliances
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_3_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3_1" id="__nav_4_3_1_label" tabindex="0">
+<span class="md-ellipsis">
+    Architecture Documents
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_3_1_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_4_3_1">
+<span class="md-nav__icon md-icon"></span>
+            Architecture Documents
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../emerald_software_system_reference/">
+<span class="md-ellipsis">
+    Appliance Software System Reference
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/software_architecture_push_and_get/">
+<span class="md-ellipsis">
+    Push and Get
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_3_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3_2" id="__nav_4_3_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Design Documents
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_3_2_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_4_3_2">
+<span class="md-nav__icon md-icon"></span>
+            Design Documents
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/bonded_connections/">
+<span class="md-ellipsis">
+    Bonded Connections
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_3_2_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3_2_2" id="__nav_4_3_2_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Boot Configuration
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_3_2_2_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_3_2_2">
+<span class="md-nav__icon md-icon"></span>
+            Boot Configuration
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../boot_configuration/emerald4k_fitimages/">
+<span class="md-ellipsis">
+    Emerald 4K
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ConnectionLabel/label/">
+<span class="md-ellipsis">
+    Connection Label
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_3_2_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3_2_4" id="__nav_4_3_2_4_label" tabindex="0">
+<span class="md-ellipsis">
+    Connection Management
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_3_2_4_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_3_2_4">
+<span class="md-nav__icon md-icon"></span>
+            Connection Management
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_3_2_4_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3_2_4_1" id="__nav_4_3_2_4_1_label" tabindex="0">
+<span class="md-ellipsis">
+    CM
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_3_2_4_1_label" class="md-nav" data-md-level="5">
+<label class="md-nav__title" for="__nav_4_3_2_4_1">
+<span class="md-nav__icon md-icon"></span>
+            CM
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Connection_Management/history/">
+<span class="md-ellipsis">
+    Master Document Revision History
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Connection_Management/references/">
+<span class="md-ellipsis">
+    References
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Connection_Management/termsAndDefinitions/">
+<span class="md-ellipsis">
+    Terms and Definitions
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Connection_Management/overview/">
+<span class="md-ellipsis">
+    Overview
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Connection_Management/mqtt/">
+<span class="md-ellipsis">
+    Mqtt Usage
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Connection_Management/connection_process_summary/">
+<span class="md-ellipsis">
+    Applications Summary
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Connection_Management/connection_process_design/">
+<span class="md-ellipsis">
+    Applications Detailed Design
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Connection_Management/connection_process_specifics/">
+<span class="md-ellipsis">
+    Applications Specific Design Aspects
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/tbc/">
+<span class="md-ellipsis">
+    Connection Sequence
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/display_layer/">
+<span class="md-ellipsis">
+    Display Layer
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/data_flow_controller/">
+<span class="md-ellipsis">
+    Data Flow Controller
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/diagnostics/">
+<span class="md-ellipsis">
+    Diagnostics
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/discovery/">
+<span class="md-ellipsis">
+    Discovery
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/dual_stream/">
+<span class="md-ellipsis">
+    Dual Stream
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/error_handling/">
+<span class="md-ellipsis">
+    Error Handling
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/interoperability/">
+<span class="md-ellipsis">
+    Interoperability
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_3_2_12" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3_2_12" id="__nav_4_3_2_12_label" tabindex="0">
+<span class="md-ellipsis">
+    Individual Inactivity Timers
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_3_2_12_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_3_2_12">
+<span class="md-nav__icon md-icon"></span>
+            Individual Inactivity Timers
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/individual_inactivity_timers/individual_inactivity_timers_hld/">
+<span class="md-ellipsis">
+    Individual Inactivity Timers HLD
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/individual_inactivity_timers/individual_inactivity_timers_hld_appendix/">
+<span class="md-ellipsis">
+    Appendix
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/kvm_client/">
+<span class="md-ellipsis">
+    KVM Client
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/kvm_server/">
+<span class="md-ellipsis">
+    KVM Server
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/kvm_bonded_connection/">
+<span class="md-ellipsis">
+    KVM Bonded Connections
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/lacp/">
+<span class="md-ellipsis">
+    LACP
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/mouse_events/">
+<span class="md-ellipsis">
+    Mouse Event Handling
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/tbc/">
+<span class="md-ellipsis">
+    Multiunicast Peer Joining
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/tbc/">
+<span class="md-ellipsis">
+    Multicast Peer Joining
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_3_2_20" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3_2_20" id="__nav_4_3_2_20_label" tabindex="0">
+<span class="md-ellipsis">
+    Memory Maps
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_3_2_20_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_3_2_20">
+<span class="md-nav__icon md-icon"></span>
+            Memory Maps
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/memory_map/nand_memory_map/">
+<span class="md-ellipsis">
+    NAND Memory Map
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/networking/">
+<span class="md-ellipsis">
+    Networking
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/performance/">
+<span class="md-ellipsis">
+    Performance
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../hardware_acceleration_for_4KRDP_connections/">
+<span class="md-ellipsis">
+    RDP VM Hardware Acceleration on 4K
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/tbc/">
+<span class="md-ellipsis">
+    Resolution Change Sequence
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/system_upgrade/">
+<span class="md-ellipsis">
+    System Upgrade
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/system_login/">
+<span class="md-ellipsis">
+    System Login
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_3_2_27" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3_2_27" id="__nav_4_3_2_27_label" tabindex="0">
+<span class="md-ellipsis">
+    Splashscreen
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_3_2_27_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_3_2_27">
+<span class="md-nav__icon md-icon"></span>
+            Splashscreen
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Splashscreen_Design/">
+<span class="md-ellipsis">
+    Splashscreen Design
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/stats_monitor/">
+<span class="md-ellipsis">
+    Statistics Monitor
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/toe/">
+<span class="md-ellipsis">
+    TOE
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/transmitter_settings/">
+<span class="md-ellipsis">
+    Transmitter Settings
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_3_2_31" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3_2_31" id="__nav_4_3_2_31_label" tabindex="0">
+<span class="md-ellipsis">
+    Upgrades
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_3_2_31_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_3_2_31">
+<span class="md-nav__icon md-icon"></span>
+            Upgrades
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/upgrades/upgrades_2k/">
+<span class="md-ellipsis">
+    2K Upgrades
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/unplanned_leave/">
+<span class="md-ellipsis">
+    Unplanned Leave
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_3_2_33" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3_2_33" id="__nav_4_3_2_33_label" tabindex="0">
+<span class="md-ellipsis">
+    USB
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_3_2_33_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_3_2_33">
+<span class="md-nav__icon md-icon"></span>
+            USB
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/usb/usbr/">
+<span class="md-ellipsis">
+    USB/R
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/usb/usbr_udc/">
+<span class="md-ellipsis">
+    USB/R Device Controllers
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/usb/usbr_utilities/">
+<span class="md-ellipsis">
+    USB/R Utilities
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/usb/usbr_msc_transport/">
+<span class="md-ellipsis">
+    USB/R MSC Transport
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/video_latency/">
+<span class="md-ellipsis">
+    Video Latency
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_3_2_35" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3_2_35" id="__nav_4_3_2_35_label" tabindex="0">
+<span class="md-ellipsis">
+    Video
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_3_2_35_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_3_2_35">
+<span class="md-nav__icon md-icon"></span>
+            Video
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/video/emerald4k_tx_scaling/">
+<span class="md-ellipsis">
+    EMD4K TX Scaling
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/video/cut-through/">
+<span class="md-ellipsis">
+    Video Cut-Through
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/webservice_restapi/">
+<span class="md-ellipsis">
+    Webservice RestAPI
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_4_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="">
+<span class="md-ellipsis">
+    Software Defined KVM
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_4_4_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_4">
+<span class="md-nav__icon md-icon"></span>
+            Software Defined KVM
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_4_4_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_4_1" id="__nav_4_4_1_label" tabindex="0">
+<span class="md-ellipsis">
+    SKVM
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_4_4_1_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_4_4_1">
+<span class="md-nav__icon md-icon"></span>
+            SKVM
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_4_1_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_4_1_1" id="__nav_4_4_1_1_label" tabindex="0">
+<span class="md-ellipsis">
+    Architecture Documents
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_4_1_1_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_4_1_1">
+<span class="md-nav__icon md-icon"></span>
+            Architecture Documents
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../sdkvm/">
+<span class="md-ellipsis">
+    Overview
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../sdkvm_architecture/">
+<span class="md-ellipsis">
+    SDKVM Architecture
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../data_models/">
+<span class="md-ellipsis">
+    SDKVM Data Models
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../sdkvm_1.0.0_osd_specification/">
+<span class="md-ellipsis">
+    OSD 1.0.0 Specification
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../sdkvm_1.1.0_osd_specification/">
+<span class="md-ellipsis">
+    OSD 1.1.0 Specification
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../sdkvm_1.2.0_osd_specification/">
+<span class="md-ellipsis">
+    OSD 1.2.0 Specification
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../sdkvm_clients/">
+<span class="md-ellipsis">
+    Client Specification
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../workspaceserver/">
+<span class="md-ellipsis">
+    Workspace Server Specification
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../sdkvm_upgrade/">
+<span class="md-ellipsis">
+    SDKVM Upgrade
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_4_4_1_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_4_1_2" id="__nav_4_4_1_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Technical Notes
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_4_4_1_2_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_4_1_2">
+<span class="md-nav__icon md-icon"></span>
+            Technical Notes
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../sdkvm_configuration/">
+<span class="md-ellipsis">
+    SDKVM Configuration
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../dualboot/">
+<span class="md-ellipsis">
+    Dual Boot Ubuntu 22.04
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../sourcecontrol/">
+<span class="md-ellipsis">
+    SDKVM Source control
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    SDKVM 1.2.0 Scope of Work
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    SDKVM 1.2.0 Scope of Work
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#features-targeted-for-120">1.0.0.1 
+    Features Targeted for 1.2.0
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#features-targeted-for-130">1.0.0.2 
+    Features Targeted for  1.3.0
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#features-targeted-for-140">1.0.0.3 
+    Features Targeted for  1.4.0
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#proposal-for-control-bridge-support">1.1 
+    Proposal for Control Bridge Support
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#proposal-for-reconcilliation-of-audio-on-rx-and-sdkvm-connections">1.2 
+    Proposal for Reconcilliation of Audio on RX and SDKVM Connections
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#proposal-for-configuring-window-decorations">1.3 
+    Proposal for Configuring Window Decorations
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#proposal-for-extended-desktop-operation">1.4 
+    Proposal for Extended Desktop Operation
+  </a>
+<nav aria-label="Proposal for Extended Desktop Operation" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#workspace-generation">1.4.1 
+    Workspace Generation
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#workspace-processing">1.4.2 
+    Workspace Processing
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#changes-to-data-model-for-extended-desktop">1.4.3 
+    Changes to Data Model for extended desktop
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#connections-versus-workspaces">1.5 
+    Connections versus Workspaces
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mouse-acceleration">1.6 
+    Mouse Acceleration
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#proposal-for-configuring-overlays">1.7 
+    Proposal for Configuring Overlays
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#proposals-for-video-statistics">1.8 
+    Proposals for Video Statistics
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#supporting-vertical-stacking">1.9 
+    Supporting Vertical Stacking
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../sdkvm_prorail_proposal/">
+<span class="md-ellipsis">
+    Prorail Proposal
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../technical_notes/2x2_config_ibc_demo/">
+<span class="md-ellipsis">
+    2x2 Monitor Config for IBC
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../technical_notes/multimonitor-weighting/">
+<span class="md-ellipsis">
+    Multi-monitor Weighting
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../sdkvm_rest_work/">
+<span class="md-ellipsis">
+    SDKVM REST API TASK
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="">
+<span class="md-ellipsis">
+    Common
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_5_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_5">
+<span class="md-nav__icon md-icon"></span>
+            Common
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_5_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_5_1" id="__nav_4_5_1_label" tabindex="0">
+<span class="md-ellipsis">
+    Design Documents
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_5_1_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_4_5_1">
+<span class="md-nav__icon md-icon"></span>
+            Design Documents
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_5_1_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_5_1_1" id="__nav_4_5_1_1_label" tabindex="0">
+<span class="md-ellipsis">
+    MQTT
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_5_1_1_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_5_1_1">
+<span class="md-nav__icon md-icon"></span>
+            MQTT
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../mqtt/mqtt_deployment_strategy/">
+<span class="md-ellipsis">
+    MQTT Deployment Strategy
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../mqtt/mqtt/">
+<span class="md-ellipsis">
+    General Guidelines for MQTT Messages
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../mqtt/mqtt_logging/">
+<span class="md-ellipsis">
+    MQTT Logging
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_5_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_5_2" id="__nav_4_5_2_label" tabindex="0">
+<span class="md-ellipsis">
+    APIs and Specifications
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_5_2_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_4_5_2">
+<span class="md-nav__icon md-icon"></span>
+            APIs and Specifications
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_5_2_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_5_2_1" id="__nav_4_5_2_1_label" tabindex="0">
+<span class="md-ellipsis">
+    REST API
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_5_2_1_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_5_2_1">
+<span class="md-nav__icon md-icon"></span>
+            REST API
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../device_rest_api/rest_api/">
+<span class="md-ellipsis">
+    Device Rest APi
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../appliance_rest_api/appliance_rest_api/">
+<span class="md-ellipsis">
+    Appliance Rest APi
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../REST_API/rest_api_zone_support/">
+<span class="md-ellipsis">
+    REST API Zone Support
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../REST_API/receiver_to_boxilla_connection_status_over_rest/">
+<span class="md-ellipsis">
+    Receiver to Boxilla Connection Status over REST
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_5_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_5_3" id="__nav_4_5_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Technologies
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_5_3_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_4_5_3">
+<span class="md-nav__icon md-icon"></span>
+            Technologies
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../technologies/technologies_for_osd/">
+<span class="md-ellipsis">
+    OSD Technology Evaluation
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="">
+<span class="md-ellipsis">
+    Remote App
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_6_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_6">
+<span class="md-nav__icon md-icon"></span>
+            Remote App
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_6_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_6_1" id="__nav_4_6_1_label" tabindex="0">
+<span class="md-ellipsis">
+    Design Documents
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_6_1_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_4_6_1">
+<span class="md-nav__icon md-icon"></span>
+            Design Documents
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../remoteapp/remoteapp/">
+<span class="md-ellipsis">
+    Remote App Build and Install
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../remoteapp/remoteapp_nightly_build/">
+<span class="md-ellipsis">
+    Remote App Nightly Build Proposal
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_6_1_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_6_1_3" id="__nav_4_6_1_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Modifying Remote App To Accelerated Handle Video
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_6_1_3_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_6_1_3">
+<span class="md-nav__icon md-icon"></span>
+            Modifying Remote App To Accelerated Handle Video
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modifying_remote_app_to_accelerated_handle_video/introduction/">
+<span class="md-ellipsis">
+    Introduction
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_6_1_3_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_6_1_3_2" id="__nav_4_6_1_3_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Contents
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_6_1_3_2_label" class="md-nav" data-md-level="5">
+<label class="md-nav__title" for="__nav_4_6_1_3_2">
+<span class="md-nav__icon md-icon"></span>
+            Contents
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modifying_remote_app_to_accelerated_handle_video/contents/connection_scheme_architecture/">
+<span class="md-ellipsis">
+    Connection Scheme Architecture Overview and Content
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modifying_remote_app_to_accelerated_handle_video/contents/encoder_design/">
+<span class="md-ellipsis">
+    Encoder Design
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modifying_remote_app_to_accelerated_handle_video/contents/decoder_design/">
+<span class="md-ellipsis">
+    Decoder Design
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modifying_remote_app_to_accelerated_handle_video/contents/message_exchange/">
+<span class="md-ellipsis">
+    Message Exchange
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modifying_remote_app_to_accelerated_handle_video/contents/remote_app_connection_type/">
+<span class="md-ellipsis">
+    Remote App Connection Type
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modifying_remote_app_to_accelerated_handle_video/contents/guide_to_decoder_code/">
+<span class="md-ellipsis">
+    Guide to Decoder Code
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modifying_remote_app_to_accelerated_handle_video/contents/user_case_scenarios/">
+<span class="md-ellipsis">
+    User Case Scenarios
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_6_1_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_6_1_4" id="__nav_4_6_1_4_label" tabindex="0">
+<span class="md-ellipsis">
+    Original Remote App Proposal
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_6_1_4_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_6_1_4">
+<span class="md-nav__icon md-icon"></span>
+            Original Remote App Proposal
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modifying_remote_app_to_accelerated_handle_video/contents/connection_scheme_architecture">
+<span class="md-ellipsis">
+    contents
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="">
+<span class="md-ellipsis">
+    Opal
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_7_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_7">
+<span class="md-nav__icon md-icon"></span>
+            Opal
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_7_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_7_1" id="__nav_4_7_1_label" tabindex="0">
+<span class="md-ellipsis">
+    Architecture Documents
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_7_1_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_4_7_1">
+<span class="md-nav__icon md-icon"></span>
+            Architecture Documents
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../opal/opal/">
+<span class="md-ellipsis">
+    Architecture
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+<span class="md-ellipsis">
+    Infrastructure
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+            Infrastructure
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="">
+<span class="md-ellipsis">
+    SVN
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_1_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_1">
+<span class="md-nav__icon md-icon"></span>
+            SVN
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/branching_strategy/">
+<span class="md-ellipsis">
+    Branching Strategy
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/create_new_svn_repo/">
+<span class="md-ellipsis">
+    Create New SVN Repo
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="">
+<span class="md-ellipsis">
+    ESXi
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_2">
+<span class="md-nav__icon md-icon"></span>
+            ESXi
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/ESXI/creating_developer_vm/">
+<span class="md-ellipsis">
+    Creating VMs
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/ESXI/new_user/">
+<span class="md-ellipsis">
+    Creating a New ESXi User
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="">
+<span class="md-ellipsis">
+    IP Portal
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_3">
+<span class="md-nav__icon md-icon"></span>
+            IP Portal
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/IP_Management_Portal/create_new_user/">
+<span class="md-ellipsis">
+    Create New User
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/manual_nightly_build/">
+<span class="md-ellipsis">
+    Manual Nightly Build
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/configuring_nfs/">
+<span class="md-ellipsis">
+    Configuring NFS
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/ssh_tunnel_upgrades/">
+<span class="md-ellipsis">
+    SSH Tunnelling
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/Upgrade_USBIP/">
+<span class="md-ellipsis">
+    Upgrading Awsudcip/USBIP
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_8" id="__nav_5_8_label" tabindex="">
+<span class="md-ellipsis">
+    mkdocs
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_8_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_8">
+<span class="md-nav__icon md-icon"></span>
+            mkdocs
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/mkdocs/setup_local/">
+<span class="md-ellipsis">
+    Setup Local Site
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/mkdocs/editing_mkdocs/">
+<span class="md-ellipsis">
+    Editing mkdocs
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/mkdocs/flow_diagram/">
+<span class="md-ellipsis">
+    Diagrams
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_9" id="__nav_5_9_label" tabindex="">
+<span class="md-ellipsis">
+    Manufacture Test
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_9_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_9">
+<span class="md-nav__icon md-icon"></span>
+            Manufacture Test
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/Manufacture_Test/Introduction/">
+<span class="md-ellipsis">
+    Introduction
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/Manufacture_Test/Brief_Description/">
+<span class="md-ellipsis">
+    Brief Description
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/Manufacture_Test/Hardware_components/">
+<span class="md-ellipsis">
+    Hardware
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/Manufacture_Test/Test_PC_Setup/">
+<span class="md-ellipsis">
+    Flash &amp; Test PC Setup
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/Manufacture_Test/Operator_PC_Setup/">
+<span class="md-ellipsis">
+    Operator PC Setup
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/Manufacture_Test/access/">
+<span class="md-ellipsis">
+    Accessing the Flash
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/Manufacture_Test/adding/">
+<span class="md-ellipsis">
+    Adding New Device Images
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/Manufacture_Test/app_logging/">
+<span class="md-ellipsis">
+    Application Logging
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/Manufacture_Test/dut_artifacts/">
+<span class="md-ellipsis">
+    View DUT Artifacts
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/Manufacture_Test/processes/">
+<span class="md-ellipsis">
+    Flash and Test processes
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/Manufacture_Test/test_procedures/">
+<span class="md-ellipsis">
+    Test procedures
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/Manufacture_Test/Adding_new_images/">
+<span class="md-ellipsis">
+    Adding a New Image
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/Manufacture_Test/control_flow/">
+<span class="md-ellipsis">
+    Control Flow
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/Manufacture_Test/bomgar-installation/">
+<span class="md-ellipsis">
+    Bomgar remote access
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+<span class="md-ellipsis">
+    Automation
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+            Automation
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/summary/">
+<span class="md-ellipsis">
+    Summary
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/elements_of_automated_test/">
+<span class="md-ellipsis">
+    Elements of the Automated Test Framework
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/enhanced_osd/">
+<span class="md-ellipsis">
+    Enhanced OSD
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/error_code/">
+<span class="md-ellipsis">
+    Error Codes
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/OSD_messages/">
+<span class="md-ellipsis">
+    OSD Messages
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/system_latency/">
+<span class="md-ellipsis">
+    System Latency Testing Overview
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/mouse_latency_testing/">
+<span class="md-ellipsis">
+    System Latency Technical Details
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/autokeys/">
+<span class="md-ellipsis">
+    Autokeys
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_9" id="__nav_6_9_label" tabindex="">
+<span class="md-ellipsis">
+    Planning and Status
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_9_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_9">
+<span class="md-nav__icon md-icon"></span>
+            Planning and Status
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/status/">
+<span class="md-ellipsis">
+    Status
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/plan/">
+<span class="md-ellipsis">
+    Planning
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_10" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_10" id="__nav_6_10_label" tabindex="">
+<span class="md-ellipsis">
+    TechZilla
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_10_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_10">
+<span class="md-nav__icon md-icon"></span>
+            TechZilla
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/techzilla/">
+<span class="md-ellipsis">
+    Techzilla User Manual
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/techzilla_installer/">
+<span class="md-ellipsis">
+    Creating a techzilla installer
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_11" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_11" id="__nav_6_11_label" tabindex="">
+<span class="md-ellipsis">
+    Results and Reporting
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_11_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_11">
+<span class="md-nav__icon md-icon"></span>
+            Results and Reporting
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/results/">
+<span class="md-ellipsis">
+    Results Server
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/mongodb/">
+<span class="md-ellipsis">
+    Mongo Database
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_12" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_12" id="__nav_6_12_label" tabindex="">
+<span class="md-ellipsis">
+    Test Cases
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_12_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_12">
+<span class="md-nav__icon md-icon"></span>
+            Test Cases
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/testcases/">
+<span class="md-ellipsis">
+    Test Cases Overview
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/testcase_code_walkthrough/">
+<span class="md-ellipsis">
+    Test Code Walkthrough
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_12_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_12_3" id="__nav_6_12_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Test Case Lists
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_12_3_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_12_3">
+<span class="md-nav__icon md-icon"></span>
+            Test Case Lists
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_12_3_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_12_3_1" id="__nav_6_12_3_1_label" tabindex="0">
+<span class="md-ellipsis">
+    Managed Cases
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_12_3_1_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_6_12_3_1">
+<span class="md-nav__icon md-icon"></span>
+            Managed Cases
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/Connection_Cases/">
+<span class="md-ellipsis">
+    Connection Cases
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/Dual_Mode/">
+<span class="md-ellipsis">
+    Dual Mode
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/First_Video_Frame/">
+<span class="md-ellipsis">
+    First Video Frames
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/Retry_case/">
+<span class="md-ellipsis">
+    Retry cases
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/PC_Resolution/">
+<span class="md-ellipsis">
+    PC Resolution
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/DP_Devices/">
+<span class="md-ellipsis">
+    DP Devices
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/Video_quality/">
+<span class="md-ellipsis">
+    Video Quality
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/Unplanned_Leave/">
+<span class="md-ellipsis">
+    Unplanned Leave
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/Audio_tests/">
+<span class="md-ellipsis">
+    Audio
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/VM_Connections/">
+<span class="md-ellipsis">
+    VM Connection
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/Video_performance/">
+<span class="md-ellipsis">
+    Video Performance
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/Keyboard/">
+<span class="md-ellipsis">
+    Keyboard
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/Managed_Connection_Performance/">
+<span class="md-ellipsis">
+    Managed Connection Performance
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_12_3_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_12_3_2" id="__nav_6_12_3_2_label" tabindex="0">
+<span class="md-ellipsis">
+    General Unmanaged Cases
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_12_3_2_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_6_12_3_2">
+<span class="md-nav__icon md-icon"></span>
+            General Unmanaged Cases
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/General_unmanaged-SETXSH/">
+<span class="md-ellipsis">
+    SE SH TX
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/General_unmanaged-4KTXOLD/">
+<span class="md-ellipsis">
+    4K TX Old Board
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/General_unmanaged-PETXDH/">
+<span class="md-ellipsis">
+    PE DH TX
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/General_unmanaged-SETXDH/">
+<span class="md-ellipsis">
+    SE DH TX
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/General_unmanaged-ZeroUTXSH/">
+<span class="md-ellipsis">
+    ZeroU TX
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/General_unmanaged-SEDPSHTX/">
+<span class="md-ellipsis">
+    SE DP SH TX
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/General_unmanaged-PEDPSHTX/">
+<span class="md-ellipsis">
+    PE DP SH TX
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/General_unmanaged-PEDPTXDH/">
+<span class="md-ellipsis">
+    PE DP DH TX
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/General_unmanaged-4KTX/">
+<span class="md-ellipsis">
+    4K TX
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/General_unmanaged-SEDVITXSH/">
+<span class="md-ellipsis">
+    SE DVI SH TX
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/General_unmanaged-PETXSHDVI/">
+<span class="md-ellipsis">
+    PE DVI SH TX
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/General_unmanaged-PEDVIDHTX/">
+<span class="md-ellipsis">
+    PE DVI DH TX
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/General_unmanaged-4KTXNEW/">
+<span class="md-ellipsis">
+    4K TX NEW Board
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/Unmanaged_OSD_Interop/">
+<span class="md-ellipsis">
+    Unmanaged OSD Interop
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/Unmanaged_Connection_Performance/">
+<span class="md-ellipsis">
+    Unmanaged Connection Performance
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/Interop_Connection_UnManaged/">
+<span class="md-ellipsis">
+    Interop Connection UnManaged
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/references/">
+<span class="md-ellipsis">
+    References
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/source_pc/">
+<span class="md-ellipsis">
+    Source PC Automation
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/appliance_automation_hooks/">
+<span class="md-ellipsis">
+    Appliance Hooks
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/audio/">
+<span class="md-ellipsis">
+    Audio
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/test_equipment/">
+<span class="md-ellipsis">
+    Test Equipment Setup
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/usb/">
+<span class="md-ellipsis">
+    USB
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_18" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_18" id="__nav_6_18_label" tabindex="">
+<span class="md-ellipsis">
+    Guides
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_18_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_18">
+<span class="md-nav__icon md-icon"></span>
+            Guides
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/guides/troubleshooting/">
+<span class="md-ellipsis">
+    Troubleshooting
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/guides/config_files/">
+<span class="md-ellipsis">
+    Configuration
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+<span class="md-ellipsis">
+    Features
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_7_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_7">
+<span class="md-nav__icon md-icon"></span>
+            Features
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../features/summary/">
+<span class="md-ellipsis">
+    Summary
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../features/status/">
+<span class="md-ellipsis">
+    Status
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../features/feature_proposal_document_template/">
+<span class="md-ellipsis">
+    Feature Proposal Template
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../features/toolchain_upgrade/">
+<span class="md-ellipsis">
+    Toolchain Upgrade
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../features/opal/opal/">
+<span class="md-ellipsis">
+    Opal
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../features/push_and_get/">
+<span class="md-ellipsis">
+    Push and Get
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../features/interoperability/">
+<span class="md-ellipsis">
+    Interoperability
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../features/ssh_disable/">
+<span class="md-ellipsis">
+    SSH Disable
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../features/sdkvm/sdkvm/">
+<span class="md-ellipsis">
+    Software Defined KVM
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../features/slide_and_glide/">
+<span class="md-ellipsis">
+    Slide and Glide
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../features/realtime_status/">
+<span class="md-ellipsis">
+    Real Time Status
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../features/downgrade_backwards_compatibility/">
+<span class="md-ellipsis">
+    Backwards Compatibility
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../features/all_settings_configurable_via_boxilla/">
+<span class="md-ellipsis">
+    Boxilla Configuration for all settings
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../features/4K30/">
+<span class="md-ellipsis">
+    4K 30
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../features/4KOver1Gig/4Kover1Gig/">
+<span class="md-ellipsis">
+    4K Over 1 Gig
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../features/cloudflare/">
+<span class="md-ellipsis">
+    CloudFlare
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../features/planning/">
+<span class="md-ellipsis">
+    Planning
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../features/Splashscreen_proposal/">
+<span class="md-ellipsis">
+    Splashscreen
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+<span class="md-ellipsis">
+    Process
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_8_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_8">
+<span class="md-nav__icon md-icon"></span>
+            Process
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../process/process/">
+<span class="md-ellipsis">
+    process
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+<span class="md-ellipsis">
+    Release Notes
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_9_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_9">
+<span class="md-nav__icon md-icon"></span>
+            Release Notes
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../release_notes/summary/">
+<span class="md-ellipsis">
+    Summary
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../release_notes/V6_6_71_RELEASE_NOTES/">
+<span class="md-ellipsis">
+    V6.6.71
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../release_notes/V6_6_1_RELEASE_NOTES/">
+<span class="md-ellipsis">
+    V6.6.1
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../release_notes/V6_7_0_RELEASE_NOTES/">
+<span class="md-ellipsis">
+    V6.7.0
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../release_notes/V6_6_70_RELEASE_NOTES/">
+<span class="md-ellipsis">
+    V6.6.70
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../release_notes/V6_6_0_RELEASE_NOTES/">
+<span class="md-ellipsis">
+    V6.6.0
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../release_notes/V6_5_0_RELEASE_NOTES/">
+<span class="md-ellipsis">
+    V6.5.0
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../release_notes/V6_4_0_RELEASE_NOTES/">
+<span class="md-ellipsis">
+    V6.4.0
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../release_notes/V6_3_10_RELEASE_NOTES/">
+<span class="md-ellipsis">
+    V6.3.10
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#features-targeted-for-120">1.0.0.1 
+    Features Targeted for 1.2.0
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#features-targeted-for-130">1.0.0.2 
+    Features Targeted for  1.3.0
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#features-targeted-for-140">1.0.0.3 
+    Features Targeted for  1.4.0
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#proposal-for-control-bridge-support">1.1 
+    Proposal for Control Bridge Support
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#proposal-for-reconcilliation-of-audio-on-rx-and-sdkvm-connections">1.2 
+    Proposal for Reconcilliation of Audio on RX and SDKVM Connections
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#proposal-for-configuring-window-decorations">1.3 
+    Proposal for Configuring Window Decorations
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#proposal-for-extended-desktop-operation">1.4 
+    Proposal for Extended Desktop Operation
+  </a>
+<nav aria-label="Proposal for Extended Desktop Operation" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#workspace-generation">1.4.1 
+    Workspace Generation
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#workspace-processing">1.4.2 
+    Workspace Processing
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#changes-to-data-model-for-extended-desktop">1.4.3 
+    Changes to Data Model for extended desktop
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#connections-versus-workspaces">1.5 
+    Connections versus Workspaces
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mouse-acceleration">1.6 
+    Mouse Acceleration
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#proposal-for-configuring-overlays">1.7 
+    Proposal for Configuring Overlays
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#proposals-for-video-statistics">1.8 
+    Proposals for Video Statistics
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#supporting-vertical-stacking">1.9 
+    Supporting Vertical Stacking
+  </a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="scoping-for-sdkvm-release-120-130-and-140"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.</span> Scoping for SDKVM Release  1.2.0, 1.3.0 and 1.4.0</h1>
+<p>This is a discussion document to try and correctly scope the requirements for SDKVM 1.1.0 and subsequent releases. I have listed a number of items below that require discussion. The allocation to SDKVM 1.2.0 is provisional and will not be finalised until discussions with product management have taken place.</p>
+<h4 id="features-targeted-for-120"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.0.0.1</span> Features Targeted for 1.2.0</h4>
+<table>
+<thead>
+<tr>
+<th>Task</th>
+<th>Provisional Estimate</th>
+<th>Comments</th>
+<th>Resources</th>
+<th>Proposed Release</th>
+<th>Proposed SDKVM Drop</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Control Bridge Support</td>
+<td>4 weeks</td>
+<td>port from Appliance with addition OSD integration</td>
+<td>Narayana,Squareroot</td>
+<td>1.2.0</td>
+<td>EC1</td>
+</tr>
+<tr>
+<td>Enabled decorations per workspace</td>
+<td>2 weeks</td>
+<td></td>
+<td>johnos,Squareroot</td>
+<td>1.2.0</td>
+<td>EC1</td>
+</tr>
+<tr>
+<td>Support for 2X2 matrix and video wall</td>
+<td>2 weeks</td>
+<td></td>
+<td>micheal</td>
+<td>1.2.0</td>
+<td>EC1</td>
+</tr>
+<tr>
+<td>Inactivity Timer for OSD</td>
+<td>2 weeks</td>
+<td>re-implement feature</td>
+<td>Squareroot</td>
+<td>1.2.0</td>
+<td>EC1</td>
+</tr>
+<tr>
+<td>TX Settings</td>
+<td></td>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-5329">Associated Jira ticket</a></td>
+<td>Thiru</td>
+<td>1.2.0</td>
+<td>EC1</td>
+</tr>
+<tr>
+<td>Boxilla Statistics</td>
+<td></td>
+<td>These are being handled by Narayana - added video</td>
+<td>Squareroot, Narayana, Johnos</td>
+<td>1.2.0</td>
+<td>EC1</td>
+</tr>
+<tr>
+<td>Extended Desktop/Dual head support - client level</td>
+<td>6 weeks</td>
+<td>In Progress</td>
+<td>Jonathan</td>
+<td>1.2.0</td>
+<td>EC1</td>
+</tr>
+<tr>
+<td>Extended Desktop/Dual head support - OSD Presentation</td>
+<td>4 weeks</td>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-5720">Associated Jira ticket</a></td>
+<td>johnos</td>
+<td>1.2.0</td>
+<td>EC1</td>
+</tr>
+<tr>
+<td>Additional Templates, including multiscreen and screen spanning</td>
+<td>6 weeks</td>
+<td>Agreed that there will be no new templates for the 1.1.0 release. We will evaluate turning back on multi-window templates, but this is not commited.</td>
+<td>Jonathan,johnos,Squareroot</td>
+<td>1.2.0</td>
+<td>EC1</td>
+</tr>
+<tr>
+<td>Vertical Screen Position Support</td>
+<td>8 weeks</td>
+<td>Product Management indicated that this is a priority, but it has a significant OSD impact - PM will review and give directions. This may also require new templates. <a href="https://bboxjira.atlassian.net/browse/BUG-5950?filter=10869">Jira Ticket</a></td>
+<td>johnos, micheal</td>
+<td>1.2.0 ?</td>
+<td>EC2 ?</td>
+</tr>
+<tr>
+<td>Extended Desktop Support - Boxilla</td>
+<td>4 weeks</td>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-5720">Associated Jira ticket</a></td>
+<td>johnos,Julian,Aidan</td>
+<td>1.2.0</td>
+<td>EC2</td>
+</tr>
+<tr>
+<td>Auto Login support on SDKVM</td>
+<td>3 weeks</td>
+<td>discussion phase with product management - Boxilla does not support the configuration of this in the XML file, it is a local setting, will it be similar in SDKVM</td>
+<td>johnos</td>
+<td>1.2.0</td>
+<td>EC2</td>
+</tr>
+<tr>
+<td>Mouse Acceleration</td>
+<td>6 weeks</td>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-5724">Associated Jira ticket</a></td>
+<td>johnos</td>
+<td>1.2.0</td>
+<td>EC2</td>
+</tr>
+<tr>
+<td>Statistics for SDKVM Connections</td>
+<td>2 weeks</td>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-5919">Associated Jira ticket</a></td>
+<td>Manas</td>
+<td>1.2.0</td>
+<td>EC2</td>
+</tr>
+<tr>
+<td>Key handling for industry standard hotkeys</td>
+<td>4 weeks</td>
+<td>In progress</td>
+<td>Jonathan</td>
+<td>1.2.0</td>
+<td>EC2</td>
+</tr>
+<tr>
+<td>Support for configurable window decorations</td>
+<td>2 weeks</td>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-5722">Associated Jira ticket</a></td>
+<td>johnos</td>
+<td>1.2.0</td>
+<td>EC2</td>
+</tr>
+<tr>
+<td>Secure Boot</td>
+<td>8 weeks</td>
+<td>exploratory phase</td>
+<td>manas</td>
+<td>1.2.0</td>
+<td>EC3</td>
+</tr>
+<tr>
+<td>Disk Encryption</td>
+<td>8 weeks</td>
+<td>exploratory phase</td>
+<td>manas</td>
+<td>1.2.0</td>
+<td>EC3</td>
+</tr>
+<tr>
+<td>Support for configurable Hot Keys</td>
+<td>2 weeks</td>
+<td>Exploratory Phase</td>
+<td>johnos</td>
+<td>1.2.0</td>
+<td>EC3</td>
+</tr>
+<tr>
+<td>Keyboard LED Synchronisation</td>
+<td>6 weeks</td>
+<td>Exploratory Phase</td>
+<td>johnos, jonathan</td>
+<td>1.2.0</td>
+<td>EC3</td>
+</tr>
+<tr>
+<td>Display Management control via Boxilla</td>
+<td>?</td>
+<td>Agreed that it will be a local setting and will not be supported by Boxilla for 1.1.0 release.</td>
+<td>johnos, Narayana for possible REST API support</td>
+<td>1.2.0</td>
+<td>EC3</td>
+</tr>
+<tr>
+<td>Statistics and Performance Core</td>
+<td>8 weeks</td>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-5723">Associated Jira ticket</a></td>
+<td>johnos, Narayana</td>
+<td>1.2.0</td>
+<td>EC4</td>
+</tr>
+<tr>
+<td>Audio support control via Boxilla</td>
+<td>6 weeks</td>
+<td>Agreed that it will be a local setting and will not be supported by Boxilla for 1.1.0 release. This has implications for where audio settings are stored because we do not want these over written by Boxilla.</td>
+<td>johnos, Narayana for possible REST API support</td>
+<td>1.2.0</td>
+<td>EC3</td>
+</tr>
+<tr>
+<td>Extended Desktop/Dual head support - Core</td>
+<td>8 weeks</td>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-5720">Associated Jira ticket</a></td>
+<td>johnos</td>
+<td>1.2.0</td>
+<td>EC3</td>
+</tr>
+<tr>
+<td>Active Directory</td>
+<td></td>
+<td>exploratory phase</td>
+<td>Narayana, Boxilla Team</td>
+<td>1.2.0</td>
+<td>EC4</td>
+</tr>
+<tr>
+<td>Additional control bridge api requests</td>
+<td>3 weeks</td>
+<td>Narayana, johnos <a href="https://bboxjira.atlassian.net/issues/?jql=labels%20%3D%20%22ControlBridge%22">Associated Jira tickets</a></td>
+<td>1.2.0</td>
+<td>EC4</td>
+<td></td>
+</tr>
+<tr>
+<td>Customer Aena Airport Operator:  Red border highlighting a tile where audio (alarm) is sounding</td>
+<td>4 weeks</td>
+<td>jonathan, johnos <a href="https://bboxjira.atlassian.net/browse/BUG-6093">Associated Jira ticket</a></td>
+<td>1.2.0</td>
+<td>EC4</td>
+<td></td>
+</tr>
+<tr>
+<td>Prorail features</td>
+<td>insufficient data</td>
+<td>jonathan, johnos <a href="https://bboxjira.atlassian.net/browse/BUG-6093">Associated Jira ticket</a> also <a href="../sdkvm_prorail_proposal">Prorail Proposal</a></td>
+<td>1.2.0</td>
+<td>EC4</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="features-targeted-for-130"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.0.0.2</span> Features Targeted for  1.3.0</h4>
+<table>
+<thead>
+<tr>
+<th>Task</th>
+<th>Provisional Estimate</th>
+<th>Comments</th>
+<th>Resources</th>
+<th>Proposed Release</th>
+<th>Proposed SDKVM Drop</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Force Connections</td>
+<td>4 weeks</td>
+<td>Force Workspaces will be available from the IBC demo <a href="https://bboxjira.atlassian.net/browse/BUG-5723">Associated Jira ticket</a></td>
+<td>johnos, Aidan</td>
+<td>1.3.0</td>
+<td>EC1</td>
+</tr>
+<tr>
+<td>MST Support</td>
+<td>4 Months</td>
+<td></td>
+<td>Micheal, Squareroot</td>
+<td>1.3.0</td>
+<td>EC1</td>
+</tr>
+<tr>
+<td>Bonded Group Support</td>
+<td>4 Months</td>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-5723">Associated Jira ticket</a></td>
+<td>johnos, Aidan</td>
+<td>1.3.0</td>
+<td>EC1</td>
+</tr>
+<tr>
+<td>Ability to lock Tiles to an XY and Z axis, tile cannot be moved and must remain on top</td>
+<td>4 Months</td>
+<td></td>
+<td>johnos</td>
+<td>1.3.0</td>
+<td>EC4</td>
+</tr>
+<tr>
+<td>Ability to select a connection target from an existing active tile</td>
+<td>3 Months</td>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-5240">Associated Jira Ticket</a></td>
+<td>johnos, jonathan</td>
+<td>1.3.0</td>
+<td>EC4</td>
+</tr>
+<tr>
+<td>Bi-Directional Audio</td>
+<td>6 weeks</td>
+<td>Significant work at client, OSD and WS level - <a href="https://bboxjira.atlassian.net/browse/BUG-6063">Associated Jira Ticket</a></td>
+<td>johnos</td>
+<td>1.3.0</td>
+<td>EC4</td>
+</tr>
+<tr>
+<td>Detail event logging to Boxilla, workspace opening and closing</td>
+<td>4 weeks</td>
+<td>johnos</td>
+<td>1.3.0</td>
+<td>EC4</td>
+<td></td>
+</tr>
+<tr>
+<td>Connections versus workspaces - user configurable workspaces</td>
+<td>4 weeks</td>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-5723">Associated Jira ticket</a></td>
+<td></td>
+<td>johnos</td>
+<td>1.3.0</td>
+</tr>
+<tr>
+<td>Zone Support</td>
+<td>6 weeks</td>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-5723">Associated Jira ticket</a></td>
+<td>johnos, Aidan</td>
+<td>1.3.0</td>
+<td>EC1</td>
+</tr>
+<tr>
+<td>Security Review</td>
+<td>2 months</td>
+<td>Exploratory Phase</td>
+<td>johnos, micheal</td>
+<td>1.3.0</td>
+<td>EC1</td>
+</tr>
+<tr>
+<td>Network interfaces and switch over</td>
+<td>8 weeks</td>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-5721">Associated Jira ticket</a></td>
+<td>Manas</td>
+<td>1.3.0</td>
+<td>EC2</td>
+</tr>
+<tr>
+<td>Variable size mouse cursor</td>
+<td>8 weeks</td>
+<td>discussion phase with product management</td>
+<td>johnos</td>
+<td>1.3.0</td>
+<td>EC2</td>
+</tr>
+<tr>
+<td>Beaconing for Mouse location</td>
+<td>8 weeks</td>
+<td>discussion phase with product management</td>
+<td>johnos</td>
+<td>1.3.0</td>
+<td>EC2</td>
+</tr>
+<tr>
+<td>Persistent connections</td>
+<td>6 weeks</td>
+<td>discussion phase with product management</td>
+<td>johnos</td>
+<td>1.3.0</td>
+<td>EC2</td>
+</tr>
+<tr>
+<td>Client Performace Benchmarking and optimisation</td>
+<td>8 weeks</td>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-4738">Associated Jira ticket</a></td>
+<td>Jonathan</td>
+<td>1.3.0</td>
+<td>EC2</td>
+</tr>
+<tr>
+<td>Support for cut through</td>
+<td>4 weeks</td>
+<td><a href="https://bboxjira.atlassian.net/browse/BUG-5310">Associated Jira ticket</a></td>
+<td>Jonathan</td>
+<td>1.3.0</td>
+<td>EC2</td>
+</tr>
+</tbody>
+</table>
+<h4 id="features-targeted-for-140"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.0.0.3</span> Features Targeted for  1.4.0</h4>
+<table>
+<thead>
+<tr>
+<th>Task</th>
+<th>Provisional Estimate</th>
+<th>Comments</th>
+<th>Resources</th>
+<th>Proposed Release</th>
+<th>Proposed SDKVM Drop</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VNC Client</td>
+<td>12 weeks</td>
+<td>The work here would be on making it compatible with existing SDKVM features in relation to window management etc. <a href="https://bboxjira.atlassian.net/browse/BUG-6066">Associated Jira ticket</a></td>
+<td>johnos, jonathan</td>
+<td>1.4.0</td>
+<td>EC1</td>
+</tr>
+<tr>
+<td>USBR Support</td>
+<td>4 months</td>
+<td>significant upfront feasibility required here</td>
+<td>johnos, narayana</td>
+<td>1.4.0</td>
+<td>EC1</td>
+</tr>
+</tbody>
+</table>
+<h2 id="proposal-for-control-bridge-support"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.1</span> Proposal for Control Bridge Support</h2>
+<ul>
+<li><a href="../sdkvm_control_bridge/">SDKVM Control Bridge</a></li>
+</ul>
+<h2 id="proposal-for-reconcilliation-of-audio-on-rx-and-sdkvm-connections"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2</span> Proposal for Reconcilliation of Audio on RX and SDKVM Connections</h2>
+<p><strong>Context</strong>: Prior to the SDKVM Boxilla a user defining a connection could enable or disable audio. </p>
+<p>If audio was enable then the RX would process audio from its analog channel if the TX could support this option. Analog audio is always sent through the RX 3.5 mm output.
+The RX always processes HID audio; this does not have to be explicitly enabled. If the TX provides HID audio then the RX will route that audio to any connected USB devices that support audio.
+When a user defines a connection on the SDKVM OSD they must explicitly select a supported audio type - either analog or hid. The SDKVM will route the selected audio to the audio output device that the user has configured. On the SDKVM these audio devices are either HDMI monitors that support audio or the SDKVM's 3.5 mm output.</p>
+<p>To reconsile the conflicting audio options between the RX and the SDKVM we have agreed that when a user enables audio on a SDKVM connection that the audio definition in the resulting connection will be set to analog. This means that we will not support hid audio connections when the SDKVM is managed.</p>
+<p><img alt="Audio" src="/images/architecture/sdkvm/audio.png" title="Audio"/></p>
+<h2 id="proposal-for-configuring-window-decorations"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.3</span> Proposal for Configuring Window Decorations</h2>
+<p><a href="https://bboxjira.atlassian.net/browse/BUG-5722">Associated Jira ticket</a></p>
+<p>In the current SDKVM we create a window decoration bar (essential a title bar) with the following information</p>
+<ul>
+<li>Connection Name</li>
+<li>IP address</li>
+<li>Close button</li>
+</ul>
+<p>For some applications like video walls it may be preferable to omit this window decoration.
+It is proposed that we add the following options to the system settings screen with a global option to configure the decorations and title bars for all users.</p>
+<!-- ![Window Decorations](/images/features/sdkvm/sdkvm_1_0_1/decorations.png "Window Decorations") -->
+<p>The proposal for Window Decorations and Title Bars is as follows:</p>
+<ul>
+<li>A workspace level setting will determine whether the title bar appears.</li>
+<li>If Decorations are enabled then an additional drop down allows one to select what appears on the title bar.<ul>
+<li>Connection Name</li>
+<li>IP address</li>
+</ul>
+</li>
+<li>The default settings for a workspace are:<ul>
+<li>Title bar enabled</li>
+<li>Connection Name enabled</li>
+<li>IP address disabled</li>
+</ul>
+</li>
+</ul>
+<p>These settings are configured in the workspace definition as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"workspace_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WS #5"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"workspace_data_model_version_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"workspace_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"workspace_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cb9f97c050"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"workspace_created_by"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">" A 10 digit unique ID for the creator or 'admin' if created by an admin user"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"title_bars"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"True"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"title_bar_connection_name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"True"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"title_bar_ipaddress"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"True"</span><span class="p">,</span>
+</code></pre></div>
+<h2 id="proposal-for-extended-desktop-operation"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.4</span> Proposal for Extended Desktop Operation</h2>
+<p><a href="https://bboxjira.atlassian.net/browse/BUG-5720">Associated Jira ticket</a></p>
+<p>The following is a proposal for dealing with extended desktop operation in the SDKVM:</p>
+<p>We add a connection level attribute called 'extended desktop' as a selectable radio button (shown below).</p>
+<p><img alt="SDKVM Extended Desktop Assignment" src="/images/architecture/sdkvm/ExtendedDesktop.png" title="SDKVM Extended Desktop Assignment"/></p>
+<p>When enabled this will make the option of a second head visible in the workspace configuration screen as shown below:</p>
+<p><img alt="SDKVM Extended Desktop Assignment" src="/images/architecture/sdkvm/single_and_quad_assignment_selection.png" title="SDKVM Extended Desktop Assignment"/></p>
+<p>The "dual_head" field of the associated connection will be set:</p>
+<p><div class="highlight"><pre><span></span><code><span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">"connection_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Editing Machine"</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">"connection_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"A 10 digit unique ID"</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PCOIP"</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">"target"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.168.1.10"</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">"user_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BBOX"</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cloud"</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">"audio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"False"</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">"usbr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"False"</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">"view_only"</span><span class="p">:</span><span class="w"> </span><span class="s2">"False"</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">"persistent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"False"</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">"dual_head"</span><span class="p">:</span><span class="w"> </span><span class="s2">"True"</span>
+<span class="w">                </span><span class="p">}</span>
+</code></pre></div>
+And the "dual_head" field of the associated tile will be set when the workspace is constructed.</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nt">"tiles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"connection_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"345ca583fb"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"tile_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4K_192.168.1.169"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"tile_location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0,0"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"tile_width"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25.0"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"tile_height"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50.0"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"target"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.168.1.169"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TX"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shared"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"audio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"False"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"usbr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"False"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"view_only"</span><span class="p">:</span><span class="w"> </span><span class="s2">"False"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"persistent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"False"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"boxilla_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"08:00:27:c0:a1:9d"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"resizable"</span><span class="p">:</span><span class="w"> </span><span class="s2">"True"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"decorations"</span><span class="p">:</span><span class="w"> </span><span class="s2">"True"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"dual_head"</span><span class="p">:</span><span class="w"> </span><span class="s2">"False"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"target_head_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"audio_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"analog"</span>
+<span class="w">        </span><span class="p">},</span>
+</code></pre></div>
+<ul>
+<li>A user can then select the tile associated with the second head.</li>
+<li>The heads should operate independently of each other; for example:<ul>
+<li>It should be possible to select head 2 without selecting head 1</li>
+<li>It should be possible to terminate one head of an active two head display without affecting the other head.</li>
+</ul>
+</li>
+<li>A connection with an extended desktop option can also be shared, so there can multiple  instances of head 1 and head 2 for a shared connection.</li>
+<li>When the workspaceserver processes this template it combines any extended desktop selections into a single instance.</li>
+</ul>
+<p>The data model has been structured to allow each target head be associated with a single tile, so each target head of a connection can be placed on a different tile.</p>
+<p><img alt="SDKVM Extended Desktop Single and Quad View" src="/images/architecture/sdkvm/single_and_quad.png" title="SDKVM Extended Desktop Single and Quad View"/></p>
+<p><img alt="SDKVM Extended Desktop Quad View" src="/images/architecture/sdkvm/quad.png" title="SDKVM Extended Desktop Quad View"/></p>
+<div class="highlight"><pre><span></span><code><span class="w">            </span><span class="nt">"tiles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">"connection_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"345ca583fb"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"tile_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4K_192.168.1.169"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"tile_location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0,0"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"tile_width"</span><span class="p">:</span><span class="w"> </span><span class="s2">"66.66"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"tile_height"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1080"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"target"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.168.1.169"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TX"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shared"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"audio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"False"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"usbr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"False"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"view_only"</span><span class="p">:</span><span class="w"> </span><span class="s2">"False"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"persistent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"False"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"boxilla_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"08:00:27:c0:a1:9d"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"resizable"</span><span class="p">:</span><span class="w"> </span><span class="s2">"True"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"decorations"</span><span class="p">:</span><span class="w"> </span><span class="s2">"True"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"dual_head"</span><span class="p">:</span><span class="w"> </span><span class="s2">"False"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"target_head_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"audio_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"analog"</span>
+<span class="w">                </span><span class="p">},</span>
+</code></pre></div>
+<p>The preferred method is to specify a dual head connection with each head associated with a different tile. This approach gives us maximum flexibility; however, this approach adds complexity to the processing of workspace data and client launch command generation.</p>
+<h3 id="workspace-generation"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.4.1</span> Workspace Generation</h3>
+<p>The OSD will present the user with dual head options for completing a template. If the user selects Head 1 of a dual head connection then the OSD will create a tile instance with the dual_head option set to "True". It will populate the location and size information consistent with its position in the chosen template. It will set "target_head_id" to 1.</p>
+<p>If the user selects Head 2 of a dual head connection then the OSD will create a tile instance with the dual_head option set to "True", and it will populate the location and size information consistent with its position in the chosen template.
+It will set "target_head_id" to 2.</p>
+<h3 id="workspace-processing"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.4.2</span> Workspace Processing</h3>
+<p>The work of the workspace server component now becomes more complex. It must scan the workspace and when it finds a dual head connection it must defer the creation of the launch command until it has scanned the complete workspace to see if a second instance of that target exists. The algorithm uses three pieces of information to identify if a tile is part of a dual head connection:</p>
+<ul>
+<li>"target": "192.168.1.169"</li>
+<li>"dual_head": "True"</li>
+<li>"target_head_id" : "1"</li>
+</ul>
+<p>We must remember that in the case of a shared connection there may be multiple instances of a single dual head target. This means that the workspace server must effectively pair tiles which refer to a single instance of a dual head connection.</p>
+<p>If it finds a first head instance and no second head then it simply displays that first head instance.</p>
+<p>If it finds a second head instance and no corresponding first head instance then it displays the second head instance only.</p>
+<h3 id="changes-to-data-model-for-extended-desktop"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.4.3</span> Changes to Data Model for extended desktop</h3>
+<p>The target head ID should be added to the tile definition</p>
+<div class="highlight"><pre><span></span><code>"target_head_id" : "1" 
+</code></pre></div>
+<p>This can have one of two values:</p>
+<p>For the first head of a dual dead connection or for a single head connection.</p>
+<div class="highlight"><pre><span></span><code>"target_head_id" : "1" 
+</code></pre></div>
+<p>For the second head of a dual dead connection.</p>
+<div class="highlight"><pre><span></span><code>"target_head_id" : "2" 
+</code></pre></div>
+<h2 id="connections-versus-workspaces"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.5</span> Connections versus Workspaces</h2>
+<p><a href="https://bboxjira.atlassian.net/browse/BUG-5723">Associated Jira ticket</a></p>
+<p>In the original SDKVM Design the workspace defines a list of predefined connections and their locations. We provide a "connections tab" which can be used to create, edit and delete individual connections when the system operates in unmanaged mode.</p>
+<p>The connections tab provides a check tab which allows a user to check an individual connection.
+The connections tab is not a means of launching connections. If this is required then we need some direction on how this would work and how any connections launched independent of a workspace would work.</p>
+<p>This also has implications for Boxilla in terms of statistics reporting, force connections etc.</p>
+<p>The specification should address the following:</p>
+<ol>
+<li>Is it a requirement to be able to launch multiple connections from a connections screen?</li>
+<li>Do these close and existing workspaces on launch?</li>
+<li>How is the position of these connections managed if operated independently of a workspace?</li>
+<li>When reporting statistics do we report per connection statistics of aggregate workspace statistics?</li>
+<li>At what level do we map the force connect logic in Boxilla, is it at a connection or workspace level?</li>
+<li>How do connections and workspaces interact with features like bonding and zones?</li>
+</ol>
+<h2 id="mouse-acceleration"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.6</span> Mouse Acceleration</h2>
+<p><a href="https://bboxjira.atlassian.net/browse/BUG-5724">Associated Jira ticket</a></p>
+<p>We need a specification for Mouse acceleration. This has been mentioned a number of times but requires engagement and clarification with end customers.</p>
+<p>Some aspects of mouse performance may be due to saturation of the network and limits of client video processing.</p>
+<p>Product management need to clarify and specify what is required.</p>
+<h2 id="proposal-for-configuring-overlays"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.7</span> Proposal for Configuring Overlays</h2>
+<p><a href="https://bboxjira.atlassian.net/browse/BUG-5725">Associated Jira ticket</a></p>
+<p>In the current SDKVM when we launch a client window the top right hand portion of that window provides a hotspot. Hovering on this hotspot causes the client to display an overlay which when activated provides additional controls for window properties, keyboard interaction and audio control.</p>
+<p>This overlay can also be invoked via the hotkey Windows + b without the need to hover at the top right hand corner.</p>
+<p><img alt="SDKVM Overlay" src="/images/features/sdkvm/sdkvm_1_0_1/example_overlay.png" title="SDKVM Overlay"/></p>
+<p>Some customers find this overlay difficult to invoke and they also find that it interferes with their ability to navigate to certain areas of the target screen.
+It is proposed that we add the following options to the system settings screen with a global option to configure the appearance of the overlay for all users.</p>
+<p><img alt="Window Overlay Control" src="/images/features/sdkvm/sdkvm_1_0_1/overlays.png" title="Window Overlay Control"/></p>
+<p>If overlays are enabled then it should be possible to invoke an overlay by invoking the hot key. Ideally we would like to be able to invoke an overlay on the active window by pressing a hot key.</p>
+<h2 id="proposals-for-video-statistics"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.8</span> Proposals for Video Statistics</h2>
+<ul>
+<li><a href="https://bboxjira.atlassian.net/browse/BUG-5815">Bug Reference BUG-5815</a></li>
+</ul>
+<p>It is proposed that we use the existing video statistics APIs to report video statistics from the RDP,KVM and PCoIP clients. </p>
+<p>Boxilla will be responsible for aggregating these into workspace level statistics.</p>
+<p>The REST API or a client acting on its behalf can register for client level statistics by listening to the MQTT Topic: </p>
+<p><div class="highlight"><pre><span></span><code><span class="w"> </span>blackbox/sdkvm/deskvue/workspace_server/status/statistics
+</code></pre></div>
+<strong>Note</strong> : We meed to make the topic : blackbox/sdkvm/deskvue/workspace_server/status/statistics more specific to video statistics, for example : blackbox/sdkvm/deskvue/workspace_server/status/statistics/video</p>
+<p>Statistics are returned in the following format:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w">  </span>
+<span class="w">    </span><span class="nt">"client_uid"</span><span class="p">:</span><span class="s2">"3b07e2a340"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"connection_type"</span><span class="p">:</span><span class="s2">"transmitter"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"connection_mode"</span><span class="p">:</span><span class="s2">"shared"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"server_hostname"</span><span class="p">:</span><span class="s2">"192.168.1.169"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"server_port"</span><span class="p">:</span><span class="mi">3389</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"bit_rate"</span><span class="p">:</span><span class="mi">27427220</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"frame_rate"</span><span class="p">:</span><span class="mf">21.0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"time_stamp"</span><span class="p">:</span><span class="s2">"15:16:14 16-01-2023"</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Note</strong>: Depending on the client, not all fields may be populated. The PCoIP client for example can not report frame rate.</p>
+<p><div class="highlight"><pre><span></span><code>mosquitto_sub<span class="w"> </span>-h<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span>-v<span class="w"> </span>-t<span class="w"> </span>blackbox/sdkvm/deskvue/workspace_server/status/statistics
+</code></pre></div>
+Current REST API structures are as follows. We cannot support all of these: See comments below</p>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">_VIDEO_STATISTICS</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// -----------------------------------Statistics---------------------------</span>
+<span class="w">    </span><span class="c1">// ------------------------------------------------------------------------</span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w">        </span><span class="n">previous_time_audio</span><span class="p">;</span><span class="w"> </span><span class="c1">// For SDKVM set to 0</span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w">       </span><span class="n">bytes_received</span><span class="p">;</span><span class="w"> </span><span class="c1">// For SDKVM set to 0</span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w">       </span><span class="n">rtt_usec</span><span class="p">;</span><span class="w"> </span><span class="c1">// For SDKVM set to 0</span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w">       </span><span class="n">min_rtt_usec</span><span class="p">;</span><span class="w"> </span><span class="c1">// For SDKVM set to 0</span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w">       </span><span class="n">max_rtt_usec</span><span class="p">;</span><span class="w"> </span><span class="c1">// For SDKVM set to 0</span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w">       </span><span class="n">avg_rtt_usec</span><span class="p">;</span><span class="w"> </span><span class="c1">// For SDKVM set to 0</span>
+<span class="w">    </span><span class="n">hwQualityLevel</span><span class="w">      </span><span class="n">quality_level</span><span class="p">;</span><span class="w"> </span><span class="c1">// For SDKVM set to 0</span>
+
+<span class="w">    </span><span class="n">VideoHeadStatistics</span><span class="w"> </span><span class="n">optimised_stats</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+<span class="w">    </span><span class="n">VideoHeadStatistics</span><span class="w"> </span><span class="n">lossless_stats</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">_VIDEO_HEAD_STATISTICS</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">total_bytes_processed</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">float</span><span class="w">              </span><span class="n">moving_average_video</span><span class="p">;</span><span class="w"> </span><span class="c1">// For SDKVM set to 0</span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w">       </span><span class="n">total_frames_count</span><span class="p">;</span><span class="w">  </span><span class="c1">// For SDKVM set to 0</span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w">       </span><span class="n">total_tiles_changed</span><span class="p">;</span><span class="w"> </span><span class="c1">// For SDKVM set to 0</span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w">       </span><span class="n">previous_time</span><span class="p">;</span><span class="w"> </span><span class="c1">// For SDKVM set to 0</span>
+<span class="w">    </span><span class="kt">float</span><span class="w">       </span><span class="n">Mbytes_sent</span><span class="p">;</span><span class="w"> </span><span class="c1">// For SDKVM set to 0</span>
+<span class="w">    </span><span class="kt">float</span><span class="w">              </span><span class="n">average_Mbytes_per_second</span><span class="p">;</span><span class="w"> </span><span class="c1">// for SDKVM use bit_rate</span>
+<span class="w">    </span><span class="kt">float</span><span class="w">              </span><span class="n">max_Mbytes_per_second</span><span class="p">;</span><span class="w"> </span><span class="c1">// for SDKVM use bit_rate</span>
+<span class="w">    </span><span class="kt">float</span><span class="w">              </span><span class="n">min_Mbytes_per_second</span><span class="p">;</span><span class="w"> </span><span class="c1">// for SDKVM use bit_rate</span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w">       </span><span class="n">average_per_frame_tile_size</span><span class="p">;</span><span class="w">  </span><span class="c1">// For SDKVM set to 0</span>
+
+<span class="w">    </span><span class="kt">float</span><span class="w">              </span><span class="n">frames_per_second</span><span class="p">;</span><span class="w"> </span><span class="c1">// For SDKVM use frame_rate</span>
+
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w">       </span><span class="n">average_tiles_per_frame</span><span class="p">;</span><span class="w">  </span><span class="c1">// For SDKVM set to 0</span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w">       </span><span class="n">max_tiles_per_frame</span><span class="p">;</span><span class="w"> </span><span class="c1">// For SDKVM set to 0</span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w">       </span><span class="n">min_tiles_per_frame</span><span class="p">;</span><span class="w"> </span><span class="c1">// For SDKVM set to 0</span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w">       </span><span class="n">min_frames_per_second</span><span class="p">;</span><span class="w"> </span><span class="c1">// For SDKVM use frame_rate</span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w">       </span><span class="n">max_frames_per_second</span><span class="p">;</span><span class="w"> </span><span class="c1">// For SDKVM use frame_rate</span>
+
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w">       </span><span class="n">average_tile_size</span><span class="p">;</span><span class="w"> </span><span class="c1">// For SDKVM set to 0</span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w">      </span><span class="n">total_tile_size</span><span class="p">;</span><span class="w"> </span><span class="c1">// For SDKVM set to 0</span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w">       </span><span class="n">tile_size</span><span class="p">;</span><span class="w"> </span><span class="c1">// For SDKVM set to 0</span>
+
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w">       </span><span class="n">average_frame_size</span><span class="p">;</span><span class="w"> </span><span class="c1">// For SDKVM set to 0</span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w">       </span><span class="n">max_tile_size</span><span class="p">;</span><span class="w"> </span><span class="c1">// For SDKVM set to 0</span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w">       </span><span class="n">min_tile_size</span><span class="p">;</span><span class="w"> </span><span class="c1">// For SDKVM set to 0</span>
+
+<span class="w">    </span><span class="n">videoHead_t</span><span class="w"> </span><span class="o">*</span><span class="w">      </span><span class="n">ingress_resolution</span><span class="p">;</span><span class="w"> </span><span class="c1">// For SDKVM set to 0</span>
+<span class="w">    </span><span class="n">videoHead_t</span><span class="w"> </span><span class="o">*</span><span class="w">      </span><span class="n">egress_resolution</span><span class="p">;</span><span class="w"> </span><span class="c1">// For SDKVM set to 0</span>
+
+<span class="w">    </span><span class="n">COMPRESSION_MODE</span><span class="w">   </span><span class="n">compression</span><span class="p">;</span><span class="w">  </span><span class="c1">// For SDKVM set to 0</span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w">       </span><span class="n">dropped_frames</span><span class="p">;</span><span class="w"> </span><span class="c1">// For SDKVM set to 0</span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w">       </span><span class="n">total_dropped_frames</span><span class="p">;</span><span class="w"> </span><span class="c1">// For SDKVM set to 0</span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w">       </span><span class="n">bad_frames</span><span class="p">;</span><span class="w"> </span><span class="c1">// For SDKVM set to 0</span>
+<span class="p">};</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">width</span><span class="p">;</span><span class="w"> </span><span class="c1">// For SDKVM set to 0</span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">height</span><span class="p">;</span><span class="w"> </span><span class="c1">// For SDKVM set to 0</span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">refresh</span><span class="p">;</span><span class="w"> </span><span class="c1">// For SDKVM set to 0</span>
+<span class="p">}</span><span class="w"> </span><span class="n">videoHead_t</span><span class="p">;</span>
+</code></pre></div>
+<p>The video facts sent to Boxilla are:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Format</th>
+<th>For SDKVM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>use incrementing number</td>
+</tr>
+<tr>
+<td>head</td>
+<td>int</td>
+<td>for now set to 0</td>
+</tr>
+<tr>
+<td>mac</td>
+<td>50 byte cchar array</td>
+<td>use SDKVM mac</td>
+</tr>
+<tr>
+<td>min_tiles_per_frame</td>
+<td>int</td>
+<td>for now set to 0</td>
+</tr>
+<tr>
+<td>max_tiles_per_frame</td>
+<td>int</td>
+<td>for now set to 0</td>
+</tr>
+<tr>
+<td>avg_tiles_per_frame</td>
+<td>int</td>
+<td>for now set to 0</td>
+</tr>
+<tr>
+<td>frames_per_second</td>
+<td>int</td>
+<td>use frame_rate from client</td>
+</tr>
+<tr>
+<td>min_frames_per_second</td>
+<td>int</td>
+<td>use frame_rate from client</td>
+</tr>
+<tr>
+<td>max_frames_per_second</td>
+<td>int</td>
+<td>use frame_rate from client</td>
+</tr>
+<tr>
+<td>min_tile_size</td>
+<td>int</td>
+<td>for now set to 0</td>
+</tr>
+<tr>
+<td>max_tile_size</td>
+<td>int</td>
+<td>for now set to 0</td>
+</tr>
+<tr>
+<td>min_video_bw</td>
+<td>int</td>
+<td>use bit rate</td>
+</tr>
+<tr>
+<td>max_video_bw</td>
+<td>int</td>
+<td>use bit rate</td>
+</tr>
+<tr>
+<td>avg_video_bw</td>
+<td>double</td>
+<td>use bit rate</td>
+</tr>
+<tr>
+<td>video_bw</td>
+<td>double</td>
+<td>use bit rate</td>
+</tr>
+<tr>
+<td>min_rtt</td>
+<td>double</td>
+<td>for now set to 0</td>
+</tr>
+<tr>
+<td>max_rtt</td>
+<td>double</td>
+<td>for now set to 0</td>
+</tr>
+<tr>
+<td>avg_rtt</td>
+<td>double</td>
+<td>for now set to 0</td>
+</tr>
+<tr>
+<td>rtt</td>
+<td>double</td>
+<td>for now set to 0</td>
+</tr>
+<tr>
+<td>user_response</td>
+<td>double</td>
+<td>for now set to 0</td>
+</tr>
+<tr>
+<td>resolution</td>
+<td>255 byte char array</td>
+<td>for now set to 0 array</td>
+</tr>
+<tr>
+<td>dropped_frames</td>
+<td>double</td>
+<td>for now set to 0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="supporting-vertical-stacking"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.9</span> Supporting Vertical Stacking</h2>
+<p>The existing data model does not need to change to accommodate vertical stacking of monitors.</p>
+<p>The monitor data is written to ~/.config/monitor-management/current_monitors.json</p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELL P2415Q"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dell Inc."</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"interface"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HDMI-1"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"head"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"edid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00ffffffffffff0010acc0a0424e3331061b010380351e78eae245a8554da3260b5054a54b00714f8180a9c0a940d1c0e10001010101a36600a0f0701f80302035000f282100001a000000ff00443856584637323531334e420a000000fc0044454c4c205032343135510a20000000fd001d4c1e8c1e000a20202020202001c302032ef15390050402071601141f1213272021220306111523091f07830100006d030c001000003c200060030201023a801871382d40582c25000f282100001e011d8018711c1620582c25000f282100009e04740030f2705a80b0588a000f282100001e565e00a0a0a02950302035000f282100001a0000000000000000008a"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"resolution"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"x"</span><span class="p">:</span><span class="w"> </span><span class="mi">1920</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"y"</span><span class="p">:</span><span class="w"> </span><span class="mi">1080</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"r"</span><span class="p">:</span><span class="w"> </span><span class="mf">60.0</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"position"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"x"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"y"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"connected"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"primary"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"diagonal_size"</span><span class="p">:</span><span class="w"> </span><span class="mf">24.2</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ASUS PB287Q"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ancor Communications Inc"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"interface"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HDMI-3"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"head"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"edid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00ffffffffffff000469a3283427010025190103803e22783a1cb5a3574fa0270d5054bfef00d1c0814081809500b300714f81c0010104740030f2705a80b0588a006d552100001a023a801871382d40582c45006d552100001e000000fd001e5018a01e000a202020202020000000fc0041535553205042323837510a20018702032cf1510102031112130414050e0f1d1e1f90202223091707830100006d030c002000003c200060010203565e00a0a0a02950302035006d552100001ee26800a0a0402e60302036006d552100001a011d00bc52d01e20b82855406d552100001e8c0ad090204031200c4055006d552100001800000000000000000000005e"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"resolution"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"x"</span><span class="p">:</span><span class="w"> </span><span class="mi">3840</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"y"</span><span class="p">:</span><span class="w"> </span><span class="mi">2160</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"r"</span><span class="p">:</span><span class="w"> </span><span class="mf">30.0</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"position"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"x"</span><span class="p">:</span><span class="w"> </span><span class="mi">1920</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"y"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"connected"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"primary"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"diagonal_size"</span><span class="p">:</span><span class="w"> </span><span class="mf">28.1</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div>
+<p>This specifies the relative position of each monitor.</p>
+<p>The main challenge in implementing this feature is creating a intuitive user friendly interface in the OSD. The current OSD allows a user drag monitors into their desired position on the horizontal axis. To support vertical stacking the OSD would need to additionally allow a user move monitors into the vertical plane. We may need to create some form of grid to make it easier for a user to place a monitor in the desired location.</p>
+<p>There may be some work required where the user can assign numbers to monitors. One possible solution is that we assign a weigthing to a monitor. If we connect HDMI-1 it gets weight one, but if we connect HDMI-1 and DP-1 then HDMI-1 would become monitor one and DP-1 becomes monitor two. This would mean we always setup the same. We would need to understand how MST integrates into this, it is possible that the weighting for mst propigates down.</p>
+<p>The positioning of the monitors in the horizontal and vertical positions cannot be set by Boxilla. Boxilla has no concept of connected monitors or their relative positions. There is no current requirement to implement a monitor management scheme in Boxilla.</p>
+<p><img alt="Vertical Stacking in Boxilla" src="/images/architecture/sdkvm/2x2Matrix.png" title="SDKVM Overlay"/></p>
+<p>If we do use a weighting system then Boxilla does not need any knowledge of this.  Only the SDKVM would know the assigned weights for monitors. When we specify a workspace that spans a number of monitors in Boxilla the only option we provide is the option to select the top left most head. If we select monitor one then we do so on the assumption that monitor one is the top left monitor.</p>
+<p>On the OSD we may need an interface to assign these weights.</p>
+<hr/>
+<div class="md-source-file">
+<small>
+    
+      Last update:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 19, 2023</span>
+<br/>
+        Created:
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 7, 2023</span>
+</small>
+</div>
+<div class="md-source-date">
+<small>
+          Authors: <span class="git-page-authors git-authors"><a href="mailto:john.osullivan@blackbox.com">John O'Sullivan</a>, <a href="mailto:jenkins_embedded@blackbox.com">Johnny Developer</a></span>
+</small>
+</div>
+</article>
+</div>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.sections", "navigation.tabs"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+<script src="../../../assets/javascripts/bundle.aecac24b.min.js"></script>
+</body>
+</html>

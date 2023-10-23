@@ -1,0 +1,3565 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="../sdkvm_upgrade/" rel="prev"/>
+<link href="../dualboot/" rel="next"/>
+<link href="../../../assets/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.5.3, mkdocs-material-9.4.6" name="generator"/>
+<title>SDKVM Configuration - Blackbox Embedded Documentation</title>
+<link href="../../../assets/stylesheets/main.35e1ed30.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.356b1318.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../../../stylesheets/extra.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="white" data-md-color-primary="black" data-md-color-scheme="default" dir="ltr">
+<script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#sdkvm-configuration">1. 
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Blackbox Embedded Documentation" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="Blackbox Embedded Documentation">
+<svg viewbox="0 0 89 89" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.136,17.387l0,42.932l42.932,21.467l-42.932,-64.399Z"></path>
+<path d="M21.91,8l42.933,64.398l-18.775,9.388l-42.932,-64.399l18.774,-9.387Z" style="fill-opacity: 0.5"></path>
+<path d="M67.535,17.387l-27.262,18.156l21.878,32.818l5.384,2.691l0,-53.665Z"></path>
+<path d="M67.535,17.387l0,53.666l18.774,-9.388l0,-53.665l-18.774,9.387Z" style="fill-opacity: 0.25"></path>
+</svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Blackbox Embedded Documentation
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              SDKVM Configuration
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="white" data-md-color-media="" data-md-color-primary="black" data-md-color-scheme="default" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_2" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="white" data-md-color-media="" data-md-color-primary="green" data-md-color-scheme="slate" id="__palette_2" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"></path></svg>
+</label>
+</form>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../..">
+        
+  
+    
+  
+  Home
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../developer_quick_start/connecting_to_vm/">
+          
+  
+  Developer Quick Start
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../buildroot_guides/creating_buildroot_enviroment/">
+          
+  
+  Development
+
+        </a>
+</li>
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="../../Summary/summary/">
+          
+  
+  Architecture and Design Documents
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../Infrastructure/branching_strategy/">
+          
+  
+  Infrastructure
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../automation/summary/">
+          
+  
+  Automation
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../features/summary/">
+          
+  
+  Features
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../process/process/">
+          
+  
+  Process
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../release_notes/summary/">
+          
+  
+  Release Notes
+
+        </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Blackbox Embedded Documentation" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="Blackbox Embedded Documentation">
+<svg viewbox="0 0 89 89" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.136,17.387l0,42.932l42.932,21.467l-42.932,-64.399Z"></path>
+<path d="M21.91,8l42.933,64.398l-18.775,9.388l-42.932,-64.399l18.774,-9.387Z" style="fill-opacity: 0.5"></path>
+<path d="M67.535,17.387l-27.262,18.156l21.878,32.818l5.384,2.691l0,-53.665Z"></path>
+<path d="M67.535,17.387l0,53.666l18.774,-9.388l0,-53.665l-18.774,9.387Z" style="fill-opacity: 0.25"></path>
+</svg>
+</a>
+    Blackbox Embedded Documentation
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../..">
+<span class="md-ellipsis">
+    Home
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+<span class="md-ellipsis">
+    Developer Quick Start
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            Developer Quick Start
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../developer_quick_start/connecting_to_vm/">
+<span class="md-ellipsis">
+    Connecting to VM
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../developer_quick_start/blackbox_cli/">
+<span class="md-ellipsis">
+    Blackbox CLI
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../developer_quick_start/building_code/">
+<span class="md-ellipsis">
+    Compiling Code
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../developer_quick_start/phabricator/">
+<span class="md-ellipsis">
+    Code Reviews
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../developer_quick_start/reference_books/">
+<span class="md-ellipsis">
+    Reference Books
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+<span class="md-ellipsis">
+    Development
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            Development
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="">
+<span class="md-ellipsis">
+    Buildroot
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_1_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_1">
+<span class="md-nav__icon md-icon"></span>
+            Buildroot
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../buildroot_guides/creating_buildroot_enviroment/">
+<span class="md-ellipsis">
+    Creating Buildroot Environment
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../buildroot_guides/buildroot_defconfig/">
+<span class="md-ellipsis">
+    Buildroot defconfig
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../buildroot_guides/emeraldrc_files/">
+<span class="md-ellipsis">
+    Emerald RC Files
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../buildroot_guides/rootfs_overlays/">
+<span class="md-ellipsis">
+    Rootfile System Overlays
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../buildroot_guides/creating_package/">
+<span class="md-ellipsis">
+    Adding New Packages
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../buildroot_guides/packages/">
+<span class="md-ellipsis">
+    Packages
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../buildroot_guides/local_mk/">
+<span class="md-ellipsis">
+    Local Development
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../buildroot_guides/command_runner/">
+<span class="md-ellipsis">
+    Command Runner
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../buildroot_guides/upgrade_images/">
+<span class="md-ellipsis">
+    Upgrade Images
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="">
+<span class="md-ellipsis">
+    Application Development
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_2">
+<span class="md-nav__icon md-icon"></span>
+            Application Development
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../coding_guides/conditional_compilation/">
+<span class="md-ellipsis">
+    Conditional Compilation
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="">
+<span class="md-ellipsis">
+    Deploying Code
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_3">
+<span class="md-nav__icon md-icon"></span>
+            Deploying Code
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../buildroot_guides/transferring_images/">
+<span class="md-ellipsis">
+    Transferring Images
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+<span class="md-ellipsis">
+    Architecture and Design Documents
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            Architecture and Design Documents
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="">
+<span class="md-ellipsis">
+    Summary
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_1_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_1">
+<span class="md-nav__icon md-icon"></span>
+            Summary
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/summary/">
+<span class="md-ellipsis">
+    Summary Page
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="">
+<span class="md-ellipsis">
+    Document Templates
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_2">
+<span class="md-nav__icon md-icon"></span>
+            Document Templates
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../software_architecture_template/">
+<span class="md-ellipsis">
+    Software Architecture Template
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../software_design_document/">
+<span class="md-ellipsis">
+    Software Design Template
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="">
+<span class="md-ellipsis">
+    Emerald Appliances
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_3">
+<span class="md-nav__icon md-icon"></span>
+            Emerald Appliances
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_3_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3_1" id="__nav_4_3_1_label" tabindex="0">
+<span class="md-ellipsis">
+    Architecture Documents
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_3_1_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_4_3_1">
+<span class="md-nav__icon md-icon"></span>
+            Architecture Documents
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../emerald_software_system_reference/">
+<span class="md-ellipsis">
+    Appliance Software System Reference
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/software_architecture_push_and_get/">
+<span class="md-ellipsis">
+    Push and Get
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_3_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3_2" id="__nav_4_3_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Design Documents
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_3_2_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_4_3_2">
+<span class="md-nav__icon md-icon"></span>
+            Design Documents
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/bonded_connections/">
+<span class="md-ellipsis">
+    Bonded Connections
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_3_2_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3_2_2" id="__nav_4_3_2_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Boot Configuration
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_3_2_2_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_3_2_2">
+<span class="md-nav__icon md-icon"></span>
+            Boot Configuration
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../boot_configuration/emerald4k_fitimages/">
+<span class="md-ellipsis">
+    Emerald 4K
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ConnectionLabel/label/">
+<span class="md-ellipsis">
+    Connection Label
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_3_2_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3_2_4" id="__nav_4_3_2_4_label" tabindex="0">
+<span class="md-ellipsis">
+    Connection Management
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_3_2_4_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_3_2_4">
+<span class="md-nav__icon md-icon"></span>
+            Connection Management
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_3_2_4_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3_2_4_1" id="__nav_4_3_2_4_1_label" tabindex="0">
+<span class="md-ellipsis">
+    CM
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_3_2_4_1_label" class="md-nav" data-md-level="5">
+<label class="md-nav__title" for="__nav_4_3_2_4_1">
+<span class="md-nav__icon md-icon"></span>
+            CM
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Connection_Management/history/">
+<span class="md-ellipsis">
+    Master Document Revision History
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Connection_Management/references/">
+<span class="md-ellipsis">
+    References
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Connection_Management/termsAndDefinitions/">
+<span class="md-ellipsis">
+    Terms and Definitions
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Connection_Management/overview/">
+<span class="md-ellipsis">
+    Overview
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Connection_Management/mqtt/">
+<span class="md-ellipsis">
+    Mqtt Usage
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Connection_Management/connection_process_summary/">
+<span class="md-ellipsis">
+    Applications Summary
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Connection_Management/connection_process_design/">
+<span class="md-ellipsis">
+    Applications Detailed Design
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Connection_Management/connection_process_specifics/">
+<span class="md-ellipsis">
+    Applications Specific Design Aspects
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/tbc/">
+<span class="md-ellipsis">
+    Connection Sequence
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/display_layer/">
+<span class="md-ellipsis">
+    Display Layer
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/data_flow_controller/">
+<span class="md-ellipsis">
+    Data Flow Controller
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/diagnostics/">
+<span class="md-ellipsis">
+    Diagnostics
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/discovery/">
+<span class="md-ellipsis">
+    Discovery
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/dual_stream/">
+<span class="md-ellipsis">
+    Dual Stream
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/error_handling/">
+<span class="md-ellipsis">
+    Error Handling
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/interoperability/">
+<span class="md-ellipsis">
+    Interoperability
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_3_2_12" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3_2_12" id="__nav_4_3_2_12_label" tabindex="0">
+<span class="md-ellipsis">
+    Individual Inactivity Timers
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_3_2_12_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_3_2_12">
+<span class="md-nav__icon md-icon"></span>
+            Individual Inactivity Timers
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/individual_inactivity_timers/individual_inactivity_timers_hld/">
+<span class="md-ellipsis">
+    Individual Inactivity Timers HLD
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/individual_inactivity_timers/individual_inactivity_timers_hld_appendix/">
+<span class="md-ellipsis">
+    Appendix
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/kvm_client/">
+<span class="md-ellipsis">
+    KVM Client
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/kvm_server/">
+<span class="md-ellipsis">
+    KVM Server
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/kvm_bonded_connection/">
+<span class="md-ellipsis">
+    KVM Bonded Connections
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/lacp/">
+<span class="md-ellipsis">
+    LACP
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/mouse_events/">
+<span class="md-ellipsis">
+    Mouse Event Handling
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/tbc/">
+<span class="md-ellipsis">
+    Multiunicast Peer Joining
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/tbc/">
+<span class="md-ellipsis">
+    Multicast Peer Joining
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_3_2_20" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3_2_20" id="__nav_4_3_2_20_label" tabindex="0">
+<span class="md-ellipsis">
+    Memory Maps
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_3_2_20_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_3_2_20">
+<span class="md-nav__icon md-icon"></span>
+            Memory Maps
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/memory_map/nand_memory_map/">
+<span class="md-ellipsis">
+    NAND Memory Map
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/networking/">
+<span class="md-ellipsis">
+    Networking
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/performance/">
+<span class="md-ellipsis">
+    Performance
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../hardware_acceleration_for_4KRDP_connections/">
+<span class="md-ellipsis">
+    RDP VM Hardware Acceleration on 4K
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/tbc/">
+<span class="md-ellipsis">
+    Resolution Change Sequence
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/system_upgrade/">
+<span class="md-ellipsis">
+    System Upgrade
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/system_login/">
+<span class="md-ellipsis">
+    System Login
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_3_2_27" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3_2_27" id="__nav_4_3_2_27_label" tabindex="0">
+<span class="md-ellipsis">
+    Splashscreen
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_3_2_27_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_3_2_27">
+<span class="md-nav__icon md-icon"></span>
+            Splashscreen
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Splashscreen_Design/">
+<span class="md-ellipsis">
+    Splashscreen Design
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/stats_monitor/">
+<span class="md-ellipsis">
+    Statistics Monitor
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/toe/">
+<span class="md-ellipsis">
+    TOE
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/transmitter_settings/">
+<span class="md-ellipsis">
+    Transmitter Settings
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_3_2_31" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3_2_31" id="__nav_4_3_2_31_label" tabindex="0">
+<span class="md-ellipsis">
+    Upgrades
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_3_2_31_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_3_2_31">
+<span class="md-nav__icon md-icon"></span>
+            Upgrades
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/upgrades/upgrades_2k/">
+<span class="md-ellipsis">
+    2K Upgrades
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/unplanned_leave/">
+<span class="md-ellipsis">
+    Unplanned Leave
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_3_2_33" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3_2_33" id="__nav_4_3_2_33_label" tabindex="0">
+<span class="md-ellipsis">
+    USB
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_3_2_33_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_3_2_33">
+<span class="md-nav__icon md-icon"></span>
+            USB
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/usb/usbr/">
+<span class="md-ellipsis">
+    USB/R
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/usb/usbr_udc/">
+<span class="md-ellipsis">
+    USB/R Device Controllers
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/usb/usbr_utilities/">
+<span class="md-ellipsis">
+    USB/R Utilities
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/usb/usbr_msc_transport/">
+<span class="md-ellipsis">
+    USB/R MSC Transport
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/video_latency/">
+<span class="md-ellipsis">
+    Video Latency
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_3_2_35" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3_2_35" id="__nav_4_3_2_35_label" tabindex="0">
+<span class="md-ellipsis">
+    Video
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_3_2_35_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_3_2_35">
+<span class="md-nav__icon md-icon"></span>
+            Video
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/video/emerald4k_tx_scaling/">
+<span class="md-ellipsis">
+    EMD4K TX Scaling
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/video/cut-through/">
+<span class="md-ellipsis">
+    Video Cut-Through
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Summary/Contents/webservice_restapi/">
+<span class="md-ellipsis">
+    Webservice RestAPI
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_4_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="">
+<span class="md-ellipsis">
+    Software Defined KVM
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_4_4_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_4">
+<span class="md-nav__icon md-icon"></span>
+            Software Defined KVM
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_4_4_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_4_1" id="__nav_4_4_1_label" tabindex="0">
+<span class="md-ellipsis">
+    SKVM
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_4_4_1_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_4_4_1">
+<span class="md-nav__icon md-icon"></span>
+            SKVM
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_4_1_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_4_1_1" id="__nav_4_4_1_1_label" tabindex="0">
+<span class="md-ellipsis">
+    Architecture Documents
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_4_1_1_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_4_1_1">
+<span class="md-nav__icon md-icon"></span>
+            Architecture Documents
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../sdkvm/">
+<span class="md-ellipsis">
+    Overview
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../sdkvm_architecture/">
+<span class="md-ellipsis">
+    SDKVM Architecture
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../data_models/">
+<span class="md-ellipsis">
+    SDKVM Data Models
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../sdkvm_1.0.0_osd_specification/">
+<span class="md-ellipsis">
+    OSD 1.0.0 Specification
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../sdkvm_1.1.0_osd_specification/">
+<span class="md-ellipsis">
+    OSD 1.1.0 Specification
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../sdkvm_1.2.0_osd_specification/">
+<span class="md-ellipsis">
+    OSD 1.2.0 Specification
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../sdkvm_clients/">
+<span class="md-ellipsis">
+    Client Specification
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../workspaceserver/">
+<span class="md-ellipsis">
+    Workspace Server Specification
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../sdkvm_upgrade/">
+<span class="md-ellipsis">
+    SDKVM Upgrade
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_4_4_1_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_4_1_2" id="__nav_4_4_1_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Technical Notes
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_4_4_1_2_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_4_1_2">
+<span class="md-nav__icon md-icon"></span>
+            Technical Notes
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    SDKVM Configuration
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    SDKVM Configuration
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#dependencies">1.1 
+    Dependencies
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#configuring-openbox">1.2 
+    Configuring OpenBox
+  </a>
+<nav aria-label="Configuring OpenBox" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#openbox-session-file">1.2.1 
+    OpenBox Session File
+  </a>
+<nav aria-label="OpenBox Session File" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#turning-on-logging-in-openbox">1.2.1.1 
+    Turning on Logging in OpenBox
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#openbox-desktop-file">1.2.2 
+    OpenBox Desktop File
+  </a>
+<nav aria-label="OpenBox Desktop File" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#removing-other-boot-options">1.2.2.1 
+    Removing Other Boot Options
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#startup-sequence">1.2.3 
+    Startup Sequence
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#openbox-theme">1.2.4 
+    Openbox Theme
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#starting-other-applications-from-openbox">1.3 
+    Starting other applications from Openbox
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#disabling-automatic-updates">1.4 
+    Disabling Automatic Updates
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#configuring-the-mouse-cursor-not-tstable-for-now">1.5 
+    Configuring the Mouse Cursor (not tstable for now)
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#auto-mounting-usb-drives-in-openbox">1.6 
+    Auto-mounting USB drives in Openbox
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#enabling-autologin-in-gdm3">1.7 
+    Enabling Autologin in GDM3
+  </a>
+<nav aria-label="Enabling Autologin in GDM3" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#disabling-network-dispatcher">1.7.1 
+    Disabling Network Dispatcher
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#disable-wifi">1.7.2 
+    Disable Wifi
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#disabling-monitor-sleep">1.7.3 
+    Disabling Monitor Sleep
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#partitioning-and-mounting-drives">1.8 
+    Partitioning and Mounting Drives
+  </a>
+<nav aria-label="Partitioning and Mounting Drives" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#blkid">1.8.1 
+    blkid
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#default-fstab">1.8.2 
+    Default fstab
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#proposed-fstab-for-mounting-data-partitiions">1.8.3 
+    Proposed fstab for mounting data partitiions
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#configuring-the-bashrc-file">1.9 
+    Configuring the .bashrc file
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#to-mount-the-shared-area">1.10 
+    To mount the shared area
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#timers">1.11 
+    Timers
+  </a>
+<nav aria-label="Timers" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#checking-configured-timers">1.11.1 
+    Checking Configured Timers
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#disabling-timers">1.11.2 
+    Disabling Timers
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#configuring-a-debug-terminal-in-rcxml">1.12 
+    Configuring a Debug Terminal in rc.xml
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#syslog-rotation">1.13 
+    Syslog Rotation
+  </a>
+<nav aria-label="Syslog Rotation" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#to-view-the-logrotate-status-and-determine-when-the-last-rotation-occured">1.13.1 
+    To view the logrotate status and determine when the last rotation occured
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#creating-an-alternative-syslog-rotation-service">1.13.2 
+    Creating an Alternative Syslog Rotation Service
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reference">1.13.3 
+    Reference
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#determining-serial-number">1.14 
+    Determining Serial Number
+  </a>
+<nav aria-label="Determining Serial Number" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#simplynuc-serial-number-format">1.14.1 
+    SimplyNuc Serial Number Format
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cloning-process">1.15 
+    Cloning Process
+  </a>
+<nav aria-label="Cloning Process" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#prerequisites">1.15.1 
+    Prerequisites
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#references">1.15.2 
+    References
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../dualboot/">
+<span class="md-ellipsis">
+    Dual Boot Ubuntu 22.04
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../sourcecontrol/">
+<span class="md-ellipsis">
+    SDKVM Source control
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../sdkvm_1.2.0_tasklist/">
+<span class="md-ellipsis">
+    SDKVM 1.2.0 Scope of Work
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../sdkvm_prorail_proposal/">
+<span class="md-ellipsis">
+    Prorail Proposal
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../technical_notes/2x2_config_ibc_demo/">
+<span class="md-ellipsis">
+    2x2 Monitor Config for IBC
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../technical_notes/multimonitor-weighting/">
+<span class="md-ellipsis">
+    Multi-monitor Weighting
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../sdkvm_rest_work/">
+<span class="md-ellipsis">
+    SDKVM REST API TASK
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="">
+<span class="md-ellipsis">
+    Common
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_5_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_5">
+<span class="md-nav__icon md-icon"></span>
+            Common
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_5_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_5_1" id="__nav_4_5_1_label" tabindex="0">
+<span class="md-ellipsis">
+    Design Documents
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_5_1_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_4_5_1">
+<span class="md-nav__icon md-icon"></span>
+            Design Documents
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_5_1_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_5_1_1" id="__nav_4_5_1_1_label" tabindex="0">
+<span class="md-ellipsis">
+    MQTT
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_5_1_1_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_5_1_1">
+<span class="md-nav__icon md-icon"></span>
+            MQTT
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../mqtt/mqtt_deployment_strategy/">
+<span class="md-ellipsis">
+    MQTT Deployment Strategy
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../mqtt/mqtt/">
+<span class="md-ellipsis">
+    General Guidelines for MQTT Messages
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../mqtt/mqtt_logging/">
+<span class="md-ellipsis">
+    MQTT Logging
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_5_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_5_2" id="__nav_4_5_2_label" tabindex="0">
+<span class="md-ellipsis">
+    APIs and Specifications
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_5_2_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_4_5_2">
+<span class="md-nav__icon md-icon"></span>
+            APIs and Specifications
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_5_2_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_5_2_1" id="__nav_4_5_2_1_label" tabindex="0">
+<span class="md-ellipsis">
+    REST API
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_5_2_1_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_5_2_1">
+<span class="md-nav__icon md-icon"></span>
+            REST API
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../device_rest_api/rest_api/">
+<span class="md-ellipsis">
+    Device Rest APi
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../appliance_rest_api/appliance_rest_api/">
+<span class="md-ellipsis">
+    Appliance Rest APi
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../REST_API/rest_api_zone_support/">
+<span class="md-ellipsis">
+    REST API Zone Support
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../REST_API/receiver_to_boxilla_connection_status_over_rest/">
+<span class="md-ellipsis">
+    Receiver to Boxilla Connection Status over REST
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_5_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_5_3" id="__nav_4_5_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Technologies
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_5_3_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_4_5_3">
+<span class="md-nav__icon md-icon"></span>
+            Technologies
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../technologies/technologies_for_osd/">
+<span class="md-ellipsis">
+    OSD Technology Evaluation
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="">
+<span class="md-ellipsis">
+    Remote App
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_6_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_6">
+<span class="md-nav__icon md-icon"></span>
+            Remote App
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_6_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_6_1" id="__nav_4_6_1_label" tabindex="0">
+<span class="md-ellipsis">
+    Design Documents
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_6_1_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_4_6_1">
+<span class="md-nav__icon md-icon"></span>
+            Design Documents
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../remoteapp/remoteapp/">
+<span class="md-ellipsis">
+    Remote App Build and Install
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../remoteapp/remoteapp_nightly_build/">
+<span class="md-ellipsis">
+    Remote App Nightly Build Proposal
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_6_1_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_6_1_3" id="__nav_4_6_1_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Modifying Remote App To Accelerated Handle Video
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_6_1_3_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_6_1_3">
+<span class="md-nav__icon md-icon"></span>
+            Modifying Remote App To Accelerated Handle Video
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modifying_remote_app_to_accelerated_handle_video/introduction/">
+<span class="md-ellipsis">
+    Introduction
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_6_1_3_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_6_1_3_2" id="__nav_4_6_1_3_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Contents
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_6_1_3_2_label" class="md-nav" data-md-level="5">
+<label class="md-nav__title" for="__nav_4_6_1_3_2">
+<span class="md-nav__icon md-icon"></span>
+            Contents
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modifying_remote_app_to_accelerated_handle_video/contents/connection_scheme_architecture/">
+<span class="md-ellipsis">
+    Connection Scheme Architecture Overview and Content
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modifying_remote_app_to_accelerated_handle_video/contents/encoder_design/">
+<span class="md-ellipsis">
+    Encoder Design
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modifying_remote_app_to_accelerated_handle_video/contents/decoder_design/">
+<span class="md-ellipsis">
+    Decoder Design
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modifying_remote_app_to_accelerated_handle_video/contents/message_exchange/">
+<span class="md-ellipsis">
+    Message Exchange
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modifying_remote_app_to_accelerated_handle_video/contents/remote_app_connection_type/">
+<span class="md-ellipsis">
+    Remote App Connection Type
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modifying_remote_app_to_accelerated_handle_video/contents/guide_to_decoder_code/">
+<span class="md-ellipsis">
+    Guide to Decoder Code
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modifying_remote_app_to_accelerated_handle_video/contents/user_case_scenarios/">
+<span class="md-ellipsis">
+    User Case Scenarios
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_6_1_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_6_1_4" id="__nav_4_6_1_4_label" tabindex="0">
+<span class="md-ellipsis">
+    Original Remote App Proposal
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_6_1_4_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_6_1_4">
+<span class="md-nav__icon md-icon"></span>
+            Original Remote App Proposal
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modifying_remote_app_to_accelerated_handle_video/contents/connection_scheme_architecture">
+<span class="md-ellipsis">
+    contents
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="">
+<span class="md-ellipsis">
+    Opal
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_7_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_7">
+<span class="md-nav__icon md-icon"></span>
+            Opal
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_7_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_7_1" id="__nav_4_7_1_label" tabindex="0">
+<span class="md-ellipsis">
+    Architecture Documents
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_7_1_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_4_7_1">
+<span class="md-nav__icon md-icon"></span>
+            Architecture Documents
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../opal/opal/">
+<span class="md-ellipsis">
+    Architecture
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+<span class="md-ellipsis">
+    Infrastructure
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+            Infrastructure
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="">
+<span class="md-ellipsis">
+    SVN
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_1_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_1">
+<span class="md-nav__icon md-icon"></span>
+            SVN
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/branching_strategy/">
+<span class="md-ellipsis">
+    Branching Strategy
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/create_new_svn_repo/">
+<span class="md-ellipsis">
+    Create New SVN Repo
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="">
+<span class="md-ellipsis">
+    ESXi
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_2">
+<span class="md-nav__icon md-icon"></span>
+            ESXi
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/ESXI/creating_developer_vm/">
+<span class="md-ellipsis">
+    Creating VMs
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/ESXI/new_user/">
+<span class="md-ellipsis">
+    Creating a New ESXi User
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="">
+<span class="md-ellipsis">
+    IP Portal
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_3">
+<span class="md-nav__icon md-icon"></span>
+            IP Portal
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/IP_Management_Portal/create_new_user/">
+<span class="md-ellipsis">
+    Create New User
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/manual_nightly_build/">
+<span class="md-ellipsis">
+    Manual Nightly Build
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/configuring_nfs/">
+<span class="md-ellipsis">
+    Configuring NFS
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/ssh_tunnel_upgrades/">
+<span class="md-ellipsis">
+    SSH Tunnelling
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/Upgrade_USBIP/">
+<span class="md-ellipsis">
+    Upgrading Awsudcip/USBIP
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_8" id="__nav_5_8_label" tabindex="">
+<span class="md-ellipsis">
+    mkdocs
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_8_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_8">
+<span class="md-nav__icon md-icon"></span>
+            mkdocs
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/mkdocs/setup_local/">
+<span class="md-ellipsis">
+    Setup Local Site
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/mkdocs/editing_mkdocs/">
+<span class="md-ellipsis">
+    Editing mkdocs
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/mkdocs/flow_diagram/">
+<span class="md-ellipsis">
+    Diagrams
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_9" id="__nav_5_9_label" tabindex="">
+<span class="md-ellipsis">
+    Manufacture Test
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_9_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_9">
+<span class="md-nav__icon md-icon"></span>
+            Manufacture Test
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/Manufacture_Test/Introduction/">
+<span class="md-ellipsis">
+    Introduction
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/Manufacture_Test/Brief_Description/">
+<span class="md-ellipsis">
+    Brief Description
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/Manufacture_Test/Hardware_components/">
+<span class="md-ellipsis">
+    Hardware
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/Manufacture_Test/Test_PC_Setup/">
+<span class="md-ellipsis">
+    Flash &amp; Test PC Setup
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/Manufacture_Test/Operator_PC_Setup/">
+<span class="md-ellipsis">
+    Operator PC Setup
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/Manufacture_Test/access/">
+<span class="md-ellipsis">
+    Accessing the Flash
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/Manufacture_Test/adding/">
+<span class="md-ellipsis">
+    Adding New Device Images
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/Manufacture_Test/app_logging/">
+<span class="md-ellipsis">
+    Application Logging
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/Manufacture_Test/dut_artifacts/">
+<span class="md-ellipsis">
+    View DUT Artifacts
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/Manufacture_Test/processes/">
+<span class="md-ellipsis">
+    Flash and Test processes
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/Manufacture_Test/test_procedures/">
+<span class="md-ellipsis">
+    Test procedures
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/Manufacture_Test/Adding_new_images/">
+<span class="md-ellipsis">
+    Adding a New Image
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/Manufacture_Test/control_flow/">
+<span class="md-ellipsis">
+    Control Flow
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Infrastructure/Manufacture_Test/bomgar-installation/">
+<span class="md-ellipsis">
+    Bomgar remote access
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+<span class="md-ellipsis">
+    Automation
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+            Automation
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/summary/">
+<span class="md-ellipsis">
+    Summary
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/elements_of_automated_test/">
+<span class="md-ellipsis">
+    Elements of the Automated Test Framework
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/enhanced_osd/">
+<span class="md-ellipsis">
+    Enhanced OSD
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/error_code/">
+<span class="md-ellipsis">
+    Error Codes
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/OSD_messages/">
+<span class="md-ellipsis">
+    OSD Messages
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/system_latency/">
+<span class="md-ellipsis">
+    System Latency Testing Overview
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/mouse_latency_testing/">
+<span class="md-ellipsis">
+    System Latency Technical Details
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/autokeys/">
+<span class="md-ellipsis">
+    Autokeys
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_9" id="__nav_6_9_label" tabindex="">
+<span class="md-ellipsis">
+    Planning and Status
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_9_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_9">
+<span class="md-nav__icon md-icon"></span>
+            Planning and Status
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/status/">
+<span class="md-ellipsis">
+    Status
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/plan/">
+<span class="md-ellipsis">
+    Planning
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_10" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_10" id="__nav_6_10_label" tabindex="">
+<span class="md-ellipsis">
+    TechZilla
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_10_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_10">
+<span class="md-nav__icon md-icon"></span>
+            TechZilla
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/techzilla/">
+<span class="md-ellipsis">
+    Techzilla User Manual
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/techzilla_installer/">
+<span class="md-ellipsis">
+    Creating a techzilla installer
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_11" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_11" id="__nav_6_11_label" tabindex="">
+<span class="md-ellipsis">
+    Results and Reporting
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_11_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_11">
+<span class="md-nav__icon md-icon"></span>
+            Results and Reporting
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/results/">
+<span class="md-ellipsis">
+    Results Server
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/mongodb/">
+<span class="md-ellipsis">
+    Mongo Database
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_12" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_12" id="__nav_6_12_label" tabindex="">
+<span class="md-ellipsis">
+    Test Cases
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_12_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_12">
+<span class="md-nav__icon md-icon"></span>
+            Test Cases
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/testcases/">
+<span class="md-ellipsis">
+    Test Cases Overview
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/testcase_code_walkthrough/">
+<span class="md-ellipsis">
+    Test Code Walkthrough
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_12_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_12_3" id="__nav_6_12_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Test Case Lists
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_12_3_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_12_3">
+<span class="md-nav__icon md-icon"></span>
+            Test Case Lists
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_12_3_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_12_3_1" id="__nav_6_12_3_1_label" tabindex="0">
+<span class="md-ellipsis">
+    Managed Cases
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_12_3_1_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_6_12_3_1">
+<span class="md-nav__icon md-icon"></span>
+            Managed Cases
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/Connection_Cases/">
+<span class="md-ellipsis">
+    Connection Cases
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/Dual_Mode/">
+<span class="md-ellipsis">
+    Dual Mode
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/First_Video_Frame/">
+<span class="md-ellipsis">
+    First Video Frames
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/Retry_case/">
+<span class="md-ellipsis">
+    Retry cases
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/PC_Resolution/">
+<span class="md-ellipsis">
+    PC Resolution
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/DP_Devices/">
+<span class="md-ellipsis">
+    DP Devices
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/Video_quality/">
+<span class="md-ellipsis">
+    Video Quality
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/Unplanned_Leave/">
+<span class="md-ellipsis">
+    Unplanned Leave
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/Audio_tests/">
+<span class="md-ellipsis">
+    Audio
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/VM_Connections/">
+<span class="md-ellipsis">
+    VM Connection
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/Video_performance/">
+<span class="md-ellipsis">
+    Video Performance
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/Keyboard/">
+<span class="md-ellipsis">
+    Keyboard
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/Managed_Connection_Performance/">
+<span class="md-ellipsis">
+    Managed Connection Performance
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_12_3_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_12_3_2" id="__nav_6_12_3_2_label" tabindex="0">
+<span class="md-ellipsis">
+    General Unmanaged Cases
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_12_3_2_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_6_12_3_2">
+<span class="md-nav__icon md-icon"></span>
+            General Unmanaged Cases
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/General_unmanaged-SETXSH/">
+<span class="md-ellipsis">
+    SE SH TX
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/General_unmanaged-4KTXOLD/">
+<span class="md-ellipsis">
+    4K TX Old Board
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/General_unmanaged-PETXDH/">
+<span class="md-ellipsis">
+    PE DH TX
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/General_unmanaged-SETXDH/">
+<span class="md-ellipsis">
+    SE DH TX
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/General_unmanaged-ZeroUTXSH/">
+<span class="md-ellipsis">
+    ZeroU TX
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/General_unmanaged-SEDPSHTX/">
+<span class="md-ellipsis">
+    SE DP SH TX
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/General_unmanaged-PEDPSHTX/">
+<span class="md-ellipsis">
+    PE DP SH TX
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/General_unmanaged-PEDPTXDH/">
+<span class="md-ellipsis">
+    PE DP DH TX
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/General_unmanaged-4KTX/">
+<span class="md-ellipsis">
+    4K TX
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/General_unmanaged-SEDVITXSH/">
+<span class="md-ellipsis">
+    SE DVI SH TX
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/General_unmanaged-PETXSHDVI/">
+<span class="md-ellipsis">
+    PE DVI SH TX
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/General_unmanaged-PEDVIDHTX/">
+<span class="md-ellipsis">
+    PE DVI DH TX
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/General_unmanaged-4KTXNEW/">
+<span class="md-ellipsis">
+    4K TX NEW Board
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/Unmanaged_OSD_Interop/">
+<span class="md-ellipsis">
+    Unmanaged OSD Interop
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/Unmanaged_Connection_Performance/">
+<span class="md-ellipsis">
+    Unmanaged Connection Performance
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/Interop_Connection_UnManaged/">
+<span class="md-ellipsis">
+    Interop Connection UnManaged
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/Seperated_test_case_lists/references/">
+<span class="md-ellipsis">
+    References
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/source_pc/">
+<span class="md-ellipsis">
+    Source PC Automation
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/appliance_automation_hooks/">
+<span class="md-ellipsis">
+    Appliance Hooks
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/audio/">
+<span class="md-ellipsis">
+    Audio
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/test_equipment/">
+<span class="md-ellipsis">
+    Test Equipment Setup
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/usb/">
+<span class="md-ellipsis">
+    USB
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_18" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_18" id="__nav_6_18_label" tabindex="">
+<span class="md-ellipsis">
+    Guides
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_18_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_18">
+<span class="md-nav__icon md-icon"></span>
+            Guides
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/guides/troubleshooting/">
+<span class="md-ellipsis">
+    Troubleshooting
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../automation/guides/config_files/">
+<span class="md-ellipsis">
+    Configuration
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+<span class="md-ellipsis">
+    Features
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_7_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_7">
+<span class="md-nav__icon md-icon"></span>
+            Features
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../features/summary/">
+<span class="md-ellipsis">
+    Summary
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../features/status/">
+<span class="md-ellipsis">
+    Status
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../features/feature_proposal_document_template/">
+<span class="md-ellipsis">
+    Feature Proposal Template
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../features/toolchain_upgrade/">
+<span class="md-ellipsis">
+    Toolchain Upgrade
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../features/opal/opal/">
+<span class="md-ellipsis">
+    Opal
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../features/push_and_get/">
+<span class="md-ellipsis">
+    Push and Get
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../features/interoperability/">
+<span class="md-ellipsis">
+    Interoperability
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../features/ssh_disable/">
+<span class="md-ellipsis">
+    SSH Disable
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../features/sdkvm/sdkvm/">
+<span class="md-ellipsis">
+    Software Defined KVM
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../features/slide_and_glide/">
+<span class="md-ellipsis">
+    Slide and Glide
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../features/realtime_status/">
+<span class="md-ellipsis">
+    Real Time Status
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../features/downgrade_backwards_compatibility/">
+<span class="md-ellipsis">
+    Backwards Compatibility
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../features/all_settings_configurable_via_boxilla/">
+<span class="md-ellipsis">
+    Boxilla Configuration for all settings
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../features/4K30/">
+<span class="md-ellipsis">
+    4K 30
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../features/4KOver1Gig/4Kover1Gig/">
+<span class="md-ellipsis">
+    4K Over 1 Gig
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../features/cloudflare/">
+<span class="md-ellipsis">
+    CloudFlare
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../features/planning/">
+<span class="md-ellipsis">
+    Planning
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../features/Splashscreen_proposal/">
+<span class="md-ellipsis">
+    Splashscreen
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+<span class="md-ellipsis">
+    Process
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_8_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_8">
+<span class="md-nav__icon md-icon"></span>
+            Process
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../process/process/">
+<span class="md-ellipsis">
+    process
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+<span class="md-ellipsis">
+    Release Notes
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_9_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_9">
+<span class="md-nav__icon md-icon"></span>
+            Release Notes
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../release_notes/summary/">
+<span class="md-ellipsis">
+    Summary
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../release_notes/V6_6_71_RELEASE_NOTES/">
+<span class="md-ellipsis">
+    V6.6.71
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../release_notes/V6_6_1_RELEASE_NOTES/">
+<span class="md-ellipsis">
+    V6.6.1
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../release_notes/V6_7_0_RELEASE_NOTES/">
+<span class="md-ellipsis">
+    V6.7.0
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../release_notes/V6_6_70_RELEASE_NOTES/">
+<span class="md-ellipsis">
+    V6.6.70
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../release_notes/V6_6_0_RELEASE_NOTES/">
+<span class="md-ellipsis">
+    V6.6.0
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../release_notes/V6_5_0_RELEASE_NOTES/">
+<span class="md-ellipsis">
+    V6.5.0
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../release_notes/V6_4_0_RELEASE_NOTES/">
+<span class="md-ellipsis">
+    V6.4.0
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../release_notes/V6_3_10_RELEASE_NOTES/">
+<span class="md-ellipsis">
+    V6.3.10
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#dependencies">1.1 
+    Dependencies
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#configuring-openbox">1.2 
+    Configuring OpenBox
+  </a>
+<nav aria-label="Configuring OpenBox" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#openbox-session-file">1.2.1 
+    OpenBox Session File
+  </a>
+<nav aria-label="OpenBox Session File" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#turning-on-logging-in-openbox">1.2.1.1 
+    Turning on Logging in OpenBox
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#openbox-desktop-file">1.2.2 
+    OpenBox Desktop File
+  </a>
+<nav aria-label="OpenBox Desktop File" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#removing-other-boot-options">1.2.2.1 
+    Removing Other Boot Options
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#startup-sequence">1.2.3 
+    Startup Sequence
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#openbox-theme">1.2.4 
+    Openbox Theme
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#starting-other-applications-from-openbox">1.3 
+    Starting other applications from Openbox
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#disabling-automatic-updates">1.4 
+    Disabling Automatic Updates
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#configuring-the-mouse-cursor-not-tstable-for-now">1.5 
+    Configuring the Mouse Cursor (not tstable for now)
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#auto-mounting-usb-drives-in-openbox">1.6 
+    Auto-mounting USB drives in Openbox
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#enabling-autologin-in-gdm3">1.7 
+    Enabling Autologin in GDM3
+  </a>
+<nav aria-label="Enabling Autologin in GDM3" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#disabling-network-dispatcher">1.7.1 
+    Disabling Network Dispatcher
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#disable-wifi">1.7.2 
+    Disable Wifi
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#disabling-monitor-sleep">1.7.3 
+    Disabling Monitor Sleep
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#partitioning-and-mounting-drives">1.8 
+    Partitioning and Mounting Drives
+  </a>
+<nav aria-label="Partitioning and Mounting Drives" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#blkid">1.8.1 
+    blkid
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#default-fstab">1.8.2 
+    Default fstab
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#proposed-fstab-for-mounting-data-partitiions">1.8.3 
+    Proposed fstab for mounting data partitiions
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#configuring-the-bashrc-file">1.9 
+    Configuring the .bashrc file
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#to-mount-the-shared-area">1.10 
+    To mount the shared area
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#timers">1.11 
+    Timers
+  </a>
+<nav aria-label="Timers" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#checking-configured-timers">1.11.1 
+    Checking Configured Timers
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#disabling-timers">1.11.2 
+    Disabling Timers
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#configuring-a-debug-terminal-in-rcxml">1.12 
+    Configuring a Debug Terminal in rc.xml
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#syslog-rotation">1.13 
+    Syslog Rotation
+  </a>
+<nav aria-label="Syslog Rotation" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#to-view-the-logrotate-status-and-determine-when-the-last-rotation-occured">1.13.1 
+    To view the logrotate status and determine when the last rotation occured
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#creating-an-alternative-syslog-rotation-service">1.13.2 
+    Creating an Alternative Syslog Rotation Service
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reference">1.13.3 
+    Reference
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#determining-serial-number">1.14 
+    Determining Serial Number
+  </a>
+<nav aria-label="Determining Serial Number" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#simplynuc-serial-number-format">1.14.1 
+    SimplyNuc Serial Number Format
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cloning-process">1.15 
+    Cloning Process
+  </a>
+<nav aria-label="Cloning Process" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#prerequisites">1.15.1 
+    Prerequisites
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#references">1.15.2 
+    References
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="sdkvm-configuration"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.</span> SDKVM Configuration</h1>
+<p>The SDKVM uses the Openbox Window Manager. It uses the gdm3 display manager, but autologs on the user snuc and starts X11 from the profile file. To configure the SDKVM to boot in this manner we need to setup a number of files;</p>
+<h2 id="dependencies"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.1</span> Dependencies</h2>
+<p>Before begining configuration on a newly installed Ubuntu 22.04 system the following dependencies must be installed.</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt-get<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>git<span class="w"> </span>ninja-build<span class="w"> </span>build-essential<span class="w"> </span>git-core<span class="w"> </span>debhelper<span class="w"> </span>cdbs<span class="w"> </span>dpkg-dev<span class="w"> </span>autotools-dev<span class="w"> </span>cmake<span class="w"> </span>pkg-config<span class="w"> </span>xmlto<span class="w"> </span>libssl-dev<span class="w"> </span>docbook-xsl<span class="w"> </span>xsltproc<span class="w"> </span>libxkbfile-dev<span class="w"> </span>libx11-dev<span class="w"> </span>libwayland-dev<span class="w"> </span>libxrandr-dev<span class="w"> </span>libxi-dev<span class="w"> </span>libxrender-dev<span class="w"> </span>libxext-dev<span class="w"> </span>libxinerama-dev<span class="w"> </span>libxfixes-dev<span class="w"> </span>libxcursor-dev<span class="w"> </span>libxv-dev<span class="w"> </span>libxdamage-dev<span class="w"> </span>libxtst-dev<span class="w"> </span>libcups2-dev<span class="w"> </span>libpcsclite-dev<span class="w"> </span>libasound2-dev<span class="w"> </span>libpulse-dev<span class="w"> </span>libjpeg-dev<span class="w"> </span>libgsm1-dev<span class="w"> </span>libusb-1.0-0-dev<span class="w"> </span>libudev-dev<span class="w"> </span>libdbus-glib-1-dev<span class="w"> </span>uuid-dev<span class="w"> </span>libxml2-dev
+sudo<span class="w"> </span>apt-get<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>libgstreamer1.0-dev<span class="w">  </span>libfaad-dev<span class="w"> </span>libfaac-dev<span class="w"> </span>libcunit1-dev<span class="w"> </span>libdirectfb-dev<span class="w"> </span>xmlto<span class="w"> </span>doxygen<span class="w"> </span>libxtst-dev<span class="w"> </span>gparted<span class="w"> </span>curl<span class="w"> </span>libavutil-dev<span class="w">  </span>glade<span class="w"> </span>xdotool<span class="w"> </span>libspdlog-dev<span class="w"> </span>libcairo2<span class="w"> </span>libimlib2-dev<span class="w"> </span>librsvg2-dev
+sudo<span class="w"> </span>apt-get<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>ffmpeg<span class="w"> </span>nfs-common<span class="w"> </span>wmctrl<span class="w"> </span>xdotool<span class="w"> </span>net-tools<span class="w"> </span>mlocate<span class="w"> </span>net-tools<span class="w"> </span>xbindkeys<span class="w"> </span>xbindkeys-config
+sudo<span class="w"> </span>apt-get<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>xwit<span class="w">  </span>gnome-shell-extensions<span class="w">  </span>grub-customizer<span class="w"> </span>feh<span class="w"> </span>libmosquitto-dev<span class="w"> </span>nlohmann-json3-dev<span class="w"> </span>libmosquittopp-dev<span class="w"> </span>libmosquittopp1<span class="w"> </span>mosquitto<span class="w"> </span>mosquitto-clients<span class="w"> </span>libjson-c-dev<span class="w"> </span>libboost-all-dev
+sudo<span class="w"> </span>apt<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>snapd
+sudo<span class="w"> </span>apt<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>python3-pip
+sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>compton
+pip<span class="w"> </span>install<span class="w"> </span>psutil<span class="w"> </span>screeninfo<span class="w"> </span>flask<span class="w"> </span>pyautogui
+curl<span class="w"> </span>-1sLf<span class="w"> </span>https://dl.teradici.com/EBJEhivCeJnv2Yx1/pcoip-client-sdk/cfg/setup/bash.deb.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>-E<span class="w"> </span><span class="nv">distro</span><span class="o">=</span>ubuntu<span class="w"> </span><span class="nv">codename</span><span class="o">=</span>jammy<span class="w"> </span>bash
+sudo<span class="w"> </span>apt<span class="w"> </span>update
+sudo<span class="w"> </span>apt<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>pcoip-client-sdk
+curl<span class="w"> </span>-1sLf<span class="w"> </span>https://dl.teradici.com/5XDaVehlfuYbrKxa/pcoip-client/cfg/setup/bash.deb.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>-E<span class="w"> </span><span class="nv">distro</span><span class="o">=</span>ubuntu<span class="w"> </span><span class="nv">codename</span><span class="o">=</span>jammy<span class="w"> </span>bash
+sudo<span class="w"> </span>apt<span class="w"> </span>update
+sudo<span class="w"> </span>apt<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>pcoip-client
+sudo<span class="w"> </span>apt<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>python3-pkgconfig<span class="w"> </span>libstartup-notification0-dev
+</code></pre></div>
+<h2 id="configuring-openbox"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2</span> Configuring OpenBox</h2>
+<p>There are two principle files used to configure Openbox's start up sequence. The openbox-sessiosn file and the openbox.desktop file.</p>
+<h3 id="openbox-session-file"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2.1</span> OpenBox Session File</h3>
+<p>Openbox uses a xession file which is located in /usr/local/bin/openbox-session </p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/sh</span>
+<span class="k">if</span><span class="w"> </span><span class="nb">test</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Syntax: openbox-session"</span>
+<span class="w">    </span><span class="nb">echo</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"See the openbox-session(1) manpage for help."</span>
+<span class="w">  </span><span class="nb">exit</span>
+<span class="k">fi</span>
+<span class="c1"># Clean up after GDM</span>
+xprop<span class="w"> </span>-root<span class="w"> </span>-remove<span class="w"> </span>_NET_NUMBER_OF_DESKTOPS<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-remove<span class="w"> </span>_NET_DESKTOP_NAMES<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-remove<span class="w"> </span>_NET_CURRENT_DESKTOP<span class="w"> </span><span class="m">2</span>&gt;<span class="w"> </span>/dev/null
+<span class="c1"># Set up the environment</span>
+<span class="nv">A</span><span class="o">=</span><span class="s2">"/usr/local/etc/xdg/openbox/environment"</span>
+<span class="nb">test</span><span class="w"> </span>-r<span class="w"> </span><span class="nv">$A</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>.<span class="w"> </span><span class="nv">$A</span>
+<span class="nv">A</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">XDG_CONFIG_HOME</span><span class="k">:-</span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/.config"</span><span class="si">}</span><span class="s2">/openbox/environment"</span>
+<span class="nb">test</span><span class="w"> </span>-r<span class="w"> </span><span class="nv">$A</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>.<span class="w"> </span><span class="nv">$A</span>
+
+<span class="c1"># Run Openbox, and have it run the autostart stuff</span>
+<span class="nb">exec</span><span class="w"> </span>/usr/local/bin/openbox<span class="w"> </span>--startup<span class="w"> </span><span class="s2">"/usr/local/libexec/openbox-autostart OPENBOX"</span><span class="w"> </span><span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span>
+</code></pre></div>
+<h4 id="turning-on-logging-in-openbox"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2.1.1</span> Turning on Logging in OpenBox</h4>
+<ul>
+<li>The Openbox log file can be found in: /home/snuc/.cache/openbox/openbox.log</li>
+<li>For more verbose output change: </li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nb">exec</span><span class="w"> </span>/usr/local/bin/openbox<span class="w"> </span>--startup<span class="w"> </span><span class="s2">"/usr/local/libexec/openbox-autostart OPENBOX"</span><span class="w"> </span><span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span>
+</code></pre></div>
+<p>to</p>
+<div class="highlight"><pre><span></span><code><span class="nb">exec</span><span class="w"> </span>/usr/local/bin/openbox<span class="w"> </span>--debug<span class="w"> </span>--startup<span class="w"> </span><span class="s2">"/usr/local/libexec/openbox-autostart OPENBOX"</span><span class="w"> </span><span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span>
+</code></pre></div>
+<h3 id="openbox-desktop-file"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2.2</span> OpenBox Desktop File</h3>
+<p>This is located in /usr/share/xsessions/openbox.desktop </p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>Desktop<span class="w"> </span>Entry<span class="o">]</span>
+<span class="nv">Name</span><span class="o">=</span>Openbox
+<span class="nv">Comment</span><span class="o">=</span>Log<span class="w"> </span><span class="k">in</span><span class="w"> </span>using<span class="w"> </span>the<span class="w"> </span>Openbox<span class="w"> </span>window<span class="w"> </span>manager<span class="w"> </span><span class="o">(</span>without<span class="w"> </span>a<span class="w"> </span>session<span class="w"> </span>manager<span class="o">)</span>
+<span class="nv">Exec</span><span class="o">=</span>/usr/bin/openbox-session
+<span class="nv">TryExec</span><span class="o">=</span>/usr/bin/openbox-session
+<span class="nv">Icon</span><span class="o">=</span>openbox
+<span class="nv">Type</span><span class="o">=</span>Application
+</code></pre></div>
+<h4 id="removing-other-boot-options"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2.2.1</span> Removing Other Boot Options</h4>
+<p>To prevent other desktop and session options we remove any other desktop files in /usr/share/xsessions. openbox.desktop should be the only file present.</p>
+<h3 id="startup-sequence"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2.3</span> Startup Sequence</h3>
+<p>The trace below shows a typical openbox startup sequence</p>
+<div class="highlight"><pre><span></span><code><span class="w">   </span><span class="m">2112</span><span class="w"> </span>tty2<span class="w">     </span>Ssl+<span class="w">   </span><span class="m">0</span>:00<span class="w"> </span>/usr/lib/gdm3/gdm-x-session<span class="w"> </span>--register-session<span class="w"> </span>--run-script<span class="w"> </span>/usr/local/bin/openbox-session
+<span class="w">   </span><span class="m">2156</span><span class="w"> </span>tty2<span class="w">     </span>Sl+<span class="w">    </span><span class="m">0</span>:00<span class="w"> </span>/usr/local/bin/openbox<span class="w"> </span>--sm-save-file<span class="w"> </span>/home/snuc/.cache/openbox/sessions/1667402537-2156-3346969190.obs<span class="w"> </span>--sm-no-load
+<span class="w">   </span><span class="m">2216</span><span class="w"> </span>?<span class="w">        </span>Ss<span class="w">     </span><span class="m">0</span>:00<span class="w"> </span>/usr/bin/ssh-agent<span class="w"> </span>/usr/bin/im-launch<span class="w"> </span>/usr/local/bin/openbox-session
+</code></pre></div>
+<h3 id="openbox-theme"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2.4</span> Openbox Theme</h3>
+<p>The Open box Theme in <a href="https://github.com/OpenBox-BlackBox/themes">Github</a> should be placed in ~/.themes. </p>
+<h2 id="starting-other-applications-from-openbox"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.3</span> Starting other applications from Openbox</h2>
+<p>When Openbox begins to run it will look for an autostart script in /home/{USER}/.config/openbox.</p>
+<p>This file determines what programs will be start as Openbox launches.</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+logger<span class="w"> </span><span class="s2">"disabling Virtual Terminal Switching"</span>
+setxkbmap<span class="w"> </span>-option<span class="w"> </span>srvrkeys:none
+logger<span class="w"> </span><span class="s2">"Setting session ID"</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"0"</span><span class="w"> </span>&gt;<span class="w"> </span>/tmp/session_id
+<span class="c1"># Start the workspace server</span>
+logger<span class="w"> </span><span class="s2">"Openbox autostart: Running workspaceserver from openbox"</span><span class="w"> </span>
+/usr/bin/startserver.sh
+<span class="c1"># Start Discovery</span>
+logger<span class="w"> </span><span class="s2">"Openbox autostart: Starting Discovery service"</span>
+/usr/bin/startdiscovery.sh
+<span class="c1"># Start Webservice</span>
+logger<span class="w"> </span><span class="s2">"Openbox autostart: Starting Webservice service"</span>
+/usr/bin/startwebservice.sh
+<span class="c1"># Configuring Keyboard</span>
+logger<span class="w"> </span><span class="s2">"Openbox autostart: Configuring Keyboard to gb local"</span>
+/usr/bin/setxkbmap<span class="w"> </span>-layout<span class="w"> </span>gb
+sleep<span class="w"> </span><span class="m">2</span>
+logger<span class="w"> </span><span class="s2">"Openbox autostart: Starting deskvue application"</span>
+/home/snuc/.config/openbox/configure_monitors.sh
+sleep<span class="w"> </span><span class="m">1</span>
+logger<span class="w"> </span><span class="s2">"Starting Compton Compositor"</span>
+compton<span class="w"> </span>--backend<span class="w"> </span>glx<span class="w">  </span>--vsync<span class="w"> </span>opengl-swc<span class="w"> </span><span class="p">&amp;</span>
+logger<span class="w"> </span><span class="s2">"OSD Post Connect: Adding background images using feh"</span><span class="w"> </span>
+feh<span class="w"> </span>--bg-scale<span class="w"> </span>/home/snuc/.config/openbox/background.png<span class="w"> </span><span class="p">&amp;</span>
+/home/snuc/.config/openbox/disable_sleep.sh
+logger<span class="w"> </span><span class="s2">"OSD Post Connect: Setting Keyboard layout"</span>
+setxkbmap<span class="w"> </span>-layout<span class="w"> </span>gb
+logger<span class="w"> </span><span class="s2">"OSD Post Connect: Positioning the mouse for login"</span>
+xdotool<span class="w"> </span>mousemove<span class="w"> </span><span class="m">960</span><span class="w"> </span><span class="m">540</span>
+/home/snuc/SDKVM/emeralddeskvue/build/linux/x64/release/bundle/emeralddeskvue<span class="w"> </span><span class="p">&amp;</span>
+</code></pre></div>
+<h2 id="disabling-automatic-updates"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.4</span> Disabling Automatic Updates</h2>
+<ul>
+<li><a href="https://linuxconfig.org/disable-automatic-updates-on-ubuntu-22-04-jammy-jellyfish-linux">How to disable automatic updates</a></li>
+</ul>
+<h2 id="configuring-the-mouse-cursor-not-tstable-for-now"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.5</span> Configuring the Mouse Cursor (not tstable for now)</h2>
+<p>The relevant file is in /home/snuc/.gtkrc-2.0 if configured using lxappearance other wise in ~/.gtkrc-2.0.mine</p>
+<p><div class="highlight"><pre><span></span><code>include<span class="w"> </span><span class="s2">"/home/snuc/.gtkrc-2.0.mine"</span>
+gtk-theme-name<span class="o">=</span><span class="s2">"Raleigh"</span>
+gtk-icon-theme-name<span class="o">=</span><span class="s2">"hicolor"</span>
+gtk-font-name<span class="o">=</span><span class="s2">"Sans 10"</span>
+gtk-cursor-theme-name<span class="o">=</span><span class="s2">"redglass"</span>
+gtk-cursor-theme-size<span class="o">=</span><span class="m">0</span>
+gtk-toolbar-style<span class="o">=</span>GTK_TOOLBAR_BOTH
+gtk-toolbar-icon-size<span class="o">=</span>GTK_ICON_SIZE_LARGE_TOOLBAR
+gtk-button-images<span class="o">=</span><span class="m">1</span>
+gtk-menu-images<span class="o">=</span><span class="m">1</span>
+gtk-enable-event-sounds<span class="o">=</span><span class="m">1</span>
+gtk-enable-input-feedback-sounds<span class="o">=</span><span class="m">1</span>
+gtk-xft-antialias<span class="o">=</span><span class="m">1</span>
+gtk-xft-hinting<span class="o">=</span><span class="m">1</span>
+gtk-xft-hintstyle<span class="o">=</span><span class="s2">"hintfull"</span>
+</code></pre></div>
+For GTK 3.0 the file is in</p>
+<div class="highlight"><pre><span></span><code>/etc/gtk-3.0/settings.ini
+</code></pre></div>
+<h2 id="auto-mounting-usb-drives-in-openbox"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.6</span> Auto-mounting USB drives in Openbox</h2>
+<p>To automount the USB drives in openbox we used the solution below. Clone the repository and run the configure script.</p>
+<ul>
+<li><a href="https://github.com/raamsri/automount-usb">autoMount-usb</a></li>
+</ul>
+<h2 id="enabling-autologin-in-gdm3"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.7</span> Enabling Autologin in GDM3</h2>
+<ul>
+<li><a href="https://help.gnome.org/admin/system-admin-guide/stable/login-automatic.html.en">Guide for gnome</a></li>
+</ul>
+<p>Edit the config in /etc/gdm3/custom.conf</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># GDM configuration storage</span>
+<span class="c1">#</span>
+<span class="c1"># See /usr/share/gdm/gdm.schemas for a list of available options.</span>
+
+<span class="o">[</span>daemon<span class="o">]</span>
+<span class="c1"># Uncomment the line below to force the login screen to use Xorg</span>
+<span class="nv">WaylandEnable</span><span class="o">=</span><span class="nb">false</span>
+
+<span class="c1"># Enabling automatic login</span>
+<span class="nv">AutomaticLoginEnable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
+<span class="nv">AutomaticLogin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>snuc
+
+<span class="c1"># Enabling timed login</span>
+<span class="c1">#  TimedLoginEnable = true</span>
+<span class="c1">#  TimedLogin = user1</span>
+<span class="c1">#  TimedLoginDelay = 10</span>
+
+<span class="o">[</span>security<span class="o">]</span>
+
+<span class="o">[</span>xdmcp<span class="o">]</span>
+
+<span class="o">[</span>chooser<span class="o">]</span>
+
+<span class="o">[</span>debug<span class="o">]</span>
+<span class="c1"># Uncomment the line below to turn on debugging</span>
+<span class="c1"># More verbose logs</span>
+<span class="c1"># Additionally lets the X server dump core if it crashes</span>
+<span class="c1">#Enable=true</span>
+
+
+
+<span class="c1">## Disabling unwanted services </span>
+
+<span class="c1">### Disable SSH access</span>
+
+<span class="sb">```</span>sh
+systemctl<span class="w"> </span>stop<span class="w"> </span>ssh
+systemctl<span class="w"> </span>disable<span class="w"> </span>ssh
+</code></pre></div>
+<h3 id="disabling-network-dispatcher"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.7.1</span> Disabling Network Dispatcher</h3>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>purge<span class="w"> </span>--autoremove<span class="w"> </span>-s<span class="w"> </span>networkd-dispatcher
+</code></pre></div>
+<h3 id="disable-wifi"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.7.2</span> Disable Wifi</h3>
+<div class="highlight"><pre><span></span><code>nmcli<span class="w"> </span>radio<span class="w"> </span>wifi<span class="w"> </span>off<span class="w"> </span><span class="c1"># turn off wifi</span>
+</code></pre></div>
+<h3 id="disabling-monitor-sleep"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.7.3</span> Disabling Monitor Sleep</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># To disable</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>mask<span class="w"> </span>sleep.target<span class="w"> </span>suspend.target<span class="w"> </span>hibernate.target<span class="w"> </span>hybrid-sleep.target
+
+<span class="c1"># To check</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>sleep.target<span class="w"> </span>suspend.target<span class="w"> </span>hibernate.target<span class="w"> </span>hybrid-sleep.target
+
+<span class="c1"># To re-enable</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>unmask<span class="w"> </span>sleep.target<span class="w"> </span>suspend.target<span class="w"> </span>hibernate.target<span class="w"> </span>hybrid-sleep.target
+</code></pre></div>
+<h2 id="partitioning-and-mounting-drives"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.8</span> Partitioning and Mounting Drives</h2>
+<h3 id="blkid"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.8.1</span> blkid</h3>
+<div class="highlight"><pre><span></span><code>/dev/nvme0n1p2:<span class="w"> </span><span class="nv">UUID</span><span class="o">=</span><span class="s2">"57c446d1-d205-4aeb-9fae-87fd80f6f4a6"</span><span class="w"> </span><span class="nv">BLOCK_SIZE</span><span class="o">=</span><span class="s2">"4096"</span><span class="w"> </span><span class="nv">TYPE</span><span class="o">=</span><span class="s2">"ext4"</span><span class="w"> </span><span class="nv">PARTLABEL</span><span class="o">=</span><span class="s2">"OS-A"</span><span class="w"> </span><span class="nv">PARTUUID</span><span class="o">=</span><span class="s2">"bbffbf61-0eae-4c9e-9790-7cf66248f5b8"</span>
+/dev/loop1:<span class="w"> </span><span class="nv">TYPE</span><span class="o">=</span><span class="s2">"squashfs"</span>
+/dev/nvme0n1p7:<span class="w"> </span><span class="nv">UUID</span><span class="o">=</span><span class="s2">"a6299056-fe2c-437d-be23-fe2a043c230f"</span><span class="w"> </span><span class="nv">BLOCK_SIZE</span><span class="o">=</span><span class="s2">"4096"</span><span class="w"> </span><span class="nv">TYPE</span><span class="o">=</span><span class="s2">"ext4"</span><span class="w"> </span><span class="nv">PARTLABEL</span><span class="o">=</span><span class="s2">"DATA-2"</span><span class="w"> </span><span class="nv">PARTUUID</span><span class="o">=</span><span class="s2">"19d9bc4a-f383-4272-aff7-a5cefba271a3"</span>
+/dev/nvme0n1p5:<span class="w"> </span><span class="nv">UUID</span><span class="o">=</span><span class="s2">"5573cfa3-cdf2-461d-9459-4d3f124df53a"</span><span class="w"> </span><span class="nv">BLOCK_SIZE</span><span class="o">=</span><span class="s2">"4096"</span><span class="w"> </span><span class="nv">TYPE</span><span class="o">=</span><span class="s2">"ext4"</span><span class="w"> </span><span class="nv">PARTLABEL</span><span class="o">=</span><span class="s2">"OS-B"</span><span class="w"> </span><span class="nv">PARTUUID</span><span class="o">=</span><span class="s2">"ffc7817c-5808-4148-84fc-50161333e934"</span>
+/dev/nvme0n1p3:<span class="w"> </span><span class="nv">UUID</span><span class="o">=</span><span class="s2">"a7fcb1b5-42ce-49b2-a31f-a277e2b0c31f"</span><span class="w"> </span><span class="nv">TYPE</span><span class="o">=</span><span class="s2">"swap"</span><span class="w"> </span><span class="nv">PARTLABEL</span><span class="o">=</span><span class="s2">"SWAP"</span><span class="w"> </span><span class="nv">PARTUUID</span><span class="o">=</span><span class="s2">"cff35ab8-d2c7-4236-a44f-7fab46ca296b"</span>
+/dev/nvme0n1p1:<span class="w"> </span><span class="nv">UUID</span><span class="o">=</span><span class="s2">"3ED5-3C49"</span><span class="w"> </span><span class="nv">BLOCK_SIZE</span><span class="o">=</span><span class="s2">"512"</span><span class="w"> </span><span class="nv">TYPE</span><span class="o">=</span><span class="s2">"vfat"</span><span class="w"> </span><span class="nv">PARTLABEL</span><span class="o">=</span><span class="s2">"EFI-A"</span><span class="w"> </span><span class="nv">PARTUUID</span><span class="o">=</span><span class="s2">"9ecc9f35-4f10-4fdc-980a-4d341798a6bb"</span>
+/dev/nvme0n1p6:<span class="w"> </span><span class="nv">UUID</span><span class="o">=</span><span class="s2">"560445fd-314d-4388-b695-60d4f39fb77d"</span><span class="w"> </span><span class="nv">BLOCK_SIZE</span><span class="o">=</span><span class="s2">"4096"</span><span class="w"> </span><span class="nv">TYPE</span><span class="o">=</span><span class="s2">"ext4"</span><span class="w"> </span><span class="nv">PARTLABEL</span><span class="o">=</span><span class="s2">"DATA-1"</span><span class="w"> </span><span class="nv">PARTUUID</span><span class="o">=</span><span class="s2">"4700bd34-2bae-4c8b-b137-42b0144227ac"</span>
+/dev/nvme0n1p4:<span class="w"> </span><span class="nv">UUID</span><span class="o">=</span><span class="s2">"3ED5-9611"</span><span class="w"> </span><span class="nv">BLOCK_SIZE</span><span class="o">=</span><span class="s2">"512"</span><span class="w"> </span><span class="nv">TYPE</span><span class="o">=</span><span class="s2">"vfat"</span><span class="w"> </span><span class="nv">PARTLABEL</span><span class="o">=</span><span class="s2">"EFI-B"</span><span class="w"> </span><span class="nv">PARTUUID</span><span class="o">=</span><span class="s2">"b97166f6-919e-44c5-bedb-97b729bde6f0"</span>
+</code></pre></div>
+<h3 id="default-fstab"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.8.2</span> Default fstab</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># /etc/fstab: static file system information.</span>
+<span class="c1">#</span>
+<span class="c1"># Use 'blkid' to print the universally unique identifier for a</span>
+<span class="c1"># device; this may be used with UUID= as a more robust way to name devices</span>
+<span class="c1"># that works even if disks are added and removed. See fstab(5).</span>
+<span class="c1">#</span>
+<span class="c1"># &lt;file system&gt; &lt;mount point&gt;   &lt;type&gt;  &lt;options&gt;       &lt;dump&gt;  &lt;pass&gt;</span>
+<span class="c1"># / was on /dev/nvme0n1p2 during installation</span>
+<span class="nv">UUID</span><span class="o">=</span>57c446d1-d205-4aeb-9fae-87fd80f6f4a6<span class="w"> </span>/<span class="w">               </span>ext4<span class="w">    </span><span class="nv">errors</span><span class="o">=</span>remount-ro<span class="w"> </span><span class="m">0</span><span class="w">       </span><span class="m">1</span>
+<span class="c1"># /boot/efi was on /dev/nvme0n1p1 during installation</span>
+<span class="nv">UUID</span><span class="o">=</span>3ED5-3C49<span class="w">  </span>/boot/efi<span class="w">       </span>vfat<span class="w">    </span><span class="nv">umask</span><span class="o">=</span><span class="m">0077</span><span class="w">      </span><span class="m">0</span><span class="w">       </span><span class="m">1</span>
+<span class="c1"># swap was on /dev/nvme0n1p3 during installation</span>
+<span class="nv">UUID</span><span class="o">=</span>a7fcb1b5-42ce-49b2-a31f-a277e2b0c31f<span class="w"> </span>none<span class="w">            </span>swap<span class="w">    </span>sw<span class="w">              </span><span class="m">0</span><span class="w">       </span><span class="m">0</span>
+</code></pre></div>
+<h3 id="proposed-fstab-for-mounting-data-partitiions"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.8.3</span> Proposed fstab for mounting data partitiions</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># /etc/fstab: static file system information.</span>
+<span class="c1">#</span>
+<span class="c1"># Use 'blkid' to print the universally unique identifier for a</span>
+<span class="c1"># device; this may be used with UUID= as a more robust way to name devices</span>
+<span class="c1"># that works even if disks are added and removed. See fstab(5).</span>
+<span class="c1">#</span>
+<span class="c1"># &lt;file system&gt; &lt;mount point&gt;   &lt;type&gt;  &lt;options&gt;       &lt;dump&gt;  &lt;pass&gt;</span>
+<span class="c1"># / was on /dev/nvme0n1p2 during installation</span>
+<span class="nv">UUID</span><span class="o">=</span>57c446d1-d205-4aeb-9fae-87fd80f6f4a6<span class="w"> </span>/<span class="w">               </span>ext4<span class="w">    </span><span class="nv">errors</span><span class="o">=</span>remount-ro<span class="w"> </span><span class="m">0</span><span class="w">       </span><span class="m">1</span>
+<span class="c1"># /boot/efi was on /dev/nvme0n1p1 during installation</span>
+<span class="nv">UUID</span><span class="o">=</span>3ED5-3C49<span class="w">  </span>/boot/efi<span class="w">       </span>vfat<span class="w">    </span><span class="nv">umask</span><span class="o">=</span><span class="m">0077</span><span class="w">      </span><span class="m">0</span><span class="w">       </span><span class="m">1</span>
+<span class="c1"># swap was on /dev/nvme0n1p3 during installation</span>
+<span class="nv">UUID</span><span class="o">=</span>a7fcb1b5-42ce-49b2-a31f-a277e2b0c31f<span class="w"> </span>none<span class="w">            </span>swap<span class="w">    </span>sw<span class="w">              </span><span class="m">0</span><span class="w">       </span><span class="m">0</span>
+<span class="nv">UUID</span><span class="o">=</span>560445fd-314d-4388-b695-60d4f39fb77d<span class="w"> </span>/media/datagold<span class="w"> </span>ext4<span class="w">    </span>defaults<span class="w">        </span><span class="m">0</span><span class="w">       </span><span class="m">2</span>
+<span class="nv">UUID</span><span class="o">=</span>a6299056-fe2c-437d-be23-fe2a043c230f<span class="w"> </span>/media/datalive<span class="w"> </span>ext4<span class="w">    </span>defaults<span class="w">        </span><span class="m">0</span><span class="w">       </span><span class="m">2</span>
+<span class="nv">UUID</span><span class="o">=</span>5573cfa3-cdf2-461d-9459-4d3f124df53a<span class="w"> </span>/media/osb<span class="w">      </span>ext4<span class="w">    </span>defaults<span class="w">        </span><span class="m">0</span><span class="w">       </span><span class="m">2</span>
+</code></pre></div>
+<h2 id="configuring-the-bashrc-file"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.9</span> Configuring the .bashrc file</h2>
+<p>The following lines should be added to the .bashrc file</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">WLOG_APPENDER</span><span class="o">=</span><span class="s2">"syslog"</span><span class="w"> </span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">WLOG_PREFIX</span><span class="o">=</span><span class="s2">"pid=%pid:tid=%tid:fn=%fn -"</span>
+</code></pre></div>
+<h2 id="to-mount-the-shared-area"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.10</span> To mount the shared area</h2>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>mount<span class="w"> </span>-t<span class="w"> </span>nfs<span class="w"> </span><span class="m">10</span>.211.128.208:/data/shared_area<span class="w"> </span>~/shared_area<span class="w">  </span>-orw,bg,rsize<span class="o">=</span><span class="m">1024</span>,wsize<span class="o">=</span><span class="m">1024</span>,namlen<span class="o">=</span><span class="m">255</span>,hard,nolock
+</code></pre></div>
+<h2 id="timers"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.11</span> Timers</h2>
+<h3 id="checking-configured-timers"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.11.1</span> Checking Configured Timers</h3>
+<div class="highlight"><pre><span></span><code>systemctl<span class="w"> </span>status<span class="w"> </span>*timer
+</code></pre></div>
+<p>or</p>
+<div class="highlight"><pre><span></span><code>systemctl<span class="w"> </span>list-timers
+</code></pre></div>
+<h3 id="disabling-timers"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.11.2</span> Disabling Timers</h3>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>ua-timer.service
+sudo<span class="w"> </span>systemctl<span class="w"> </span>mask<span class="w"> </span>ua-timer.service
+sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>ua-timer.timer
+sudo<span class="w"> </span>systemctl<span class="w"> </span>mask<span class="w"> </span>ua-timer.timer
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>motd-news.service
+sudo<span class="w"> </span>systemctl<span class="w"> </span>mask<span class="w"> </span>motd-news.service
+sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>motd-news.timer
+sudo<span class="w"> </span>systemctl<span class="w"> </span>mask<span class="w"> </span>motd-news.timer
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>apt-daily.service
+sudo<span class="w"> </span>systemctl<span class="w"> </span>mask<span class="w"> </span>apt-daily.service
+sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>apt-daily.timer
+sudo<span class="w"> </span>systemctl<span class="w"> </span>mask<span class="w"> </span>apt-daily.timer
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>apt-daily-upgrade.service
+sudo<span class="w"> </span>systemctl<span class="w"> </span>mask<span class="w"> </span>apt-daily-upgrade.service
+sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>apt-daily-upgrade.timer
+sudo<span class="w"> </span>systemctl<span class="w"> </span>mask<span class="w"> </span>apt-daily-upgrade.timer
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>man-db.service
+sudo<span class="w"> </span>systemctl<span class="w"> </span>mask<span class="w"> </span>man-db.service
+sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>man-db.timer
+sudo<span class="w"> </span>systemctl<span class="w"> </span>mask<span class="w"> </span>man-db.timer
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>update-notifier-download.service
+sudo<span class="w"> </span>systemctl<span class="w"> </span>mask<span class="w"> </span>update-notifier-download.service
+sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>update-notifier-download.timer
+sudo<span class="w"> </span>systemctl<span class="w"> </span>mask<span class="w"> </span>update-notifier-download.timer
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>update-notifier-motd.service
+sudo<span class="w"> </span>systemctl<span class="w"> </span>mask<span class="w"> </span>update-notifier-motd.service
+sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>update-notifier-motd.service
+sudo<span class="w"> </span>systemctl<span class="w"> </span>mask<span class="w"> </span>update-notifier-motd.service
+</code></pre></div>
+<p>To view disabled timers:</p>
+<div class="highlight"><pre><span></span><code>ls<span class="w"> </span>/etc/systemd/system/*.timer
+</code></pre></div>
+<h2 id="configuring-a-debug-terminal-in-rcxml"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.12</span> Configuring a Debug Terminal in rc.xml</h2>
+<p>edit the rc.xml file in ~/.config/openbox</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nt">&lt;keybind</span><span class="w"> </span><span class="na">key=</span><span class="s">"C-W-A-t"</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;action</span><span class="w"> </span><span class="na">name=</span><span class="s">"Execute"</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;command&gt;</span>/usr/bin/x-terminal-emulator<span class="nt">&lt;/command&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/action&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/keybind&gt;</span><span class="w">  </span>
+<span class="w">    </span><span class="nt">&lt;keybind</span><span class="w"> </span><span class="na">key=</span><span class="s">"W-n"</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;action</span><span class="w"> </span><span class="na">name=</span><span class="s">"NextWindow"</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;finalactions&gt;</span>
+<span class="w">          </span><span class="nt">&lt;action</span><span class="w"> </span><span class="na">name=</span><span class="s">"Focus"</span><span class="nt">/&gt;</span>
+<span class="w">          </span><span class="nt">&lt;action</span><span class="w"> </span><span class="na">name=</span><span class="s">"Raise"</span><span class="nt">/&gt;</span>
+<span class="w">          </span><span class="nt">&lt;action</span><span class="w"> </span><span class="na">name=</span><span class="s">"Unshade"</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/finalactions&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/action&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/keybind&gt;</span>
+</code></pre></div>
+<h2 id="syslog-rotation"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.13</span> Syslog Rotation</h2>
+<p>There is a file at: /usr/lib/systemd/system/logrotate.timer this is also configured for daily</p>
+<p>I think this is the one that is meant to run, but may not be running</p>
+<p>The service can be enabled with:</p>
+<div class="highlight"><pre><span></span><code>systemctl<span class="w"> </span>reenable<span class="w"> </span>logrotate.timer
+</code></pre></div>
+<p>Logrotate’s configuration information can generally be found in two places on Ubuntu:</p>
+<ul>
+<li>/etc/logrotate.conf: this file contains some default settings and sets up rotation for a few logs that are not owned by any system packages. It also uses an include statement to pull in configuration from any file in the /etc/logrotate.d directory.</li>
+<li>/etc/logrotate.d/: this is where any packages you install that need help with log rotation will place their Logrotate configuration. On a standard install you should already have files here for core system tools like apt, dpkg, rsyslog and so on.</li>
+</ul>
+<p>To test</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>logrotate<span class="w"> </span>/etc/logrotate.conf<span class="w"> </span>--debug
+</code></pre></div>
+<p>To check the service logs</p>
+<div class="highlight"><pre><span></span><code>journalctl<span class="w"> </span>-u<span class="w"> </span>logrotate.service
+
+<span class="c1"># and the timer</span>
+
+journalctl<span class="w"> </span>-u<span class="w"> </span>logrotate.timer
+</code></pre></div>
+<p>To check the service:</p>
+<p><div class="highlight"><pre><span></span><code>systemctl<span class="w"> </span>status<span class="w"> </span>logrotate.timer
+logrotate<span class="w"> </span>/etc/logrotate.d/rsyslog<span class="w"> </span>--debug
+</code></pre></div>
+The configuration for the Log Rotate Timer is in: /usr/lib/systemd/system/logrotate.timer</p>
+<div class="highlight"><pre><span></span><code>[Unit]
+Description=Daily rotation of log files
+Documentation=man:logrotate(8) man:logrotate.conf(5)
+
+[Timer]
+OnCalendar=daily
+AccuracySec=1h
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+</code></pre></div>
+<h3 id="to-view-the-logrotate-status-and-determine-when-the-last-rotation-occured"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.13.1</span> To view the logrotate status and determine when the last rotation occured</h3>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>cat<span class="w"> </span>/var/lib/logrotate/status
+</code></pre></div>
+<h3 id="creating-an-alternative-syslog-rotation-service"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.13.2</span> Creating an Alternative Syslog Rotation Service</h3>
+<p>Create two files in the directory /etc/systemd/system:</p>
+<p>altrotate.service</p>
+<p><div class="highlight"><pre><span></span><code><span class="o">[</span>Unit<span class="o">]</span>
+<span class="nv">Description</span><span class="o">=</span>Alt<span class="w"> </span>Log<span class="w"> </span>Rotate
+
+<span class="o">[</span>Service<span class="o">]</span>
+<span class="nv">Type</span><span class="o">=</span>oneshot
+<span class="nv">ExecStart</span><span class="o">=</span>/usr/bin/alt_logrotate.sh
+</code></pre></div>
+And</p>
+<p>altrotate.time</p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>Unit<span class="o">]</span>
+<span class="nv">Description</span><span class="o">=</span>Alternative<span class="w"> </span>Logrotate<span class="w"> </span>monitoring
+
+<span class="o">[</span>Timer<span class="o">]</span>
+<span class="nv">OnBootSec</span><span class="o">=</span>5m
+<span class="nv">OnUnitActiveSec</span><span class="o">=</span>1d
+
+<span class="o">[</span>Install<span class="o">]</span>
+<span class="nv">WantedBy</span><span class="o">=</span>timers.target
+</code></pre></div>
+<p>Place the following file in /usr/bin</p>
+<p>alt_logrotate.sh</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+logger<span class="w"> </span><span class="s2">"Alr Log Rotate starting"</span>
+/usr/sbin/logrotate<span class="w"> </span>/etc/logrotate.conf
+logger<span class="w"> </span><span class="s2">"Alr Log Rotate Complete"</span>
+</code></pre></div>
+<p>Enable the service</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>reenable<span class="w"> </span>altrotate.timer
+</code></pre></div>
+<h3 id="reference"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.13.3</span> Reference</h3>
+<ul>
+<li><a href="https://askubuntu.com/questions/1429612/ubuntu-22-04-logrotate-not-working-after-upgrade-to-ubuntu-22-04">logrotate not working</a></li>
+<li><a href="https://advancedweb.hu/how-to-write-a-simple-systemd-timer/">SystemD Timers</a></li>
+</ul>
+<h2 id="determining-serial-number"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.14</span> Determining Serial Number</h2>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>dmidecode
+
+sudo<span class="w"> </span>dmidecode<span class="w"> </span>-s<span class="w"> </span>bios-release-date
+sudo<span class="w"> </span>dmidecode<span class="w"> </span>-s<span class="w"> </span>baseboard-product-name
+sudo<span class="w"> </span>dmidecode<span class="w"> </span>-s<span class="w"> </span>baseboard-manufacturer
+sudo<span class="w"> </span>dmidecode<span class="w"> </span>-s<span class="w"> </span>system-serial-number+
+</code></pre></div>
+<p>For a full list of available data run</p>
+<p><div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>dmidecode<span class="w"> </span>
+</code></pre></div>
+The system information section has the main data of interest.</p>
+<p>To show the serial number:</p>
+<div class="highlight"><pre><span></span><code>/usr/bin/sudo<span class="w"> </span>/usr/sbin/dmidecode<span class="w"> </span>-s<span class="w"> </span>system-serial-number
+</code></pre></div>
+<h3 id="simplynuc-serial-number-format"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.14.1</span> SimplyNuc Serial Number Format</h3>
+<ul>
+<li>Production serial numbers that shipped recently are in this format  S1L1T70023M0001</li>
+<li>The first 8 digits of the serial number are the Model number, ie S1L1T700 remaining 7 digits are yy-m-xxxx (where xxxx is a sequential number).</li>
+<li>The months are as follows: Y – Jan, F – Feb, H – Mar, L – Apr, M – May, E – Jun, J – Jul, A – Aug, S – Sep, O – Oct, N – Nov, D – Dec.</li>
+</ul>
+<p>Model number will not change (S1L1T700) for future production shipments, this is our custom configuration so this is the S/N format going forward.</p>
+<h2 id="cloning-process"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.15</span> Cloning Process</h2>
+<h3 id="prerequisites"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.15.1</span> Prerequisites</h3>
+<ul>
+<li>sudo apt install usb-creator-gtk</li>
+</ul>
+<h3 id="references"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.15.2</span> References</h3>
+<ul>
+<li><a href="https://clonezilla.org/show-live-doc-content.php?topic=clonezilla-live/doc/04_Create_Recovery_Clonezilla">Create_Recovery_Clonezilla</a></li>
+</ul>
+<hr/>
+<div class="md-source-file">
+<small>
+    
+      Last update:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 10, 2023</span>
+<br/>
+        Created:
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 20, 2023</span>
+</small>
+</div>
+<div class="md-source-date">
+<small>
+          Authors: <span class="git-page-authors git-authors"><a href="mailto:john.osullivan@blackbox.com">John O'Sullivan</a>, <a href="mailto:jenkins_embedded@blackbox.com">Johnny Developer</a>, <a href="mailto:manas.marawaha@blackbox.com">mmarawaha</a></span>
+</small>
+</div>
+</article>
+</div>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.sections", "navigation.tabs"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+<script src="../../../assets/javascripts/bundle.aecac24b.min.js"></script>
+</body>
+</html>

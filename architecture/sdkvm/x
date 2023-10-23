@@ -1,0 +1,23 @@
+diff --git a/docs/architecture/sdkvm/sdkvm_clients.md b/docs/architecture/sdkvm/sdkvm_clients.md
+index d68db99..4231ff9 100644
+--- a/docs/architecture/sdkvm/sdkvm_clients.md
++++ b/docs/architecture/sdkvm/sdkvm_clients.md
+@@ -54,12 +54,15 @@ The data is signed 48 Khz PCM 16 bit stereo so a sample is 32 bits wide.
+ 
+ AVAE provides an option to turn on Audio header which provide a 64 byte header with timestamps and frame marker. A 512 byte packet is divided in 64 byte header and 448 byte payload (PCM 16 bit stereo) if the audio header functionality is turned ON. **At present this functionlity is disabled, but we may decide to turn this on at some future point -that of course would require SDKVM changes**. 
+ 
++#### Audio ingress (MIC Path)
++In bi-directional audio, the audio data stream can be transmitted from the EMD transmitter to the SDKVM and vice versa. For simplicity's sake, we refer to the audio path from the SDKVM to the EMD transmitter as the 'MIC path'. The audio format remains consistent, whether it's for audio egress or audio ingress. The EMD transmitter receives the audio data on port 9000, and the audio packets have a fixed size of 512 bytes. To maintain ease of handling, the audio data is structured in 512-byte packets. It is signed 48 kHz PCM (Pulse Code Modulation) with a 16-bit stereo format, meaning each sample is 32 bits wide.
++
+ #### Silence Supression
+ 
+-Encoder side also support silence supression. After a certain silence threshold value encoder doesn't send the audio sample until it sees the genuine audio data. On the decoder side if the audio buffer is empty, it plays a silence sample on repeat to avoid distorted audio. Deskvue need to implement similar stratergy to play out silence.
++Egress side also support silence supression. After a certain silence threshold value egress side doesn't send the audio sample until it sees the genuine audio data. On the ingress side if the audio buffer is empty, it plays a silence sample on repeat to avoid distorted audio. Deskvue need to implement similar stratergy to play out silence.
++
++The audio buffer would simply drain and it will auto mute. The egress side still seems to stream out audio data even when audio channel is muted, ie, zero level samples (muted).
+ 
+-The audio buffer would simply drain and it will auto mute.
+-The TX still seems to stream out audio data even when audio channel is muted, ie, zero level samples (muted).
+ 
+ ### Scripts for Confirming Audio
+ 
